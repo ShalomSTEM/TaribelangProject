@@ -1,2 +1,0 @@
-- name: Smelly Python: Smell My PR
-  uses: smelly-python/smell-my-pr@v1.0.0
