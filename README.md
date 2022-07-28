@@ -1,2 +1,2 @@
-# test-repository
-testing repository
+# TaribelangProject
+Taribelang project
