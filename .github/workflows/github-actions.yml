@@ -1,7 +1,7 @@
 name: Checkout submodules
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Auto-Submodule-Update:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository and submodules
