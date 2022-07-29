@@ -1,13 +1,22 @@
-name: Checkout submodules
+name: update all submodules
 on: [push]
 jobs:
-  Auto-Submodule-Update:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout submodules
-  # You may pin to the exact commit or the version.
-  # uses: textbook/git-checkout-submodule-action@0cb23c7e6a67085e1dc5e884920bd620f7b9c469
-      uses: textbook/git-checkout-submodule-action@2.1.1
+    - uses: actions/checkout@v2
       with:
-    # Set the --remote flag
-        remote: true # optional
+        persist-credentials: false
+        fetch-depth: 0 
+    - name: Submodule update
+      run: |
+        git submodule init
+        git submodule update --remote --merge
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "update submodule" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
