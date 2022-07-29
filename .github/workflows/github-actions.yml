@@ -1,13 +1,13 @@
-- name: Checkout submodules
-  uses: textbook/git-checkout-submodule-action@2.1.1
-  on: [push]
-  jobs:
-    Exploring:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-        uses: actions/checkout@v2
-        - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
-        with:
-          remote: true
+name: Checkout submodules
+uses: textbook/git-checkout-submodule-action@2.1.1
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+      uses: actions/checkout@v2
+      - name: Checkout submodules
+      uses: textbook/git-checkout-submodule-action@master
+      with:
+        remote: true
