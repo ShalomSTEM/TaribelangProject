@@ -4,5 +4,7 @@ jobs:
   Auto-Submodule-Update:
     runs-on: ubuntu-latest
     steps:
-    - name: submodules-init
-      uses: snickerbockers/submodules-init@v4
+    - name: Bump Git Submodules
+  # You may pin to the exact commit or the version.
+  # uses: domdere/git-submodule-action@a09ad8c95cc59c167100b2ee37bc45015313cea7
+      uses: domdere/git-submodule-action@0.0.1
