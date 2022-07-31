@@ -7,6 +7,7 @@ This is a game designed by a team from **Shalom College Bundaberg** for educatio
 
 ## Contributors
 >[@samh06](github.com/samh06)
+>[@Charl1e-D](github.com/charl1e-d)
 ## How to contribute
 > Make a PR with the changes you want to contribute
 ## How to run
