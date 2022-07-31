@@ -15,7 +15,8 @@ Two subcomponents will be handled on GitHub:
 >[@Charl1e-D](https://github.com/charl1e-d) <br>
 > +10 others not on GitHub
 ## How to contribute
-> Make a PR with the changes you want to contribute
+ - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
+ -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 ## How to run
 This project relies simply on the installation of **Python 3.7+** and **Pygame**.
 > Note- these steps could change if we use PyInstaller
