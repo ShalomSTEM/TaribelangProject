@@ -1,5 +1,5 @@
 # Taribelang Project
-The *Taribelang Bunda Student Project* is a student led project to build a real-world solution for a community need. 
+The **Taribelang Bunda Student Project** is a student led project to build a real-world solution for a community need. 
 
 Students selected on the basis of knowledge, skill and dedication, are offered the opportunity to work within a team to design and deliver a solution for a community need. Their project will be built for real world stakeholders and will be in use by the Bundaberg community long after they have completed the project. 
 
