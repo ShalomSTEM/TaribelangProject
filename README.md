@@ -5,8 +5,8 @@ This is a game designed by a team from **Shalom College Bundaberg** for educatio
 
 - Software Engineering- The python programming of the game using the GameFrame API
 
-##Contributors
->@samh06
+## Contributors
+>[@samh06](github.com/samh06)
 ## How to contribute
 > Make a PR with the changes you want to contribute
 ## How to run
