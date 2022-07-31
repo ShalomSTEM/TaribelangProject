@@ -11,16 +11,16 @@ Two subcomponents will be handled on GitHub:
 - Software Engineering- The python programming of the game using the GameFrame API
 
 ## Contributors
->[@samh06](https://github.com/samh06) <br>
->[@Charl1e-D](https://github.com/charl1e-d) <br>
+ - [@samh06](https://github.com/samh06) <br>
+ - [@Charl1e-D](https://github.com/charl1e-d) <br>
 > +10 others not on GitHub
 ## How to contribute
  - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
  -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 ## Links
-> [Monday Board](https://samh0.monday.com/boards/3005628514)<br>
-> [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
-> [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
+ - [Monday Board](https://samh0.monday.com/boards/3005628514)<br>
+ - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
+ - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
 ## How to run
 This project relies simply on the installation of **Python 3.7+** and **Pygame**.
 > Note- these steps could change if we use PyInstaller
