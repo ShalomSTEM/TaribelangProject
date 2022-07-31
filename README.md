@@ -1,5 +1,10 @@
 # Taribelang Project
-This is a game designed by a team from **Shalom College Bundaberg** for education about the **Taribelang peoples'** culture, as well as preserving it. Two subcomponents will be handled on github:
+The *Taribelang Bunda Student Project* is a student led project to build a real-world solution for a community need. 
+
+Students selected on the basis of knowledge, skill and dedication, are offered the opportunity to work within a team to design and deliver a solution for a community need. Their project will be built for real world stakeholders and will be in use by the Bundaberg community long after they have completed the project. 
+
+The client for this project will be a representative of the Taribelang Bunda Tribe.
+Two subcomponents will be handled on GitHub:
 
 - Graphics- The creation of the visuals for the project, including but not limited to: pixel art, animations, and visual effects. [Link to the graphics repository](https://github.com/ShalomSTEM/graphics/)
 
