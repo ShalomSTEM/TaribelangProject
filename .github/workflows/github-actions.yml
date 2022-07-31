@@ -1,5 +1,7 @@
 name: update all submodules
-on: [push]
+on:
+  schedule:
+  - cron: "0 0 * * *"
 
 jobs:
   buils:
