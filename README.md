@@ -1,7 +1,7 @@
 # Taribelang Project
 This is a game designed by a team from **Shalom College Bundaberg** for education about the **Taribelang peoples'** culture, as well as preserving it. Two subcomponents will be handled on github:
 
-- Graphics- The creation of the visuals for the project, including but not limited to: pixel art, animations, and visual effects
+- Graphics- The creation of the visuals for the project, including but not limited to: pixel art, animations, and visual effects. [Link to the graphics repository](https://github.com/ShalomSTEM/graphics/)
 
 - Software Engineering- The python programming of the game using the GameFrame API
 
