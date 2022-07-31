@@ -6,7 +6,7 @@ This is a game designed by a team from **Shalom College Bundaberg** for educatio
 - Software Engineering- The python programming of the game using the GameFrame API
 
 ## How to contribute
-> TBD
+> Make a PR with the changes you want to contribute
 ## How to run
 This project relies simply on the installation of **Python 3.7+** and **Pygame**.
 > Note- these steps could change if we use PyInstaller
