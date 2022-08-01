@@ -4,6 +4,7 @@ The **Taribelang Bunda Student Project** is a student led project to build a
 Students selected on the basis of knowledge, skill and dedication, are offered the opportunity to work within a team to design and deliver a solution for a community need. Their project will be built for real world stakeholders and will be in use by the Bundaberg community long after they have completed the project. 
 
 The client for this project will be a representative of the Taribelang Bunda Tribe.
+
 Two subcomponents will be handled on GitHub:
 
 - Graphics - The creation of the visuals for the project, including but not limited to: pixel art, animations, and visual effects. [Graphics repository](https://github.com/ShalomSTEM/graphics/)
@@ -25,7 +26,7 @@ Two subcomponents will be handled on GitHub:
  - [Monday Board](https://samh0.monday.com/boards/3005628514)<br>
  - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
  - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
- - [Onenote (Private)](https://example.com)
+ - [Onenote (Private)](http://example.com)
 ## How to run
 This project relies simply on the installation of **Python 3.8+** and **Pygame**.
 > Note- these steps could change if we use PyInstaller
