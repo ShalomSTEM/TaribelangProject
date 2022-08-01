@@ -12,6 +12,7 @@ Two subcomponents will be handled on GitHub:
 - Software Engineering - Programming the project using Python and Pygame and the GameFrame API.
 
 ## Contributors
+ - (cats)
  - [@samh06](https://github.com/samh06) (Samuel Hienze) <br>
  - [@Charl1e-D](https://github.com/charl1e-d) (Charlie Dove) <br>
  - [@srcoggin](https://github.com/srcoggin) (Will Coggins) <br>
