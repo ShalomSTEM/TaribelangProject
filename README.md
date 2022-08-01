@@ -8,7 +8,7 @@ Two subcomponents will be handled on GitHub:
 
 - Graphics - The creation of the visuals for the project, including but not limited to: pixel art, animations, and visual effects. [Graphics repository](https://github.com/ShalomSTEM/graphics/)
 
-- Software Engineering - Programming the project using Python and Pygame and the GameFrame API
+- Software Engineering - Programming the project using Python and Pygame and the GameFrame API.
 
 ## Contributors
  - [@samh06](https://github.com/samh06) <br>
