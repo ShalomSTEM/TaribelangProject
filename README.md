@@ -18,7 +18,7 @@ Two subcomponents will be handled on GitHub:
  - [@Killih](https://github.com/Killih1)
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
-> +15 others not on GitHub
+> +15 others not on GitHub (14 pending to join)
 ## How to contribute
  - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
  -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
@@ -29,7 +29,7 @@ Two subcomponents will be handled on GitHub:
  - [Onenote (Private)](http://example.com)
 ## How to run
 This project relies simply on the installation of **Python 3.8+** and **Pygame**.
-> Note- these steps could change if we use PyInstaller
+> Note - these steps could change if we use PyInstaller
 ### Steps:
  - Install **Python 3.8+**
  - Install **Pygame** (_Recommended Method of Installation- pip install_)
