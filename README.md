@@ -8,7 +8,7 @@ Two subcomponents will be handled on GitHub:
 
 - Graphics - The creation of the visuals for the project, including but not limited to: pixel art, animations, and visual effects. [Graphics repository](https://github.com/ShalomSTEM/graphics/)
 
-- Software Engineering - Programming the project using Python and Pygame/GameFrame API
+- Software Engineering - Programming the project using Python and Pygame and the GameFrame API
 
 ## Contributors
  - [@samh06](https://github.com/samh06) <br>
@@ -25,15 +25,16 @@ Two subcomponents will be handled on GitHub:
  - [Monday Board](https://samh0.monday.com/boards/3005628514)<br>
  - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
  - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
+ - [Onenote (Private)](https://example.com)
 ## How to run
 This project relies simply on the installation of **Python 3.8+** and **Pygame**.
 > Note- these steps could change if we use PyInstaller
 ### Steps:
- - Install **Python 3.7+**
+ - Install **Python 3.8+**
  - Install **Pygame** (_Recommended Method of Installation- pip install_)
  - Clone the GitHub repo
  - Run the **MainController.py** file 
 ## File structure
 > TBD
 ## License
-The work here is licensed under the [GNU Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the (Creative Commons CC0 License)[https://github.com/ShalomSTEM/graphics/blob/main/LICENSE].
+The work here is licensed under the [GNU Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons CC0 License](https://github.com/ShalomSTEM/graphics/blob/main/LICENSE).
