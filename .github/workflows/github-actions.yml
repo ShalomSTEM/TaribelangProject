@@ -6,7 +6,7 @@ on:
 jobs:
   buils:
     runs-on: ubuntu-latest
-    name: Push to protected branch
+    name: Update Submodules and push
     steps:
     - name: Checkout local repository
       uses: actions/checkout@v3
