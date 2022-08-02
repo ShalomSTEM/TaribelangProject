@@ -21,6 +21,9 @@ Two subcomponents will be handled on GitHub:
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
 > +8 others not on GitHub (14 pending to join)
+## To Do:
+ ● Make GitHub
+ ○ Make Title Screen
 ## How to contribute
  - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
  -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
