@@ -20,9 +20,9 @@ Two subcomponents will be handled on GitHub:
  - [@TruemR](https://github.com/truemr)
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
-> +8 others not on GitHub (14 pending to join)
+> +8 others not on GitHub (7 pending to join)
 ## To Do:
- ● Make GitHub
+ ● Make GitHub <br>
  ○ Make Title Screen
 ## How to contribute
  - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
