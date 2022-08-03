@@ -12,16 +12,17 @@ Two subcomponents will be handled on GitHub:
 - Software Engineering - Programming the project using Python and Pygame and the GameFrame API.
 
 ## Contributors
- - [@samh06](https://github.com/samh06) <br>
- - [@Charl1e-D](https://github.com/charl1e-d) <br>
- - [@srcoggin](https://github.com/srcoggin)  <br>
+ - [@samh06](https://github.com/samh06) 
+ - [@Charl1e-D](https://github.com/charl1e-d) 
+ - [@srcoggin](https://github.com/srcoggin)  
  - [@Killih](https://github.com/Killih1)
  - [@Robert-Grey](https://github.com/robert-grey)
  - [@TruemR](https://github.com/truemr)
- - [@Elazj1](https://github.com/orgs/ShalomSTEM/people/Elazj1)
+ - [@Elazj1](https://github.com/Elazj1)
+ - [@baileyr6](https://github.com/baileyr6)
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
-> +8 others not on GitHub (7 pending to join)
+> +7 others not on GitHub (7 pending to join)
 ## To Do:
  ● Make GitHub <br>
  ○ Make Title Screen
