@@ -18,6 +18,7 @@ Two subcomponents will be handled on GitHub:
  - [@Killih](https://github.com/Killih1)
  - [@Robert-Grey](https://github.com/robert-grey)
  - [@TruemR](https://github.com/truemr)
+ - [@Elazj1](https://github.com/orgs/ShalomSTEM/people/Elazj1)
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
 > +8 others not on GitHub (7 pending to join)
@@ -28,7 +29,7 @@ Two subcomponents will be handled on GitHub:
  - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
  -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 ## Links
- - [Monday Board](https://samh0.monday.com/boards/3005628514)<br>
+ - [Monday Board (Private)](https://samh0.monday.com/boards/3005628514)<br>
  - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
  - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
  - [Onenote (Private)](http://example.com)
