@@ -22,16 +22,14 @@ Two subcomponents will be handled on GitHub:
  - [@baileyr6](https://github.com/baileyr6)
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
-> +7 others not on GitHub (7 pending to join)
+> +7 pending
 ## To Do:
- ● Make GitHub <br>
- ○ Make Title Screen
+> visit Monday.com board
 ## How to contribute
- - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
- -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+> [View wiki](https://github.com/ShalomSTEM/TaribelangProject/wiki/Pushing-items-to-the-TaribelangProject-main-branch)
 ## Links
- - [Monday Board (Private)](https://samh0.monday.com/boards/3005628514)<br>
- - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
+ - [Monday Board (Private)](https://samh0.monday.com/boards/3005628514)
+ - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)
  - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
  - [Onenote (Private)](http://example.com)
 ## How to run
@@ -45,4 +43,4 @@ This project relies simply on the installation of **Python 3.8+** and **Pygame**
 ## File structure
 > TBD
 ## License
-The work here is licensed under the [GNU Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons CC0 License](https://github.com/ShalomSTEM/graphics/blob/main/LICENSE).
+The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/graphics/blob/main/LICENSE).
