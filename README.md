@@ -20,6 +20,7 @@ Two subcomponents will be handled on GitHub:
  - [@TruemR](https://github.com/truemr)
  - [@Elazj1](https://github.com/Elazj1)
  - [@baileyr6](https://github.com/baileyr6)
+ - [@BlueMicrobe775](https://github.com/BlueMicrobe775)
 ### Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
 > +7 pending
