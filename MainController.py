@@ -85,39 +85,39 @@ class Player:
 
 def main():
     pygame.init()
-
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     game_state = GameState.TITLE
+    screen_size = screen.get_size()
 
     while True:
         if game_state == GameState.TITLE:
-            game_state = title_screen(screen)
+            game_state = title_screen(screen, screen_size)
 
         if game_state == GameState.NEWGAME:
             player = Player()
-            game_state = play_level(screen, player)
+            game_state = play_level(screen, player, screen_size)
 
         if game_state == GameState.NEXT_LEVEL:
             player.current_level += 1
-            game_state = play_level(screen, player)
+            game_state = play_level(screen, player, screen_size)
 
         if game_state == GameState.QUIT:
             pygame.quit()
             return
 
 
-def title_screen(screen):
+def title_screen(screen, screen_size):
     start_btn = UIElement(
-        center_position=(400, 400),
-        font_size=30,
+        center_position=(screen_size[0]/2, (screen_size[1]/2) - 100),
+        font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
         text="Start",
         action=GameState.NEWGAME,
     )
     quit_btn = UIElement(
-        center_position=(400, 500),
-        font_size=30,
+        center_position=(screen_size[0]/2, screen_size[1]/2),
+        font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
         text="Quit",
@@ -129,10 +129,10 @@ def title_screen(screen):
     return game_loop(screen, buttons)
 
 
-def play_level(screen, player):
+def play_level(screen, player, screen_size):
     return_btn = UIElement(
-        center_position=(140, 570),
-        font_size=20,
+        center_position=(screen_size[0]/6+20, screen_size[1] - (screen_size[1]*4/100)),
+        font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
         text="Return to main menu",
@@ -140,8 +140,8 @@ def play_level(screen, player):
     )
 
     nextlevel_btn = UIElement(
-        center_position=(400, 400),
-        font_size=30,
+        center_position=(screen_size[0]/2, screen_size[1]/2),
+        font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
         text=f"Next level ({player.current_level + 1})",
