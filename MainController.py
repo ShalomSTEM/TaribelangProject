@@ -17,7 +17,7 @@ def create_surface_with_text(text, font_size, text_rgb, bg_rgb):
 class UIElement(Sprite):
     """ An user interface element that can be added to a surface """
 
-    def __init__(self, center_position, text, font_size, bg_rgb, text_rgb, action=None):
+    def __init__(self, center_position, text, font_size, bg_rgb, text_rgb):
         """
         Args:
             center_position - tuple (x, y)
@@ -47,7 +47,6 @@ class UIElement(Sprite):
 
         # calls the init method of the parent sprite class
         super().__init__()
-        self.action = action
     # properties that vary the image and its rect when the mouse is over the element
     @property
     def image(self):
@@ -56,46 +55,40 @@ class UIElement(Sprite):
     @property
     def rect(self):
         return self.rects[1] if self.mouse_over else self.rects[0]
-    def update(self, mouse_pos, mouse_up):
-        """ Updates the element's appearance depending on the mouse position
-        and returns the button's action if clicked.
-        """
+    def update(self, mouse_pos):
         if self.rect.collidepoint(mouse_pos):
             self.mouse_over = True
-            if mouse_up:
-                return self.action
         else:
             self.mouse_over = False
 
     def draw(self, surface):
         """ Draws element onto a surface """
         surface.blit(self.image, self.rect)
-class GameState(Enum):
-    QUIT = -1
 def main():
     pygame.init()
 
     screen = pygame.display.set_mode((800, 600))
 
-    quit_btn = UIElement(
-        center_position=(400, 500),
+    # create a ui element
+    uielement = UIElement(
+        center_position=(400, 400),
         font_size=30,
         bg_rgb=BLUE,
         text_rgb=WHITE,
-        text="Quit",
-        action=GameState.QUIT,
+        text="Start Game",
     )
 
     # main loop
     while True:
-        mouse_up = False
         for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                mouse_up = True
+            pass
         screen.fill(BLUE)
 
-        ui_action = quit_btn.update(pygame.mouse.get_pos(), mouse_up)
-        if ui_action is not None:
-            return
-        quit_btn.draw(screen)
+        uielement.update(pygame.mouse.get_pos())
+        uielement.draw(screen)
         pygame.display.flip()
+
+
+# call main when the script is run
+if __name__ == "__main__":
+    main()
