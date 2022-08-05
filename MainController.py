@@ -1,12 +1,7 @@
-import pygame
-import pygame.freetype
-from pygame.sprite import Sprite
-from pygame.rect import Rect
-from enum import Enum
-import os
-os.environ["SDL_VIDEODRIVER"] = "dummy"
-BLUE = (106, 159, 181)
-WHITE = (255, 255, 255)
+print("hello world")
+print("testing conflicts")
+print("Testing Github Desktop")
+
 
 
 def create_surface_with_text(text, font_size, text_rgb, bg_rgb):
