@@ -85,15 +85,13 @@ class Player:
 
 def main():
     pygame.init()
-
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     game_state = GameState.TITLE
     screen_size = screen.get_size()
 
-
     while True:
         if game_state == GameState.TITLE:
-            game_state = title_screen(screen)
+            game_state = title_screen(screen, screen_size)
 
         if game_state == GameState.NEWGAME:
             player = Player()
@@ -108,9 +106,9 @@ def main():
             return
 
 
-def title_screen(screen):
+def title_screen(screen, screen_size):
     start_btn = UIElement(
-        center_position=(screen_size - 400, screen_size - 400),
+        center_position=(screen_size[0]/2, (screen_size[1]/2) - 100),
         font_size=30,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -118,7 +116,7 @@ def title_screen(screen):
         action=GameState.NEWGAME,
     )
     quit_btn = UIElement(
-        center_position=(400, 500),
+        center_position=(screen_size[0]/2, screen_size[1]/2),
         font_size=30,
         bg_rgb=BLUE,
         text_rgb=WHITE,
