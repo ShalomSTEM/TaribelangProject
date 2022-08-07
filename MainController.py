@@ -3,8 +3,10 @@ import pygame
 import pygame.freetype
 from pygame.sprite import Sprite
 from pygame.sprite import RenderUpdates
+
 BLUE = (106, 159, 181)
 WHITE = (255, 255, 255)
+game = "invalid"
 
 
 def create_surface_with_text(text, font_size, text_rgb, bg_rgb):
@@ -99,7 +101,10 @@ def main():
             player = Player()
             game_state = play_milbi(screen, player, screen_size)
 
-        if game_state == GameState.NEXT_LEVEL:
+        if game_state == GameState.NEXT_LEVEL and game == "carpet":
+            player.current_level += 1
+            game_state = play_carpet(screen, player, screen_size)
+        elif game_state == GameState.NEXT_LEVEL and game == "milbi":
             player.current_level += 1
             game_state = play_milbi(screen, player, screen_size)
 
@@ -110,7 +115,10 @@ def main():
 
 def title_screen(screen, screen_size):
     start_btn_milbi = UIElement(
-        center_position=((screen_size[0] / 4) + (screen_size[0] / 2), (screen_size[1] / 2) - 100),
+        center_position=(
+            (screen_size[0] / 4) + (screen_size[0] / 2),
+            (screen_size[1] / 2) - 100,
+        ),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -140,6 +148,8 @@ def title_screen(screen, screen_size):
 
 
 def play_milbi(screen, player, screen_size):
+    global game
+    game = "milbi"
     return_btn = UIElement(
         center_position=(
             screen_size[0] / 6 + 20,
@@ -151,7 +161,6 @@ def play_milbi(screen, player, screen_size):
         text="Return to main menu",
         action=GameState.TITLE,
     )
-
     nextlevel_btn = UIElement(
         center_position=(screen_size[0] / 2, screen_size[1] / 2),
         font_size=50,
@@ -160,8 +169,14 @@ def play_milbi(screen, player, screen_size):
         text=f"Next level ({player.current_level + 1})",
         action=GameState.NEXT_LEVEL,
     )
+    buttons = RenderUpdates(return_btn, nextlevel_btn)
+
+    return game_loop(screen, buttons)
+
 
 def play_carpet(screen, player, screen_size):
+    global game
+    game = "carpet"
     return_btn = UIElement(
         center_position=(
             screen_size[0] / 6 + 20,
