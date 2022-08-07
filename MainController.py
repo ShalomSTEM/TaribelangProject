@@ -3,7 +3,6 @@ import pygame
 import pygame.freetype
 from pygame.sprite import Sprite
 from pygame.sprite import RenderUpdates
-
 BLUE = (106, 159, 181)
 WHITE = (255, 255, 255)
 
@@ -92,7 +91,11 @@ def main():
         if game_state == GameState.TITLE:
             game_state = title_screen(screen, screen_size)
 
-        if game_state == GameState.NEWGAME:
+        if game_state == GameState.NEWGAMEMILBI:
+            player = Player()
+            game_state = play_level(screen, player, screen_size)
+
+        if game_state == GameState.NEWGAMECARPET:
             player = Player()
             game_state = play_level(screen, player, screen_size)
 
@@ -106,13 +109,21 @@ def main():
 
 
 def title_screen(screen, screen_size):
-    start_btn = UIElement(
-        center_position=(screen_size[0] / 2, (screen_size[1] / 2) - 100),
+    start_btn_milbi = UIElement(
+        center_position=((screen_size[0] / 4) + (screen_size[0] / 2), (screen_size[1] / 2) - 100),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
-        text="Start",
-        action=GameState.NEWGAME,
+        text="Milbi",
+        action=GameState.NEWGAMEMILBI,
+    )
+    start_btn_carpet = UIElement(
+        center_position=(screen_size[0] / 4, (screen_size[1] / 2) - 100),
+        font_size=50,
+        bg_rgb=BLUE,
+        text_rgb=WHITE,
+        text="Carpet",
+        action=GameState.NEWGAMECARPET,
     )
     quit_btn = UIElement(
         center_position=(screen_size[0] / 2, screen_size[1] / 2),
@@ -123,7 +134,7 @@ def title_screen(screen, screen_size):
         action=GameState.QUIT,
     )
 
-    buttons = RenderUpdates(start_btn, quit_btn)
+    buttons = RenderUpdates(start_btn_milbi, start_btn_carpet, quit_btn)
 
     return game_loop(screen, buttons)
 
@@ -178,8 +189,9 @@ def game_loop(screen, buttons):
 class GameState(Enum):
     QUIT = -1
     TITLE = 0
-    NEWGAME = 1
-    NEXT_LEVEL = 2
+    NEWGAMECARPET = 1
+    NEWGAMEMILBI = 2
+    NEXT_LEVEL = 3
 
 
 if __name__ == "__main__":
