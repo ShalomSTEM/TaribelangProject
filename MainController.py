@@ -1,23 +1,23 @@
+from enum import Enum
 import pygame
 import pygame.freetype
 from pygame.sprite import Sprite
-from pygame.rect import Rect
-from enum import Enum
 from pygame.sprite import RenderUpdates
 
 BLUE = (106, 159, 181)
 WHITE = (255, 255, 255)
+game = "invalid"
 
 
 def create_surface_with_text(text, font_size, text_rgb, bg_rgb):
-    """ Returns surface with text written on """
+    """Returns surface with text written on"""
     font = pygame.freetype.SysFont("Courier", font_size, bold=True)
     surface, _ = font.render(text=text, fgcolor=text_rgb, bgcolor=bg_rgb)
     return surface.convert_alpha()
 
 
 class UIElement(Sprite):
-    """ An user interface element that can be added to a surface """
+    """An user interface element that can be added to a surface"""
 
     def __init__(self, center_position, text, font_size, bg_rgb, text_rgb, action=None):
         """
@@ -59,8 +59,8 @@ class UIElement(Sprite):
         return self.rects[1] if self.mouse_over else self.rects[0]
 
     def update(self, mouse_pos, mouse_up):
-        """ Updates the mouse_over variable and returns the button's
-            action value when clicked.
+        """Updates the mouse_over variable and returns the button's
+        action value when clicked.
         """
         if self.rect.collidepoint(mouse_pos):
             self.mouse_over = True
@@ -70,12 +70,12 @@ class UIElement(Sprite):
             self.mouse_over = False
 
     def draw(self, surface):
-        """ Draws element onto a surface """
+        """Draws element onto a surface"""
         surface.blit(self.image, self.rect)
 
 
 class Player:
-    """ Stores information about a player """
+    """Stores information about a player"""
 
     def __init__(self, score=0, lives=3, current_level=1):
         self.score = score
@@ -93,13 +93,20 @@ def main():
         if game_state == GameState.TITLE:
             game_state = title_screen(screen, screen_size)
 
-        if game_state == GameState.NEWGAME:
+        if game_state == GameState.NEWGAMEMILBI:
             player = Player()
-            game_state = play_level(screen, player, screen_size)
+            game_state = play_carpet(screen, player, screen_size)
 
-        if game_state == GameState.NEXT_LEVEL:
+        if game_state == GameState.NEWGAMECARPET:
+            player = Player()
+            game_state = play_milbi(screen, player, screen_size)
+
+        if game_state == GameState.NEXT_LEVEL and game == "carpet":
             player.current_level += 1
-            game_state = play_level(screen, player, screen_size)
+            game_state = play_carpet(screen, player, screen_size)
+        elif game_state == GameState.NEXT_LEVEL and game == "milbi":
+            player.current_level += 1
+            game_state = play_milbi(screen, player, screen_size)
 
         if game_state == GameState.QUIT:
             pygame.quit()
@@ -107,16 +114,27 @@ def main():
 
 
 def title_screen(screen, screen_size):
-    start_btn = UIElement(
-        center_position=(screen_size[0]/2, (screen_size[1]/2) - 100),
+    start_btn_milbi = UIElement(
+        center_position=(
+            (screen_size[0] / 4) + (screen_size[0] / 2),
+            (screen_size[1] / 2) - 100,
+        ),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
-        text="Start",
-        action=GameState.NEWGAME,
+        text="Milbi",
+        action=GameState.NEWGAMEMILBI,
+    )
+    start_btn_carpet = UIElement(
+        center_position=(screen_size[0] / 4, (screen_size[1] / 2) - 100),
+        font_size=50,
+        bg_rgb=BLUE,
+        text_rgb=WHITE,
+        text="Carpet",
+        action=GameState.NEWGAMECARPET,
     )
     quit_btn = UIElement(
-        center_position=(screen_size[0]/2, screen_size[1]/2),
+        center_position=(screen_size[0] / 2, screen_size[1] / 2),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -124,14 +142,46 @@ def title_screen(screen, screen_size):
         action=GameState.QUIT,
     )
 
-    buttons = RenderUpdates(start_btn, quit_btn)
+    buttons = RenderUpdates(start_btn_milbi, start_btn_carpet, quit_btn)
 
     return game_loop(screen, buttons)
 
 
-def play_level(screen, player, screen_size):
+def play_milbi(screen, player, screen_size):
+    global game
+    game = "milbi"
     return_btn = UIElement(
-        center_position=(screen_size[0]/6+20, screen_size[1] - (screen_size[1]*4/100)),
+        center_position=(
+            screen_size[0] / 6 + 20,
+            screen_size[1] - (screen_size[1] * 4 / 100),
+        ),
+        font_size=50,
+        bg_rgb=BLUE,
+        text_rgb=WHITE,
+        text="Return to main menu",
+        action=GameState.TITLE,
+    )
+    nextlevel_btn = UIElement(
+        center_position=(screen_size[0] / 2, screen_size[1] / 2),
+        font_size=50,
+        bg_rgb=BLUE,
+        text_rgb=WHITE,
+        text=f"Next level ({player.current_level + 1})",
+        action=GameState.NEXT_LEVEL,
+    )
+    buttons = RenderUpdates(return_btn, nextlevel_btn)
+
+    return game_loop(screen, buttons)
+
+
+def play_carpet(screen, player, screen_size):
+    global game
+    game = "carpet"
+    return_btn = UIElement(
+        center_position=(
+            screen_size[0] / 6 + 20,
+            screen_size[1] - (screen_size[1] * 4 / 100),
+        ),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -140,7 +190,7 @@ def play_level(screen, player, screen_size):
     )
 
     nextlevel_btn = UIElement(
-        center_position=(screen_size[0]/2, screen_size[1]/2),
+        center_position=(screen_size[0] / 2, screen_size[1] / 2),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -154,8 +204,8 @@ def play_level(screen, player, screen_size):
 
 
 def game_loop(screen, buttons):
-    """ Handles game loop until an action is return by a button in the
-        buttons sprite renderer.
+    """Handles game loop until an action is return by a button in the
+    buttons sprite renderer.
     """
     while True:
         mouse_up = False
@@ -176,8 +226,9 @@ def game_loop(screen, buttons):
 class GameState(Enum):
     QUIT = -1
     TITLE = 0
-    NEWGAME = 1
-    NEXT_LEVEL = 2
+    NEWGAMECARPET = 1
+    NEWGAMEMILBI = 2
+    NEXT_LEVEL = 3
 
 
 if __name__ == "__main__":
