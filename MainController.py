@@ -93,15 +93,15 @@ def main():
 
         if game_state == GameState.NEWGAMEMILBI:
             player = Player()
-            game_state = play_level(screen, player, screen_size)
+            game_state = play_carpet(screen, player, screen_size)
 
         if game_state == GameState.NEWGAMECARPET:
             player = Player()
-            game_state = play_level(screen, player, screen_size)
+            game_state = play_milbi(screen, player, screen_size)
 
         if game_state == GameState.NEXT_LEVEL:
             player.current_level += 1
-            game_state = play_level(screen, player, screen_size)
+            game_state = play_milbi(screen, player, screen_size)
 
         if game_state == GameState.QUIT:
             pygame.quit()
@@ -139,7 +139,29 @@ def title_screen(screen, screen_size):
     return game_loop(screen, buttons)
 
 
-def play_level(screen, player, screen_size):
+def play_milbi(screen, player, screen_size):
+    return_btn = UIElement(
+        center_position=(
+            screen_size[0] / 6 + 20,
+            screen_size[1] - (screen_size[1] * 4 / 100),
+        ),
+        font_size=50,
+        bg_rgb=BLUE,
+        text_rgb=WHITE,
+        text="Return to main menu",
+        action=GameState.TITLE,
+    )
+
+    nextlevel_btn = UIElement(
+        center_position=(screen_size[0] / 2, screen_size[1] / 2),
+        font_size=50,
+        bg_rgb=BLUE,
+        text_rgb=WHITE,
+        text=f"Next level ({player.current_level + 1})",
+        action=GameState.NEXT_LEVEL,
+    )
+
+def play_carpet(screen, player, screen_size):
     return_btn = UIElement(
         center_position=(
             screen_size[0] / 6 + 20,
