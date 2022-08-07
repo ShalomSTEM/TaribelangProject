@@ -1,8 +1,8 @@
+from enum import Enum
 import pygame
 import pygame.freetype
 from pygame.sprite import Sprite
 from pygame.rect import Rect
-from enum import Enum
 from pygame.sprite import RenderUpdates
 
 BLUE = (106, 159, 181)
