@@ -10,14 +10,14 @@ WHITE = (255, 255, 255)
 
 
 def create_surface_with_text(text, font_size, text_rgb, bg_rgb):
-    """ Returns surface with text written on """
+    """Returns surface with text written on"""
     font = pygame.freetype.SysFont("Courier", font_size, bold=True)
     surface, _ = font.render(text=text, fgcolor=text_rgb, bgcolor=bg_rgb)
     return surface.convert_alpha()
 
 
 class UIElement(Sprite):
-    """ An user interface element that can be added to a surface """
+    """An user interface element that can be added to a surface"""
 
     def __init__(self, center_position, text, font_size, bg_rgb, text_rgb, action=None):
         """
@@ -59,8 +59,8 @@ class UIElement(Sprite):
         return self.rects[1] if self.mouse_over else self.rects[0]
 
     def update(self, mouse_pos, mouse_up):
-        """ Updates the mouse_over variable and returns the button's
-            action value when clicked.
+        """Updates the mouse_over variable and returns the button's
+        action value when clicked.
         """
         if self.rect.collidepoint(mouse_pos):
             self.mouse_over = True
@@ -70,12 +70,12 @@ class UIElement(Sprite):
             self.mouse_over = False
 
     def draw(self, surface):
-        """ Draws element onto a surface """
+        """Draws element onto a surface"""
         surface.blit(self.image, self.rect)
 
 
 class Player:
-    """ Stores information about a player """
+    """Stores information about a player"""
 
     def __init__(self, score=0, lives=3, current_level=1):
         self.score = score
@@ -108,7 +108,7 @@ def main():
 
 def title_screen(screen, screen_size):
     start_btn = UIElement(
-        center_position=(screen_size[0]/2, (screen_size[1]/2) - 100),
+        center_position=(screen_size[0] / 2, (screen_size[1] / 2) - 100),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -116,7 +116,7 @@ def title_screen(screen, screen_size):
         action=GameState.NEWGAME,
     )
     quit_btn = UIElement(
-        center_position=(screen_size[0]/2, screen_size[1]/2),
+        center_position=(screen_size[0] / 2, screen_size[1] / 2),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -131,7 +131,10 @@ def title_screen(screen, screen_size):
 
 def play_level(screen, player, screen_size):
     return_btn = UIElement(
-        center_position=(screen_size[0]/6+20, screen_size[1] - (screen_size[1]*4/100)),
+        center_position=(
+            screen_size[0] / 6 + 20,
+            screen_size[1] - (screen_size[1] * 4 / 100),
+        ),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -140,7 +143,7 @@ def play_level(screen, player, screen_size):
     )
 
     nextlevel_btn = UIElement(
-        center_position=(screen_size[0]/2, screen_size[1]/2),
+        center_position=(screen_size[0] / 2, screen_size[1] / 2),
         font_size=50,
         bg_rgb=BLUE,
         text_rgb=WHITE,
@@ -154,8 +157,8 @@ def play_level(screen, player, screen_size):
 
 
 def game_loop(screen, buttons):
-    """ Handles game loop until an action is return by a button in the
-        buttons sprite renderer.
+    """Handles game loop until an action is return by a button in the
+    buttons sprite renderer.
     """
     while True:
         mouse_up = False
