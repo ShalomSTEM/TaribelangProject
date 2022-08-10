@@ -3,6 +3,7 @@ import pygame
 import pygame.freetype
 from pygame.sprite import Sprite
 from pygame.sprite import RenderUpdates
+from GameFrame import Globals
 
 BLUE = (106, 159, 181)
 WHITE = (255, 255, 255)
@@ -101,19 +102,27 @@ def main():
             player = Player()
             game_state = play_milbi(screen, player, screen_size)
 
-        if game_state == GameState.NEXT_LEVEL and game == "carpet":
+        if game_state == GameState.NEXT_LEVEL:
             player.current_level += 1
-            game_state = play_carpet(screen, player, screen_size)
-        elif game_state == GameState.NEXT_LEVEL and game == "milbi":
-            player.current_level += 1
-            game_state = play_milbi(screen, player, screen_size)
-
+            if game == "carpet":
+                game_state = play_carpet(screen, player, screen_size)
+            else:
+                game_state = play_milbi(screen, player, screen_size)
         if game_state == GameState.QUIT:
             pygame.quit()
             return
 
 
 def title_screen(screen, screen_size):
+    """_summary_
+
+    Args:
+        screen (Any): the screen
+        screen_size (Tuple): the screen size
+
+    Returns:
+        game_loop(screen, buttons): repeats until an action is performed from a sprite or button
+    """
     start_btn_milbi = UIElement(
         center_position=(
             (screen_size[0] / 4) + (screen_size[0] / 2),
@@ -143,11 +152,20 @@ def title_screen(screen, screen_size):
     )
 
     buttons = RenderUpdates(start_btn_milbi, start_btn_carpet, quit_btn)
-
     return game_loop(screen, buttons)
 
 
 def play_milbi(screen, player, screen_size):
+    """_summary_
+
+    Args:
+        screen (Any): the screen
+        player (Any): the player
+        screen_size (Tuple): the screen size
+
+    Returns:
+        game_loop(screen, buttons): repeats until an action is performed from a sprite or button
+    """
     global game
     game = "milbi"
     return_btn = UIElement(
@@ -175,6 +193,16 @@ def play_milbi(screen, player, screen_size):
 
 
 def play_carpet(screen, player, screen_size):
+    """_summary_
+
+    Args:
+        screen (Any): the screen
+        player (Any): the player
+        screen_size (Tuple): the screen size
+
+    Returns:
+        game_loop(screen, buttons): repeats until an action is performed from a sprite or button
+    """
     global game
     game = "carpet"
     return_btn = UIElement(
