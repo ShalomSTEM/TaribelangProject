@@ -103,11 +103,10 @@ def main():
 
         if game_state == GameState.NEXT_LEVEL and game == "carpet":
             player.current_level += 1
-            game_state = play_carpet(screen, player, screen_size)
-        elif game_state == GameState.NEXT_LEVEL and game == "milbi":
-            player.current_level += 1
-            game_state = play_milbi(screen, player, screen_size)
-
+            if game == "carpet":
+                game_state = play_carpet(screen, player, screen_size)
+            else:
+                game_state = play_milbi(screen, player, screen_size)
         if game_state == GameState.QUIT:
             pygame.quit()
             return
