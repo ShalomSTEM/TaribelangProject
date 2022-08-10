@@ -102,7 +102,7 @@ def main():
             player = Player()
             game_state = play_milbi(screen, player, screen_size)
 
-        if game_state == GameState.NEXT_LEVEL and game == "carpet":
+        if game_state == GameState.NEXT_LEVEL:
             player.current_level += 1
             if game == "carpet":
                 game_state = play_carpet(screen, player, screen_size)
@@ -153,7 +153,6 @@ def title_screen(screen, screen_size):
 
     buttons = RenderUpdates(start_btn_milbi, start_btn_carpet, quit_btn)
     return game_loop(screen, buttons)
-
 
 
 def play_milbi(screen, player, screen_size):
