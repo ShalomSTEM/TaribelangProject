@@ -3,6 +3,7 @@ import pygame
 import pygame.freetype
 from pygame.sprite import Sprite
 from pygame.sprite import RenderUpdates
+from GameFrame import Globals
 
 BLUE = (106, 159, 181)
 WHITE = (255, 255, 255)
