@@ -8,6 +8,9 @@
  - [@Elazj1](https://github.com/Elazj1)
  - [@baileyr6](https://github.com/baileyr6)
  - [@BlueMicrobe775](https://github.com/BlueMicrobe775)
+ - [@HolznM1](https://github.com/HolznM1)
+ - [@GeorgeHill47](https://github.com/GeorgeHill47)
+ - [@Mckeoe1](https://github.com/Mckeoe1)
 ## Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
 > +6 pending
