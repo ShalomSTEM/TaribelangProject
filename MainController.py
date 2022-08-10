@@ -114,6 +114,15 @@ def main():
 
 
 def title_screen(screen, screen_size):
+    """_summary_
+
+    Args:
+        screen (Any): the screen
+        screen_size (Tuple): the screen size
+
+    Returns:
+        game_loop(screen, buttons): repeats until an action is performed from a sprite or button
+    """
     start_btn_milbi = UIElement(
         center_position=(
             (screen_size[0] / 4) + (screen_size[0] / 2),
@@ -148,6 +157,16 @@ def title_screen(screen, screen_size):
 
 
 def play_milbi(screen, player, screen_size):
+    """_summary_
+
+    Args:
+        screen (Any): the screen
+        player (Any): the player
+        screen_size (Tuple): the screen size
+
+    Returns:
+        game_loop(screen, buttons): repeats until an action is performed from a sprite or button
+    """
     global game
     game = "milbi"
     return_btn = UIElement(
@@ -175,6 +194,16 @@ def play_milbi(screen, player, screen_size):
 
 
 def play_carpet(screen, player, screen_size):
+    """_summary_
+
+    Args:
+        screen (Any): the screen
+        player (Any): the player
+        screen_size (Tuple): the screen size
+
+    Returns:
+        game_loop(screen, buttons): repeats until an action is performed from a sprite or button
+    """
     global game
     game = "carpet"
     return_btn = UIElement(
