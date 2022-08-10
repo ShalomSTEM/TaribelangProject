@@ -12,22 +12,10 @@ Two subcomponents will be handled on GitHub:
 - Software Engineering - Programming the project using Python and Pygame and the GameFrame API.
 
 ## Contributors
- - [@samh06](https://github.com/samh06) 
- - [@Charl1e-D](https://github.com/charl1e-d) 
- - [@srcoggin](https://github.com/srcoggin)  
- - [@Killih](https://github.com/Killih1)
- - [@Robert-Grey](https://github.com/robert-grey)
- - [@TruemR](https://github.com/truemr)
- - [@Elazj1](https://github.com/Elazj1)
- - [@baileyr6](https://github.com/baileyr6)
- - [@BlueMicrobe775](https://github.com/BlueMicrobe775)
-### Miscellaneous Contributors
- - [@3rin-k](https://github.com/3rin-k)
-> +7 pending
+[View here](https://github.com/ShalomSTEM/TaribelangProject/blob/main/CONTRIBUTORS.md)
 ## To Do:
 > visit Monday.com board
 ## How to contribute
-
 > [View wiki](https://github.com/ShalomSTEM/TaribelangProject/wiki/)
 ## Links
  - [Monday Board (Private)](https://samh0.monday.com/boards/3005628514)

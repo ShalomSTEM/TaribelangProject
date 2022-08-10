@@ -152,8 +152,8 @@ def title_screen(screen, screen_size):
     )
 
     buttons = RenderUpdates(start_btn_milbi, start_btn_carpet, quit_btn)
-
     return game_loop(screen, buttons)
+
 
 
 def play_milbi(screen, player, screen_size):
