@@ -13,4 +13,4 @@
  - [@Mckeoe1](https://github.com/Mckeoe1)
 ## Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
-> +6 pending
+> +2 pending
