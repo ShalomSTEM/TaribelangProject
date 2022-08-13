@@ -38,4 +38,6 @@ class Globals:
 
     total_count = 0
     destroyed_count = 0
+    player_x=0
+    player_y=0
 
