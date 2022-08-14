@@ -57,7 +57,7 @@ class MilbiL1(Level):
         for i in range(self.mapsize):
             row =[]
             for j in range(self.mapsize):
-                if (random.randint(0,1)):
+                if (random.randint(0,3)<3):
                     row.append(0)
                 else:
                     row.append(1)
@@ -66,7 +66,7 @@ class MilbiL1(Level):
         for i in range(self.Width_TileNum):
             row=[]
             for j in range(self.Height_TileNum):
-                if self.Tilemap[i][j]:
+                if self.Tilemap[i+Globals.player_x][j+Globals.player_y]:
                     row.append(Grass(self,i*self.TileSize,j*self.TileSize,self.TileSize))
 
                 else:
@@ -90,5 +90,7 @@ class MilbiL1(Level):
         for i in range(self.Width_TileNum):
             for j in range(self.Height_TileNum):
                 self.delete_object(self.map[i][j])
+        # Delete from array
         for i in range(self.Width_TileNum):
             self.map.pop(0)
+
