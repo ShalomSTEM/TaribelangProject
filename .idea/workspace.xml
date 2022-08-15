@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15652a91-8bda-4804-8034-48db49ffc2a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Rooms/MilbyL3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFrame/Globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/Globals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rooms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rooms/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics" beforeDir="false" afterPath="$PROJECT_DIR$/graphics" afterDir="false" />
-    </list>
+    <list default="true" id="15652a91-8bda-4804-8034-48db49ffc2a6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +28,13 @@
     <property name="last_opened_file_path" value="H:/2022/Term 3/DTN/Veggie Samurai" />
     <property name="settings.editor.selected.configurable" value="http.certificates" />
   </component>
-  <component name="RunManager" selected="Python.MainController (1)">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\coggiw1\Documents\GitHub\TaribelangProject\graphics\MilbyL3" />
+      <recent name="C:\Users\coggiw1\Documents\GitHub\TaribelangProject\graphics" />
+    </key>
+  </component>
+  <component name="RunManager">
     <configuration name="MainController (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,31 +56,9 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MainController" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TaribelangProject" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TaribelangProject/MainController.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.MainController (1)" />
-        <item itemvalue="Python.MainController" />
       </list>
     </recent_temporary>
   </component>
