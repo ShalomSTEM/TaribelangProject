@@ -1,0 +1,27 @@
+on: 
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+    
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    name: Executes pylint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Lint
+        uses: gabriel-milan/action-pylint@v1
+        with:
+          GITHUB_TOKEN: ${{secrets.PUSH_TO_PROTECTED_BRANCH}} # GitHub token
+          path: "./*.py" # Glob pattern for files to lint
+          fail: true # Fail the action if pylint errors are found
+          pr-message: true # Send a PR message if pylint errors are found
