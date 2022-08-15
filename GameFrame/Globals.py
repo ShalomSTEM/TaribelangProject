@@ -3,8 +3,8 @@ class Globals:
     running = True
     FRAMES_PER_SECOND = 30
 
-    SCREEN_WIDTH = 800
-    SCREEN_HEIGHT = 600
+    SCREEN_WIDTH = 1150
+    SCREEN_HEIGHT = 700
 
     SCORE = 0
 
@@ -12,16 +12,19 @@ class Globals:
     LIVES = 3
 
     # - Set the Window display name - #
-    window_name = 'GF Game'
+    window_name = 'Game'
 
     # - Set the order of the rooms - #
-    levels = ["Title Screen","MilbyL1","MilbyL2","MilbyL3"]
+    levels = ["MilbiL1"]
+
 
     # - Set the starting level - #
     start_level = 0
 
     # - Set this number to the level you want to jump to when the game ends - #
-    end_game_level = 4
+
+    end_game_level = 0
+
 
     # - This variable keeps track of the room that will follow the current room - #
     # - Change this value to move through rooms in a non-sequential manner - #
@@ -37,3 +40,9 @@ class Globals:
 
     total_count = 0
     destroyed_count = 0
+
+    player_x=0
+    player_y=0
+    lowWater=False
+
+
