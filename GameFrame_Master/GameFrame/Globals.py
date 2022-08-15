@@ -4,8 +4,8 @@ class Globals:
     running = True
     FRAMES_PER_SECOND = 30
 
-    SCREEN_WIDTH = 900
-    SCREEN_HEIGHT = 900
+    SCREEN_WIDTH = 1150
+    SCREEN_HEIGHT = 700
 
     SCORE = 0
 
@@ -40,4 +40,5 @@ class Globals:
     destroyed_count = 0
     player_x=0
     player_y=0
+    lowWater=False
 
