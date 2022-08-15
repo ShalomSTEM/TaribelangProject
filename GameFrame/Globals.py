@@ -13,16 +13,19 @@ class Globals:
     LIVES = 3
 
     # - Set the Window display name - #
-    window_name = 'MilbiL1'
+    window_name = 'Game'
 
     # - Set the order of the rooms - #
     levels = ["MilbiL1"]
+
 
     # - Set the starting level - #
     start_level = 0
 
     # - Set this number to the level you want to jump to when the game ends - #
+
     end_game_level = 0
+
 
     # - This variable keeps track of the room that will follow the current room - #
     # - Change this value to move through rooms in a non-sequential manner - #
@@ -38,7 +41,9 @@ class Globals:
 
     total_count = 0
     destroyed_count = 0
+
     player_x=0
     player_y=0
     lowWater=False
+
 
