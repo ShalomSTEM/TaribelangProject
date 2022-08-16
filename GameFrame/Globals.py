@@ -42,3 +42,9 @@ class Globals:
     player_y=0
     lowWater=False
 
+
+
+
+
+
+
