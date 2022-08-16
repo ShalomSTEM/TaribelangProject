@@ -1,4 +1,3 @@
-
 class Globals:
 
     running = True
@@ -16,7 +15,7 @@ class Globals:
     window_name = 'Game'
 
     # - Set the order of the rooms - #
-    levels = ["MilbiL1"]
+    levels = ["CorroboreeRoom"]
 
 
     # - Set the starting level - #
