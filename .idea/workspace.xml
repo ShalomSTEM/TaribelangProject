@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15652a91-8bda-4804-8034-48db49ffc2a6" name="Changes" comment="" />
+    <list default="true" id="15652a91-8bda-4804-8034-48db49ffc2a6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFrame/Tiles.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/MLB_Tiles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFrame/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rooms/MilbiL1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rooms/MilbiL1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rooms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rooms/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,14 +29,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="H:/2022/Term 3/DTN/Veggie Samurai" />
-    <property name="settings.editor.selected.configurable" value="http.certificates" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/wheel/OneDrive/Documents/GitHub/TaribelangProject"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\coggiw1\Documents\GitHub\TaribelangProject\Images" />
       <recent name="C:\Users\coggiw1\Documents\GitHub\TaribelangProject\graphics\MilbyL3" />
       <recent name="C:\Users\coggiw1\Documents\GitHub\TaribelangProject\graphics" />
     </key>
