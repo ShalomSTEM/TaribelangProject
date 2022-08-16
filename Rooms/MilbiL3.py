@@ -1,7 +1,7 @@
-from GameFrame import Level
+from GameFrame import Tiles
 
 
-class MilbyL3(Level):
+class MilbiL3(Tiles):
     def __init__(self, screen, joysticks):
-        Level.__init__(self, screen, joysticks)
+        Tiles.__init__(self, screen, joysticks)
         self.set_background_image("PlaceHolderBackground.png")

@@ -3,8 +3,8 @@ class Globals:
     running = True
     FRAMES_PER_SECOND = 30
 
-    SCREEN_WIDTH = 1150
-    SCREEN_HEIGHT = 700
+    SCREEN_WIDTH = 1280
+    SCREEN_HEIGHT = 720
 
     SCORE = 0
 
@@ -16,7 +16,8 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-    levels = ["MilbiL1, MilbiL3"]
+    levels = ["MilbiL1", "MilbiL3"]
+
 
     # - Set the starting level - #
     start_level = 0
