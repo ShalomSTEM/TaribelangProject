@@ -11,9 +11,9 @@ class MilbiL1(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self,screen,joysticks)
         self.TileSize=100
-        self.Center=0
         self.map=[]
         self.Tilemap=[]
+        self.AnimalTileMap=[]
         self.mapsize=100
         self.Width_TileNum=int(Globals.SCREEN_WIDTH/self.TileSize)
         self.Height_TileNum=int(Globals.SCREEN_HEIGHT/self.TileSize)
@@ -22,17 +22,19 @@ class MilbiL1(Level):
         self.prev_player_y=Globals.player_y
         self.InitializeTileMap()
         self.ChangeVisTileMap()
-        self.add_room_object(Player(self,Globals.SCREEN_WIDTH/2-self.TileSize/2-(Globals.SCREEN_WIDTH%self.TileSize)/2,Globals.SCREEN_HEIGHT/2-self.TileSize/2,self.TileSize))
+        self.add_room_object(Player(self,Globals.SCREEN_WIDTH/2-self.TileSize/2,Globals.SCREEN_HEIGHT/2-self.TileSize/2,self.TileSize))
         self.Eaten =False
-        self.add_room_object(WaterIcon(self,Globals.SCREEN_WIDTH-50,20))
+        self.watericon=WaterIcon(self,Globals.SCREEN_WIDTH-50,20)
+        self.add_room_object(self.watericon)
         #self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         #self.add_room_object(self.waterFlash)
         self.UpdateWorld()
+        self.AnimalMove()
 
     def UpdateWorld(self):
         self.set_timer(2, self.UpdateWorld)
         print("Ran")
-        if self.prev_player_x != Globals.player_x or self.prev_player_y !=Globals.player_y or self.Eaten:
+        if self.prev_player_x != Globals.player_x or self.prev_player_y !=Globals.player_y:
             print('changed')
             if (Globals.player_x>self.prev_player_x):
                 self.prev_player_x+=1
@@ -46,13 +48,17 @@ class MilbiL1(Level):
             Globals.player_y=self.prev_player_y
             self.ChangeVisTileMap()
             self.DisplayTilemap()
-            print(Globals.player_x),
+            print(Globals.player_x)
         """
         if (Globals.lowWater):
             self.waterFlash.flash()
             self.delete_object(self.waterFlash)
             self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         """
+    def AnimalMove(self):
+        self.set_timer(30,self.AnimalMove)
+
+
 
     def ChangeVisTileMap(self):
         self.VisTileMap=[]
@@ -63,6 +69,11 @@ class MilbiL1(Level):
             self.VisTileMap.append(row)
         print(self.VisTileMap)
         #self.Center=self.VisTileMap[]
+        if (self.VisTileMap[int(self.Width_TileNum/2)][int(self.Height_TileNum/2)]):
+            self.Eaten=True
+            self.watericon.water_level=min(self.watericon.water_level+1,16)
+        self.VisTileMap[int(self.Width_TileNum/2)][int(self.Height_TileNum/2)]=0
+        self.Tilemap[int(self.Width_TileNum/2)+Globals.player_x][int(self.Height_TileNum/2)+Globals.player_y]=0
 
     def InitializeTileMap(self):
         # Map Gen Algorithm
@@ -105,4 +116,12 @@ class MilbiL1(Level):
         # Delete from array
         for i in range(self.Width_TileNum):
             self.map.pop(0)
-
+    def InitializeAnimalMap(self):
+        for i in range(self.mapsize):
+            row =[]
+            for j in range(self.mapsize):
+                if (random.randint(0,10)==0):
+                    row.append(1)
+                else:
+                    row.append(0)
+            self.AnimalTileMap.append(row)
