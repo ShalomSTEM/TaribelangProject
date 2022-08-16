@@ -12,14 +12,24 @@ Two subcomponents will be handled on GitHub:
 - Software Engineering - Programming the project using Python and Pygame and the GameFrame API.
 
 ## Contributors
-[View here](https://github.com/ShalomSTEM/TaribelangProject/blob/main/CONTRIBUTORS.md)
+ - [@samh06](https://github.com/samh06) <br>
+ - [@Charl1e-D](https://github.com/charl1e-d) <br>
+ - [@srcoggin](https://github.com/srcoggin)  <br>
+ - [@Killih](https://github.com/Killih1)
+ - [@Robert-Grey](https://github.com/robert-grey)
+ - [@TruemR](https://github.com/truemr)
+### Miscellaneous Contributors
+ - [@3rin-k](https://github.com/3rin-k)
+> +8 others not on GitHub (7 pending to join)
 ## To Do:
-> visit Monday.com board
+ ● Make GitHub <br>
+ ○ Make Title Screen
 ## How to contribute
-> [View wiki](https://github.com/ShalomSTEM/TaribelangProject/wiki/)
+ - Make a branch. [Learn how to do it here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches)
+ -  Make a Pull Request with the branch. [Learn how to do it here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 ## Links
- - [Monday Board (Private)](https://samh0.monday.com/boards/3005628514)
- - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)
+ - [Monday Board](https://samh0.monday.com/boards/3005628514)<br>
+ - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)<br>
  - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
  - [Onenote (Private)](http://example.com)
 ## How to run
@@ -33,4 +43,4 @@ This project relies simply on the installation of **Python 3.8+** and **Pygame**
 ## File structure
 > TBD
 ## License
-The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/graphics/blob/main/LICENSE).
+The work here is licensed under the [GNU Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons CC0 License](https://github.com/ShalomSTEM/graphics/blob/main/LICENSE).
