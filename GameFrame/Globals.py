@@ -3,8 +3,8 @@ class Globals:
     running = True
     FRAMES_PER_SECOND = 30
 
-    SCREEN_WIDTH = 1150
-    SCREEN_HEIGHT = 700
+    SCREEN_WIDTH = 1280
+    SCREEN_HEIGHT = 720
 
     SCORE = 0
 
@@ -19,7 +19,7 @@ class Globals:
     levels = ["MilbiL1" , "MilbiL3"]
 
     # - Set the starting level - #
-    start_level = 1
+    start_level = 0
 
     # - Set this number to the level you want to jump to when the game ends - #
 
