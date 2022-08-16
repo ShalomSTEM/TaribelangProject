@@ -12,10 +12,11 @@ class Globals:
     LIVES = 3
 
     # - Set the Window display name - #
+
     window_name = "Game"
 
     # - Set the order of the rooms - #
-    levels = ["MilbiL1"]
+    levels = ["MilbiL1, MilbiL3"]
 
     # - Set the starting level - #
     start_level = 0
@@ -38,6 +39,8 @@ class Globals:
     total_count = 0
     destroyed_count = 0
 
+
     player_x = 0
     player_y = 0
     lowWater = False
+
