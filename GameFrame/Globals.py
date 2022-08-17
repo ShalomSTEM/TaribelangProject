@@ -26,12 +26,8 @@ class Globals:
     window_name = 'Game'
 
     # - Set the order of the rooms - #
-    levels = ["CorroboreeRoom"]
-
-    window_name = "MilbiL1"
-
-    # - Set the order of the rooms - #
     levels = ["MilbiL1", "MilbiL3", "CorroboreeRoom"]
+
 
     # - Set the starting level - #
     start_level = 0
