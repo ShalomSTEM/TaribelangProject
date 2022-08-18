@@ -6,6 +6,7 @@ class EnumLevels(IntEnum):
     MilbiL1 = 1
     MilbiL2 = 2
     MilbiL3 = 3
+    CarpetDreaming = 4
 
 class Globals:
 
