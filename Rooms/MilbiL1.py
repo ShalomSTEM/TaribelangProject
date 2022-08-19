@@ -8,7 +8,6 @@ from Objects.WaterIcon_Flash import WaterIcon_Flash
 
 
 class MilbiL1(Level):
-
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
         self.TileSize = 100
@@ -36,7 +35,7 @@ class MilbiL1(Level):
         # self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         # self.add_room_object(self.waterFlash)
         self.UpdateWorld()
-        #self.AnimalMove()
+        # self.AnimalMove()
 
     def UpdateWorld(self):
         self.set_timer(2, self.UpdateWorld)
@@ -65,7 +64,6 @@ class MilbiL1(Level):
             self.delete_object(self.waterFlash)
             self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         """
-
 
     def ChangeVisTileMap(self):
         self.VisTileMap = []
