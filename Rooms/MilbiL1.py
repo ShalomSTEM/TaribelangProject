@@ -1,4 +1,4 @@
-from GameFrame import Globals, MLB_Tiles, Tiles
+from GameFrame import MLB_Tiles
 
 
 class MilbiL1(MLB_Tiles):

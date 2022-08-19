@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15652a91-8bda-4804-8034-48db49ffc2a6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFrame/Tiles.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/MLB_Tiles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFrame/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rooms/MilbiL1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rooms/MilbiL1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rooms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rooms/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameFrame/BossAI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFrame/Globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/Globals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameFrame/BossAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameFrame/BossAI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
