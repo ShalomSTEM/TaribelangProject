@@ -8,6 +8,7 @@ from Objects.WaterIcon_Flash import WaterIcon_Flash
 
 
 class MilbiL1(Level):
+
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
         self.TileSize = 100
