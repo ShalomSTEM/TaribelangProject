@@ -1,6 +1,5 @@
 import time
 
-
 from GameFrame import Level, Globals
 import random, math
 
@@ -8,13 +7,13 @@ from Objects import Grass, Dirt, Player, WaterIcon
 from Objects.WaterIcon_Flash import WaterIcon_Flash
 
 
-class MilbiL1(Level):
+class Tiles(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
+        self.AnimalTileMap = []
         self.mapsize = 100
         self.Width_TileNum = int(Globals.SCREEN_WIDTH / self.TileSize)
         self.Height_TileNum = int(Globals.SCREEN_HEIGHT / self.TileSize)
@@ -32,11 +31,12 @@ class MilbiL1(Level):
             )
         )
         self.Eaten = False
+        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.add_room_object(self.watericon)
         # self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         # self.add_room_object(self.waterFlash)
         self.UpdateWorld()
-        # self.AnimalMove()
+        self.AnimalMove()
 
     def UpdateWorld(self):
         self.set_timer(2, self.UpdateWorld)
@@ -65,6 +65,9 @@ class MilbiL1(Level):
             self.delete_object(self.waterFlash)
             self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         """
+
+    def AnimalMove(self):
+        self.set_timer(30, self.AnimalMove)
 
     def ChangeVisTileMap(self):
         self.VisTileMap = []
@@ -132,3 +135,13 @@ class MilbiL1(Level):
         # Delete from array
         for i in range(self.Width_TileNum):
             self.map.pop(0)
+
+    def InitializeAnimalMap(self):
+        for i in range(self.mapsize):
+            row = []
+            for j in range(self.mapsize):
+                if random.randint(0, 10) == 0:
+                    row.append(1)
+                else:
+                    row.append(0)
+            self.AnimalTileMap.append(row)

@@ -22,6 +22,7 @@ class Globals:
     LIVES = 3
 
     # - Set the Window display name - #
+
     window_name = 'Game'
 
     # - Set the order of the rooms - #
