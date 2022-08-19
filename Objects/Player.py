@@ -2,13 +2,14 @@ import pygame
 
 from GameFrame import RoomObject, Globals
 
+
 class Player(RoomObject):
-    def __init__(self,room,x,y,size):
-        RoomObject.__init__(self,room,x,y)
-        self.size=size
-        self.set_image('Images/sprite_0.png',size,size)
-        self.depth=5
-        self.handle_key_events=True
+    def __init__(self, room, x, y, size):
+        RoomObject.__init__(self, room, x, y)
+        self.size = size
+        self.set_image("Images/MilbiL1/sprite_0.png", size, size)
+        self.depth = 5
+        self.handle_key_events = True
 
     def key_pressed(self, key):
 
@@ -37,5 +38,3 @@ class Player(RoomObject):
         if p1_buttons[10]>0.5:
             self.set_image('Images/sprite_0.png',self.size,self.size)
             Globals.player_y+=1
-
-
