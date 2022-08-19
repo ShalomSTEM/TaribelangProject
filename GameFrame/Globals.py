@@ -28,10 +28,10 @@ class Globals:
     levels = ["MilbiL1", "MilbiL3", "CorroboreeRoom"]
 
     # - Set the starting level - #
-    start_level = 0
+    start_level = 1
 
     # - Set this number to the level you want to jump to when the game ends - #
-    end_game_level = 0
+    end_game_level = 1
 
 
     # - This variable keeps track of the room that will follow the current room - #
