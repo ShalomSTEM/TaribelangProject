@@ -1,6 +1,5 @@
 import time
 
-
 from GameFrame import Level, Globals
 import random, math
 
