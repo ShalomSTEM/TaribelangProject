@@ -7,7 +7,6 @@ from Objects import Grass, Dirt, Player, WaterIcon
 from Objects.WaterIcon_Flash import WaterIcon_Flash
 
 
-
 class Tiles(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
