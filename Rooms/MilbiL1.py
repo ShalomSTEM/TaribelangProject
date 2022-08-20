@@ -10,6 +10,7 @@ from Objects.WaterIcon_Flash import WaterIcon_Flash
 class MilbiL1(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
+        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
@@ -30,7 +31,6 @@ class MilbiL1(Level):
             )
         )
         self.Eaten = False
-        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.add_room_object(self.watericon)
         # self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         # self.add_room_object(self.waterFlash)
