@@ -1,4 +1,5 @@
 from GameFrame import RoomObject, Globals
+import os
 
 
 class ML2_People(RoomObject):
@@ -15,4 +16,6 @@ class ML2_People(RoomObject):
             y,
         )
 
-        self.set_image("Images/MilbiL2/ML2_people.png", height=50, width=25)
+        self.set_image(
+            os.path.join(Globals.milbiL2_path, "ML2_people.png"), height=50, width=25
+        )
