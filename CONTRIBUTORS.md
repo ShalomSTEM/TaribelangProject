@@ -12,6 +12,7 @@
  - [@GeorgeHill47](https://github.com/GeorgeHill47)
  - [@Mckeoe1](https://github.com/Mckeoe1)
  - [@CallumMacann](https://github.com/CallumMacann)
-## Miscellaneous Contributors
  - [@3rin-k](https://github.com/3rin-k)
-> +2 pending
+ - [@louieocar](https://github.com/louieocar)
+ - [@Cjenk88](https://github.com/Cjenk88)
+> +1 pending
