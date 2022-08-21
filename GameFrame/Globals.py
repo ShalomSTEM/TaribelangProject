@@ -34,7 +34,7 @@ class Globals:
     ]
 
     # - Set the starting level - #
-    start_level = 0
+    start_level = 2
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 0

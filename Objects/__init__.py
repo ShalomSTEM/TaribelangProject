@@ -6,5 +6,5 @@ from Objects.WaterIcon_Flash import WaterIcon_Flash
 from Objects.People import ML2_People
 from Objects.Elders import ML2_Elders
 from Objects.StoryOverlay import overlays
-from Objects.OverlayTitle import Title
-from Objects.OverlayBody import Body
+from Objects.StoryOverlay import Title
+from Objects.StoryOverlay import Body
