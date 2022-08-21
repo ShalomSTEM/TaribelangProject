@@ -15,7 +15,6 @@ class ML2_People(RoomObject):
             x,
             y,
         )
-
         self.set_image(
             os.path.join(Globals.milbiL2_path, "ML2_people.png"), height=50, width=25
         )
