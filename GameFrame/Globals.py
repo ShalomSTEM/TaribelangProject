@@ -26,14 +26,12 @@ class Globals:
 
     # - Set the order of the rooms - #
 
-
     levels = [
         "WTC_Taribalang",
         "MilbiL1",
         "MilbiL3",
         "CorroboreeRoom",
     ]
-
 
     # - Set the starting level - #
     start_level = 0
