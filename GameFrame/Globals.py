@@ -12,7 +12,6 @@ class Globals:
 
     running = True
     FRAMES_PER_SECOND = 30
-
     SCREEN_WIDTH = 1280
     SCREEN_HEIGHT = 720
 
@@ -26,7 +25,12 @@ class Globals:
 
     # - Set the order of the rooms - #
 
-    levels = ["WTC_Taribalang", "WTC_English", "MilbiL1", "MilbiL3", "CorroboreeRoom"]
+    levels = [
+        "WTC_Taribalang",
+        "MilbiL1",
+        "MilbiL3",
+        "CorroboreeRoom",
+    ]
 
     # - Set the starting level - #
     start_level = 0
