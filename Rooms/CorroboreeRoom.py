@@ -7,7 +7,7 @@ from Objects import ML2_People, ML2_Elders
 class CorroboreeRoom(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-        self.set_background_image("Images/MilbiL2/ML2_background.jpg")
+        self.set_background_image("MilbiL2/ML2_background.jpg")
         peopleList = []
         for i in range(30):
             peopleList.append(

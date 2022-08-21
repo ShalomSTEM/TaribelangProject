@@ -8,3 +8,4 @@ from Objects.Elders import ML2_Elders
 from Objects.StoryOverlay import overlays
 from Objects.OverlayTitle import Title
 from Objects.OverlayBody import Body
+from Objects.TitleMilbiButton import TitleMilbiButton

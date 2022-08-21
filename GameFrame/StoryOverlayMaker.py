@@ -1,4 +1,3 @@
-from GameFrame import Level, Globals
 from Objects import OverlayBody, OverlayTitle, StoryOverlay
 
 
