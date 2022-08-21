@@ -6,7 +6,7 @@ class overlays(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
         self.set_image(
-            os.path.join(Globals.milbiL1_path),
+            os.path.join(Globals.storyOverlay_path, "StoryOverlay.png"),
             width=Globals.SCREEN_WIDTH / 5,
             height=720,
         )
