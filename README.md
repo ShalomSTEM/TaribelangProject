@@ -13,15 +13,11 @@ Two subcomponents will be handled on GitHub:
 
 ## Contributors
 [View here](https://github.com/ShalomSTEM/TaribelangProject/blob/main/CONTRIBUTORS.md)
-## To Do:
-> visit Monday.com board
 ## How to contribute
 > [View wiki](https://github.com/ShalomSTEM/TaribelangProject/wiki/)
 ## Links
- - [Monday Board (Private)](https://samh0.monday.com/boards/3005628514)
  - [ShalomSTEM GitHub Profile](https://github.com/shalomstem)
  - [Shared Foldr (Private)](https://foldr.shalomcollege.com/home/shared/with-me/YGQOE)
- - [Onenote (Private)](http://example.com)
 ## How to run
 This project relies simply on the installation of **Python 3.8+** and **Pygame**.
 > Note - these steps could change if we use PyInstaller
@@ -33,4 +29,4 @@ This project relies simply on the installation of **Python 3.8+** and **Pygame**
 ## File structure
 > TBD
 ## License
-The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/graphics/blob/main/LICENSE).
+The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/TaribelangProject/blob/main/Images/LICENSE).

@@ -1,5 +1,5 @@
 import math
-
+import os
 from GameFrame import Level, Globals
 from Objects import ML2_People, ML2_Elders
 
@@ -7,8 +7,9 @@ from Objects import ML2_People, ML2_Elders
 class CorroboreeRoom(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-
-        self.set_background_image("MilbiL2/ML2_background.jpg")
+        self.set_background_image(
+            os.path.join(Globals.milbiL2_alt_path, "ML2_background.jpg")
+        )
         peopleList = []
         for i in range(30):
             peopleList.append(

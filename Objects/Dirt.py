@@ -1,6 +1,8 @@
-from GameFrame import RoomObject
+from GameFrame import RoomObject, Globals
+import os
+
 
 class Dirt(RoomObject):
-    def __init__(self,room,x,y,size):
-        RoomObject.__init__(self,room,x,y)
-        self.set_image('Images/MilbiL1/Brown.png',size,size)
+    def __init__(self, room, x, y, size):
+        RoomObject.__init__(self, room, x, y)
+        self.set_image(os.path.join(Globals.milbiL1_path, "Brown.png"), size, size)
