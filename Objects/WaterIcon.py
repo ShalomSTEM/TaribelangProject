@@ -1,4 +1,5 @@
 from GameFrame import RoomObject, Globals
+import os
 
 
 class WaterIcon(RoomObject):
@@ -22,6 +23,16 @@ class WaterIcon(RoomObject):
     def UpdateWaterLevel(self):
         self.set_timer(3, self.UpdateWaterLevel)
         if self.water_level > 9:
-            self.set_image(f"Images/MilbiL1/Water_Bar_{self.water_level}.png", 50, 300)
+            self.set_image(
+                os.path.join(Globals.milbiL1_path, f"Water_Bar_{self.water_level}.png"),
+                50,
+                300,
+            )
         else:
-            self.set_image(f"Images/MilbiL1/Water_Bar_0{self.water_level}.png", 50, 300)
+            self.set_image(
+                os.path.join(
+                    Globals.milbiL1_path, f"Water_Bar_0{self.water_level}.png"
+                ),
+                50,
+                300,
+            )

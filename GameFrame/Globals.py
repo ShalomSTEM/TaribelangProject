@@ -25,8 +25,7 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-
-    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom", "TitleScreen"]
+    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom"]
 
     # - Set the starting level - #
     start_level = 4
@@ -50,3 +49,14 @@ class Globals:
     player_x = 0
     player_y = 0
     lowWater = False
+    path = "Images/"
+    milbiL1_path = "Images/MilbiL1"
+    milbiL1_alt_path = "MilbiL1/"
+    milbiL2_path = "Images/MilbiL2"
+    milbiL2_alt_path = "MilbiL2/"
+    milbiL3_path = "Images/MilbiL3"
+    milbiL3_alt_path = "MilbiL3/"
+    storyOverlay_path = "Images/StoryOverlay"
+    storyOverlay_alt_path = "Images/StoryOverlay"
+    WTC_path = "Images/WTC"
+    WTC_alt_path = "Images/WTC"
