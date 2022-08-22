@@ -26,10 +26,10 @@ class Globals:
 
     # - Set the order of the rooms - #
 
-    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom", "Example"]
+    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom"]
 
     # - Set the starting level - #
-    start_level = 4
+    start_level = 2
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 1
@@ -44,7 +44,7 @@ class Globals:
     # ############################################################# #
     # ###### User Defined Global Variables below this line ######## #
     # ############################################################# #
-
+    move_speed = 4
     total_count = 0
     destroyed_count = 0
     player_x = 0

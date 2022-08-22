@@ -8,3 +8,4 @@ from Objects.Elders import ML2_Elders
 from Objects.StoryOverlay import overlays
 from Objects.StoryOverlay import Title
 from Objects.StoryOverlay import Body
+from Objects.Player_MLBL3 import Player_MLBL3

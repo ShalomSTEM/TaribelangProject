@@ -1,6 +1,6 @@
 from GameFrame import Level, Globals
 import os
-from Objects import Dirt_MLBL3
+from Objects.Dirt_MLBL3 import Dirt_MLBL3
 from Objects.Stne_MLBL3 import Stne_MLBL3
 from Objects.Player_MLBL3 import Player_MLBL3
 
@@ -8,11 +8,8 @@ from Objects.Player_MLBL3 import Player_MLBL3
 class MilbiL3(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-        self.set_background_image(
-            os.path.join(Globals.milbiL3_alt_path, "PlaceHolderBackgroundMLBL3.png")
-        )
 
-        self.background_colour = (51, 43, 0)
+        self.background_colour = (55, 55, 0)
 
         self.room_items = []
 
@@ -53,13 +50,13 @@ class MilbiL3(Level):
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
                 if obj == "B":
-                    new_block = Stne_MLBL3(self, j * 32 - 200, i * 32 - 200)
+                    new_block = Stne_MLBL3(self, j * 64 - 200, i * 64 - 200)
                     self.add_room_object(new_block)
                     self.room_items.append(new_block)
                 elif obj == "P":
-                    self.add_room_object(Player_MLBL3(self, j * 32 - 200, i * 32 - 200))
+                    self.add_room_object(Player_MLBL3(self, j * 64 - 200, i * 64 - 200))
                 elif obj == "D":
-                    new_dirt = Dirt_MLBL3(self, j * 32 - 200, i * 32 - 200)
+                    new_dirt = Dirt_MLBL3(self, j * 64 - 200, i * 64 - 200)
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
 
