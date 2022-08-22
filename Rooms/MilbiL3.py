@@ -77,24 +77,4 @@ class MilbiL3(Level):
         for item in self.room_items:
             item.y += Globals.move_speed
 
-    def UpdateWorld(self):
-        self.set_timer(2, self.UpdateWorld)
-        print("Ran")
-        if (
-            self.prev_player_x != Globals.player_x
-            or self.prev_player_y != Globals.player_y
-        ):
-            print("changed")
-            if Globals.player_x > self.prev_player_x:
-                self.prev_player_x += 1
-            elif Globals.player_x < self.prev_player_x:
-                self.prev_player_x -= 1
-            if Globals.player_y > self.prev_player_y:
-                self.prev_player_y += 1
-            elif Globals.player_y < self.prev_player_y:
-                self.prev_player_y -= 1
-            Globals.player_x = self.prev_player_x
-            Globals.player_y = self.prev_player_y
-            self.ChangeVisTileMap()
-            self.DisplayTilemap()
-            print(Globals.player_x)
+   
