@@ -6,7 +6,7 @@ class WaterIcon(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
         self.water_level = 16
-        self.set_image("Images/MilbiL1/Water_Bar_16.png", 50, 300)
+        self.set_image(os.path.join(Globals.milbiL2_path, "Water_Bar_16.png", 50, 300))
         self.zeroWater = False
         self.Thirst()
         self.UpdateWaterLevel()
