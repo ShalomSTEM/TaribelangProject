@@ -8,8 +8,9 @@ from Objects.Player_MLBL3 import Player_MLBL3
 class MilbiL3(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-
-        self.background_colour = (55, 55, 0)
+        self.set_background_image(
+            os.path.join(Globals.milbiL3_alt_path, "PlaceHolderBackground_MLBL3.png")
+        )
 
         self.room_items = []
 
@@ -75,3 +76,25 @@ class MilbiL3(Level):
     def shift_room_down(self):
         for item in self.room_items:
             item.y += Globals.move_speed
+
+    def UpdateWorld(self):
+        self.set_timer(2, self.UpdateWorld)
+        print("Ran")
+        if (
+            self.prev_player_x != Globals.player_x
+            or self.prev_player_y != Globals.player_y
+        ):
+            print("changed")
+            if Globals.player_x > self.prev_player_x:
+                self.prev_player_x += 1
+            elif Globals.player_x < self.prev_player_x:
+                self.prev_player_x -= 1
+            if Globals.player_y > self.prev_player_y:
+                self.prev_player_y += 1
+            elif Globals.player_y < self.prev_player_y:
+                self.prev_player_y -= 1
+            Globals.player_x = self.prev_player_x
+            Globals.player_y = self.prev_player_y
+            self.ChangeVisTileMap()
+            self.DisplayTilemap()
+            print(Globals.player_x)
