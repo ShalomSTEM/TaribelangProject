@@ -25,14 +25,13 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-
-    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom", "Example"]
+    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom"]
 
     # - Set the starting level - #
     start_level = 4
 
     # - Set this number to the level you want to jump to when the game ends - #
-    end_game_level = 1
+    end_game_level = 0
 
     # - This variable keeps track of the room that will follow the current room - #
     # - Change this value to move through rooms in a non-sequential manner - #

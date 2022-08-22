@@ -1,5 +1,4 @@
-from GameFrame import Level, StoryOverlayMaker, Globals
-import os
+from GameFrame import Level, StoryOverlayMaker
 
 
 class ExampleSmallOverlay(Level):
@@ -7,6 +6,6 @@ class ExampleSmallOverlay(Level):
         Level.__init__(self, screen, joysticks)
         StoryOverlayMaker.Overlay.createSmallOverlay(
             self,
-            os.path.join(Globals.storyOverlay_path, "title_example.png"),
-            os.path.join(Globals.storyOverlay_path, "body_example.png"),
+            "Images/StoryOverlay/title_example.png",
+            "Images/StoryOverlay/body_example.png",
         )
