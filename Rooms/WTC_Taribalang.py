@@ -2,6 +2,7 @@ from GameFrame import Level, Globals
 import os
 
 
+
 class WTC_Taribalang(Level):
     def __init__(self, screen, joystick):
         Level.__init__(self, screen, joystick)
