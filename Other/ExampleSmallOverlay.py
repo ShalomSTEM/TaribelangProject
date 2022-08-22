@@ -2,7 +2,7 @@ from GameFrame import Level, StoryOverlayMaker, Globals
 import os
 
 
-class Example(Level):
+class ExampleSmallOverlay(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
         StoryOverlayMaker.Overlay.createSmallOverlay(
