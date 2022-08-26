@@ -44,6 +44,7 @@ class Globals:
     # ###### User Defined Global Variables below this line ######## #
     # ############################################################# #
     move_speed = 4
+    mlb3_move_speed = 4
     total_count = 0
     destroyed_count = 0
     player_x = 0

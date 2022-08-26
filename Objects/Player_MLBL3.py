@@ -5,9 +5,10 @@ import os
 
 
 class Player_MLBL3(RoomObject):
-    def __init__(self, room, x, y):
+    def __init__(self, room, x, y, size):
         RoomObject.__init__(self, room, x, y)
 
+        self.size = size
         player = self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_1.png"))
         self.set_image(player, 16, 24)
 
@@ -85,6 +86,7 @@ class Player_MLBL3(RoomObject):
 
         self.moving = False
         self.animate()
+
     def step(self):
         self.block_right = False
         self.block_left = False
@@ -182,3 +184,51 @@ class Player_MLBL3(RoomObject):
             self.set_image(self.down[0], 16, 24)
 
         self.set_timer(3, self.animate)
+
+
+    def joy_pad_signal(self, p1_buttons, p2_buttons):
+        if p1_buttons[11] > 0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "right_2.png"), self.size, self.size
+            )
+            Globals.player_x += 1
+
+            if self.x < 600:
+                self.x += Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_left()
+
+
+        if p1_buttons[11] < -0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "left_2.png"), self.size, self.size
+            )
+            if self.x > 200:
+                self.x -= Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_right()
+            Globals.player_x -= 1
+
+
+        if p1_buttons[10] < -0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "back_2.png"), self.size, self.size
+            )
+            if self.y > 150:
+                self.y -= Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_down()
+            Globals.player_y -= 1
+
+
+        if p1_buttons[10] > 0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "front_2.png"), self.size, self.size
+            )
+            Globals.player_y += 1
+            if self.y < 450:
+                self.y += Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_up()
+
+

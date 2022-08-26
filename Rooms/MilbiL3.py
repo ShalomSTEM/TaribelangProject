@@ -1,3 +1,5 @@
+import pygame
+
 from GameFrame import Level, Globals
 import os
 from Objects.Dirt_MLBL3 import Dirt_MLBL3
@@ -8,42 +10,37 @@ from Objects.Player_MLBL3 import Player_MLBL3
 class MilbiL3(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
+        Globals.mlb3_move_speed = 16
         self.set_background_image(
             os.path.join(Globals.milbiL3_alt_path, "PlaceHolderBackground_MLBL3.png")
         )
+
 
         self.room_items = []
 
         room_objects = [
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
-            "DBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBD",
+            "DDDDDDDDDDDDDDDDDDDDDDBBBBBBBBDDDDDDDDDDDDDDDDDDDD",
+            "DDDDDDDDDDDDDDDDDDDDDDB      BDDDDDDDDDDDDDDDDDDDD",
+            "DBBBBBBBBBBBBBBBBBBBBBB   P  BBBBBBBBBBBBBBBBBBBBD",
             "DB                                              BD",
             "DB                                              BD",
+            "DB       BBBBBBB                                BD",
+            "DB       B                         BBBBB        BD",
+            "DB       B                             B        BD",
+            "DB                                     B        BD",
             "DB                                              BD",
             "DB                                              BD",
-            "DB                        B                     BD",
-            "DB       B  BBBBBBBB      B                     BD",
-            "DB       B         B      B                     BD",
-            "DB       B         B      B                     BD",
-            "DB       B         B      B                     BD",
-            "DB       BBBBBBB   B      B                     BD",
+            "DB             B                                BD",
+            "DB             B                     B          BD",
+            "DB         BBBBB                     B          BD",
+            "DB                                   B          BD",
+            "DB                             BBBBBBB          BD",
+            "DB           B                                  BD",
+            "DB           B                                  BD",
+            "DB           B                                  BD",
+            "DB           BBBB                               BD",
             "DB                                              BD",
-            "DB                                              BD",
-            "DB           BBBBBB  BBBBBBB                    BD",
-            "DB           B             B                    BD",
-            "DB           B       P     B                    BD",
-            "DB           B             B                    BD",
-            "DB           B             B                    BD",
-            "DB           BBBBBBBBBBBB  B                    BD",
-            "DB                             BBBBB   BBBBBB   BD",
-            "DB                                              BD",
-            "DB       BB   BBBBBBBBBBB                       BD",
-            "DB       B              B   BBBBBBBBBBBBBBBBB   BD",
-            "DB       B              B   B                   BD",
-            "DB       B    BBBBBBB   B                       BD",
-            "DB       B   BBBBB     BBBBBBBBBBBBBBBBBBBBB    BD",
-            "DB       B   B                             B    BD",
-            "DB       B   B                             B    BD",
             "DBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBD",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
         ]
@@ -55,7 +52,9 @@ class MilbiL3(Level):
                     self.add_room_object(new_block)
                     self.room_items.append(new_block)
                 elif obj == "P":
-                    self.add_room_object(Player_MLBL3(self, j * 64 - 200, i * 64 - 200))
+                    player = Player_MLBL3(self, j * 24, i * 24, 40)
+                    self.add_room_object(player)
+
                 elif obj == "D":
                     new_dirt = Dirt_MLBL3(self, j * 64 - 200, i * 64 - 200)
                     self.add_room_object(new_dirt)
@@ -63,28 +62,18 @@ class MilbiL3(Level):
 
     def shift_room_left(self):
         for item in self.room_items:
-            item.x -= Globals.move_speed
+            item.x -= Globals.mlb3_move_speed
 
     def shift_room_right(self):
         for item in self.room_items:
-            item.x += Globals.move_speed
+            item.x += Globals.mlb3_move_speed
 
     def shift_room_up(self):
         for item in self.room_items:
-            item.y -= Globals.move_speed
+            item.y -= Globals.mlb3_move_speed
 
     def shift_room_down(self):
         for item in self.room_items:
-            item.y += Globals.move_speed
+            item.y += Globals.mlb3_move_speed
 
-    def collides_at(self, obj, x, y, collision_type):
-        check_rect = obj.rect.move(x, y)
-        collision_found = False
-        for item in self.collision_objects:
-            if check_rect.colliderect(item.rect):
-                if type(item).__name__ == collision_type:
-                    collision_found = True
-                    break
-        return collision_found
 
-   
