@@ -6,5 +6,3 @@ class Museum(Level):
         Level.__init__(self, screen, joysticks)
 
         self.set_background_image("")
-
-

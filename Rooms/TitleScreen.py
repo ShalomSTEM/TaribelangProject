@@ -1,4 +1,3 @@
-from pickle import GLOBAL
 from GameFrame import Level, Globals
 from Objects.TitleMilbiButton import TitleMilbiButton
 import os
@@ -18,4 +17,6 @@ class TitleScreen(Level):
         Level.__init__(self, screen, joysticks)
         self.set_background_image("MilbiL3/PlaceHolderBackgroundMLBL3.png")
         button1 = TitleMilbiButton(self, 160, 160, EnumTitle.Milbi)
+        # button2 = TitleLeftButton(self, 0, 0, EnumTitle.Milbi)
         self.add_room_object(button1)
+        # self.add_room_object(button2)

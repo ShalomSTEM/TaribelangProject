@@ -60,5 +60,7 @@ class Globals:
     milbiL3_alt_path = "MilbiL3/"
     storyOverlay_path = "Images/StoryOverlay"
     storyOverlay_alt_path = "Images/StoryOverlay"
-    WTC_path = "Images/WTC"
+    WTC_path = "WTC/"
     WTC_alt_path = "Images/WTC"
+    title_path = "Images/Title"
+    title_alt_path = "Title/"
