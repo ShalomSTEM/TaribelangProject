@@ -1,3 +1,6 @@
+import string
+
+
 class Globals:
     # Levels
     # Accessed via Globals.Enum(levelname)
@@ -69,3 +72,7 @@ class Globals:
     WTC_alt_path = "Images/WTC"
     title_path = "Images/Title"
     title_alt_path = "Title/"
+    TransitionLeft = False
+    TransitionRight = False
+    currentSelectedTransition = 2
+    Transition = string
