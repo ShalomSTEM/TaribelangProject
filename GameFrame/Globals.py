@@ -1,14 +1,12 @@
-from enum import IntEnum
-
-
-class EnumLevels(IntEnum):
-    TitleRoom = 0
-    MilbiL1 = 1
-    MilbiL2 = 2
-    MilbiL3 = 3
-
-
 class Globals:
+    # Levels
+    # Accessed via Globals.Enum(levelname)
+    EnumTitleRoom = 4
+    EnumMilbiL1 = 1
+    EnumMilbiL2 = 3
+    EnumMilbiL3 = 2
+    EnumWTC_Taribelang = 0
+    EnumMilbiTransition = 5
 
     running = True
     FRAMES_PER_SECOND = 30
@@ -25,10 +23,17 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom", "TitleScreen"]
+    levels = [
+        "WTC_Taribalang",
+        "MilbiL1",
+        "MilbiL3",
+        "CorroboreeRoom",
+        "TitleScreen",
+        "MilbiTransition",
+    ]
 
     # - Set the starting level - #
-    start_level = 4
+    start_level = 5
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 0

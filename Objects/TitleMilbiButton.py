@@ -64,7 +64,7 @@ class TitleMilbiButton(RoomObject):
             pass
         elif Globals.title_Level == 1:
             # milbi
-            pass
+            Globals.next_level = Globals.EnumMilbiTransition
         elif Globals.title_Level == 2:
             # carpet
             pass
