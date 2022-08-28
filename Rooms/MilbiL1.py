@@ -39,7 +39,6 @@ class MilbiL1(Level):
 
     def UpdateWorld(self):
         self.set_timer(2, self.UpdateWorld)
-        print("Ran")
         if (
             self.prev_player_x != Globals.player_x
             or self.prev_player_y != Globals.player_y

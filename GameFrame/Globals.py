@@ -25,7 +25,7 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom"]
+    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom", "TitleScreen"]
 
     # - Set the starting level - #
     start_level = 4
@@ -45,7 +45,9 @@ class Globals:
     # ############################################################# #
 
     total_count = 0
+    title_Level = 0
     destroyed_count = 0
+    title_selection = 0
     player_x = 0
     player_y = 0
     lowWater = False
