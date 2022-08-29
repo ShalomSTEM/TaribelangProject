@@ -14,6 +14,7 @@ class MilbiTransition(Level):
             Globals.EnumWTC_Taribelang,
             "Images/Transition/story_only.png",
             False,
+            1,
         )
         button3 = TransitionButton(
             self,
@@ -22,6 +23,7 @@ class MilbiTransition(Level):
             Globals.EnumWTC_Taribelang,
             "Images/Transition/games_only.png",
             False,
+            3,
         )
         button2 = TransitionButton(
             self,
@@ -30,6 +32,7 @@ class MilbiTransition(Level):
             Globals.EnumWTC_Taribelang,
             "Images/Transition/both_selected.png",
             True,
+            2,
         )
         self.add_room_object(button1)
         self.add_room_object(button2)

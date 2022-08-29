@@ -4,11 +4,10 @@ from Rooms import MilbiTransition
 
 
 class TransitionButton(RoomObject):
-    isSelected = bool
+    buttomNum = int
 
-    def __init__(self, room, x, y, level, image, selected):
-        global isSelected
-        isSelected = selected
+    def __init__(self, room, x, y, level, image, selected, impbuttonNum):
+        self.buttonNum = impbuttonNum
         RoomObject.__init__(self, room, x, y)
         self.set_image(
             image,
@@ -18,34 +17,32 @@ class TransitionButton(RoomObject):
         self.handle_key_events = True
 
     def updateImage(self, image, selected):
-        global isSelected
         self.set_image(
             image,
             height=(Globals.SCREEN_HEIGHT / 2),
             width=(Globals.SCREEN_WIDTH / 2) / 2,
         )
         if selected == True:
-            isSelected == True
-        elif selected == False:
-            isSelected == False
+            Globals.currentSelectedTransition == True
+        else:
+            Globals.currentSelectedTransition == False
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
-        global isSelected
+        # print(self.buttonNum, Globals.currentSelectedTransition)
         if p1_buttons[11] > 0.5:
-            if isSelected == True:
+            if Globals.currentSelectedTransition == self.buttonNum:
                 from Rooms import MilbiTransition
 
                 print("successful 0.5")
                 Globals.TransitionRight = True
-                sleep(0.1)
+                sleep(1)
                 MilbiTransition.updateButtons()
 
         if p1_buttons[11] < -0.5:
-            if isSelected == True:
+            if Globals.currentSelectedTransition == self.buttonNum:
                 from Rooms import MilbiTransition
 
                 print("successful -0.5")
-                isSelected = False
                 Globals.TransitionLeft = True
-                sleep(0.1)
+                sleep(1)
                 MilbiTransition.updateButtons()
