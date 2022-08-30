@@ -7,7 +7,7 @@ class MilbiTransition(Level):
         Level.__init__(self, screen, joysticks)
         global button1, button2, button3
         self.set_background_image("MilbiL3/PlaceHolderBackgroundMLBL3.png")
-        button1 = TransitionButton(
+        self.button1 = TransitionButton(
             self,
             80,
             160,
@@ -16,7 +16,7 @@ class MilbiTransition(Level):
             False,
             1,
         )
-        button3 = TransitionButton(
+        self.button3 = TransitionButton(
             self,
             880,
             160,
@@ -25,7 +25,7 @@ class MilbiTransition(Level):
             False,
             3,
         )
-        button2 = TransitionButton(
+        self.button2 = TransitionButton(
             self,
             480,
             160,
@@ -47,6 +47,7 @@ class MilbiTransition(Level):
             print("running currenttransition")
             if Globals.ran == False:
                 Globals.ran = True
+
                 if Globals.TransitionLeft == True:
                     Globals.TransitionLeft = False
                     button2.updateImage("Images/Transition/both.png", False)
