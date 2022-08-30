@@ -9,6 +9,7 @@ class Player_MLBL3(RoomObject):
         RoomObject.__init__(self, room, x, y)
 
         self.size = size
+
         player = self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_1.png"))
         self.set_image(player, 16, 24)
 
@@ -147,25 +148,47 @@ class Player_MLBL3(RoomObject):
 
     def move_right(self):
         if self.x < 600:
-            self.x += Globals.move_speed
+               self.set_image(
+                os.path.join(Globals.milbiL3_path, "right_2.png"), self.size, self.size
+        )
+        Globals.player_x += 1
+
+        if self.x < 600:
+            self.x += Globals.mlb3_move_speed
         else:
             self.room.shift_room_left()
 
     def move_left(self):
+
         if self.x > 200:
-            self.x -= Globals.move_speed
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "left_2.png"), self.size, self.size
+        )
+        if self.x > 200:
+            self.x -= Globals.mlb3_move_speed
         else:
-            self.room.shift_room_right()
+             self.room.shift_room_right()
+
+        Globals.player_x -= 1
 
     def move_up(self):
+        self.set_image(
+                os.path.join(Globals.milbiL3_path, "back_2.png"), self.size, self.size
+        )
+
         if self.y > 150:
-            self.y -= Globals.move_speed
+            self.y -= Globals.mlb3_move_speed
         else:
             self.room.shift_room_down()
+            Globals.player_y -= 1
 
     def move_down(self):
+        self.set_image(
+                os.path.join(Globals.milbiL3_path, "front_2.png"), self.size, self.size
+            )
+        Globals.player_y += 1
         if self.y < 450:
-            self.y += Globals.move_speed
+            self.y += Globals.mlb3_move_speed
         else:
             self.room.shift_room_up()
 

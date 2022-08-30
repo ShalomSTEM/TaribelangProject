@@ -11,6 +11,7 @@ class MilbiL3(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
         Globals.mlb3_move_speed = 16
+        size = 20
         self.set_background_image(
             os.path.join(Globals.milbiL3_alt_path, "PlaceHolderBackground_MLBL3.png")
         )
@@ -22,9 +23,9 @@ class MilbiL3(Level):
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
             "DDDDDDDDDDDDDDDDDDDDDDBBBBBBBBDDDDDDDDDDDDDDDDDDDD",
             "DDDDDDDDDDDDDDDDDDDDDDB      BDDDDDDDDDDDDDDDDDDDD",
-            "DBBBBBBBBBBBBBBBBBBBBBB   P  BBBBBBBBBBBBBBBBBBBBD",
+            "DBBBBBBBBBBBBBBBBBBBBBB      BBBBBBBBBBBBBBBBBBBBD",
             "DB                                              BD",
-            "DB                                              BD",
+            "DB                          P                   BD",
             "DB       BBBBBBB                                BD",
             "DB       B                         BBBBB        BD",
             "DB       B                             B        BD",
@@ -48,15 +49,15 @@ class MilbiL3(Level):
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
                 if obj == "B":
-                    new_block = Stne_MLBL3(self, j * 64 - 200, i * 64 - 200)
+                    new_block = Stne_MLBL3(self, j * 64, i * 64)
                     self.add_room_object(new_block)
                     self.room_items.append(new_block)
                 elif obj == "P":
-                    player = Player_MLBL3(self, j * 24, i * 24, 40)
+                    player = Player_MLBL3(self, j * 64, i * 64, size)
                     self.add_room_object(player)
 
                 elif obj == "D":
-                    new_dirt = Dirt_MLBL3(self, j * 64 - 200, i * 64 - 200)
+                    new_dirt = Dirt_MLBL3(self, j * 64, i * 64)
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
 
