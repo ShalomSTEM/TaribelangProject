@@ -76,3 +76,4 @@ class Globals:
     TransitionRight = False
     currentSelectedTransition = 2
     Transition = string
+    ran = False

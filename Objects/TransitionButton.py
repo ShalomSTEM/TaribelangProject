@@ -1,6 +1,7 @@
 from time import sleep
 from GameFrame import Globals, RoomObject
 from Rooms import MilbiTransition
+import pygame
 
 
 class TransitionButton(RoomObject):
@@ -23,9 +24,9 @@ class TransitionButton(RoomObject):
             width=(Globals.SCREEN_WIDTH / 2) / 2,
         )
         if selected == True:
-            Globals.currentSelectedTransition == True
+            self.selected = True
         else:
-            Globals.currentSelectedTransition == False
+            self.selected = False
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         # print(self.buttonNum, Globals.currentSelectedTransition)
@@ -33,15 +34,45 @@ class TransitionButton(RoomObject):
             if Globals.currentSelectedTransition == self.buttonNum:
                 from Rooms import MilbiTransition
 
-                print("successful 0.5")
-                Globals.TransitionRight = True
-                sleep(1)
-                MilbiTransition.updateButtons()
+                if Globals.continues == True:
+                    Globals.continues = False
+                    print("successful 0.5")
+                    Globals.TransitionRight = True
+                    sleep(1)
+                    MilbiTransition.updateButtons()
+                else:
+                    return
 
         if p1_buttons[11] < -0.5:
             if Globals.currentSelectedTransition == self.buttonNum:
                 from Rooms import MilbiTransition
 
+                if Globals.continues == True:
+                    Globals.continues = False
+                    print("successful -0.5")
+                    Globals.TransitionLeft = True
+                    sleep(1)
+                    MilbiTransition.updateButtons()
+
+    def key_pressed(self, key):
+
+        if key[pygame.K_RIGHT]:
+            # Globals.continues = True
+            if Globals.currentSelectedTransition == self.buttonNum:
+                from Rooms import MilbiTransition
+
+                Globals.ran = False
+                print("successful 0.5")
+                Globals.TransitionRight = True
+                sleep(1)
+                MilbiTransition.updateButtons()
+                # else:
+                #     return
+        if key[pygame.K_LEFT]:
+            if Globals.currentSelectedTransition == self.buttonNum:
+                from Rooms import MilbiTransition
+
+                Globals.ran = False
                 print("successful -0.5")
                 Globals.TransitionLeft = True
                 sleep(1)
