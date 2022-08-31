@@ -44,6 +44,9 @@ class Globals:
     # ###### User Defined Global Variables below this line ######## #
     # ############################################################# #
     move_speed = 4
+    SLOW = 1
+    MEDIUM = 2
+    FAST = 3
     mlb3_move_speed = 4
     total_count = 0
     destroyed_count = 0
@@ -61,3 +64,4 @@ class Globals:
     storyOverlay_alt_path = "Images/StoryOverlay"
     WTC_path = "Images/WTC"
     WTC_alt_path = "Images/WTC"
+
