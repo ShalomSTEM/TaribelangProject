@@ -1,6 +1,5 @@
 import pygame
 from GameFrame import RoomObject, Globals
-from Objects import Stne_MLBL3
 import os
 
 

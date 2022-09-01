@@ -3,8 +3,8 @@ from GameFrame import Globals
 
 
 class Bot(RoomObject):
-    def __init__(self, room, x, y):
-        RoomObject.__init__(self, room, x, y)
+    def __init__(self, x, y):
+        RoomObject.__init__(self, x, y)
         self.starting_x = x
         self.starting_y = y
         self.has_flag = False

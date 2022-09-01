@@ -1,8 +1,4 @@
 
-
-
-
-
 from GameFrame import Level, Globals
 import os
 
