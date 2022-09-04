@@ -5,9 +5,8 @@ from Objects.TransitionButton import TransitionButton
 class MilbiTransition(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-        global button1, button2, button3
         self.set_background_image("MilbiL3/PlaceHolderBackgroundMLBL3.png")
-        button1 = TransitionButton(
+        Globals.TransitionButton1 = TransitionButton(
             self,
             80,
             160,
@@ -16,7 +15,7 @@ class MilbiTransition(Level):
             False,
             1,
         )
-        button3 = TransitionButton(
+        Globals.TransitionButton3 = TransitionButton(
             self,
             880,
             160,
@@ -25,7 +24,7 @@ class MilbiTransition(Level):
             False,
             3,
         )
-        button2 = TransitionButton(
+        Globals.TransitionButton2 = TransitionButton(
             self,
             480,
             160,
@@ -34,10 +33,12 @@ class MilbiTransition(Level):
             True,
             2,
         )
-        self.add_room_object(button1)
-        self.add_room_object(button2)
-        self.add_room_object(button3)
+        self.add_room_object(Globals.TransitionButton1)
+        self.add_room_object(Globals.TransitionButton2)
+        self.add_room_object(Globals.TransitionButton3)
 
+
+"""
     @staticmethod
     def updateButtons():
         print(Globals.TransitionLeft, Globals.TransitionRight)
@@ -95,3 +96,4 @@ class MilbiTransition(Level):
                     button1.updateImage(
                         "Images/Transition/story_only_selected.png", True
                     )
+"""

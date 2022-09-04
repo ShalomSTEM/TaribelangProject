@@ -77,3 +77,6 @@ class Globals:
     currentSelectedTransition = 2
     Transition = string
     ran = False
+    # TransitionButton1 = TransitionButton
+    # TransitionButton2 = TransitionButton
+    # TransitionButton3 = TransitionButton
