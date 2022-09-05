@@ -2,14 +2,19 @@ from enum import IntEnum
 
 
 class EnumLevels(IntEnum):
-    TitleRoom = 0
-    MilbiL1 = 1
-    MilbiL2 = 2
+    Intro = 0
+    Home = 1
+    MilbiSelect = 2
     MilbiL3 = 3
 
 
 class Globals:
-
+    class EnumLevels(IntEnum):
+        Intro = 0
+        Home = 1
+        MilbiSelect = 2
+        MilbiL3 = 3
+        
     running = True
     FRAMES_PER_SECOND = 30
 
@@ -25,7 +30,7 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-    levels = ["WTC_Taribalang", "MilbiL1", "MilbiL3", "CorroboreeRoom"]
+    levels = ["Intro", "Home", "MilbiSelect", "Mil_S1", "Mil_G1", "Mil_S2", "Mil_G2", "Mil_S3", "Mil_G3", "Mil_S4"]
 
     # - Set the starting level - #
     start_level = 2
