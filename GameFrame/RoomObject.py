@@ -72,7 +72,7 @@ class RoomObject:
                 self.handle_collision(item, item_type)
 
     def collides_at(self, obj, x, y, collision_type):
-        check_rect = obj.rect.UpdateWorld(x, y)
+        check_rect = obj.rect.move(x, y)
         collision_found = False
         for item in self.collision_objects:
             if check_rect.colliderect(item.rect):

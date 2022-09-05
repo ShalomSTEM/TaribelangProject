@@ -5,9 +5,9 @@ import os
 
 
 class Player_MLBL3(RoomObject):
-    def __init__(self, room, x, y):
+    def __init__(self, room, x, y, size):
         RoomObject.__init__(self, room, x, y)
-
+        self.size = size
         player = self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_1.png"))
         self.set_image(player, 16, 24)
 
@@ -85,6 +85,7 @@ class Player_MLBL3(RoomObject):
 
         self.moving = False
         self.animate()
+
     def step(self):
         self.block_right = False
         self.block_left = False
@@ -93,30 +94,62 @@ class Player_MLBL3(RoomObject):
         self.facing = 6
 
     def handle_collision(self, other, other_type):
-        if other_type == 'Stne_MLBL3':
+        if other_type == "Stne_MLBL3":
 
-            if self.collides_at(self, 4, 0, 'Stne_MLBL3') and not self.block_right:
+            if self.collides_at(self, 8, 0, "Stne_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
                     self.x = self.prev_x
                 else:
                     self.move_left()
 
-            if self.collides_at(self, -4, 0, 'Stne_MLBL3') and not self.block_left:
+            if self.collides_at(self, -8, 0, "Stne_MLBL3") and not self.block_left:
                 self.block_left = True
                 if self.x >= 206:
                     self.x = self.prev_x
                 else:
                     self.move_right()
 
-            if self.collides_at(self, 0, 4, 'Stne_MLBL3'):
+            if self.collides_at(self, 0, 8, "Stne_MLBL3"):
                 self.block_down = True
                 if self.y <= 446:
                     self.y = self.prev_y
                 else:
                     self.move_up()
 
-            if self.collides_at(self, 0, -4, 'Stne_MLBL3') and not self.block_up:
+            if self.collides_at(self, 0, -8, "Stne_MLBL3") and not self.block_up:
+                self.block_up = True
+                if self.y >= 154:
+                    self.y = self.prev_y
+                else:
+                    self.move_down()
+
+    def handle_collision_kill_block(self, other, other_type):
+        if other_type == "KillB_MLBL3":
+
+            if self.collides_at(self, 4, 0, "KillB_MLBL3") and not self.block_right:
+                self.block_right = True
+                if self.x < 596:
+                    self.x = self.prev_x
+
+            else:
+                self.move_left()
+
+            if self.collides_at(self, -4, 0, "KillB_MLBL3") and not self.block_left:
+                self.block_left = True
+                if self.x >= 206:
+                    self.x = self.prev_x
+                else:
+                    self.move_right()
+
+            if self.collides_at(self, 0, 4, "KillB_MLBL3"):
+                self.block_down = True
+                if self.y <= 446:
+                    self.y = self.prev_y
+                else:
+                    self.move_up()
+
+            if self.collides_at(self, 0, -4, "KillB_MLBL3") and not self.block_up:
                 self.block_up = True
                 if self.y >= 154:
                     self.y = self.prev_y
@@ -145,25 +178,47 @@ class Player_MLBL3(RoomObject):
 
     def move_right(self):
         if self.x < 600:
-            self.x += Globals.move_speed
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "right_2.png"), self.size, self.size
+            )
+        Globals.player_x += 1
+
+        if self.x < 600:
+            self.x += Globals.mlb3_move_speed
         else:
             self.room.shift_room_left()
 
     def move_left(self):
+
         if self.x > 200:
-            self.x -= Globals.move_speed
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "left_2.png"), self.size, self.size
+            )
+        if self.x > 200:
+            self.x -= Globals.mlb3_move_speed
         else:
             self.room.shift_room_right()
 
+        Globals.player_x -= 1
+
     def move_up(self):
+        self.set_image(
+            os.path.join(Globals.milbiL3_path, "back_2.png"), self.size, self.size
+        )
+
         if self.y > 150:
-            self.y -= Globals.move_speed
+            self.y -= Globals.mlb3_move_speed
         else:
             self.room.shift_room_down()
+            Globals.player_y -= 1
 
     def move_down(self):
+        self.set_image(
+            os.path.join(Globals.milbiL3_path, "front_2.png"), self.size, self.size
+        )
+        Globals.player_y += 1
         if self.y < 450:
-            self.y += Globals.move_speed
+            self.y += Globals.mlb3_move_speed
         else:
             self.room.shift_room_up()
 
@@ -182,3 +237,45 @@ class Player_MLBL3(RoomObject):
             self.set_image(self.down[0], 16, 24)
 
         self.set_timer(3, self.animate)
+
+    def joy_pad_signal(self, p1_buttons, p2_buttons):
+        if p1_buttons[11] > 0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "right_2.png"), self.size, self.size
+            )
+            Globals.player_x += 1
+
+            if self.x < 600:
+                self.x += Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_left()
+
+        if p1_buttons[11] < -0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "left_2.png"), self.size, self.size
+            )
+            if self.x > 200:
+                self.x -= Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_right()
+            Globals.player_x -= 1
+
+        if p1_buttons[10] < -0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "back_2.png"), self.size, self.size
+            )
+            if self.y > 150:
+                self.y -= Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_down()
+            Globals.player_y -= 1
+
+        if p1_buttons[10] > 0.5:
+            self.set_image(
+                os.path.join(Globals.milbiL3_path, "front_2.png"), self.size, self.size
+            )
+            Globals.player_y += 1
+            if self.y < 450:
+                self.y += Globals.mlb3_move_speed
+            else:
+                self.room.shift_room_up()
