@@ -14,7 +14,7 @@ class Globals:
         Home = 1
         MilbiSelect = 2
         MilbiL3 = 3
-        
+
     running = True
     FRAMES_PER_SECOND = 30
 
@@ -30,7 +30,21 @@ class Globals:
     window_name = "Game"
 
     # - Set the order of the rooms - #
-    levels = ["Intro", "Home", "MilbiSelect", "Mil_S1", "Mil_G1", "Mil_S2", "Mil_G2", "Mil_S3", "Mil_G3", "Mil_S4"]
+    levels = [
+        "Intro",
+        "Home",
+        "MilbiSelect",
+        "Mil_S1",
+        "Mil_G1",
+        "Mil_S2",
+        "Mil_G2",
+        "Mil_S3",
+        "Mil_G3",
+        "Mil_S4",
+        "Museum",
+        "Quiz",
+        "Copple",
+    ]
 
     # - Set the starting level - #
     start_level = 2
