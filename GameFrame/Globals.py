@@ -23,7 +23,7 @@ class EnumLevels(IntEnum):
     Cop_G3 = 18
     Cop_S4 = 19
     Cop_S_Only = 20
-    Cop_G_Only = 21
+    Cop_G_Only_Select = 21
     Museum = 22
     Quiz = 23
 
@@ -66,7 +66,7 @@ class Globals:
         "Cop_G3",
         "Cop_S4",
         "Cop_S_Only",
-        "Cop_G_Only",
+        "Cop_G_Only_Select",
         "Museum",
         "Quiz"
     ]
