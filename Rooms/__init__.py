@@ -2,10 +2,10 @@ from Rooms.Copple import Copple
 from Rooms.Home import Home
 from Rooms.Intro import Intro
 from Rooms.Mil_G1 import Mil_G1
-from Rooms.Mil_G1 import Mil_G1
-from Rooms.Mil_G1 import Mil_G1
-from Rooms.Mil_S1 import Mil_G1
-from Rooms.Mil_S1 import Mil_G1
-from Rooms.Mil_S1 import Mil_G1
-from Rooms.Mil_S1 import Mil_G1
+from Rooms.Mil_G2 import Mil_G2
+from Rooms.Mil_G3 import Mil_G3
+from Rooms.Mil_S1 import Mil_S1
+from Rooms.Mil_S2 import Mil_S2
+from Rooms.Mil_S3 import Mil_S3
+from Rooms.Mil_S4 import Mil_S4
 from Rooms.MilbiSelect import MilbiSelect

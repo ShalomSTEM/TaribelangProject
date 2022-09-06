@@ -1,19 +1,19 @@
 from enum import IntEnum
-
-
-class EnumLevels(IntEnum):
-    Intro = 0
-    Home = 1
-    MilbiSelect = 2
-    MilbiL3 = 3
-
-
 class Globals:
     class EnumLevels(IntEnum):
         Intro = 0
         Home = 1
         MilbiSelect = 2
-        MilbiL3 = 3
+        Mil_S1 = 3
+        Mil_G1 = 4
+        Mil_S2 = 5
+        Mil_G2 = 6
+        Mil_S3 = 7
+        Mil_G3 = 8
+        Mil_S4 = 9
+        Museum = 10
+        Quiz = 11
+        Copple = 12
 
     running = True
     FRAMES_PER_SECOND = 30
@@ -47,7 +47,7 @@ class Globals:
     ]
 
     # - Set the starting level - #
-    start_level = 2
+    start_level = EnumLevels.Copple
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 0
