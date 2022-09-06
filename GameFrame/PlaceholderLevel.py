@@ -1,6 +1,7 @@
 from GameFrame import Globals, Level, TextObject
 from time import sleep
 
+
 class PlaceholderLevel(Level):
     def __init__(self, screen, joysticks, inputText, nextLevel):
         Level.__init__(self, screen, joysticks)
@@ -9,4 +10,3 @@ class PlaceholderLevel(Level):
         sleep(2)
         Globals.next_level = nextLevel
         self.running = False
-        

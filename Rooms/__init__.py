@@ -8,4 +8,6 @@ from Rooms.Mil_S1 import Mil_S1
 from Rooms.Mil_S2 import Mil_S2
 from Rooms.Mil_S3 import Mil_S3
 from Rooms.Mil_S4 import Mil_S4
+from Rooms.Mil_S_Only import Mil_S_Only
 from Rooms.MilbiSelect import MilbiSelect
+from Rooms.Mil_G_Only_Select import Mil_G_Only_Select

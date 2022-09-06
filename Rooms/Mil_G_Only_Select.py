@@ -3,46 +3,46 @@ from Objects import RoomSelectButton, Listener
 import os
 
 
-class Home(Level):
+class Mil_G_Only_Select(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 50, "Home - selector", colour="white")
+        room_name = TextObject(self, 200, 50, "Milbi Game Select", colour="white")
         self.add_room_object(room_name)
 
         self.add_room_object(Listener(self, 0, 0))
 
         self.buttons = []
 
-        milbi_button = RoomSelectButton(
+        plains_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,
             160,
-            EnumLevels.MilbiSelect,
+            EnumLevels.Mil_G1,
             os.path.join("MilbiL1", "Brown.png"),
             os.path.join("MilbiL1", "Green.png"))
-        self.buttons.append(milbi_button)
-        self.add_room_object(milbi_button)
+        self.buttons.append(plains_game_button)
+        self.add_room_object(plains_game_button)
 
-        copple_button = RoomSelectButton(
+        corroboree_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
             160,
-            EnumLevels.CoppleSelect,
+            EnumLevels.Mil_G2,
             os.path.join("MilbiL1", "Brown.png"),
             os.path.join("MilbiL1", "Green.png"))
-        self.buttons.append(copple_button)
-        self.add_room_object(copple_button)
+        self.buttons.append(corroboree_game_button)
+        self.add_room_object(corroboree_game_button)
 
-        museum_button = RoomSelectButton(
+        boss_battle_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
             160,
-            EnumLevels.Museum,
+            EnumLevels.Mil_G3,
             os.path.join("MilbiL1", "Brown.png"),
             os.path.join("MilbiL1", "Green.png"))
-        self.buttons.append(museum_button)
-        self.add_room_object(museum_button)
+        self.buttons.append(boss_battle_game_button)
+        self.add_room_object(boss_battle_game_button)
 
         self.selected_button = 0
         self.buttons[self.selected_button].set_selected(True)
@@ -60,6 +60,7 @@ class Home(Level):
             self.buttons[self.selected_button].set_selected(True)
 
     def apply_selection(self):
+        Globals.direct_select = True
         self.buttons[self.selected_button].activate()
 
     def key_signal(self, signal):

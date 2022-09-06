@@ -1,21 +1,18 @@
 from GameFrame import RoomObject, Globals
-import pygame
+import os
+
+
 class ButtonForPlaceholder(RoomObject):
-    def __init__(self, room, x, y):
-        RoomObject.__init__(room, x, y)
-        self.set_image(
-            "Images/Title/PlaceHolder.png",
-            height=Globals.SCREEN_HEIGHT - Globals.SCREEN_HEIGHT / 4,
-            width=Globals.SCREEN_WIDTH - Globals.SCREEN_WIDTH / 4,
-        )
-    def key_pressed(self, key):
-        if key[pygame.K_q]:
-            Globals.next_level = Globals.EnumLevels.Quiz
-        elif key[pygame.KEY_M]:
-            Globals.next_level = Globals.EnumLevels.MilbiSelect
-        elif key[pygame.K_c]:
-            Globals.next_level = Globals.EnumLevels.Copple
-        elif key[pygame.K_o]:
-            Globals.next_level = Globals.EnumLevels.Museum
-        elif key[pygame.K_i]:
-            Globals.next_level = Globals.EnumLevels.Intro
+    def __init__(self, room, x, y, next_level):
+        RoomObject.__init__(self, room, x, y)
+
+        self.next_level = next_level
+
+        image = self.load_image(os.path.join("Title", "button.png"))
+        self.set_image(image, 128, 128)
+
+        self.handle_mouse_events = True
+
+    def clicked(self, button_number):
+        Globals.next_level = self.next_level
+        self.room.running = False

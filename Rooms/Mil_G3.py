@@ -1,5 +1,19 @@
-from GameFrame import Globals, PlaceholderLevel
+from GameFrame import Level, TextObject, Globals, EnumLevels
 
-class Mil_G3(PlaceholderLevel):
-    def __init__(self, screen, joysticks):
-        PlaceholderLevel.__init__(self, screen, joysticks, 'Mil_G3', Globals.EnumLevels.Mil_S4)
+
+class Mil_G3(Level):
+    def __init__(self, screen, joysticks, direct=False):
+        Level.__init__(self, screen, joysticks)
+
+        self.direct = direct
+
+        room_name = TextObject(self, 200, 300, "Milbi Game Part 3", colour="white")
+        self.add_room_object(room_name)
+
+        self.set_timer(60, self.complete)
+
+    def complete(self):
+        if Globals.direct_select:
+            Globals.direct_select = False
+            Globals.next_level = EnumLevels.Home
+        self.running = False

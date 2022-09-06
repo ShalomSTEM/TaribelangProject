@@ -1,20 +1,34 @@
 from enum import IntEnum
-class Globals:
-    class EnumLevels(IntEnum):
-        Intro = 0
-        Home = 1
-        MilbiSelect = 2
-        Mil_S1 = 3
-        Mil_G1 = 4
-        Mil_S2 = 5
-        Mil_G2 = 6
-        Mil_S3 = 7
-        Mil_G3 = 8
-        Mil_S4 = 9
-        Museum = 10
-        Quiz = 11
-        Copple = 12
 
+
+class EnumLevels(IntEnum):
+    Intro = 0
+    Home = 1
+    MilbiSelect = 2
+    Mil_S1 = 3
+    Mil_G1 = 4
+    Mil_S2 = 5
+    Mil_G2 = 6
+    Mil_S3 = 7
+    Mil_G3 = 8
+    Mil_S4 = 9
+    Mil_S_Only = 10
+    Mil_G_Only_Select = 11
+    CoppleSelect = 12
+    Cop_S1 = 13
+    Cop_G1 = 14
+    Cop_S2 = 15
+    Cop_G2 = 16
+    Cop_S3 = 17
+    Cop_G3 = 18
+    Cop_S4 = 19
+    Cop_S_Only = 20
+    Cop_G_Only = 21
+    Museum = 22
+    Quiz = 23
+
+
+class Globals:
     running = True
     FRAMES_PER_SECOND = 30
 
@@ -27,7 +41,7 @@ class Globals:
     LIVES = 3
 
     # - Set the Window display name - #
-    window_name = "Game"
+    window_name = "Taribelang Time"
 
     # - Set the order of the rooms - #
     levels = [
@@ -41,13 +55,24 @@ class Globals:
         "Mil_S3",
         "Mil_G3",
         "Mil_S4",
+        "Mil_S_Only",
+        "Mil_G_Only_Select",
+        "CoppleSelect",
+        "Cop_S1",
+        "Cop_G1",
+        "Cop_S2",
+        "Cop_G2",
+        "Cop_S3",
+        "Cop_G3",
+        "Cop_S4",
+        "Cop_S_Only",
+        "Cop_G_Only",
         "Museum",
-        "Quiz",
-        "Copple",
+        "Quiz"
     ]
 
     # - Set the starting level - #
-    start_level = EnumLevels.Copple
+    start_level = EnumLevels.Intro
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 0
@@ -62,6 +87,11 @@ class Globals:
     # ############################################################# #
     # ###### User Defined Global Variables below this line ######## #
     # ############################################################# #
+
+    # - Indicates that the room is to return to the menu - #
+    # -      rather than the next part of the story      - #
+    direct_select = False
+
     move_speed = 4
     SLOW = 1
     MEDIUM = 2
@@ -72,14 +102,3 @@ class Globals:
     player_x = 0
     player_y = 0
     lowWater = False
-    path = "Images/"
-    milbiL1_path = "Images/MilbiL1"
-    milbiL1_alt_path = "MilbiL1/"
-    milbiL2_path = "Images/MilbiL2"
-    milbiL2_alt_path = "MilbiL2/"
-    milbiL3_path = "Images/MilbiL3"
-    milbiL3_alt_path = "MilbiL3/"
-    storyOverlay_path = "Images/StoryOverlay"
-    storyOverlay_alt_path = "Images/StoryOverlay"
-    WTC_path = "Images/WTC"
-    WTC_alt_path = "Images/WTC"
