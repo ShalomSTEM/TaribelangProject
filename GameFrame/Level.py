@@ -6,6 +6,7 @@ from typing import Callable
 from pygame.mixer import Sound
 from pygame.joystick import Joystick
 from GameFrame.Globals import Globals
+from GameFrame.Globals import EnumLevels
 from GameFrame.RoomObject import RoomObject
 
 
@@ -114,6 +115,9 @@ class Level:
                         signals = True
 
             if signals:
+                if self.p1_btns[9]:
+                    Globals.next_level = EnumLevels.Home
+                    self.running = False
                 for obj in self.keyboard_objects:
                     obj.joy_pad_signal(self.p1_btns, self.p2_btns)
 
@@ -121,6 +125,13 @@ class Level:
             # - to objects registered for key events - #
             keys = pygame.key.get_pressed()
             if len(keys):
+                if keys[pygame.K_ESCAPE] and keys[pygame.K_LSHIFT]:
+                    self.running = False
+                    Globals.running = False
+                elif keys[pygame.K_ESCAPE]:
+                    pygame.mixer.stop()
+                    Globals.next_level = EnumLevels.Home
+                    self.running = False
                 for obj in self.keyboard_objects:
                     obj.key_pressed(keys)
 
