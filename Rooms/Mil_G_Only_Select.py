@@ -19,8 +19,8 @@ class Mil_G_Only_Select(Level):
             Globals.SCREEN_WIDTH / 4 - 128,
             160,
             EnumLevels.Mil_G1,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Transition", "1_selected.png"),
+            os.path.join("Transition", "1.png"))
         self.buttons.append(plains_game_button)
         self.add_room_object(plains_game_button)
 
@@ -29,8 +29,8 @@ class Mil_G_Only_Select(Level):
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
             160,
             EnumLevels.Mil_G2,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Transition", "2_selected.png"),
+            os.path.join("Transition", "2.png"))
         self.buttons.append(corroboree_game_button)
         self.add_room_object(corroboree_game_button)
 
@@ -39,8 +39,8 @@ class Mil_G_Only_Select(Level):
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
             160,
             EnumLevels.Mil_G3,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Transition", "3_selected.png"),
+            os.path.join("Transition", "3.png"))
         self.buttons.append(boss_battle_game_button)
         self.add_room_object(boss_battle_game_button)
 

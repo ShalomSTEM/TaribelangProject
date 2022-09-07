@@ -43,20 +43,59 @@ class Home(Level):
             os.path.join("MilbiL1", "Green.png"))
         self.buttons.append(museum_button)
         self.add_room_object(museum_button)
+        
+        quiz_button = RoomSelectButton(
+            self,
+            Globals.SCREEN_WIDTH / 4 + 32,
+            460,
+            EnumLevels.Quiz,
+            os.path.join("MilbiL1", "Brown.png"),
+            os.path.join("MilbiL1", "Green.png"))
+        self.buttons.append(quiz_button)
+        self.add_room_object(quiz_button)
 
+        wtc_button = RoomSelectButton(
+            self,
+            Globals.SCREEN_WIDTH / 4 * 2 + 32,
+            460,
+            EnumLevels.Intro,
+            os.path.join("MilbiL1", "Brown.png"),
+            os.path.join("MilbiL1", "Green.png"))
+        self.buttons.append(wtc_button)
+        self.add_room_object(wtc_button)
         self.selected_button = 0
         self.buttons[self.selected_button].set_selected(True)
+        
 
     def right(self):
-        if self.selected_button == 0 or self.selected_button == 1:
+        if self.selected_button == 0 or self.selected_button == 1 or self.selected_button == 3:
             self.buttons[self.selected_button].set_selected(False)
             self.selected_button += 1
             self.buttons[self.selected_button].set_selected(True)
 
     def left(self):
-        if self.selected_button == 1 or self.selected_button == 2:
+        if self.selected_button == 1 or self.selected_button == 2 or self.selected_button == 4:
             self.buttons[self.selected_button].set_selected(False)
             self.selected_button -= 1
+            self.buttons[self.selected_button].set_selected(True)
+            
+    def down(self):
+        if self.selected_button == 0 or self.selected_button == 1:
+            self.buttons[self.selected_button].set_selected(False)
+            self.selected_button = 3
+            self.buttons[self.selected_button].set_selected(True)
+        elif self.selected_button == 2:
+            self.buttons[self.selected_button].set_selected(False)
+            self.selected_button = 4
+            self.buttons[self.selected_button].set_selected(True)
+    def up(self):
+        if self.selected_button == 3:
+            self.buttons[self.selected_button].set_selected(False)
+            self.selected_button = 0
+            self.buttons[self.selected_button].set_selected(True)
+        elif self.selected_button == 4:
+            self.buttons[self.selected_button].set_selected(False)
+            self.selected_button = 2
             self.buttons[self.selected_button].set_selected(True)
 
     def apply_selection(self):
@@ -69,3 +108,7 @@ class Home(Level):
             self.left()
         elif signal == "enter":
             self.apply_selection()
+        elif signal == "dowm":
+            self.down()
+        elif signal == "up":
+            self.up()
