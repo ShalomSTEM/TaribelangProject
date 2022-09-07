@@ -12,3 +12,5 @@ from Objects.Player_MLBL3 import Player_MLBL3
 from Objects.ButtonForPlaceholder import ButtonForPlaceholder
 from Objects.RoomSelectButton import RoomSelectButton
 from Objects.Listener import Listener
+from Objects.Player_MLBL2 import Player_MLBL2
+from Objects.MLBL2_Tree import MLBL2_Tree

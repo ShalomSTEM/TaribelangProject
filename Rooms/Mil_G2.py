@@ -1,6 +1,6 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
-from Objects import ML2_People, ML2_Elders, Player_MLBL1, ML2_Tree
-
+from Objects import ML2_People, ML2_Elders, Player_MLBL2, MLBL2_Tree
+import os
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
@@ -18,7 +18,7 @@ class Mil_G2(Level):
             Globals.next_level = EnumLevels.Home
         self.running = False
 
-        self.set_background_image(os.path.join(Globals.milbiL2_alt_path, "ML2_background.jpg")        )
+        self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg")        )
 
         self.room_items = []
 
@@ -57,7 +57,7 @@ class Mil_G2(Level):
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
                 if obj == "B":
-                    self.add_room_object(ML2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_tree.png"))
+                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_tree.png"))
                 elif obj == "T":
                     self.add_room_object(ML2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Ttree.png"))
                 elif obj == "P":
