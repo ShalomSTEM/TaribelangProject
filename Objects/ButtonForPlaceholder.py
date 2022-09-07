@@ -16,3 +16,5 @@ class ButtonForPlaceholder(RoomObject):
     def clicked(self, button_number):
         Globals.next_level = self.next_level
         self.room.running = False
+
+
