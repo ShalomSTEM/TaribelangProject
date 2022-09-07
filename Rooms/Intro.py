@@ -6,7 +6,7 @@ class Intro(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        self.set_background_image(os.path.join("MilbiL3", "PlaceHolderBackground_MLBL3.png"))
+        self.set_background_image(os.path.join("Title", "title_to_wtc.png"))
         self.set_timer(60, self.start_wtc_taribelang)
 
     def start_wtc_taribelang(self):
