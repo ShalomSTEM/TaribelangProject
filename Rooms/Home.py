@@ -19,8 +19,8 @@ class Home(Level):
             Globals.SCREEN_WIDTH / 4 - 128,
             160,
             EnumLevels.MilbiSelect,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Title", "milbi_selected.png"),
+            os.path.join("Title", "milbi.png"))
         self.buttons.append(milbi_button)
         self.add_room_object(milbi_button)
 
@@ -29,8 +29,8 @@ class Home(Level):
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
             160,
             EnumLevels.CoppleSelect,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Title", "copple_selected.png"),
+            os.path.join("Title", "copple.png"))
         self.buttons.append(copple_button)
         self.add_room_object(copple_button)
 
@@ -39,8 +39,8 @@ class Home(Level):
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
             160,
             EnumLevels.Museum,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Title", "museum_selected.png"),
+            os.path.join("Title", "museum.png"))
         self.buttons.append(museum_button)
         self.add_room_object(museum_button)
         """
@@ -63,18 +63,19 @@ class Home(Level):
             os.path.join("MilbiL1", "Green.png"))
         self.buttons.append(wtc_button)
         self.add_room_object(wtc_button)
+        """
         self.selected_button = 0
         self.buttons[self.selected_button].set_selected(True)
-        """
+        
 
     def right(self):
-        if self.selected_button == 0 or self.selected_button == 1 or self.selected_button == 3:
+        if self.selected_button == 0 or self.selected_button == 1:
             self.buttons[self.selected_button].set_selected(False)
             self.selected_button += 1
             self.buttons[self.selected_button].set_selected(True)
 
     def left(self):
-        if self.selected_button == 1 or self.selected_button == 2 or self.selected_button == 4:
+        if self.selected_button == 1 or self.selected_button == 2:
             self.buttons[self.selected_button].set_selected(False)
             self.selected_button -= 1
             self.buttons[self.selected_button].set_selected(True)
