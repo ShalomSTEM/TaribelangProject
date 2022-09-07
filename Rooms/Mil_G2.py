@@ -1,27 +1,18 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 from Objects import ML2_People, ML2_Elders, Player_MLBL2, MLBL2_Tree
 import os
+
+
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
 
+        self.room_items = []
         self.direct = direct
 
-        room_name = TextObject(self, 200, 300, "Milbi Game Part 2", colour="white")
+        room_name = TextObject(self, 200, 300, "", colour="white")
         self.add_room_object(room_name)
-
-        self.set_timer(60, self.complete)
-
-    def complete(self):
-        if Globals.direct_select:
-            Globals.direct_select = False
-            Globals.next_level = EnumLevels.Home
-        self.running = False
-
-        self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg")        )
-
-        self.room_items = []
-
+        self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
 
         room_objects = [
             "                                                  ",
@@ -36,13 +27,13 @@ class Mil_G2(Level):
             "      T                                      T",
             "      B    EEE                               G",
             "      T   E   E                              T",
-            "      T    EEE         AAAAAAA               B",
-            "      T               AA     AA              B",
-            "      B              AA       AA             G",
-            "      G              AA       AA             G",
-            "      T              AA       AA             G",
-            "      T               AA     AA              T",
-            "      B                AAAAAAA               T",
+            "      T    EEE         ZZZZZZZ               B",
+            "      T               ZZ     ZZ              B",
+            "      B              ZZ       ZZ             G",
+            "      G              ZZ       ZZ             G",
+            "      T              ZZ       ZZ             G",
+            "      T               ZZ     ZZ              T",
+            "      B                ZZZZZZZ               T",
             "      G                                      B",
             "      G                                      B",
             "      T                                      G",
@@ -59,13 +50,32 @@ class Mil_G2(Level):
                 if obj == "B":
                     self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_tree.png"))
                 elif obj == "T":
-                    self.add_room_object(ML2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Ttree.png"))
+                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Ttree.png"))
                 elif obj == "P":
                     self.add_room_object(Player_MLBL2(self, j * 32 - 200, i * 32 - 200))
-                elif obj == "A":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200))
+                elif obj == "Z":
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people1.png"))
+                elif obj == "Y":
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.jpg"))
+                elif obj == "X":
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.jpg"))
+                elif obj == "W":
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.jpg"))
+                elif obj == "V":
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.jpg"))
+
+
+
                 elif obj == "E":
                     self.add_room_object(ML2_Elders(self, j * 32 - 200, i * 32 - 200))
                 elif obj == "G":
-                    self.add_room_object(ML2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Btree.png"))
+                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Btree.png"))
+
+        # self.set_timer(60, self.complete)
+
+    def complete(self):
+        if Globals.direct_select:
+            Globals.direct_select = False
+            Globals.next_level = EnumLevels.Home
+        self.running = False
 

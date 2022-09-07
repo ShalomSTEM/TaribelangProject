@@ -7,18 +7,18 @@ class Player_MLBL2(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
-        player = self.load_image(os.path.join(Globals.milbiL1_alt_path, "sprite_0.png"))
+        player = self.load_image(os.path.join("MilbiL1", "sprite_0.png"))
         self.set_image(player, 100, 100)
 
         # Load player animation images
         self.down = []
-        self.down.append(self.load_image(os.path.join(Globals.milbiL1_alt_path, "sprite_0.png")))
+        self.down.append(self.load_image(os.path.join("MilbiL1", "sprite_0.png")))
         self.up = []
-        self.up.append(self.load_image(os.path.join(Globals.milbiL1_alt_path, "sprite_2.png")))
+        self.up.append(self.load_image(os.path.join("MilbiL1", "sprite_2.png")))
         self.left = []
-        self.left.append(self.load_image(os.path.join(Globals.milbiL1_alt_path, "sprite_1.png")))
+        self.left.append(self.load_image(os.path.join("MilbiL1", "sprite_1.png")))
         self.right = []
-        self.right.append(self.load_image(os.path.join(Globals.milbiL1_alt_path, "sprite_3.png")))
+        self.right.append(self.load_image(os.path.join("MilbiL1", "sprite_3.png")))
 
         self.img_index = 0
 
