@@ -7,7 +7,7 @@ class Mil_G2(Level):
 
         self.direct = direct
 
-        room_name = TextObject(self, 200, 300, "Milbi Game Part 2", colour="white")
+        room_name = TextObject(self, 200, 300, "Milbi Game Part 2", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.set_timer(60, self.complete)
