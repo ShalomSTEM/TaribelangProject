@@ -14,4 +14,4 @@ from Objects.RoomSelectButton import RoomSelectButton
 from Objects.Listener import Listener
 from Objects.CopSwimBG import CopSwimBG
 from Objects.ListenerIntro import ListenerIntro
-
+from Objects.CopFish import CopFish
