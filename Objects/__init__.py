@@ -12,3 +12,4 @@ from Objects.Player_MLBL3 import Player_MLBL3
 from Objects.ButtonForPlaceholder import ButtonForPlaceholder
 from Objects.RoomSelectButton import RoomSelectButton
 from Objects.Listener import Listener
+from Objects.CopSwimBG import CopSwimBG

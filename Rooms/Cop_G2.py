@@ -17,3 +17,4 @@ class Cop_G2(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
+
