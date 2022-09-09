@@ -7,7 +7,7 @@ class MilbiSelect(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 50, "Milbi Select - selector", colour="white")
+        room_name = TextObject(self, 200, 50, "Milbi Select - selector", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.add_room_object(Listener(self, 0, 0))
@@ -19,8 +19,8 @@ class MilbiSelect(Level):
             Globals.SCREEN_WIDTH / 4 - 128,
             160,
             EnumLevels.Mil_S1,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Transition", "both_selected.png"),
+            os.path.join("Transition", "both.png"))
         self.buttons.append(play_through_button)
         self.add_room_object(play_through_button)
 
@@ -29,8 +29,8 @@ class MilbiSelect(Level):
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
             160,
             EnumLevels.Mil_S_Only,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Transition", "story_only_selected.png"),
+            os.path.join("Transition", "story_only.png"))
         self.buttons.append(story_only_button)
         self.add_room_object(story_only_button)
 
@@ -39,8 +39,8 @@ class MilbiSelect(Level):
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
             160,
             EnumLevels.Mil_G_Only_Select,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("Transition", "games_only_selected.png"),
+            os.path.join("Transition", "games_only.png"))
         self.buttons.append(games_only_button)
         self.add_room_object(games_only_button)
 
