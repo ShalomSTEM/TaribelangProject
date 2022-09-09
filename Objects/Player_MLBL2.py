@@ -123,14 +123,14 @@ class Player_MLBL2(RoomObject):
         self.img_index += 1
         self.img_index %= 4
         if self.facing == self.LEFT:
-            self.set_image(self.left[self.img_index], 16, 24)
+            self.set_image(self.left[self.img_index], 100, 100)
         elif self.facing == self.RIGHT:
-            self.set_image(self.right[self.img_index], 16, 24)
+            self.set_image(self.right[self.img_index], 100, 100)
         elif self.facing == self.UP:
-            self.set_image(self.up[self.img_index], 16, 24)
+            self.set_image(self.up[self.img_index], 100, 100)
         elif self.facing == self.DOWN:
-            self.set_image(self.down[self.img_index], 16, 24)
+            self.set_image(self.down[self.img_index], 100, 100)
         else:
-            self.set_image(self.down[0], 16, 24)
+            self.set_image(self.down[0], 100, 100)
 
         self.set_timer(3, self.animate)

@@ -27,13 +27,13 @@ class Mil_G2(Level):
             "      T                                      T",
             "      B    EEE                               G",
             "      T   E   E                              T",
-            "      T    EEE         ZZZZZZZ               B",
-            "      T               ZZ     ZZ              B",
-            "      B              ZZ       ZZ             G",
-            "      G              ZZ       ZZ             G",
-            "      T              ZZ       ZZ             G",
-            "      T               ZZ     ZZ              T",
-            "      B                ZZZZZZZ               T",
+            "      T    EEE         ZXYYZZZ               B",
+            "      T               XY     ZZ              B",
+            "      B              ZY       XX             G",
+            "      G              XZ       YZ             G",
+            "      T              ZZ       ZX             G",
+            "      T               ZZ     YY              T",
+            "      B                ZZXZYXZ               T",
             "      G                                      B",
             "      G                                      B",
             "      T                                      G",
@@ -56,13 +56,13 @@ class Mil_G2(Level):
                 elif obj == "Z":
                     self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people1.png"))
                 elif obj == "Y":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.gif"))
                 elif obj == "X":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.gif"))
                 elif obj == "W":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.gif"))
                 elif obj == "V":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.gif"))
 
 
 
