@@ -7,7 +7,7 @@ class Cop_G2(Level):
 
         self.direct = direct
 
-        room_name = TextObject(self, 200, 300, "Copple Game Part 2", colour="white")
+        room_name = TextObject(self, 200, 300, "Copple Game Part 2", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.set_timer(60, self.complete)
@@ -17,3 +17,4 @@ class Cop_G2(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
+
