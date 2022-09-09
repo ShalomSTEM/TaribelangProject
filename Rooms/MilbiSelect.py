@@ -7,7 +7,7 @@ class MilbiSelect(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 50, "Milbi Select - selector", colour="white")
+        room_name = TextObject(self, 200, 50, "Milbi Select - selector", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.add_room_object(Listener(self, 0, 0))

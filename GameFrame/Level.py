@@ -117,6 +117,7 @@ class Level:
             if signals:
                 if self.p1_btns[9]:
                     Globals.next_level = EnumLevels.Home
+                    pygame.mixer.stop()
                     self.running = False
                 for obj in self.keyboard_objects:
                     obj.joy_pad_signal(self.p1_btns, self.p2_btns)
