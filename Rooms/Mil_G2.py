@@ -6,9 +6,7 @@ class Mil_G2(Level):
         Level.__init__(self, screen, joysticks)
 
         self.direct = direct
-
-        room_name = TextObject(self, 200, 300, "Milbi Game Part 2", colour=(255, 255, 255))
-        self.add_room_object(room_name)
+        self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
 
         self.set_timer(60, self.complete)
 
