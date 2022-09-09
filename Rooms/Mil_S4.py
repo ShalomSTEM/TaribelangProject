@@ -5,7 +5,7 @@ class Mil_S4(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 300, "Milbi Story Part 4", colour="white")
+        room_name = TextObject(self, 200, 300, "Milbi Story Part 4", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.set_timer(60, self.complete)
