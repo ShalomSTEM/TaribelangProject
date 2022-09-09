@@ -7,7 +7,7 @@ class Cop_G3(Level):
 
         self.direct = direct
 
-        room_name = TextObject(self, 200, 300, "Copple Game Part 3", colour="white")
+        room_name = TextObject(self, 200, 300, "Copple Game Part 3", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.set_timer(60, self.complete)
