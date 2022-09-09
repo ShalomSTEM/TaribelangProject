@@ -31,7 +31,7 @@ class WaterIcon(RoomObject):
         else:
             self.set_image(
                 os.path.join(
-                    "Images/ MilbiL1", f"Water_Bar_0{self.water_level}.png"
+                    "Images/MilbiL1", f"Water_Bar_0{self.water_level}.png"
                 ),
                 50,
                 300,
