@@ -84,7 +84,7 @@ class Mil_G3(Level):
 
 
 
-        # self.set_timer(60, self.complete)
+        self.set_timer(5, self.complete)
 
     def complete(self):
         if Globals.direct_select:
