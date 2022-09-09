@@ -9,9 +9,6 @@ class Mil_G2(Level):
 
         self.room_items = []
         self.direct = direct
-
-        room_name = TextObject(self, 200, 300, "", colour="white")
-        self.add_room_object(room_name)
         self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
 
         room_objects = [
