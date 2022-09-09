@@ -8,7 +8,7 @@ class Player_MLBL2(RoomObject):
         RoomObject.__init__(self, room, x, y)
 
         player = self.load_image(os.path.join("MilbiL1", "sprite_0.png"))
-        self.set_image(player, 100, 100)
+        self.set_image(player, 50, 50)
 
         # Load player animation images
         self.down = []
@@ -31,7 +31,7 @@ class Player_MLBL2(RoomObject):
 
         self.handle_key_events = True
 
-        self.register_collision_object('Block')
+        # self.register_collision_object('Block')
 
         self.block_right = False
         self.block_left = False
@@ -41,7 +41,7 @@ class Player_MLBL2(RoomObject):
         self.moving = False
         self.animate()
 
-    def step(self):
+    def prestep(self):
         self.block_right = False
         self.block_left = False
         self.block_up = False
@@ -81,56 +81,38 @@ class Player_MLBL2(RoomObject):
 
     def key_pressed(self, key):
         if key[pygame.K_LEFT]:
-            self.move_left()
+            self.x -= 4
             self.facing = self.LEFT
         elif key[pygame.K_RIGHT]:
-            self.move_right()
+            self.x += 4
             self.facing = self.RIGHT
         elif key[pygame.K_UP]:
-            self.move_up()
+            self.y -= 4
             self.facing = self.UP
         elif key[pygame.K_DOWN]:
-            self.move_down()
+            self.y += 4
             self.facing = self.DOWN
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] < -0.5:
-            self.move_right()
+            pass
         elif p1_buttons[11] > 0.5:
-            self.move_left()
-
-    def move_right(self):
-        if self.x < 6000:
-            self.x += Globals.move_speed
-
-
-    def move_left(self):
-        if self.x > 0:
-            self.x -= Globals.move_speed
-
-
-    def move_up(self):
-        if self.y > 0:
-            self.y -= Globals.move_speed
-
-
-    def move_down(self):
-        if self.y < 4500:
-            self.y += Globals.move_speed
-
+            pass
 
     def animate(self):
-        self.img_index += 1
-        self.img_index %= 4
+        print("AM i ANIMATING?")
+        print(self.facing)
+        #self.img_index += 1
+        #self.img_index %= 4
         if self.facing == self.LEFT:
-            self.set_image(self.left[self.img_index], 100, 100)
+            self.set_image(self.left[self.img_index], 50, 50)
         elif self.facing == self.RIGHT:
-            self.set_image(self.right[self.img_index], 100, 100)
+            self.set_image(self.right[self.img_index], 50, 50)
         elif self.facing == self.UP:
-            self.set_image(self.up[self.img_index], 100, 100)
+            self.set_image(self.up[self.img_index], 50, 50)
         elif self.facing == self.DOWN:
-            self.set_image(self.down[self.img_index], 100, 100)
+            self.set_image(self.down[self.img_index], 50, 50)
         else:
-            self.set_image(self.down[0], 100, 100)
+            self.set_image(self.down[0], 50, 50)
 
-        self.set_timer(3, self.animate)
+        self.set_timer(5, self.animate)
