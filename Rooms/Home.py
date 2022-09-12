@@ -6,9 +6,11 @@ import os
 class Home(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
+        """
         if Globals.shownControllerLayout:
             self.set_background_image(os.path.join("Images", "Title", "controller_overlay.png"))
             self.set_timer(60, self.background_image("Images", "Title", "background.png"))
+        """
         room_name = TextObject(self, 200, 50, "Home - selector", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
