@@ -67,7 +67,6 @@ class Home(Level):
         self.selected_button = 0
         self.buttons[self.selected_button].set_selected(True)
         
-
     def right(self):
         if self.selected_button == 0 or self.selected_button == 1:
             self.buttons[self.selected_button].set_selected(False)
