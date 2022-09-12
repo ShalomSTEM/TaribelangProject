@@ -1,14 +1,19 @@
-from GameFrame import Level, TextObject
+import os
+
+from GameFrame import Level, TextObject, EnumLevels, Globals
 
 
 class Cop_S2(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 300, "Copple Story Part 2", colour=(255, 255, 255))
-        self.add_room_object(room_name)
+        self.set_background_image(
+            os.path.join("Copple Story", "Cop_Background_2.png")
+        )
 
         self.set_timer(60, self.complete)
 
     def complete(self):
         self.running = False
+
+

@@ -1,5 +1,6 @@
 from GameFrame import Level, Globals, EnumLevels
-from Objects import CopSwimBG
+from Objects import CopSwimBG, CopFish
+
 
 
 class Cop_G3(Level):
@@ -10,9 +11,7 @@ class Cop_G3(Level):
         background_2 = CopSwimBG(self, Globals.SCREEN_WIDTH, 0)
         self.add_room_object(background_1)
         self.add_room_object(background_2)
-
-        #self.add_room_object(CopSky(self, 0, 0))
-        #self.add_room_object(CopFish(self, 200, 300))
+        self.add_room_object(CopFish(self, 65, Globals.SCREEN_HEIGHT / 2))
         self.set_timer(180, self.complete)
 
     def complete(self):
