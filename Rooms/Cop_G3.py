@@ -10,9 +10,7 @@ class Cop_G3(Level):
         background_2 = CopSwimBG(self, Globals.SCREEN_WIDTH, 0)
         self.add_room_object(background_1)
         self.add_room_object(background_2)
-        #self.add_room_object(CopSky(self, 0, 0))
-        self.add_room_object(CopFish(self, 65, 36))
-        self.set_timer(180, self.complete)
+        self.add_room_object(CopFish(self, 65, Globals.SCREEN_HEIGHT / 2))
 
     def complete(self):
         if Globals.direct_select:
