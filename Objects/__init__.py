@@ -20,4 +20,7 @@ from Objects.CopG2_Goal import CopG2_Goal
 from Objects.CopG2_Dirt import CopG2_Dirt
 from Objects.CopG2_Water import CopG2_Water
 from Objects.CopG2_NPC import CopG2_NPC
+from Objects.Splayer import Splayer
+from Objects.MBlock import MBlock
+from Objects.MBlockDoor import MBlockDoor
 
