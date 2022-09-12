@@ -1,14 +1,9 @@
-from GameFrame import Level, TextObject
+from GameFrame import Story
 
 
-class Mil_S3(Level):
+class Mil_S3(Story):
     def __init__(self, screen, joysticks):
-        Level.__init__(self, screen, joysticks)
-
-        room_name = TextObject(self, 200, 300, "Milbi Story Part 3", colour="white")
-        self.add_room_object(room_name)
-
-        self.set_timer(60, self.complete)
-
+        Story.__init__(self, screen, joysticks, "Milbi_3.wav", 'MilbiS', "Milbi_Background_3.png")
+        self.set_timer(1050, self.complete)
     def complete(self):
         self.running = False

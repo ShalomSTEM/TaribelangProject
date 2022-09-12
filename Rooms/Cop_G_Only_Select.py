@@ -7,7 +7,7 @@ class Cop_G_Only_Select(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 50, "Copple Game Select", colour="white")
+        room_name = TextObject(self, 200, 50, "Copple Game Select", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
         self.add_room_object(Listener(self, 0, 0))
@@ -20,7 +20,9 @@ class Cop_G_Only_Select(Level):
             160,
             EnumLevels.Cop_G1,
             os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("MilbiL1", "Green.png"),
+            direct=True
+        )
         self.buttons.append(running_game_button)
         self.add_room_object(running_game_button)
 
@@ -30,7 +32,9 @@ class Cop_G_Only_Select(Level):
             160,
             EnumLevels.Cop_G2,
             os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("MilbiL1", "Green.png"),
+            direct=True
+        )
         self.buttons.append(maze_game_button)
         self.add_room_object(maze_game_button)
 
@@ -40,7 +44,9 @@ class Cop_G_Only_Select(Level):
             160,
             EnumLevels.Cop_G3,
             os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("MilbiL1", "Green.png"),
+            direct=True
+        )
         self.buttons.append(swimming_game_button)
         self.add_room_object(swimming_game_button)
 

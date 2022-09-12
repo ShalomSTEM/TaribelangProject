@@ -5,7 +5,6 @@ from Objects import Splayer, MBlock, MBlockDoor
 class Museum(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-
         # - Set Background image - #
         #self.set_background_image("background.jpg")
         self.background_color = (255, 255, 255)
