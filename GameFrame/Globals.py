@@ -100,3 +100,6 @@ class Globals:
     player_x = 0
     player_y = 0
     lowWater = False
+
+    # Move speed for Copple Game 2
+    NPCmove_speed = 4
