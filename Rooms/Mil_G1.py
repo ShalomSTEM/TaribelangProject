@@ -10,7 +10,6 @@ class Mil_G1(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.direct = direct
-
         self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.TileSize = 100
         self.map = []
