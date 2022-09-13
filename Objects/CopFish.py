@@ -24,3 +24,9 @@ class CopFish(RoomObject):
                 self.y += 4
         if key[pygame.K_n]:
             self.room.complete()
+
+    def joy_pad_signal(self, p1_buttons, p2_buttons):
+        if p1_buttons[10] < -0.5:
+            self.y -= 4
+        if p1_buttons[10] > 0.5:
+            self.y += 4

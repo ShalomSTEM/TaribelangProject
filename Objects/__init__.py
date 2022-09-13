@@ -15,3 +15,7 @@ from Objects.Listener import Listener
 from Objects.CopSwimBG import CopSwimBG
 from Objects.ListenerIntro import ListenerIntro
 from Objects.CopFish import CopFish
+from Objects.CopRock import CopRock
+from Objects.CopStick import CopStick
+
+
