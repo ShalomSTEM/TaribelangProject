@@ -1,13 +1,10 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
-from Objects import ML2_People, ML2_Elders, Player_MLBL2, MLBL2_Tree
-import os
 
 
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
 
-        self.room_items = []
         self.direct = direct
         self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
 
@@ -75,4 +72,3 @@ class Mil_G2(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
-

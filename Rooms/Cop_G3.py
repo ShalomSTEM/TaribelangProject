@@ -1,16 +1,18 @@
-from GameFrame import Level, TextObject, Globals, EnumLevels
+from GameFrame import Level, Globals, EnumLevels
+from Objects import CopSwimBG, CopFish
+
 
 
 class Cop_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
-
         self.direct = direct
-
-        room_name = TextObject(self, 200, 300, "Copple Game Part 3", colour=(255, 255, 255))
-        self.add_room_object(room_name)
-
-        self.set_timer(60, self.complete)
+        background_1 = CopSwimBG(self, 0, 0)
+        background_2 = CopSwimBG(self, Globals.SCREEN_WIDTH, 0)
+        self.add_room_object(background_1)
+        self.add_room_object(background_2)
+        self.add_room_object(CopFish(self, 65, Globals.SCREEN_HEIGHT / 2))
+        self.set_timer(180, self.complete)
 
     def complete(self):
         if Globals.direct_select:

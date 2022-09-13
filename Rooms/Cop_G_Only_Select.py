@@ -20,7 +20,9 @@ class Cop_G_Only_Select(Level):
             160,
             EnumLevels.Cop_G1,
             os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("MilbiL1", "Green.png"),
+            direct=True
+        )
         self.buttons.append(running_game_button)
         self.add_room_object(running_game_button)
 
@@ -30,7 +32,9 @@ class Cop_G_Only_Select(Level):
             160,
             EnumLevels.Cop_G2,
             os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("MilbiL1", "Green.png"),
+            direct=True
+        )
         self.buttons.append(maze_game_button)
         self.add_room_object(maze_game_button)
 
@@ -40,7 +44,9 @@ class Cop_G_Only_Select(Level):
             160,
             EnumLevels.Cop_G3,
             os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"))
+            os.path.join("MilbiL1", "Green.png"),
+            direct=True
+        )
         self.buttons.append(swimming_game_button)
         self.add_room_object(swimming_game_button)
 
