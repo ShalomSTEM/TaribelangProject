@@ -6,7 +6,6 @@ from GameFrame import Level, TextObject
 class Cop_S1(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-
         self.load_sound("Copple_1.wav").play()
 
         self.set_background_image(

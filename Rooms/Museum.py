@@ -8,7 +8,6 @@ class Museum(Level):
         # - Set Background image - #
         #self.set_background_image("background.jpg")
         self.background_color = (255, 255, 255)
-
         # - Set up maze, objects 32x32 25x17 - #
         room_objects = [
             'bbbbbbbbbbbbbbbbbbbbbbbbb',

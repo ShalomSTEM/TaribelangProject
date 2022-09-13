@@ -21,4 +21,4 @@ from Rooms.Cop_S4 import Cop_S4
 from Rooms.Cop_S_Only import Cop_S_Only
 from Rooms.Cop_G_Only_Select import Cop_G_Only_Select
 from Rooms.Museum import Museum
-
+from Rooms.Intro import Intro

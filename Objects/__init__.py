@@ -24,4 +24,6 @@ from Objects.CopG2_NPC import CopG2_NPC
 from Objects.Splayer import Splayer
 from Objects.MBlock import MBlock
 from Objects.MBlockDoor import MBlockDoor
-
+from Objects.Player_MLBL2 import Player_MLBL2
+from Objects.MLBL2_Tree import MLBL2_Tree
+from Objects.ListenerIntro import ListenerIntro
