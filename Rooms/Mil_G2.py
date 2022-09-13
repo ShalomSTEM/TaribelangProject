@@ -1,5 +1,5 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
-
+from Objects import ML2_Elders, ML2_People
 
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
