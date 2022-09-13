@@ -1,6 +1,5 @@
 import pygame
 from GameFrame import RoomObject, Globals
-from Objects import Stne_MLBL3
 import os
 
 
@@ -77,6 +76,7 @@ class Player_MLBL3(RoomObject):
         self.handle_key_events = True
 
         self.register_collision_object("Stne_MLBL3")
+        self.register_collision_object("Dirt_MLBL3")
 
         self.block_right = False
         self.block_left = False
@@ -96,33 +96,65 @@ class Player_MLBL3(RoomObject):
     def handle_collision(self, other, other_type):
         if other_type == "Stne_MLBL3":
 
-            if self.collides_at(self, 8, 0, "Stne_MLBL3") and not self.block_right:
+            if self.collides_at(self, 4, 0, "Stne_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
                     self.x = self.prev_x
                 else:
                     self.move_left()
 
-            if self.collides_at(self, -8, 0, "Stne_MLBL3") and not self.block_left:
+            if self.collides_at(self, -4, 0, "Stne_MLBL3") and not self.block_left:
                 self.block_left = True
                 if self.x >= 206:
                     self.x = self.prev_x
                 else:
                     self.move_right()
 
-            if self.collides_at(self, 0, 8, "Stne_MLBL3"):
+            if self.collides_at(self, 0, 4, "Stne_MLBL3"):
                 self.block_down = True
                 if self.y <= 446:
                     self.y = self.prev_y
                 else:
                     self.move_up()
 
-            if self.collides_at(self, 0, -8, "Stne_MLBL3") and not self.block_up:
+            if self.collides_at(self, 0, -4, "Stne_MLBL3") and not self.block_up:
                 self.block_up = True
                 if self.y >= 154:
                     self.y = self.prev_y
                 else:
                     self.move_down()
+
+        if other_type == "Spear_MLBL3":
+
+            if self.collides_at(self, 4, 0, "Spear_MLBL3") and not self.block_right:
+                self.block_right = True
+                if self.x < 596:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
+
+
+            if self.collides_at(self, -4, 0, "Spear_MLBL3") and not self.block_left:
+                self.block_left = True
+                if self.x >= 206:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
+
+
+            if self.collides_at(self, 0, 4, "Spear_MLBL3"):
+                self.block_down = True
+                if self.y <= 446:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
+
+
+            if self.collides_at(self, 0, -4, "Spear_MLBL3") and not self.block_up:
+                self.block_up = True
+                if self.y >= 154:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
+
+
+
 
 
 

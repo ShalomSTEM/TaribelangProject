@@ -5,6 +5,8 @@ from Objects import Dirt_MLBL3
 from Objects import Stne_MLBL3
 from Objects import Player_MLBL3
 
+from TaribelangProject.Objects.Spear_MLBL3 import Spear_MLBL3
+
 
 class Mil_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -29,13 +31,13 @@ class Mil_G3(Level):
             "DDB       B                         BBBBB        BDD",
             "DDB       B                             B        BDD",
             "DDB                                     B        BDD",
-            "DDB                                              BDD",
-            "DDB                                              BDD",
+            "DDB           S                                  BDD",
+            "DDB                                      S       BDD",
             "DDB             B                                BDD",
             "DDB             B                     B          BDD",
             "DDB         BBBBB                     B          BDD",
             "DDB                                   B          BDD",
-            "DDB                             BBBBBBB          BDD",
+            "DDB                    S        BBBBBBB          BDD",
             "DDB           B                                  BDD",
             "DDB           B                                  BDD",
             "DDB           B                                  BDD",
@@ -51,16 +53,23 @@ class Mil_G3(Level):
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
                 if obj == "B":
-                    new_block = Stne_MLBL3(self, j * 64 - 200, i * 64 - 200)
+                    new_block = Stne_MLBL3(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(new_block)
                     self.room_items.append(new_block)
                 elif obj == "P":
                     player = Player_MLBL3(self, j * 32 - 200, i * 32 - 200, size)
+                    self.player.x = j * 32 - 200
+                    self.player.y = i * 32 - 200
                     self.add_room_object(player)
                 elif obj == "D":
-                    new_dirt = Dirt_MLBL3(self, j * 64 - 200, i * 64 - 200)
+                    new_dirt = Dirt_MLBL3(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
+                elif obj == "S":
+                    new_spear = Spear_MLBL3(self, j * 32 - 200, i * 32 - 200)
+                    self.add_room_object(new_spear)
+                    self.room_items.append(new_spear)
+
 
 
 
