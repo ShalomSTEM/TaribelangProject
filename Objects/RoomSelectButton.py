@@ -2,12 +2,13 @@ from GameFrame import RoomObject, Globals
 
 
 class RoomSelectButton(RoomObject):
-    def __init__(self, room, x, y, next_level, selected_image, unselected_image):
+    def __init__(self, room, x, y, next_level, selected_image, unselected_image, direct=False):
         RoomObject.__init__(self, room, x, y)
 
         self.next_level = next_level
         self.selected_image = self.load_image(selected_image)
         self.unselected_image = self.load_image(unselected_image)
+        self.direct = direct
 
         self.set_image(self.unselected_image, 256, 256)
 
@@ -23,5 +24,7 @@ class RoomSelectButton(RoomObject):
         self.activate()
 
     def activate(self):
+        if self.direct:
+            Globals.direct_select = True
         Globals.next_level = self.next_level
         self.room.running = False
