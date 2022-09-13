@@ -14,6 +14,8 @@ class Home(Level):
 
         self.buttons = []
 
+
+
         milbi_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,
@@ -67,6 +69,9 @@ class Home(Level):
         self.selected_button = 0
         self.buttons[self.selected_button].set_selected(True)
         
+
+
+
     def right(self):
         if self.selected_button == 0 or self.selected_button == 1:
             self.buttons[self.selected_button].set_selected(False)
