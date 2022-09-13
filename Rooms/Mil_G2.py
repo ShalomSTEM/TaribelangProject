@@ -41,12 +41,6 @@ class Mil_G2(Level):
 
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
-                if obj == "B":
-                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_tree.png"))
-                elif obj == "T":
-                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Ttree.png"))
-                elif obj == "P":
-                    self.add_room_object(Player_MLBL2(self, j * 32 - 200, i * 32 - 200))
                 elif obj == "Z":
                     self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people1.png"))
                 elif obj == "Y":
@@ -60,10 +54,51 @@ class Mil_G2(Level):
 
 
 
-                elif obj == "E":
-                    self.add_room_object(ML2_Elders(self, j * 32 - 200, i * 32 - 200))
-                elif obj == "G":
-                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Btree.png"))
+
+
+                for i, row in enumerate(room_objects):
+                    for j, obj in enumerate(row):
+                        if obj == 'B':
+                            new_tree = MLBL2_Tree(self, j*32 - 200, i*32 - 200, "ML2_tree.png")
+                            self.add_room_object(new_tree)
+                            self.room_items.append(new_tree)
+                        if obj == 'T':
+                            new_tree = MLBL2_Tree(self, j*32 - 200, i*32 - 200, "ML2_Ttree.png")
+                            self.add_room_object(new_tree)
+                            self.room_items.append(new_tree)
+                        if obj == 'G':
+                            new_tree = MLBL2_Tree(self, j*32 - 200, i*32 - 200, "ML2_Btree.png")
+                            self.add_room_object(new_tree)
+                            self.room_items.append(new_tree)
+                        elif obj == 'P':
+                            self.add_room_object(Player_MLBL2(self, j*32 - 200, i*32 - 200))
+                        elif obj == 'E':
+                            new_elder = ML2_Elders(self, j*32 - 200, i*32 - 200)
+                            self.add_room_object(new_elder)
+                            self.room_items.append(new_elder)
+                        elif obj == 'Z':
+                            new_people = ML2_People(self, j*32 - 200, i*32 - 200, "ML2_people1.png")
+                            self.add_room_object(new_people)
+                            self.room_items.append(new_people)
+                        elif obj == 'Y':
+                            new_people = ML2_People(self, j*32 - 200, i*32 - 200, "ML2_people2.png")
+                            self.add_room_object(new_people)
+                            self.room_items.append(new_people)
+                        elif obj == 'X':
+                            new_people = ML2_People(self, j*32 - 200, i*32 - 200, "ML2_people3.png")
+                            self.add_room_object(new_people)
+                            self.room_items.append(new_people)
+                        elif obj == 'W':
+                            new_people = ML2_People(self, j*32 - 200, i*32 - 200, "ML2_people4.png")
+                            self.add_room_object(new_people)
+                            self.room_items.append(new_people)
+                        elif obj == 'V':
+                            new_people = ML2_People(self, j*32 - 200, i*32 - 200, "ML2_people5.png")
+                            self.add_room_object(new_people)
+                            self.room_items.append(new_people)
+
+
+
 
         # self.set_timer(60, self.complete)
 
