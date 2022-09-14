@@ -5,7 +5,7 @@ from Objects import Dirt_MLBL3
 from Objects import Stne_MLBL3
 from Objects import Player_MLBL3
 
-from TaribelangProject.Objects.Spear_MLBL3 import Spear_MLBL3
+#from TaribelangProject.Objects.Spear_MLBL3 import Spear_MLBL3
 
 
 class Mil_G3(Level):
