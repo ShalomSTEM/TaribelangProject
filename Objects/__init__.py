@@ -17,6 +17,10 @@ from Objects.ListenerIntro import ListenerIntro
 from Objects.CopFish import CopFish
 from Objects.CopRock import CopRock
 from Objects.CopStick import CopStick
+from Objects.Cop_Seaweed import Cop_Seaweed
+from Objects.CopLog import CopLog
+from Objects.CopLog_Short import CopLog_Short
+from Objects.Waterlily import Waterlily
 from Objects.CopG2_Player import CopG2_Player
 from Objects.CopG2_Block import CopG2_Block
 from Objects.CopG2_Goal import CopG2_Goal
