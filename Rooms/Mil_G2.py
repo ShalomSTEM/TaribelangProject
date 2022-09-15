@@ -1,6 +1,6 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
-
-
+import os
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
