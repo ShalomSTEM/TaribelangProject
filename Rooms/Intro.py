@@ -14,10 +14,12 @@ class Intro(Level):
 
     def start_wtc_taribelang(self):
         self.set_background_image(os.path.join("Title", "WTC_T.png"))
+        self.load_sound("WTC_Taribelang.ogg").play()
         self.set_timer(840, self.start_wtc_english)
 
     def start_wtc_english(self):
         self.set_background_image(os.path.join("Title", "WTC_E.png"))
+        self.load_sound("WTC_English.ogg").play()
         self.set_timer(1170, self.complete)
 
     def complete(self):
