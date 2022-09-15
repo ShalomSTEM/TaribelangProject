@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 from GameFrame import RoomObject, Globals
 import os
 
@@ -10,4 +8,3 @@ class MLBL2_Tree(RoomObject):
 
         image = self.load_image(os.path.join("MilbiL2", img))
         self.set_image(image, 75, 75)
->>>>>>> Stashed changes
