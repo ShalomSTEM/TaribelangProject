@@ -10,7 +10,13 @@ class Mil_G1(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.direct = direct
-
+        self.Time=15
+        self.timer = TextObject(self, 1250, 600, "15", colour=(255, 255, 255),size=50,font="Roboto")
+        self.stageCaption= TextObject(self, 1200, 580,"Stage: 1", colour=(255, 255, 255), size=30,font="Roboto")
+        self.add_room_object(self.stageCaption)
+        self.add_room_object(self.timer)
+        self.timerIncrease()
+        self.stage=1
         self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.TileSize = 100
         self.map = []
@@ -45,9 +51,33 @@ class Mil_G1(Level):
             Globals.next_level = EnumLevels.Home
         self.running = False
 
+    def timerIncrease(self):
+        self.set_timer(20,self.timerIncrease)
+        if (self.Time-1<0):
+            self.stage+=1
+            for row in self.map:
+                for obj in row:
+                    self.delete_object(obj)
+            self.map=[]
+            self.Tilemap=[]
+            self.VisTileMap=[]
+            self.InitializeTileMap()
+            self.ChangeVisTileMap()
+            self.Time=15
+            self.delete_object(self.stageCaption)
+            self.stageCaption=self.stageCaption= TextObject(self, 1200, 580,f"Stage: {self.stage}", colour=(255, 255, 255), size=30,font="Roboto")
+            self.add_room_object(self.stageCaption)
+        else:
+            self.Time-=1
+        self.delete_object(self.timer)
+        self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255),font="Roboto")
+        self.add_room_object(self.timer)
+
     def UpdateWorld(self):
         self.set_timer(2, self.UpdateWorld)
         print("Ran")
+        # if self.watericon.zeroWater:
+        #     self.complete()
         if (
             self.prev_player_x != Globals.player_x
             or self.prev_player_y != Globals.player_y
@@ -95,10 +125,10 @@ class Mil_G1(Level):
         for i in range(self.mapsize):
             row = []
             for j in range(self.mapsize):
-                if random.randint(0, 3) < 3:
-                    row.append(0)
-                else:
+                if random.randint(0, self.stage) == self.stage:
                     row.append(1)
+                else:
+                    row.append(0)
             self.Tilemap.append(row)
         # Object Add
         for i in range(self.Width_TileNum):
