@@ -6,11 +6,10 @@ from GameFrame import Level, TextObject
 class Story(Level):
     def __init__(self, screen, joysticks, sound, folder, image):
         Level.__init__(self, screen, joysticks)
-
-        self.load_sound("Copple_1.wav").play()
+        self.load_sound(sound).play()
 
         self.set_background_image(
-            os.path.join("MilbiL3", "PlaceHolderBackground_MLBL3.png")
+            os.path.join(folder, image)
         )
         self.set_timer(1050, self.complete)
 
