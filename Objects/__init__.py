@@ -22,4 +22,7 @@ from Objects.CopG2_Water import CopG2_Water
 from Objects.CopG2_NPC import CopG2_NPC
 from Objects.Dirt_MLBL3 import Dirt_MLBL3
 from Objects.Stne_MLBL3 import Stne_MLBL3
+from Objects.Player_MLBL3 import Player_MLBL3
+from Objects.Spear_MLBL3 import Spear_MLBL3
+from Objects.BossMLBL3 import BossMLBL3
 
