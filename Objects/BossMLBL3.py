@@ -8,8 +8,8 @@ class BossMLBL3(RoomObject):
 
         self.player = player
 
-        boss = self.load_image(os.path.join("MilbiL3", "front_1.png"))
-        self.set_image(boss, 16, 24)
+        npc = self.load_image(os.path.join("MilbiL3", "front_1.png"))
+        self.set_image(npc, 16, 24)
 
         # Load player animation images
         self.down = []
@@ -32,6 +32,7 @@ class BossMLBL3(RoomObject):
         self.right.append(self.load_image(os.path.join("MilbiL3", "right_2.png")))
         self.right.append(self.load_image(os.path.join("MilbiL3", "right_3.png")))
         self.right.append(self.load_image(os.path.join("MilbiL3", "right_4.png")))
+
         self.img_index = 0
 
         self.LEFT = 0
@@ -41,7 +42,7 @@ class BossMLBL3(RoomObject):
 
         self.facing = 4
 
-
+        self.handle_key_events = True
 
         self.move_to_player_count = 0
 
@@ -52,12 +53,13 @@ class BossMLBL3(RoomObject):
 
         self.moving = False
         self.animate()
+        self.set_timer(random.randint(5, 10), self.move)
 
     def move(self):
         self.move_to_player_count += 1
-        if self.move_to_player_count == 3 or \
-                abs(self.player.x - self.x) > 400 or \
-                abs(self.player.y - self.y) > 400:
+        if self.move_to_player_count == 1 or \
+                abs(self.player.x - self.x) > 100 or \
+                abs(self.player.y - self.y) > 100:
             self.move_towards_player()
             self.move_to_player_count = 0
         else:
@@ -70,8 +72,7 @@ class BossMLBL3(RoomObject):
                 self.move_up()
             elif randomwalk == self.DOWN:
                 self.move_down()
-        self.set_timer(10, self.move)
-
+        self.set_timer(random.randint(65, 120), self.move)
 
     def animate(self):
         self.img_index += 1
@@ -92,32 +93,27 @@ class BossMLBL3(RoomObject):
     def move_right(self):
         self.facing = self.RIGHT
         self.x_speed += Globals.NPCmove_speed
-
+        self.set_timer(60, self.stop)
 
     def move_left(self):
         self.facing = self.LEFT
         self.x_speed -= Globals.NPCmove_speed
-
+        self.set_timer(60, self.stop)
 
     def move_up(self):
         self.facing = self.UP
         self.y_speed -= Globals.NPCmove_speed
-
+        self.set_timer(60, self.stop)
 
     def move_down(self):
         self.facing = self.DOWN
         self.y_speed += Globals.NPCmove_speed
-
+        self.set_timer(60, self.stop)
 
     def stop(self):
         self.facing = 4
         self.x_speed = 0
         self.y_speed = 0
-
-
-
-    def attacks(self):
-        self.set_timer(60)
 
     def move_towards_player(self):
         x = self.player.x - self.x
@@ -132,5 +128,3 @@ class BossMLBL3(RoomObject):
                 self.move_right()
             else:
                 self.move_left()
-
-

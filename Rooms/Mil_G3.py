@@ -1,6 +1,6 @@
 from GameFrame import Level, Globals, EnumLevels
 import os
-from Objects import Dirt_MLBL3, Stne_MLBL3, Player_MLBL3, Spear_MLBL3, BossMLBL3, Orb_MLBL3
+from Objects import Dirt_MLBL3, Stne_MLBL3, Player_MLBL3, Spear_MLBL3, BossMLBL3, Orb_MLBL3, CopG2_NPC
 from Objects.Orb_MLBL3 import Orb_MLBL3
 
 class Mil_G3(Level):
@@ -32,7 +32,7 @@ class Mil_G3(Level):
             "DDB                    S        BBBBBBB          BDD",
             "DDB           B                                  BDD",
             "DDB           B                                  BDD",
-            "DDB           B                                  BDD",
+            "DDB           B              N                   BDD",
             "DDB           BBBB                               BDD",
             "DDB                                              BDD",
             "DDBBBBBBBBBBBBBBBBB                  BBBBBBBBBBBBBDD",
@@ -69,6 +69,10 @@ class Mil_G3(Level):
                     new_orb = Orb_MLBL3(self, j * 32 - 200, i * 32 - 200, self.player)
                     self.set_timer(200, self.add_room_object(new_orb))
                     self.set_timer(200, self.room_items.append(new_orb))
+                elif obj == 'N':
+                    new_npc = CopG2_NPC(self, j * 32 - 200, i * 32 - 200, self.player)
+                    self.add_room_object(new_npc)
+                    self.room_items.append(new_npc)
 
     def shift_room_left(self):
         for item in self.room_items:
