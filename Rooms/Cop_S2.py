@@ -6,3 +6,5 @@ class Cop_S2(Story):
         self.set_timer(900, self.complete)
     def complete(self):
         self.running = False
+
+

@@ -2,7 +2,6 @@ from GameFrame import Level, Globals, EnumLevels
 from Objects import CopSwimBG, CopFish, CopRock, CopStick, Cop_Seaweed, CopLog, CopLog_Short, Waterlily
 
 
-
 class Cop_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
