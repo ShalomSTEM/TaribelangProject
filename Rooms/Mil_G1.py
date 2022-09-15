@@ -74,7 +74,7 @@ class Mil_G1(Level):
         self.add_room_object(self.timer)
 
     def UpdateWorld(self):
-        self.set_timer(2, self.UpdateWorld)
+        self.set_timer(1, self.UpdateWorld)
         print("Ran")
         # if self.watericon.zeroWater:
         #     self.complete()
