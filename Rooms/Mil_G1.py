@@ -1,7 +1,7 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import random, math, time
 
-from Objects import Grass, Dirt, Player, WaterIcon
+from Objects import Grass, Dirt, Player, WaterIcon, Black
 from Objects.WaterIcon_Flash import WaterIcon_Flash
 
 
