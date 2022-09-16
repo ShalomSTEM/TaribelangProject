@@ -1,7 +1,7 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import random, math, time
 
-from Objects import Grass, Dirt, Player, WaterIcon
+from Objects import Grass, Dirt, Player, WaterIcon, Black
 from Objects.WaterIcon_Flash import WaterIcon_Flash
 
 
@@ -10,6 +10,18 @@ class Mil_G1(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.direct = direct
+        self.dead=False
+        #self.Instructions=TextObject(self,250,250,"Use the arrow keys or joystick to move", colour=(255,255,255),size=85,font="Roboto")
+        #self.add_room_object(self.Instructions)
+        self.LengthOfStage=15
+        self.finishStage=10
+        self.Time=self.LengthOfStage
+        self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255),size=50,font="Roboto")
+        self.stageCaption= TextObject(self, 1200, 580,"Stage: 1", colour=(255, 255, 255), size=30,font="Roboto")
+        self.add_room_object(self.stageCaption)
+        self.add_room_object(self.timer)
+        self.timerIncrease()
+        self.stage=1
         self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.TileSize = 100
         self.map = []
@@ -22,13 +34,14 @@ class Mil_G1(Level):
         self.prev_player_y = Globals.player_y
         self.InitializeTileMap()
         self.ChangeVisTileMap()
-        self.add_room_object(
-            Player(
+        self.player=Player(
                 self,
                 Globals.SCREEN_WIDTH / 2 - self.TileSize / 2,
                 Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2,
                 self.TileSize,
             )
+        self.add_room_object(
+            self.player
         )
         self.Eaten = False
         self.add_room_object(self.watericon)
@@ -43,33 +56,59 @@ class Mil_G1(Level):
             Globals.next_level = EnumLevels.Home
         self.running = False
 
+    def timerIncrease(self):
+        if not self.dead:
+            self.set_timer(20,self.timerIncrease)
+            if (self.Time-1<0):
+                self.stage+=1
+                for row in self.map:
+                    for obj in row:
+                        self.delete_object(obj)
+                self.map=[]
+                self.Tilemap=[]
+                self.VisTileMap=[]
+                self.InitializeTileMap()
+                self.ChangeVisTileMap()
+                self.Time=self.LengthOfStage
+                self.stageCaption.text=f"Stage: {self.stage}"
+                self.stageCaption.update_text()
+            else:
+                self.Time-=1
+            self.timer.text=str(self.Time)
+            self.timer.update_text()
+
     def UpdateWorld(self):
-        self.set_timer(2, self.UpdateWorld)
-        print("Ran")
-        if (
-            self.prev_player_x != Globals.player_x
-            or self.prev_player_y != Globals.player_y
-        ):
-            print("changed")
-            if Globals.player_x > self.prev_player_x:
-                self.prev_player_x += 1
-            elif Globals.player_x < self.prev_player_x:
-                self.prev_player_x -= 1
-            if Globals.player_y > self.prev_player_y:
-                self.prev_player_y += 1
-            elif Globals.player_y < self.prev_player_y:
-                self.prev_player_y -= 1
-            Globals.player_x = self.prev_player_x
-            Globals.player_y = self.prev_player_y
-            self.ChangeVisTileMap()
-            self.DisplayTilemap()
-            print(Globals.player_x)
-            """
-            if (Globals.lowWater):
-                self.waterFlash.flash()
-                self.delete_object(self.waterFlash)
-                self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
-            """
+        if(self.stage==self.finishStage):
+            self.complete()
+        if not self.dead:
+            self.set_timer(1, self.UpdateWorld)
+            print("Ran")
+            if self.watericon.zeroWater:
+                self.die()
+            if (
+                self.prev_player_x != Globals.player_x
+                or self.prev_player_y != Globals.player_y
+            ):
+                print("changed")
+                if Globals.player_x > self.prev_player_x:
+                    self.prev_player_x += 1
+                elif Globals.player_x < self.prev_player_x:
+                    self.prev_player_x -= 1
+                if Globals.player_y > self.prev_player_y:
+                    self.prev_player_y += 1
+                elif Globals.player_y < self.prev_player_y:
+                    self.prev_player_y -= 1
+                Globals.player_x = self.prev_player_x
+                Globals.player_y = self.prev_player_y
+                self.ChangeVisTileMap()
+                self.DisplayTilemap()
+                print(Globals.player_x)
+                """
+                if (Globals.lowWater):
+                    self.waterFlash.flash()
+                    self.delete_object(self.waterFlash)
+                    self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
+                """
 
     def ChangeVisTileMap(self):
         self.VisTileMap = []
@@ -93,10 +132,10 @@ class Mil_G1(Level):
         for i in range(self.mapsize):
             row = []
             for j in range(self.mapsize):
-                if random.randint(0, 3) < 3:
-                    row.append(0)
-                else:
+                if random.randint(0, self.stage) == self.stage:
                     row.append(1)
+                else:
+                    row.append(0)
             self.Tilemap.append(row)
         # Object Add
         for i in range(self.Width_TileNum):
@@ -137,3 +176,20 @@ class Mil_G1(Level):
         # Delete from array
         for i in range(self.Width_TileNum):
             self.map.pop(0)
+
+    def die(self):
+         self.dead=True
+         for row in self.map:
+                for obj in row:
+                    self.delete_object(obj)
+         self.delete_object(self.watericon)
+         self.delete_object(self.stageCaption)
+         self.delete_object(self.timer)
+         self.delete_object(self.player)
+         self.add_room_object(TextObject(self, 400,100,"Nice Try!",colour=(255,255,255),size=75))
+         self.add_room_object(TextObject(self, 300,200,f"You made it to Stage: {self.stage}",colour=(255,255,255),size=75))
+         self.set_timer(50,self.restartMilbiL1)
+
+    def restartMilbiL1(self):
+        Globals.next_level=4
+        self.running=False
