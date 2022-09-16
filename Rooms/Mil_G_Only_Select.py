@@ -20,7 +20,9 @@ class Mil_G_Only_Select(Level):
             160,
             EnumLevels.Mil_G1,
             os.path.join("Transition", "1_selected.png"),
-            os.path.join("Transition", "1.png"))
+            os.path.join("Transition", "1.png"),
+            direct=True
+        )
         self.buttons.append(plains_game_button)
         self.add_room_object(plains_game_button)
 
@@ -30,7 +32,9 @@ class Mil_G_Only_Select(Level):
             160,
             EnumLevels.Mil_G2,
             os.path.join("Transition", "2_selected.png"),
-            os.path.join("Transition", "2.png"))
+            os.path.join("Transition", "2.png"),
+            direct=True
+        )
         self.buttons.append(corroboree_game_button)
         self.add_room_object(corroboree_game_button)
 
@@ -40,7 +44,9 @@ class Mil_G_Only_Select(Level):
             160,
             EnumLevels.Mil_G3,
             os.path.join("Transition", "3_selected.png"),
-            os.path.join("Transition", "3.png"))
+            os.path.join("Transition", "3.png"),
+            direct=True
+        )
         self.buttons.append(boss_battle_game_button)
         self.add_room_object(boss_battle_game_button)
 

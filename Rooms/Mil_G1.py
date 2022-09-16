@@ -50,7 +50,6 @@ class Mil_G1(Level):
         self.UpdateWorld()
         # self.AnimalMove()
 
-
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False
