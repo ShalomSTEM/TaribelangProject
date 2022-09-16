@@ -1,11 +1,44 @@
 from GameFrame import Level, Globals, EnumLevels
 from Objects import Splayer, MBlock, MBlockDoor
 
+import os
+
 
 class Museum(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
         # - Set Background image - #
+
+        self.set_background_image(os.path.join("Museum", "floor.jpg"))
+        #self.background_color = (255, 255, 255)
+
+        # - Set up maze, objects 32x32 25x17 - #
+        room_objects = [
+            'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
+            'bp____________________________________D_',
+            'b_______________________________________',
+            'b______________________________________b ',
+            'b_______bbbbbbbb________bbbbbbbb_______b',
+            'b______________________________________b',
+            'b______________________________________b',
+            'b__________bb______________bb__________b',
+            'b______________________________________b',
+            'b______________________________________b',
+            'b_______bbbbbbbb________bbbbbbbb_______b',
+            'b______________________________________b',
+            'b______________________________________b',
+            'b__________bb______________bb__________b',
+            'b______________________________________b',
+            'b______________________________________b',
+            'b_______bbbbbbbb________bbbbbbbb_______b',
+            'b______________________________________b',
+            'b__________bb______________bb__________b',
+            'b______________________________________b',
+            'b______________________________________b',
+            'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+        ]
+
+
         #self.set_background_image("background.jpg")
         self.background_color = (255, 255, 255)
         # - Set up maze, objects 32x32 25x17 - #
