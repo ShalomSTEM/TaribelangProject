@@ -98,5 +98,5 @@ class Globals:
     player_y = 0
     lowWater = False
 
-    # Move speed for Copple Game 2
+    # Move speed for Copple Game 2 & Milbi Boss
     NPCmove_speed = 4
