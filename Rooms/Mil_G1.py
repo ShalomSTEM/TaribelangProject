@@ -9,20 +9,17 @@ from Objects.WaterIcon_Flash import WaterIcon_Flash
 class Mil_G1(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
+
+        #Important Variables
+
         self.direct = direct
         self.dead=False
-        #self.Instructions=TextObject(self,250,250,"Use the arrow keys or joystick to move", colour=(255,255,255),size=85,font="Roboto")
-        #self.add_room_object(self.Instructions)
         self.LengthOfStage=15
         self.finishStage=10
         self.Time=self.LengthOfStage
         self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255),size=50,font="Roboto")
         self.stageCaption= TextObject(self, 1200, 580,"Stage: 1", colour=(255, 255, 255), size=30,font="Roboto")
-        self.add_room_object(self.stageCaption)
-        self.add_room_object(self.timer)
-        self.timerIncrease()
         self.stage=1
-        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
@@ -32,19 +29,43 @@ class Mil_G1(Level):
         self.VisTileMap = []
         self.prev_player_x = Globals.player_x
         self.prev_player_y = Globals.player_y
+        self.player=Player(self, Globals.SCREEN_WIDTH / 2 - self.TileSize / 2, Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2, self.TileSize)
+        self.Eaten = False
+
+        # Show Instructions
+
+        self.slideNum=0
+        self.Instructions=TextObject(self,160,250,"Use the arrow keys or joystick to move", colour=(255,255,255),size=60,font="Roboto")
+        self.InstructionSlide()
+
+        # Start Game
+
+        self.set_timer(250,self.startGame)
+
+    def InstructionSlide(self):
+        self.delete_object(self.Instructions)
+        if self.slideNum < 4:
+            self.set_timer(60,self.InstructionSlide)
+        if self.slideNum==1:
+            self.Instructions=TextObject(self,160,250,"Collect Grass tiles to increase water counter", colour=(255,255,255),size=60,font="Roboto")
+        elif self.slideNum==2:
+            self.Instructions=TextObject(self,160,250,"Each stage has less grass", colour=(255,255,255),size=60,font="Roboto")
+        elif self.slideNum==3:
+            self.Instructions=TextObject(self,160,250,f"Reach Stage {self.finishStage} without running out of water to win", colour=(255,255,255),size=60,font="Roboto")
+        self.add_room_object(self.Instructions)
+        self.slideNum+=1
+
+
+    def startGame(self):
+        self.delete_object(self.Instructions)
+        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
+        self.add_room_object(self.watericon)
+        self.add_room_object(self.stageCaption)
+        self.add_room_object(self.timer)
+        self.timerIncrease()
         self.InitializeTileMap()
         self.ChangeVisTileMap()
-        self.player=Player(
-                self,
-                Globals.SCREEN_WIDTH / 2 - self.TileSize / 2,
-                Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2,
-                self.TileSize,
-            )
-        self.add_room_object(
-            self.player
-        )
-        self.Eaten = False
-        self.add_room_object(self.watericon)
+        self.add_room_object(self.player)
         # self.waterFlash=WaterIcon_Flash(self,Globals.SCREEN_WIDTH-50,20)
         # self.add_room_object(self.waterFlash)
         self.UpdateWorld()
