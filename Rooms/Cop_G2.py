@@ -7,7 +7,6 @@ class Cop_G2(Level):
         Level.__init__(self, screen, joysticks)
 
         self.background_colour = (51, 43, 0)
-
         self.room_items = []
 
         # - Set up maze, objects 32x32 - #
@@ -94,3 +93,4 @@ class Cop_G2(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
+
