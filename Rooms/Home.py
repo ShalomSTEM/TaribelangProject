@@ -6,7 +6,6 @@ import os
 class Home(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-
         # - Set a background with information - #
         self.set_background_image(os.path.join("Title", "home_bg.png"))
 
@@ -43,9 +42,9 @@ class Home(Level):
             os.path.join("Title", "museum.png"))
         self.buttons.append(museum_button)
         self.add_room_object(museum_button)
-
         self.selected_button = 1
         self.buttons[self.selected_button].set_selected(True)
+        
 
     def right(self):
         if self.selected_button == 0 or self.selected_button == 1:
@@ -58,7 +57,6 @@ class Home(Level):
             self.buttons[self.selected_button].set_selected(False)
             self.selected_button -= 1
             self.buttons[self.selected_button].set_selected(True)
-
     def apply_selection(self):
         self.buttons[self.selected_button].activate()
 
@@ -69,3 +67,7 @@ class Home(Level):
             self.left()
         elif signal == "enter":
             self.apply_selection()
+        elif signal == "dowm":
+            self.down()
+        elif signal == "up":
+            self.up()
