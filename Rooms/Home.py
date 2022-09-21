@@ -67,7 +67,3 @@ class Home(Level):
             self.left()
         elif signal == "enter":
             self.apply_selection()
-        elif signal == "dowm":
-            self.down()
-        elif signal == "up":
-            self.up()

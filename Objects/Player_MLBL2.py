@@ -115,4 +115,4 @@ class Player_MLBL2(RoomObject):
         else:
             self.set_image(self.down[0], 50, 50)
 
-        self.set_timer(5, self.animate)
+        # THIS WAS ADDED IN MERGE #136, I WASNT SURE IF IT WAS IMPORTANT :] - self.set_timer(5, self.animate)

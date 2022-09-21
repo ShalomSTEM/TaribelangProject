@@ -89,9 +89,11 @@ class Globals:
     # - Indicates that the room is to return to the menu - #
     # -      rather than the next part of the story      - #
     direct_select = False
-
-    move_speed = 5     #Tehe#
+    
+    # MilbiL3
+    move_speed = 5     
     ORB_move_speed = 6
+    
     total_count = 0
     destroyed_count = 0
     player_x = 0
