@@ -102,3 +102,6 @@ class Globals:
 
     # Move speed for Copple Game 2 & Milbi Boss
     NPCmove_speed = 4
+    
+    # lazy way of preventing lots of printing
+    hasRan = False
