@@ -19,7 +19,6 @@ class Mil_G1(Level):
         self.Time=self.LengthOfStage
         self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255),size=50,font="Roboto")
         self.stageCaption= TextObject(self, 1200, 580,"Stage: 1", colour=(255, 255, 255), size=30,font="Roboto")
-        self.stage=1
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
@@ -29,7 +28,6 @@ class Mil_G1(Level):
         self.VisTileMap = []
         self.prev_player_x = Globals.player_x
         self.prev_player_y = Globals.player_y
-        self.player=Player(self, Globals.SCREEN_WIDTH / 2 - self.TileSize / 2, Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2, self.TileSize)
         self.Eaten = False
 
         # Show Instructions
