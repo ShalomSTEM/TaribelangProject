@@ -37,3 +37,4 @@ from Objects.Player_MLBL2 import Player_MLBL2
 from Objects.ListenerIntro import ListenerIntro
 from Objects.CopFish import CopFish
 from Objects.MLBL2_Tree import MLBL2_Tree
+from Objects.MilbiL1InstructionImg import MilbiL1InstructionImg

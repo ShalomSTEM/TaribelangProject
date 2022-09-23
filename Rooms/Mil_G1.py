@@ -1,10 +1,7 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
-import random, math, time
+import random
 
-from Objects import Grass, Dirt, Player, WaterIcon, Black
-from Objects.TitleMilbiButton import TitleMilbiButton
-from Objects.WaterIcon_Flash import WaterIcon_Flash
-
+from Objects import Grass, Dirt, Player, WaterIcon, Black, MilbiL1InstructionImg
 
 
 class Mil_G1(Level):
@@ -14,13 +11,13 @@ class Mil_G1(Level):
         # Important Variables
 
         self.direct = direct
-        self.dead=False
-        self.LengthOfStage=15
-        self.finishStage=10
-        self.Time=self.LengthOfStage
-        self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255),size=50,font="Roboto")
-        self.stageCaption= TextObject(self, 1200, 580,"Stage: 1", colour=(255, 255, 255), size=30,font="Roboto")
-        self.stage=1
+        self.dead = False
+        self.LengthOfStage = 15
+        self.finishStage = 10
+        self.Time = self.LengthOfStage
+        self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255), size=50, font="Roboto")
+        self.stageCaption = TextObject(self, 1200, 580, "Stage: 1", colour=(255, 255, 255), size=30, font="Roboto")
+        self.stage = 1
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
@@ -30,18 +27,18 @@ class Mil_G1(Level):
         self.VisTileMap = []
         self.prev_player_x = Globals.player_x
         self.prev_player_y = Globals.player_y
-        self.player=Player(self, Globals.SCREEN_WIDTH / 2 - self.TileSize / 2, Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2, self.TileSize)
+        self.player = Player(self, Globals.SCREEN_WIDTH / 2 - self.TileSize / 2, Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2, self.TileSize)
         self.Eaten = False
 
         # Show Instructions
 
-        self.slideNum=0
-        self.Instructions=[]
+        self.slideNum = 0
+        self.Instructions = []
         self.InstructionSlide()
 
         # Start Game
 
-        self.set_timer(320,self.startGame)
+        self.set_timer(320, self.startGame)
 
     def InstructionSlide(self):
 
@@ -49,23 +46,26 @@ class Mil_G1(Level):
 
         for obj in self.Instructions:
             self.delete_object(obj)
+        for i in range(len(self.Instructions)):
             self.Instructions.pop(0)
 
         # set timer to add next Instruction
 
         if self.slideNum < 4:
-            self.set_timer(80,self.InstructionSlide)
+            self.set_timer(80, self.InstructionSlide)
 
-        # load text based on the slide
+        # load text and imgs based on the slide
 
         if self.slideNum == 0:
-            self.Instructions.append(TextObject(self,160,250,"Use the arrow keys or joystick to move", colour=(255,255,255),size=60,font="Roboto"))
+            self.Instructions.append(TextObject(self, 270, 250, "Use the D-pad or arrow keys to move", colour=(255, 255, 255), size=60, font="Roboto"))
+            self.Instructions.append(MilbiL1InstructionImg(self, "InstructionImg1.png", 180, 450, 442, 224))
+            self.Instructions.append(MilbiL1InstructionImg(self, "InstructionImg2.png", 800, 450, 332, 227))
         elif self.slideNum == 1:
-            self.Instructions.append(TextObject(self,160,250,"Collect Grass tiles to increase water counter", colour=(255,255,255),size=60,font="Roboto"))
+            self.Instructions.append(TextObject(self, 160, 250, "Collect Grass tiles to increase water counter", colour=(255, 255, 255), size=60, font="Roboto"))
         elif self.slideNum == 2:
-            self.Instructions.append(TextObject(self,160,250,"Each stage has less grass", colour=(255,255,255),size=60,font="Roboto"))
+            self.Instructions.append(TextObject(self, 160, 250, "Each stage has less grass", colour=(255, 255, 255), size=60, font="Roboto"))
         elif self.slideNum == 3:
-            self.Instructions.append(TextObject(self,160,250,f"Reach Stage {self.finishStage} without running out of water to win", colour=(255,255,255),size=60,font="Roboto"))
+            self.Instructions.append(TextObject(self, 160, 250, f"Reach Stage {self.finishStage} without running out of water to win", colour=(255, 255, 255), size=60, font="Roboto"))
 
         # add text to the level
 
@@ -73,7 +73,6 @@ class Mil_G1(Level):
             self.add_room_object(obj)
 
         self.slideNum += 1
-
 
     def startGame(self):
 
@@ -91,7 +90,7 @@ class Mil_G1(Level):
 
         self.timerIncrease()
 
-        # Create Entire array map of Grass/Dirt using 1s and 0s, then load the initial map of tile objects
+        # Create Entire array map of Grass/Dirt using 1s and 0s, then load the initial map of tile objects to screen
 
         self.InitializeTileMap()
 
@@ -112,27 +111,38 @@ class Mil_G1(Level):
 
     def timerIncrease(self):
         if not self.dead:
-            self.set_timer(20,self.timerIncrease)
-            if self.Time-1<0:
-                self.stage+=1
+            self.set_timer(20, self.timerIncrease)
+
+            # Check if time for stage has elapsed
+
+            if self.Time-1 < 0:
+
+                # Reset almost everything and change stage
+
+                self.stage += 1
                 for row in self.map:
                     for obj in row:
                         self.delete_object(obj)
-                self.map=[]
-                self.Tilemap=[]
-                self.VisTileMap=[]
-                self.InitializeTileMap()
-                self.ChangeVisTileMap()
-                self.Time=self.LengthOfStage
-                self.stageCaption.text=f"Stage: {self.stage}"
-                self.stageCaption.update_text()
+                self.map = []
+                self.Tilemap = []
+                self.VisTileMap = []
+                if (self.stage < self.finishStage):
+                    self.InitializeTileMap()
+                    self.ChangeVisTileMap()
+                    self.Time = self.LengthOfStage
+                    self.stageCaption.text = f"Stage: {self.stage}"
+                    self.stageCaption.update_text()
             else:
-                self.Time-=1
-            self.timer.text=str(self.Time)
+
+                # reduce time if it is still positive
+
+                self.Time -= 1
+
+            self.timer.text = str(self.Time)
             self.timer.update_text()
 
     def UpdateWorld(self):
-        if self.stage==self.finishStage:
+        if self.stage == self.finishStage:
             self.complete()
         if not self.dead:
             self.set_timer(1, self.UpdateWorld)
@@ -264,7 +274,7 @@ class Mil_G1(Level):
             self.map.pop(0)
 
     def die(self):
-        self.dead=True
+        self.dead = True
         for row in self.map:
             for obj in row:
                 self.delete_object(obj)
@@ -272,10 +282,10 @@ class Mil_G1(Level):
         self.delete_object(self.stageCaption)
         self.delete_object(self.timer)
         self.delete_object(self.player)
-        self.add_room_object(TextObject(self, 400,100,"Nice Try!",colour=(255,255,255),size=75))
-        self.add_room_object(TextObject(self, 300,200,f"You made it to Stage: {self.stage}",colour=(255,255,255),size=75))
-        self.set_timer(50,self.restartMilbiL1)
+        self.add_room_object(TextObject(self, 400, 100, "Nice Try!", colour=(255, 255, 255), size=75))
+        self.add_room_object(TextObject(self, 300, 200, f"You made it to Stage: {self.stage}", colour=(255, 255, 255), size=75))
+        self.set_timer(50, self.restartMilbiL1)
 
     def restartMilbiL1(self):
-        Globals.next_level=4
-        self.running=False
+        Globals.next_level = 4
+        self.running = False
