@@ -1,15 +1,15 @@
 from GameFrame import EnumLevels, Level, TextObject, Globals
-from Objects import RoomSelectButton, Listener
+from Objects import RoomSelectButton, Listener, Controller, L_DpadOverlay
 import os
 
 
 class Home(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
-
         # - Set a background with information - #
         self.set_background_image(os.path.join("Title", "home_bg.png"))
-
+        # Broken \/
+        # self.add_room_object(L_DpadOverlay(self, 150, 150))
         self.add_room_object(Listener(self, 0, 0))
 
         self.buttons = []
@@ -43,9 +43,9 @@ class Home(Level):
             os.path.join("Title", "museum.png"))
         self.buttons.append(museum_button)
         self.add_room_object(museum_button)
-
         self.selected_button = 1
         self.buttons[self.selected_button].set_selected(True)
+        
 
     def right(self):
         if self.selected_button == 0 or self.selected_button == 1:
@@ -58,7 +58,6 @@ class Home(Level):
             self.buttons[self.selected_button].set_selected(False)
             self.selected_button -= 1
             self.buttons[self.selected_button].set_selected(True)
-
     def apply_selection(self):
         self.buttons[self.selected_button].activate()
 

@@ -30,6 +30,7 @@ class Mil_G1(Level):
         self.player = Player(self, Globals.SCREEN_WIDTH / 2 - self.TileSize / 2, Globals.SCREEN_HEIGHT / 2 - self.TileSize / 2, self.TileSize)
         self.Eaten = False
 
+
         # Show Instructions
 
         self.slideNum = 0
@@ -126,7 +127,7 @@ class Mil_G1(Level):
                 self.map = []
                 self.Tilemap = []
                 self.VisTileMap = []
-                if (self.stage < self.finishStage):
+                if self.stage < self.finishStage:
                     self.InitializeTileMap()
                     self.ChangeVisTileMap()
                     self.Time = self.LengthOfStage

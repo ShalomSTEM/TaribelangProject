@@ -34,8 +34,6 @@ class Player(RoomObject):
                 os.path.join("Images/MilbiL1", "sprite_2.png"), self.size, self.size
             )
             Globals.player_y -= 1
-        if key[pygame.K_n]:
-            self.room.complete()
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] > 0.5:
@@ -57,4 +55,4 @@ class Player(RoomObject):
             self.set_image(
                 os.path.join("Images/MilbiL1", "sprite_0.png"), self.size, self.size
             )
-            Globals.player_y += 1
+            # THIS WAS ADDED IN MERGE #136, I WASNT SURE IF IT WAS IMPORTANT :] - Globals.player_y += 1
