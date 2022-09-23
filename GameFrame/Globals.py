@@ -25,6 +25,7 @@ class EnumLevels(IntEnum):
     Cop_S_Only = 20
     Cop_G_Only_Select = 21
     Museum = 22
+    ControllerOverlay = 23
 
 
 class Globals:
@@ -66,7 +67,8 @@ class Globals:
         "Cop_S4",
         "Cop_S_Only",
         "Cop_G_Only_Select",
-        "Museum"
+        "Museum",
+        "ControllerOverlay"
     ]
 
     # - Set the starting level - #
@@ -103,5 +105,6 @@ class Globals:
     # Move speed for Copple Game 2 & Milbi Boss
     NPCmove_speed = 4
     
-    # lazy way of preventing lots of printing
-    hasRan = False
+    #ControllerOverlay
+    oldRoom = 0
+    OverlayButtons = ""

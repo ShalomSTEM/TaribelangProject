@@ -40,8 +40,5 @@ from Objects.Player_MLBL2 import Player_MLBL2
 from Objects.ListenerIntro import ListenerIntro
 from Objects.CopFish import CopFish
 from Objects.MLBL2_Tree import MLBL2_Tree
-from Objects.Controller import Controller
-from Objects.Controller import L_DpadOverlay
-from Objects.Controller import R_DpadOverlay
-from Objects.Controller import U_DpadOverlay
-from Objects.Controller import D_DpadOverlay
+from Objects.Controller import Controller1
+from Objects.Controller import Controller2

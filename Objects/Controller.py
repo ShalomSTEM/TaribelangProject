@@ -1,13 +1,21 @@
 import string
-from GameFrame import Globals, RoomObject
+from GameFrame import Globals, RoomObject, EnumLevels
 import os
 import pygame
 
-class Controller(RoomObject):
+class Controller1(RoomObject):
     def __init__(self, room, x, y, buttons):
         RoomObject.__init__(self, room, x, y)
+        Globals.oldRoom = self.room.roomNum
+        self.set_image(self.load_image("listener.png"), 1, 1)
+        Globals.next_level = EnumLevels.ControllerOverlay
+        Globals.OverlayButtons = buttons
+        self.room.running = False
+class Controller2(RoomObject):
+    def __init__(self, room, x, y):
+        RoomObject.__init__(self, room, x, y)
         self.set_image(self.load_image(os.path.join("Overlays", "Controller_b.png")), 1280, 720)
-        self.mylist = buttons.split(" ")
+        self.mylist = Globals.OverlayButtons.split(" ")
         self.handle_key_events = True
         if "a" in self.mylist: self.room.add_room_object(A_ButtonOverlay(self.room, 150, 150))
         if "b" in self.mylist: self.room.add_room_object(B_ButtonOverlay(self.room, 150, 150))
@@ -22,8 +30,8 @@ class Controller(RoomObject):
         if "start" in self.mylist: self.room.add_room_object(Select_ButtonOverlay(self.room, 150, 150))
         if "select" in self.mylist: self.room.add_room_object(Start_ButtonOverlay(self.room, 150, 150))
     def key_pressed(self, key):
-        if key[pygame.K_a]:
-            print("a")
+        if key[pygame.K_INSERT]:
+            self.room.complete()
 
 class L_DpadOverlay(RoomObject):
     def __init__(self, room, x, y):
@@ -44,11 +52,11 @@ class U_DpadOverlay(RoomObject):
 class A_ButtonOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "Button-Green.svg")), 64, 64)       
+        self.set_image(self.load_image(os.path.join("Overlays", "Button-Red.svg")), 64, 64)       
 class B_ButtonOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "Button-Red.svg")), 64, 64)
+        self.set_image(self.load_image(os.path.join("Overlays", "Button-Yellow.svg")), 64, 64)
 class X_ButtonOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
@@ -56,20 +64,20 @@ class X_ButtonOverlay(RoomObject):
 class Y_ButtonOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "Button-Yellow.svg")), 64, 64)
+        self.set_image(self.load_image(os.path.join("Overlays", "Button-Green.svg")), 64, 64)
 class Start_ButtonOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "dpad_L.svg")), 64, 64)       
+        self.set_image(self.load_image(os.path.join("Overlays", "Start_Select_Button.png")), 64, 64)       
 class Select_ButtonOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "dpad_L.svg")), 64, 64)
+        self.set_image(self.load_image(os.path.join("Overlays", "Start_Select_Button.png")), 64, 64)
 class L_BumperOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "dpad_L.svg")), 64, 64)       
+        self.set_image(self.load_image(os.path.join("Overlays", "L_Bumper_Button.png")), 64, 64)       
 class R_BumperOverlay(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "dpad_L.svg")), 64, 64)
+        self.set_image(self.load_image(os.path.join("Overlays", "R_Bumper_Button.png")), 64, 64)
