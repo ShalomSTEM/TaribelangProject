@@ -9,6 +9,9 @@ class Cop_S_Only(Level):
         self.times = [0, 1050, 900, 900, 930]
         self.updateStory()
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_S_Only
+
     def updateStory(self):
         self.index += 1
         self.load_sound(f"Copple_{self.index}.wav").play()

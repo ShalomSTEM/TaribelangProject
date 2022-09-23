@@ -14,6 +14,9 @@ class Cop_G_Only_Select(Level):
 
         self.buttons = []
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_G_Only_Select
+
         running_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,

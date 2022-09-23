@@ -12,6 +12,9 @@ class Cop_G3(Level):
         self.add_room_object(background_2)
         self.add_room_object(CopFish(self, 65, Globals.SCREEN_HEIGHT / 2))
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_G3
+
         self.curr_index = 0
         self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "stick", "lily", "log1", "rock", "lily"]
         self.location = [360, 50, 680, 360, 50, 360, 670, 70, 110, 200, 360, 50, 140]

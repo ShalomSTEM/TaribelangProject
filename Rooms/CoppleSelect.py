@@ -12,6 +12,9 @@ class CoppleSelect(Level):
 
         self.add_room_object(Listener(self, 0, 0))
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.CoppleSelect
+
         self.buttons = []
 
         play_through_button = RoomSelectButton(

@@ -9,6 +9,8 @@ from Objects.WaterIcon_Flash import WaterIcon_Flash
 class Mil_G1(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Mil_G1
         self.direct = direct
         self.dead=False
         #self.Instructions=TextObject(self,250,250,"Use the arrow keys or joystick to move", colour=(255,255,255),size=85,font="Roboto")

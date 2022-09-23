@@ -9,6 +9,9 @@ class Cop_G2(Level):
         self.background_colour = (51, 43, 0)
         self.room_items = []
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_G2
+
         # - Set up maze, objects 32x32 - #
         room_objects = [
             'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',

@@ -7,6 +7,10 @@ class Mil_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.direct = direct
+
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Mil_G3
+
         self.set_background_image(os.path.join("MilbiL3", "PlaceHolderBackground_MLBL3.png"))
         self.room_items = []
         size = 20

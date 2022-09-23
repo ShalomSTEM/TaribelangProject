@@ -1,4 +1,4 @@
-from GameFrame import Level, TextObject
+from GameFrame import Level, TextObject, EnumLevels
 import os
 
 from Objects import ListenerIntro
@@ -7,6 +7,9 @@ from Objects import ListenerIntro
 class Intro(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
+
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Intro
 
         self.set_background_image(os.path.join("Title", "title_to_wtc.png"))
         self.add_room_object(ListenerIntro(self, 0, 0))

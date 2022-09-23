@@ -11,8 +11,4 @@ class Story(Level):
         self.set_background_image(
             os.path.join(folder, image)
         )
-        self.set_timer(1050, self.complete)
 
-
-    def complete(self):
-        self.running = False

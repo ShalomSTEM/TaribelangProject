@@ -9,6 +9,9 @@ class Mil_S_Only(Level):
         self.times = [0, 1050, 1050, 1050, 1050]
         self.updateStory()
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Mil_S_Only
+
     def updateStory(self):
         self.index += 1
         self.load_sound(f"Milbi_{self.index}.wav").play()

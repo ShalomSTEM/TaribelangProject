@@ -8,8 +8,11 @@ class Museum(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
         # - Set Background image - #
-
         self.set_background_image(os.path.join("Museum", "floor.jpg"))
+        
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Museum
+
         #self.background_color = (255, 255, 255)
 
         # - Set up maze, objects 32x32 25x17 - #

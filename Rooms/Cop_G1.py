@@ -7,6 +7,9 @@ class Cop_G1(Level):
 
         self.direct = direct
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_G1
+
         room_name = TextObject(self, 200, 300, "Copple Game Part 1", colour=(255, 255, 255))
         self.add_room_object(room_name)
 
