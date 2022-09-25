@@ -65,46 +65,47 @@ class Controller2(RoomObject):
 class ButtonOverlay(RoomObject):
     def __init__(self, room, x, y, button):
         RoomObject.__init__(self, room, x, y)
-        if button == 'LEFT':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadL)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Left', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'RIGHT':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadR)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Right', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'UP':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadU)), 64, 64)  
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Up', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'DOWN':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadD)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Down', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'A':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.A)), 64, 64)    
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- A', 40, "Comic Sans MS", (255, 0, 255), False, False))  
-        if button == 'B':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.B)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- B', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'X':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.X)), 64, 64)     
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- X', 40, "Comic Sans MS", (255, 0, 255), False, False))  
-        if button == 'Y':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Y)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Y', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'LB':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.LB)), 64, 64)       
-            self.room.add_room_object(ButtonText(self.room, self.x-265, self.y, 'Left Bumper', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'RB':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.RB)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x-280, self.y, 'Right Bumper', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'START':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Select)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x-160, self.y, 'Select', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
-        if button == 'SELECT':
-            self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Select)), 64, 64)
-            self.room.add_room_object(ButtonText(self.room, self.x-160, self.y, 'Select', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
+        match button:
+            case 'LEFT':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadL)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Left', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'RIGHT':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadR)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Right', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'UP':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadU)), 64, 64)  
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Up', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case'DOWN':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadD)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Down', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'A':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.A)), 64, 64)    
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- A', 40, "Comic Sans MS", (255, 0, 255), False, False))  
+            case 'B':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.B)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- B', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'X':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.X)), 64, 64)     
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- X', 40, "Comic Sans MS", (255, 0, 255), False, False))  
+            case 'Y':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Y)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Y', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'LB':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.LB)), 64, 64)       
+                self.room.add_room_object(ButtonText(self.room, self.x-265, self.y, 'Left Bumper', 40, "Comic Sans MS", (255, 0, 255), False, False))
+                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'RB':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.RB)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x-280, self.y, 'Right Bumper', 40, "Comic Sans MS", (255, 0, 255), False, False))
+                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'START':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Start)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x-160, self.y, 'Start', 40, "Comic Sans MS", (255, 0, 255), False, False))
+                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
+            case 'SELECT':
+                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Select)), 64, 64)
+                self.room.add_room_object(ButtonText(self.room, self.x-160, self.y, 'Select', 40, "Comic Sans MS", (255, 0, 255), False, False))
+                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
 class ButtonText(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold, ContinueText):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
