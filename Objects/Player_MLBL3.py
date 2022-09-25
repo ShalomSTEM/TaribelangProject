@@ -1,69 +1,37 @@
 import pygame
 from GameFrame import RoomObject, Globals
-from Objects import Stne_MLBL3
 import os
 
 
 class Player_MLBL3(RoomObject):
     def __init__(self, room, x, y, size):
         RoomObject.__init__(self, room, x, y)
-        self.size = size
-        player = self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_1.png"))
-        self.set_image(player, 16, 24)
 
-        # Load player animation images
+        self.size = size
+
         self.down = []
-        self.down.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_1.png"))
-        )
-        self.down.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_2.png"))
-        )
-        self.down.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_3.png"))
-        )
-        self.down.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "front_4.png"))
-        )
+        self.down.append(self.load_image(os.path.join("MilbiL3", "front_1.png")))
+        self.down.append(self.load_image(os.path.join("MilbiL3", "front_2.png")))
+        self.down.append(self.load_image(os.path.join("MilbiL3", "front_3.png")))
+        self.down.append(self.load_image(os.path.join("MilbiL3", "front_4.png")))
+
         self.up = []
-        self.up.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "back_1.png"))
-        )
-        self.up.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "back_2.png"))
-        )
-        self.up.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "back_3.png"))
-        )
-        self.up.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "back_4.png"))
-        )
+        self.up.append(self.load_image(os.path.join("MilbiL3", "back_1.png")))
+        self.up.append(self.load_image(os.path.join("MilbiL3", "back_2.png")))
+        self.up.append(self.load_image(os.path.join("MilbiL3", "back_3.png")))
+        self.up.append(self.load_image(os.path.join("MilbiL3", "back_4.png")))
+
         self.left = []
-        self.left.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "left_1.png"))
-        )
-        self.left.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "left_2.png"))
-        )
-        self.left.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "left_3.png"))
-        )
-        self.left.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "left_4.png"))
-        )
+        self.left.append(self.load_image(os.path.join("MilbiL3", "left_1.png")))
+        self.left.append(self.load_image(os.path.join("MilbiL3", "left_2.png")))
+        self.left.append(self.load_image(os.path.join("MilbiL3", "left_3.png")))
+        self.left.append(self.load_image(os.path.join("MilbiL3", "left_4.png")))
+
         self.right = []
-        self.right.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "right_1.png"))
-        )
-        self.right.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "right_2.png"))
-        )
-        self.right.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "right_3.png"))
-        )
-        self.right.append(
-            self.load_image(os.path.join(Globals.milbiL3_alt_path, "right_4.png"))
-        )
+        self.right.append(self.load_image(os.path.join("MilbiL3", "right_1.png")))
+        self.right.append(self.load_image(os.path.join("MilbiL3", "right_2.png")))
+        self.right.append(self.load_image(os.path.join("MilbiL3", "right_3.png")))
+        self.right.append(self.load_image(os.path.join("MilbiL3", "right_4.png")))
 
         self.img_index = 0
 
@@ -77,6 +45,8 @@ class Player_MLBL3(RoomObject):
         self.handle_key_events = True
 
         self.register_collision_object("Stne_MLBL3")
+        self.register_collision_object("Dirt_MLBL3")
+        self.register_collision_object("Spear_MLBL3")
 
         self.block_right = False
         self.block_left = False
@@ -96,65 +66,94 @@ class Player_MLBL3(RoomObject):
     def handle_collision(self, other, other_type):
         if other_type == "Stne_MLBL3":
 
-            if self.collides_at(self, 8, 0, "Stne_MLBL3") and not self.block_right:
+            if self.collides_at(self, 4, 0, "Stne_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
                     self.x = self.prev_x
                 else:
                     self.move_left()
 
-            if self.collides_at(self, -8, 0, "Stne_MLBL3") and not self.block_left:
+            if self.collides_at(self, -4, 0, "Stne_MLBL3") and not self.block_left:
                 self.block_left = True
                 if self.x >= 206:
                     self.x = self.prev_x
                 else:
                     self.move_right()
 
-            if self.collides_at(self, 0, 8, "Stne_MLBL3"):
+            if self.collides_at(self, 0, 4, "Stne_MLBL3"):
                 self.block_down = True
                 if self.y <= 446:
                     self.y = self.prev_y
                 else:
                     self.move_up()
 
-            if self.collides_at(self, 0, -8, "Stne_MLBL3") and not self.block_up:
+            if self.collides_at(self, 0, -4, "Stne_MLBL3") and not self.block_up:
                 self.block_up = True
                 if self.y >= 154:
                     self.y = self.prev_y
                 else:
                     self.move_down()
 
-    def handle_collision_kill_block(self, other, other_type):
-        if other_type == "KillB_MLBL3":
+        if other_type == "Spear_MLBL3":
 
-            if self.collides_at(self, 4, 0, "KillB_MLBL3") and not self.block_right:
+            if self.collides_at(self, 4, 0, "Spear_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
-                    self.x = self.prev_x
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
 
-            else:
-                self.move_left()
 
-            if self.collides_at(self, -4, 0, "KillB_MLBL3") and not self.block_left:
+            if self.collides_at(self, -4, 0, "Spear_MLBL3") and not self.block_left:
                 self.block_left = True
                 if self.x >= 206:
-                    self.x = self.prev_x
-                else:
-                    self.move_right()
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
 
-            if self.collides_at(self, 0, 4, "KillB_MLBL3"):
+
+            if self.collides_at(self, 0, 4, "Spear_MLBL3"):
                 self.block_down = True
                 if self.y <= 446:
-                    self.y = self.prev_y
-                else:
-                    self.move_up()
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
 
-            if self.collides_at(self, 0, -4, "KillB_MLBL3") and not self.block_up:
+
+            if self.collides_at(self, 0, -4, "Spear_MLBL3") and not self.block_up:
                 self.block_up = True
                 if self.y >= 154:
-                    self.y = self.prev_y
-                else:
-                    self.move_down()
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    self.set_image(player, 16, 24)
+
+
+
+
+
+            if self.collides_at(self, 4, 0, "Spear_MLBL3") and not self.block_right:
+                self.block_right = True
+                if self.x < 596:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
+                    self.set_image(player, 16, 24)
+                    self.remove_object("Spear_MLBL3")
+
+            if self.collides_at(self, -4, 0, "Spear_MLBL3") and not self.block_left:
+                self.block_left = True
+                if self.x >= 206:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
+                    self.set_image(player, 16, 24)
+                    self.remove_object("Spear_MLBL3")
+
+            if self.collides_at(self, 0, 4, "Spear_MLBL3"):
+                self.block_down = True
+                if self.y <= 446:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
+                    self.set_image(player, 16, 24)
+                    self.remove_object("Spear_MLBL3")
+
+            if self.collides_at(self, 0, -4, "Spear_MLBL3") and not self.block_up:
+                self.block_up = True
+                if self.y >= 154:
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
+                    self.set_image(player, 16, 24)
+                    self.remove_object("Spear_MLBL3")
 
     def key_pressed(self, key):
         if key[pygame.K_LEFT]:
@@ -178,49 +177,37 @@ class Player_MLBL3(RoomObject):
 
     def move_right(self):
         if self.x < 600:
-            self.set_image(
-                os.path.join(Globals.milbiL3_path, "right_2.png"), self.size, self.size
-            )
-        Globals.player_x += 1
-
+            self.set_image(os.path.join("Images", "MilbiL3", "right_2.png"), self.size, self.size)
         if self.x < 600:
-            self.x += Globals.mlb3_move_speed
+            self.x += Globals.move_speed
         else:
             self.room.shift_room_left()
+        Globals.player_x += 1
 
     def move_left(self):
-
         if self.x > 200:
-            self.set_image(
-                os.path.join(Globals.milbiL3_path, "left_2.png"), self.size, self.size
-            )
+            self.set_image(os.path.join("Images", "MilbiL3", "left_2.png"), self.size, self.size)
         if self.x > 200:
-            self.x -= Globals.mlb3_move_speed
+            self.x -= Globals.move_speed
         else:
             self.room.shift_room_right()
-
         Globals.player_x -= 1
 
     def move_up(self):
-        self.set_image(
-            os.path.join(Globals.milbiL3_path, "back_2.png"), self.size, self.size
-        )
-
+        self.set_image(os.path.join("Images", "MilbiL3", "back_2.png"), self.size, self.size)
         if self.y > 150:
-            self.y -= Globals.mlb3_move_speed
+            self.y -= Globals.move_speed
         else:
             self.room.shift_room_down()
             Globals.player_y -= 1
 
     def move_down(self):
-        self.set_image(
-            os.path.join(Globals.milbiL3_path, "front_2.png"), self.size, self.size
-        )
-        Globals.player_y += 1
+        self.set_image(os.path.join("Images", "MilbiL3", "front_2.png"), self.size, self.size)
         if self.y < 450:
-            self.y += Globals.mlb3_move_speed
+            self.y += Globals.move_speed
         else:
             self.room.shift_room_up()
+        Globals.player_y += 1
 
     def animate(self):
         self.img_index += 1
@@ -240,42 +227,34 @@ class Player_MLBL3(RoomObject):
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] > 0.5:
-            self.set_image(
-                os.path.join(Globals.milbiL3_path, "right_2.png"), self.size, self.size
-            )
+            self.set_image(os.path.join("Images", "MilbiL3", "right_2.png"), self.size, self.size)
             Globals.player_x += 1
 
             if self.x < 600:
-                self.x += Globals.mlb3_move_speed
+                self.x += Globals.move_speed
             else:
                 self.room.shift_room_left()
 
         if p1_buttons[11] < -0.5:
-            self.set_image(
-                os.path.join(Globals.milbiL3_path, "left_2.png"), self.size, self.size
-            )
+            self.set_image(os.path.join("Images", "MilbiL3", "left_2.png"), self.size, self.size)
             if self.x > 200:
-                self.x -= Globals.mlb3_move_speed
+                self.x -= Globals.move_speed
             else:
                 self.room.shift_room_right()
             Globals.player_x -= 1
 
         if p1_buttons[10] < -0.5:
-            self.set_image(
-                os.path.join(Globals.milbiL3_path, "back_2.png"), self.size, self.size
-            )
+            self.set_image(os.path.join("Images", "MilbiL3", "back_2.png"), self.size, self.size)
             if self.y > 150:
-                self.y -= Globals.mlb3_move_speed
+                self.y -= Globals.move_speed
             else:
                 self.room.shift_room_down()
             Globals.player_y -= 1
 
         if p1_buttons[10] > 0.5:
-            self.set_image(
-                os.path.join(Globals.milbiL3_path, "front_2.png"), self.size, self.size
-            )
+            self.set_image(os.path.join("Images", "MilbiL3", "front_2.png"), self.size, self.size)
             Globals.player_y += 1
             if self.y < 450:
-                self.y += Globals.mlb3_move_speed
+                self.y += Globals.move_speed
             else:
                 self.room.shift_room_up()

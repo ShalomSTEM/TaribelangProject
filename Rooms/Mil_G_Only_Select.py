@@ -12,6 +12,9 @@ class Mil_G_Only_Select(Level):
 
         self.add_room_object(Listener(self, 0, 0))
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_G_Only_Select
+
         self.buttons = []
 
         plains_game_button = RoomSelectButton(

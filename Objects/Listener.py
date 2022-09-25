@@ -1,6 +1,6 @@
 from GameFrame import RoomObject
 import pygame
-
+from Objects.Controller import Controller1
 
 class Listener(RoomObject):
     def __init__(self, room, x, y):
@@ -31,6 +31,9 @@ class Listener(RoomObject):
             elif key[pygame.K_RETURN]:
                 self.room.key_signal("enter")
                 self.pause_press()
+            elif key[pygame.K_DELETE]:
+                self.room.add_room_object(Controller1(self.room, 0, 0, "a b x y rb lb up down start left right select"))
+                self.pause_press
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if self.can_press:

@@ -1,10 +1,11 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
-from Objects import ML2_Elders, ML2_People
-
+import os
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
-
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Mil_G2
         self.direct = direct
         self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
 

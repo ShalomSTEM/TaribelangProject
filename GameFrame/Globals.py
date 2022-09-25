@@ -25,6 +25,7 @@ class EnumLevels(IntEnum):
     Cop_S_Only = 20
     Cop_G_Only_Select = 21
     Museum = 22
+    ControllerOverlay = 23
 
 
 class Globals:
@@ -66,7 +67,8 @@ class Globals:
         "Cop_S4",
         "Cop_S_Only",
         "Cop_G_Only_Select",
-        "Museum"
+        "Museum",
+        "ControllerOverlay"
     ]
 
     # - Set the starting level - #
@@ -89,17 +91,21 @@ class Globals:
     # - Indicates that the room is to return to the menu - #
     # -      rather than the next part of the story      - #
     direct_select = False
-
-    move_speed = 4
-    SLOW = 1
-    MEDIUM = 2
-    FAST = 3
-    mlb3_move_speed = 4
+    
+    # MilbiL3
+    move_speed = 5     
+    ORB_move_speed = 6
+    
     total_count = 0
     destroyed_count = 0
     player_x = 0
     player_y = 0
     lowWater = False
 
-    # Move speed for Copple Game 2
+    # Move speed for Copple Game 2 & Milbi Boss
     NPCmove_speed = 4
+    
+    #ControllerOverlay
+    oldRoom = 0
+    OverlayButtons = ""
+

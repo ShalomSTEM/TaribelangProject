@@ -1,18 +1,15 @@
-import os
+from GameFrame import Globals, Story, EnumLevels
 
-from GameFrame import Level, TextObject, EnumLevels, Globals
-
-
-class Cop_S2(Level):
+class Cop_S2(Story):
     def __init__(self, screen, joysticks):
-        Level.__init__(self, screen, joysticks)
-        self.set_background_image(
-            os.path.join("Copple Story", "Cop_Background_2.png")
-        )
 
-        self.set_timer(60, self.complete)
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_S2
 
+        Story.__init__(self, screen, joysticks, "Copple_2.wav", 'CoppleS', "Copple_Background_2.png")
+        self.set_timer(900, self.complete)
     def complete(self):
         self.running = False
+        Globals.next_level = EnumLevels.Cop_S3
 
 

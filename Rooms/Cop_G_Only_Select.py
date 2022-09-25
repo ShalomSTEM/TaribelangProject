@@ -14,13 +14,16 @@ class Cop_G_Only_Select(Level):
 
         self.buttons = []
 
+        # - Information for Controller Overlay
+        self.roomNum = EnumLevels.Cop_G_Only_Select
+
         running_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,
             160,
             EnumLevels.Cop_G1,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"),
+            os.path.join("Transition", "1_selected.png"),
+            os.path.join("Transition", "1.png"),
             direct=True
         )
         self.buttons.append(running_game_button)
@@ -31,8 +34,8 @@ class Cop_G_Only_Select(Level):
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
             160,
             EnumLevels.Cop_G2,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"),
+            os.path.join("Transition", "2_selected.png"),
+            os.path.join("Transition", "2.png"),
             direct=True
         )
         self.buttons.append(maze_game_button)
@@ -43,8 +46,8 @@ class Cop_G_Only_Select(Level):
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
             160,
             EnumLevels.Cop_G3,
-            os.path.join("MilbiL1", "Brown.png"),
-            os.path.join("MilbiL1", "Green.png"),
+            os.path.join("Transition", "3_selected.png"),
+            os.path.join("Transition", "3.png"),
             direct=True
         )
         self.buttons.append(swimming_game_button)
