@@ -1,6 +1,5 @@
 from GameFrame import Globals, Story, EnumLevels
 
-
 class Mil_S4(Story):
     def __init__(self, screen, joysticks):
         

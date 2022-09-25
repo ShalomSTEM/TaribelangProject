@@ -6,6 +6,7 @@ class Splayer(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
+
         self.down = []
         self.down.append(self.load_image(os.path.join('Museum', 'front_1.png')))
         self.down.append(self.load_image(os.path.join('Museum', 'front_2.png')))
@@ -42,7 +43,6 @@ class Splayer(RoomObject):
 
         self.handle_key_events = True
 
-
         self.playerUp = self.load_image(os.path.join('Museum', 'Splayer.png'))
         self.playerDown = self.load_image(os.path.join('Museum', 'Splayer.png'))
         self.playerLeft = self.load_image(os.path.join('Museum', 'Splayer.png'))
@@ -54,11 +54,9 @@ class Splayer(RoomObject):
         self.handle_key_events = True
 
         # -- Register the objects with which -- #
-
         # -- this object handles collisions  -- #
         self.register_collision_object('MBlock')
         self.register_collision_object('MBlockDoor')
-
         self.animate()
 
     def prestep(self):
@@ -122,3 +120,4 @@ class Splayer(RoomObject):
             self.set_image(self.down[0], 64, 64)
 
         self.set_timer(3, self.animate)
+

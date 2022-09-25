@@ -1,6 +1,5 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import random, math, time
-
 from Objects import Grass, Dirt, Player, WaterIcon, Black
 from Objects.WaterIcon_Flash import WaterIcon_Flash
 
@@ -57,6 +56,7 @@ class Mil_G1(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
+
 
     def timerIncrease(self):
         if not self.dead:
