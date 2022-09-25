@@ -2,7 +2,6 @@ from GameFrame import Level, Globals, EnumLevels
 from Objects import CopSwimBG, CopFish, CopRock, CopStick, Cop_Seaweed, CopLog, CopLog_Short, Waterlily
 
 
-
 class Cop_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
@@ -22,7 +21,6 @@ class Cop_G3(Level):
         self.wait_time = [10, 30, 30, 60, 30, 30, 60, 40, 50, 50, 20, 10, 10]
 
         self.set_timer(self.wait_time[self.curr_index], self.add_obstacle)
-
 
     def complete(self):
         if Globals.direct_select:

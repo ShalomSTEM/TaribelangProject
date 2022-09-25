@@ -49,7 +49,7 @@ class Player_MLBL2(RoomObject):
         self.facing = 6
 
     def handle_collision(self, other, other_type):
-        if other_type == 'MLBL2_Tree':
+        if other_type == 'Block':
 
             if self.collides_at(self, 4, 0, 'Block') and not self.block_right:
                 self.block_right = True

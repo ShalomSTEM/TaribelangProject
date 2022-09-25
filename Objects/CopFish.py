@@ -17,15 +17,14 @@ class CopFish(RoomObject):
 
         self.handle_key_events = True
 
-
     def prestep(self):
         self.set_image(self.img_flat, 65, 36)
-
 
     def key_pressed(self, key):
         if key[pygame.K_UP]:
             if self.y > 50:
                 self.y -= 4
+
                 #self.set_image(self.img_up, 65, 36)
         elif key[pygame.K_DOWN]:
             if self.y < Globals.SCREEN_HEIGHT - 50:
@@ -44,5 +43,4 @@ class CopFish(RoomObject):
             self.y += 4
         if p1_buttons[11] < 0.5:
             self.x += 2
-
 
