@@ -32,7 +32,7 @@ class Listener(RoomObject):
                 self.room.key_signal("enter")
                 self.pause_press()
             elif key[pygame.K_DELETE]:
-                self.room.add_room_object(Controller1(self.room, 0, 0, "A B X Y RB LB UP DOWN START LEFT RIGHT SELECT"))
+                self.room.add_room_object(Controller1(self.room, 0, 0, "A B X Y Up Down Left Right RB LB Select Start"))
                 self.pause_press
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):

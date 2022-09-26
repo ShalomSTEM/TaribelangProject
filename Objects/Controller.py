@@ -1,20 +1,6 @@
 from GameFrame import Globals, RoomObject, EnumLevels, TextObject
 import os
 import pygame
-
-class OverlayButtons():
-    A = "Button-Red.svg"
-    B = "Button-Yellow.svg"
-    X = "Button-Blue.svg"
-    Y = "Button-Green.svg"
-    Start = "Start_Select_Button.png"
-    Select = "Start_Select_Button.png"
-    LB = "L_Bumper_Button.png"
-    RB = "R_Bumper_Button.png"
-    DpadU = "dpad_U.svg"
-    DpadD = "dpad_D.svg"
-    DpadL = "dpad_L.svg"
-    DpadR = "dpad_R.svg"
 class Controller1(RoomObject):
     def __init__(self, room, x, y, buttons):
         RoomObject.__init__(self, room, x, y)
@@ -27,85 +13,72 @@ class Controller2(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
         self.set_image(self.load_image(os.path.join("Overlays", "Controller_b.png")), 1280, 720)
-        self.handle_key_events = True
+        self.handle_key_events = True\
+
+        # Split the strings and get a count of them
         self.mylist = Globals.OverlayButtons.split(" ")
         countMethod = self.mylist.__len__()
         self.leftCount = countMethod.real
+
+        # Set up the variables
         self.leftSpacing = 0
-        localIndex = 1
+        self.rightCount = 0
+        self.rightList = []
+        self.rightSpacing = 0
+        self.rightTextSpacing = []
+
+        # Seperate the left side from the right side
         if self.mylist.count("RB") == 1: 
             self.leftCount -= 1
-            self.room.add_room_object(ButtonOverlay(self.room, 1200, 60*localIndex, "RB"))
-            localIndex += 1
+            self.rightCount += 1
+            self.rightList.append('Right Bumper')
+            self.rightTextSpacing.append(280)
             self.mylist.remove("RB")
         if self.mylist.count("LB") == 1: 
             self.leftCount -= 1
-            self.room.add_room_object(ButtonOverlay(self.room, 1200, 60*localIndex, "LB"))
-            localIndex += 1
+            self.rightCount += 1
+            self.rightList.append('Left Bumper')
+            self.rightTextSpacing.append(265)
             self.mylist.remove("LB")
-        if self.mylist.count("START") == 1: 
+        if self.mylist.count("Start") == 1: 
             self.leftCount -= 1
-            self.room.add_room_object(ButtonOverlay(self.room, 1200, 60*localIndex, "START"))
-            localIndex += 1
-            self.mylist.remove("START")
-        if self.mylist.count("SELECT") == 1: 
+            self.rightCount += 1
+            self.rightList.append('Start')
+            self.rightTextSpacing.append(160)
+            self.mylist.remove("Start")
+        if self.mylist.count("Select") == 1: 
             self.leftCount -= 1
-            self.room.add_room_object(ButtonOverlay(self.room, 1200, 60*localIndex, "SELECT"))
-            localIndex += 1
-            self.mylist.remove("SELECT")
-        self.leftSpacing = 660 / self.leftCount
+            self.rightCount += 1
+            self.rightList.append('Select')
+            self.rightTextSpacing.append(160)
+            self.mylist.remove("Select")
+
+        # Make sure division by 0 isn't tried
+        if self.leftCount != 0: self.leftSpacing = 660 / self.leftCount
+        if self.rightCount != 0: self.rightSpacing = 330 / self.rightCount
+
+        # Loop that creates the buttons on both sides
         for i in range(self.leftCount):
-            self.room.add_room_object(ButtonOverlay(self.room, 20, self.leftSpacing*i, self.mylist[i]))
-        # # Press A to Continue! text
+            self.room.add_room_object(ButtonOverlay(self.room, 20, self.leftSpacing*i, self.mylist[i], False, 0))
+        for i in range(self.rightCount):
+            self.room.add_room_object(ButtonOverlay(self.room, 1200, self.leftSpacing*i, self.rightList[i], True, self.rightTextSpacing[i]))
+
+        # Press A to Continue! text
         self.room.add_room_object(ButtonText(self.room, 460, 620, ' ', 40, "Comic Sans MS", (255, 0, 255), False, True))
 
     def key_pressed(self, key):
         if key[pygame.K_a]:
             self.room.complete() 
 class ButtonOverlay(RoomObject):
-    def __init__(self, room, x, y, button):
+    def __init__(self, room, x, y, button, right, rightTextSpacing):
         RoomObject.__init__(self, room, x, y)
-        match button:
-            case 'LEFT':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadL)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Left', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'RIGHT':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadR)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Right', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'UP':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadU)), 64, 64)  
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Up', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case'DOWN':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.DpadD)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Down', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'A':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.A)), 64, 64)    
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- A', 40, "Comic Sans MS", (255, 0, 255), False, False))  
-            case 'B':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.B)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- B', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'X':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.X)), 64, 64)     
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- X', 40, "Comic Sans MS", (255, 0, 255), False, False))  
-            case 'Y':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Y)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, '- Y', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'LB':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.LB)), 64, 64)       
-                self.room.add_room_object(ButtonText(self.room, self.x-265, self.y, 'Left Bumper', 40, "Comic Sans MS", (255, 0, 255), False, False))
-                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'RB':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.RB)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x-280, self.y, 'Right Bumper', 40, "Comic Sans MS", (255, 0, 255), False, False))
-                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'START':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Start)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x-160, self.y, 'Start', 40, "Comic Sans MS", (255, 0, 255), False, False))
-                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
-            case 'SELECT':
-                self.set_image(self.load_image(os.path.join("Overlays", OverlayButtons.Select)), 64, 64)
-                self.room.add_room_object(ButtonText(self.room, self.x-160, self.y, 'Select', 40, "Comic Sans MS", (255, 0, 255), False, False))
-                self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
+        if right:
+            self.set_image(self.load_image(os.path.join("Overlays", f'{button}.png')), 64, 64)
+            self.room.add_room_object(ButtonText(self.room, self.x-rightTextSpacing, self.y, button, 40, "Comic Sans MS", (255, 0, 255), False, False))
+            self.room.add_room_object(ButtonText(self.room, self.x-20, self.y, '-', 40, "Comic Sans MS", (255, 0, 255), False, False))
+        else:
+            self.set_image(self.load_image(os.path.join("Overlays", f'{button}.svg')), 64, 64)
+            self.room.add_room_object(ButtonText(self.room, self.x+80, self.y, f'- {button}', 40, "Comic Sans MS", (255, 0, 255), False, False))
 class ButtonText(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold, ContinueText):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
