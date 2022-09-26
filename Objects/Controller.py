@@ -13,7 +13,7 @@ class Controller2(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
         self.set_image(self.load_image(os.path.join("Overlays", "Controller_b.png")), 1280, 720)
-        self.handle_key_events = True\
+        self.handle_key_events = True
 
         # Split the strings and get a count of them
         self.mylist = Globals.OverlayButtons.split(" ")
@@ -61,7 +61,7 @@ class Controller2(RoomObject):
         for i in range(self.leftCount):
             self.room.add_room_object(ButtonOverlay(self.room, 20, self.leftSpacing*i, self.mylist[i], False, 0))
         for i in range(self.rightCount):
-            self.room.add_room_object(ButtonOverlay(self.room, 1200, self.leftSpacing*i, self.rightList[i], True, self.rightTextSpacing[i]))
+            self.room.add_room_object(ButtonOverlay(self.room, 1200, self.rightSpacing*i, self.rightList[i], True, self.rightTextSpacing[i]))
 
         # Press A to Continue! text
         self.room.add_room_object(ButtonText(self.room, 460, 620, ' ', 40, "Comic Sans MS", (255, 0, 255), False, True))
