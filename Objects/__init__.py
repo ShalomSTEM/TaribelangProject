@@ -42,5 +42,5 @@ from Objects.CopFish import CopFish
 from Objects.MLBL2_Tree import MLBL2_Tree
 from Objects.Controller import Controller1
 from Objects.Controller import Controller2
-
 from Objects.MilbiL1InstructionImg import MilbiL1InstructionImg
+from Objects.Controller import Controller3
