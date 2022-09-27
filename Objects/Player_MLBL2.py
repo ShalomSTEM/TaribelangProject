@@ -7,6 +7,7 @@ class Player_MLBL2(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
+        self.allowInput = False
         player = self.load_image(os.path.join("MilbiL1", "sprite_0.png"))
         self.set_image(player, 50, 50)
 
@@ -41,6 +42,7 @@ class Player_MLBL2(RoomObject):
         self.moving = False
         self.animate()
 
+        self.set_timer(60, self.update)
     def prestep(self):
         self.block_right = False
         self.block_left = False
@@ -78,20 +80,34 @@ class Player_MLBL2(RoomObject):
                     self.y = self.prev_y
                 else:
                     self.move_down()
-
+    def walking(self):
+        self.y -= 1.2
+        self.facing = self.UP
+    def update(self):
+        if self.y > 330 and self.allowInput == False:
+            self.walking()
+        elif self.y <= 330 and self.allowInput == False:
+            self.allowInput = True
+        else:
+            pass
+        
     def key_pressed(self, key):
         if key[pygame.K_LEFT]:
-            self.x -= 4
-            self.facing = self.LEFT
+            if self.allowInput:
+                self.x -= 4
+                self.facing = self.LEFT
         elif key[pygame.K_RIGHT]:
-            self.x += 4
-            self.facing = self.RIGHT
+            if self.allowInput:
+                self.x += 4
+                self.facing = self.RIGHT
         elif key[pygame.K_UP]:
-            self.y -= 4
-            self.facing = self.UP
+            if self.allowInput:
+                self.y -= 4
+                self.facing = self.UP
         elif key[pygame.K_DOWN]:
-            self.y += 4
-            self.facing = self.DOWN
+            if self.allowInput:
+                self.y += 4
+                self.facing = self.DOWN
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] < -0.5:
@@ -100,8 +116,6 @@ class Player_MLBL2(RoomObject):
             pass
 
     def animate(self):
-        print("AM i ANIMATING?")
-        print(self.facing)
         #self.img_index += 1
         #self.img_index %= 4
         if self.facing == self.LEFT:
@@ -115,4 +129,4 @@ class Player_MLBL2(RoomObject):
         else:
             self.set_image(self.down[0], 50, 50)
 
-        # THIS WAS ADDED IN MERGE #136, I WASNT SURE IF IT WAS IMPORTANT :] - self.set_timer(5, self.animate)
+        self.set_timer(5, self.animate)
