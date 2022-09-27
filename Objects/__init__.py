@@ -43,4 +43,5 @@ from Objects.MLBL2_Tree import MLBL2_Tree
 from Objects.Controller import Controller1
 from Objects.Controller import Controller2
 from Objects.MilbiL1InstructionImg import MilbiL1InstructionImg
-# from Objects.Controller import Controller3
+from Objects.Copple1_Player import Copple1_Player
+from Objects.CopG1_Tree import CopG1_Tree
