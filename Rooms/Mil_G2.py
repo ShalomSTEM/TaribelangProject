@@ -11,6 +11,7 @@ class Mil_G2(Level):
         self.indexT = 0
         self.indexG = 0
         self.indexB = 0
+        self.arrows = []
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
 
@@ -86,13 +87,10 @@ class Mil_G2(Level):
         # self.set_timer(60, self.complete)
     def deleteObjects(self):
         for i in range(self.indexB):
-            print(self.BObj[i])
             self.delete_object(self.BObj[i])
         for i in range(self.indexT):
-            print(self.TObj[i])
             self.delete_object(self.TObj[i])
         for i in range(self.indexG):
-            print(self.GObj[i])
             self.delete_object(self.GObj[i])
         self.OverlayBG = OverlayTextBG(self, 0, 540)
         self.add_room_object(self.OverlayBG)
@@ -102,11 +100,11 @@ class Mil_G2(Level):
             self.add_room_object(self.TObj[i])
         for i in range(self.indexG):
             self.add_room_object(self.GObj[i])
-        self.set_timer(180, self.addObjects)
+        self.set_timer(10, self.addObjects)
     def addObjects(self):
         self.OverlayBG.updateBody()
         self.OverlayBG.updateTitle()
-        self.set_timer(60, self.OverlayBG.complete)
+        self.set_timer(10, self.OverlayBG.complete)
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False
