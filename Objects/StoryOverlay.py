@@ -1,55 +1,38 @@
-from GameFrame import RoomObject, Globals
+from GameFrame import RoomObject, TextObject
 import os
 
-stretch = False
 
-
-class overlays(RoomObject):
-    def __init__(self, room, x, y, stretch):
+class OverlayTextBG(RoomObject):
+    def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        if stretch == False:
-            self.set_image(
-                os.path.join(Globals.storyOverlay_path, "StoryOverlay.png"),
-                width=Globals.SCREEN_WIDTH / 5,
-                height=Globals.SCREEN_HEIGHT,
-            )
-        else:
-            self.set_image(
-                os.path.join(Globals.storyOverlay_path, "StoryOverlay_stretched.png"),
-                width=Globals.SCREEN_WIDTH,
-                height=Globals.SCREEN_HEIGHT,
-            )
+        self.bodyText = ['elder 1 talk', 'elder 2 talk', 'elder 3 talk']
+        self.titleText = ['elder 1', 'elder 2', 'elder 3']
+        self.currentTextBody = self.bodyText[0]
+        self.currentIndexBody = 0
+        self.currentTextTitle = self.titleText[0]
+        self.currentIndexTitle = 0
+        self.set_image(self.load_image(os.path.join("Overlays", 'OverlayText.png')), 1280, 180)
+        self.Title = TextOverlay(self.room, self.x, self.y, self.currentTextTitle, 60, 'Comic Sans MS', (255, 255, 255), False)
+        self.Body = TextOverlay(self.room, self.x, self.y+70, self.currentTextBody, 40, 'Comic Sans MS', (255, 255, 255), False)
+        self.room.add_room_object(self.Title)
+        self.room.add_room_object(self.Body)
+            
+    def updateTitle(self):
+        self.currentIndexTitle += 1
+        self.currentTextTitle = self.titleText[self.currentIndexTitle]
+        self.Title.text = self.currentTextTitle
+        self.set_timer(10, self.Title.update_text)
+        
+    def updateBody(self):
+        self.currentIndexBody += 1
+        self.currentTextBody = self.bodyText[self.currentIndexBody]
+        self.Body.text = self.currentTextBody
+        self.set_timer(10, self.Body.update_text)
+    def complete(self):
+        self.room.delete_object(self.Title)
+        self.room.delete_object(self.Body)
+        self.room.delete_object(self)
 
-
-class Title(RoomObject):
-    def __init__(self, room, x, y, image, stretch: bool):
-        RoomObject.__init__(self, room, x, y)
-        if stretch == False:
-            self.set_image(
-                image,
-                width=Globals.SCREEN_WIDTH / 5.05,
-                height=Globals.SCREEN_HEIGHT / 5,
-            )
-        else:
-            self.set_image(
-                image,
-                width=Globals.SCREEN_WIDTH,
-                height=Globals.SCREEN_HEIGHT / 5,
-            )
-
-
-class Body(RoomObject):
-    def __init__(self, room, x, y, image, stretch: bool):
-        RoomObject.__init__(self, room, x, y)
-        if stretch == False:
-            self.set_image(
-                image,
-                width=Globals.SCREEN_WIDTH / 5.05,
-                height=Globals.SCREEN_HEIGHT / 5,
-            )
-        else:
-            self.set_image(
-                image,
-                width=Globals.SCREEN_WIDTH,
-                height=Globals.SCREEN_HEIGHT - (Globals.SCREEN_HEIGHT / 5),
-            )
+class TextOverlay(TextObject):
+    def __init__(self, room, x, y, text, size, font, colour, bold):
+        TextObject.__init__(self, room, x, y, text, size, font, colour, bold)

@@ -1,10 +1,16 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
 from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders
+from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
-
+        self.BObj = []
+        self.TObj = []
+        self.GObj = []
+        self.indexT = 0
+        self.indexG = 0
+        self.indexB = 0
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
 
@@ -45,9 +51,15 @@ class Mil_G2(Level):
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
                 if obj == "B":
-                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_tree.png"))
+                    B = MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_tree.png")
+                    self.add_room_object(B)
+                    self.BObj.append(B)
+                    self.indexB += 1
                 elif obj == "T":
-                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Ttree.png"))
+                    T = MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Ttree.png")
+                    self.add_room_object(T)
+                    self.TObj.append(T)
+                    self.indexT += 1
                 elif obj == "P":
                     self.add_room_object(Player_MLBL2(self, j * 32 - 200, i * 32 - 200))
                 elif obj == "Z":
@@ -66,10 +78,35 @@ class Mil_G2(Level):
                 elif obj == "E":
                     self.add_room_object(ML2_Elders(self, j * 32 - 200, i * 32 - 200))
                 elif obj == "G":
-                    self.add_room_object(MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Btree.png"))
+                    G = MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Btree.png")
+                    self.add_room_object(G)
+                    self.GObj.append(G)
+                    self.indexG += 1
 
         # self.set_timer(60, self.complete)
-
+    def deleteObjects(self):
+        for i in range(self.indexB):
+            print(self.BObj[i])
+            self.delete_object(self.BObj[i])
+        for i in range(self.indexT):
+            print(self.TObj[i])
+            self.delete_object(self.TObj[i])
+        for i in range(self.indexG):
+            print(self.GObj[i])
+            self.delete_object(self.GObj[i])
+        self.OverlayBG = OverlayTextBG(self, 0, 540)
+        self.add_room_object(self.OverlayBG)
+        for i in range(self.indexB):
+            self.add_room_object(self.BObj[i])
+        for i in range(self.indexT):
+            self.add_room_object(self.TObj[i])
+        for i in range(self.indexG):
+            self.add_room_object(self.GObj[i])
+        self.set_timer(180, self.addObjects)
+    def addObjects(self):
+        self.OverlayBG.updateBody()
+        self.OverlayBG.updateTitle()
+        self.set_timer(60, self.OverlayBG.complete)
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False

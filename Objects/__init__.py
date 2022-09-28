@@ -5,9 +5,6 @@ from Objects.WaterIcon import WaterIcon
 from Objects.WaterIcon_Flash import WaterIcon_Flash
 from Objects.People import ML2_People
 from Objects.Elders import ML2_Elders
-from Objects.StoryOverlay import overlays
-from Objects.StoryOverlay import Title
-from Objects.StoryOverlay import Body
 from Objects.Player_MLBL3 import Player_MLBL3
 from Objects.ButtonForPlaceholder import ButtonForPlaceholder
 from Objects.RoomSelectButton import RoomSelectButton
@@ -40,8 +37,9 @@ from Objects.Player_MLBL2 import Player_MLBL2
 from Objects.ListenerIntro import ListenerIntro
 from Objects.CopFish import CopFish
 from Objects.MLBL2_Tree import MLBL2_Tree
-from Objects.Controller import Controller1
-from Objects.Controller import Controller2
+from Objects.Controller import Controller1, Controller2
 from Objects.MilbiL1InstructionImg import MilbiL1InstructionImg
 from Objects.Copple1_Player import Copple1_Player
 from Objects.CopG1_Tree import CopG1_Tree
+from Objects.StoryOverlay import OverlayTextBG
+from Objects.StoryOverlay import TextObject

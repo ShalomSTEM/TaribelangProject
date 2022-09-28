@@ -2,24 +2,23 @@ import pygame
 from GameFrame import RoomObject, Globals
 import os
 
+from Objects.StoryOverlay import OverlayTextBG
+
 
 class Player_MLBL2(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
         self.allowInput = False
+        self.allowInputs = False
         player = self.load_image(os.path.join("MilbiL1", "sprite_0.png"))
         self.set_image(player, 50, 50)
 
         # Load player animation images
-        self.down = []
-        self.down.append(self.load_image(os.path.join("MilbiL1", "sprite_0.png")))
-        self.up = []
-        self.up.append(self.load_image(os.path.join("MilbiL1", "sprite_2.png")))
-        self.left = []
-        self.left.append(self.load_image(os.path.join("MilbiL1", "sprite_1.png")))
-        self.right = []
-        self.right.append(self.load_image(os.path.join("MilbiL1", "sprite_3.png")))
+        self.down = [self.load_image(os.path.join("MilbiL1", "sprite_0.png"))]
+        self.up = [self.load_image(os.path.join("MilbiL1", "sprite_2.png"))]
+        self.left = [self.load_image(os.path.join("MilbiL1", "sprite_1.png"))]
+        self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png"))]
 
         self.img_index = 0
 
@@ -88,24 +87,25 @@ class Player_MLBL2(RoomObject):
             self.walking()
         elif self.y <= 330 and self.allowInput == False:
             self.allowInput = True
+            self.room.deleteObjects()
         else:
             pass
         
     def key_pressed(self, key):
         if key[pygame.K_LEFT]:
-            if self.allowInput:
+            if self.allowInputs:
                 self.x -= 4
                 self.facing = self.LEFT
         elif key[pygame.K_RIGHT]:
-            if self.allowInput:
+            if self.allowInputs:
                 self.x += 4
                 self.facing = self.RIGHT
         elif key[pygame.K_UP]:
-            if self.allowInput:
+            if self.allowInputs:
                 self.y -= 4
                 self.facing = self.UP
         elif key[pygame.K_DOWN]:
-            if self.allowInput:
+            if self.allowInputs:
                 self.y += 4
                 self.facing = self.DOWN
 
