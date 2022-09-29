@@ -13,3 +13,6 @@ jobs:
         uses: githubocto/repo-visualizer@main
         with:
           excluded_paths: ".github"
+          file_colors: '{"py": "red","svg": "orange","txt":"yellow","wav": "green","kra": "cyan","md": "blue","gitignore": "purple,"LICENSE": "pink}'
+          excluded_globs: '**/*.{,LICENSE}'
+          output_file: Other/diagram.svg
