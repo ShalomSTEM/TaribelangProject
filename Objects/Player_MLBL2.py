@@ -79,13 +79,18 @@ class Player_MLBL2(RoomObject):
                     self.y = self.prev_y
                 else:
                     self.move_down()
-    def walking(self):
-        self.y -= 1.2
-        self.facing = self.UP
+
     def update(self):
+        self.y_speed = self.y_speed + self.gravity
+        self.x += self.x_speed
+        self.y += self.y_speed
+        self.rect.x = self.x
+        self.rect.y = self.y
         if self.y > 330 and self.allowInput == False:
-            self.walking()
+            self.y_speed = -1.2
+            self.facing = self.UP
         elif self.y <= 330 and self.allowInput == False:
+            self.y_speed = 0
             self.allowInput = True
             self.room.deleteObjects()
         else:

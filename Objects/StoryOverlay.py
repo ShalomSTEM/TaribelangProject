@@ -1,7 +1,7 @@
 from GameFrame import RoomObject, TextObject
 import os
 
-from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3
+from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3
 
 class OverlayTextBG(RoomObject):
     def __init__(self, room, x, y):
@@ -32,6 +32,10 @@ class OverlayTextBG(RoomObject):
     def complete(self):
         for i in range(4):
             tmp = Dance_MLBL3(self.room, 200+(64*i), 300, i)
+            self.room.arrows.append(tmp)
+            self.room.add_room_object(tmp)
+        for i in range(4):
+            tmp = DanceArrows_MLBL3(self.room, 200+(64*i), 500, i)
             self.room.arrows.append(tmp)
             self.room.add_room_object(tmp)
         self.room.add_room_object(DanceBG_MLBL3(self.room, 190, 300))
