@@ -29,4 +29,4 @@ This project relies simply on the installation of **Python 3.8+** and **Pygame**
 ## File structure
 ![Visualization of the codebase](./diagram.svg)
 ## License
-The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/TaribelangProject/blob/main/Images/LICENSE).
+The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/TaribelangProject/blob/main/Images/LICENSE)
