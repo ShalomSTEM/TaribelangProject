@@ -14,4 +14,4 @@ jobs:
         with:
           excluded_paths: ".github"
           file_colors: '{"py": "#FF0000","svg": "#FF7F00", "png": "#FF7F00","gif": "#FF7F00","jpg": "#FF7F00","jpeg": "#FF7F00","txt":"#FFFF00","wav": "#00FF00","ogg": "#00FF00","kra": "#0000FF","md": "#4B0082","LICENSE": "#9400D3","gitignore": "#9400D3","CODEOWNERS": "#9400D3"}'
-          output_file: Other/diagram.svg
+          output_file: ./diagram.svg
