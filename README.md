@@ -27,6 +27,6 @@ This project relies simply on the installation of **Python 3.8+** and **Pygame**
  - Clone the GitHub repo
  - Run the **MainController.py** file 
 ## File structure
-![Visualization of the codebase](Other/diagram.svg)
+![Visualization of the codebase](./diagram.svg)
 ## License
 The work here is licensed under the [GNU General Public License v3](https://github.com/ShalomSTEM/TaribelangProject/blob/main/LICENSE), with the graphics works being licensed under the [Creative Commons Zero v1 Universal License](https://github.com/ShalomSTEM/TaribelangProject/blob/main/Images/LICENSE).
