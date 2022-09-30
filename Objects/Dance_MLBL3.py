@@ -8,7 +8,7 @@ class Dance_MLBL3(RoomObject):
         RoomObject.__init__(self, room, x, y)
         self.arrows = ["leftArrow.png", "downArrow.png", "upArrow.png", "rightArrow.png"]
         self.handle_key_events = True
-        self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 64, 64)
+        self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
         
 class DanceArrows_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
@@ -22,8 +22,7 @@ class DanceArrows_MLBL3(RoomObject):
         self.onTargetPerfect = False
         self.onTargetAmazing = False
         self.arrows = ["leftArrowFilled.png", "downArrowFilled.png", "upArrowFilled.png", "rightArrowFilled.png"]
-        self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 64, 64)
-        print(arrow)
+        self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
         if arrow == 0:
             self.arrowType = 'left'
         elif arrow == 1: 
@@ -42,14 +41,18 @@ class DanceArrows_MLBL3(RoomObject):
         self.y += self.y_speed
         self.rect.x = self.x
         self.rect.y = self.y
-        if self.y < 95:
+        if self.y < -128:
             self.room.delete_object(self)
+        self.increaseSpeed
     
+    def increaseSpeed(self):
+        self.room.y_speed -= 0.01
+        print(self.room.y_speed)
     def handle_collision(self,other, other_type):
         if other_type == 'Dance_MLBL3':
-            if self.y == 100:
+            if self.y == 0:
                 self.onTargetPerfect = True
-            elif self.y >=  96 and self.y <= 105 and not self.y == 100:
+            elif self.y >=  -4 and self.y <= 5 and not self.y == 0:
                 self.onTargetAmazing = True
             else:
                 self.onTargetGood = False
@@ -110,4 +113,4 @@ class scoreText_MLBL3(TextObject):
 class DanceBG_MLBL3(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "DanceBG.png")), 274, 70)
+        self.set_image(self.load_image(os.path.join("Overlays", "DanceBG.png")), 640, 720)

@@ -30,17 +30,19 @@ class OverlayTextBG(RoomObject):
         self.Body.text = self.currentTextBody
         self.set_timer(10, self.Body.update_text)
     def complete(self):
+        self.room.deleteObjects1(False)
         for i in range(4):
-            tmp = Dance_MLBL3(self.room, 200+(64*i), 100, i)
+            tmp = Dance_MLBL3(self.room, 20+(128*i), 0, i)
             self.room.arrows.append(tmp)
             self.room.add_room_object(tmp)
         for i in range(4):
-            tmp = DanceArrows_MLBL3(self.room, 200+(64*i), 200+(100*i), i)
+            tmp = DanceArrows_MLBL3(self.room, 20+(128*i), 200+(100*i), i)
             self.room.arrows.append(tmp)
             self.room.add_room_object(tmp)
-        self.room.add_room_object(DanceBG_MLBL3(self.room, 190, 100))
+        self.room.add_room_object(DanceBG_MLBL3(self.room, 0, 0))
         self.room.delete_object(self.Title)
         self.room.delete_object(self.Body)
+        self.room.deleteObjects2(False)
         # self.room.delete_object(self)
     
 

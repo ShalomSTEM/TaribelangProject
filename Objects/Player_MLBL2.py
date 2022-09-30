@@ -92,7 +92,7 @@ class Player_MLBL2(RoomObject):
         elif self.y <= 330 and self.allowInput == False:
             self.y_speed = 0
             self.allowInput = True
-            self.room.deleteObjects()
+            self.room.deleteObjects1(True)
         else:
             pass
         

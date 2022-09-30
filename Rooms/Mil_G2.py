@@ -1,3 +1,4 @@
+from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
 from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders
@@ -11,9 +12,11 @@ class Mil_G2(Level):
         self.BObj = []
         self.TObj = []
         self.GObj = []
+        self.EObj = []
         self.indexT = 0
         self.indexG = 0
         self.indexB = 0
+        self.indexE = 0
         self.arrows = []
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
@@ -34,19 +37,19 @@ class Mil_G2(Level):
             "      T                                     T",
             "      B    EEE                              G",
             "      T   E   E                             T",
-            "      T    EEE         ZZZZZZZ              B",
-            "      T               ZZ     ZZ             B",
-            "      B              ZZ       ZZ            G",
-            "      G              ZZ       ZZ            G",
-            "      T              ZZ       ZZ            G",
-            "      T               ZZ     ZZ             T",
-            "      B                ZZ   ZZ              T",
+            "      T    EEE             ZZZZZZZ          B",
+            "      T                   ZZ     ZZ         B",
+            "      B                  ZZ       ZZ        G",
+            "      G                  ZZ       ZZ        G",
+            "      T                  ZZ       ZZ        G",
+            "      T                   ZZ     ZZ         T",
+            "      B                    ZZ   ZZ          T",
             "      G                                     B",
             "      G                                     B",
             "      T                                     G",
             "      T                                     T",
             "      G                                     B",
-            "      G                   P                 T",
+            "      G                       P             T",
             "      T                                     B",
             "BBBBBBBGGTTBGGGBTTBBBBTTTTBBBBTBBBGGTBTBBBTTTBB",
             "                                              ",
@@ -76,11 +79,11 @@ class Mil_G2(Level):
                     self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.jpg"))
                 elif obj == "V":
                     self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.jpg"))
-
-
-
                 elif obj == "E":
-                    self.add_room_object(ML2_Elders(self, j * 32 - 200, i * 32 - 200))
+                    E = ML2_Elders(self, j * 32 - 200, i * 32 - 200)
+                    self.add_room_object(E)
+                    self.EObj.append(E)
+                    self.indexE += 1
                 elif obj == "G":
                     G = MLBL2_Tree(self, j * 32 - 200, i * 32 - 200, "ML2_Btree.png")
                     self.add_room_object(G)
@@ -88,23 +91,33 @@ class Mil_G2(Level):
                     self.indexG += 1
 
         # self.set_timer(60, self.complete)
-    def deleteObjects(self):
+    def deleteObjects1(self, create):
         for i in range(self.indexB):
             self.delete_object(self.BObj[i])
         for i in range(self.indexT):
             self.delete_object(self.TObj[i])
         for i in range(self.indexG):
             self.delete_object(self.GObj[i])
-        self.OverlayBG = OverlayTextBG(self, 0, 540)
-        self.add_room_object(self.OverlayBG)
-        self.add_room_object(scoreText_MLBL3(self, 500, 100, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False))
+        for i in range(self.indexE):
+            self.delete_object(self.EObj[i])
+        if create:
+            self.OverlayBG = OverlayTextBG(self, 0, 540)
+            self.add_room_object(self.OverlayBG)
+            self.add_room_object(scoreText_MLBL3(self, 500, 100, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False))
+            self.deleteObjects2(True)
+            
+    def deleteObjects2(self, create):
         for i in range(self.indexB):
             self.add_room_object(self.BObj[i])
         for i in range(self.indexT):
             self.add_room_object(self.TObj[i])
         for i in range(self.indexG):
             self.add_room_object(self.GObj[i])
-        self.set_timer(10, self.addObjects)
+        for i in range(self.indexE):
+            self.add_room_object(self.EObj[i])
+        if create:
+            self.set_timer(10, self.addObjects)
+    
     def addObjects(self):
         self.OverlayBG.updateBody()
         self.OverlayBG.updateTitle()
