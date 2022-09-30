@@ -31,17 +31,18 @@ class OverlayTextBG(RoomObject):
         self.set_timer(10, self.Body.update_text)
     def complete(self):
         for i in range(4):
-            tmp = Dance_MLBL3(self.room, 200+(64*i), 300, i)
+            tmp = Dance_MLBL3(self.room, 200+(64*i), 100, i)
             self.room.arrows.append(tmp)
             self.room.add_room_object(tmp)
         for i in range(4):
-            tmp = DanceArrows_MLBL3(self.room, 200+(64*i), 500, i)
+            tmp = DanceArrows_MLBL3(self.room, 200+(64*i), 200+(100*i), i)
             self.room.arrows.append(tmp)
             self.room.add_room_object(tmp)
-        self.room.add_room_object(DanceBG_MLBL3(self.room, 190, 300))
+        self.room.add_room_object(DanceBG_MLBL3(self.room, 190, 100))
         self.room.delete_object(self.Title)
         self.room.delete_object(self.Body)
         # self.room.delete_object(self)
+    
 
 class TextOverlay(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold):

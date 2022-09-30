@@ -1,10 +1,13 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
 from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders
+from Objects.Dance_MLBL3 import scoreText_MLBL3
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
+        self.y_speed = -1.2
+        self.points = 0
         self.BObj = []
         self.TObj = []
         self.GObj = []
@@ -94,6 +97,7 @@ class Mil_G2(Level):
             self.delete_object(self.GObj[i])
         self.OverlayBG = OverlayTextBG(self, 0, 540)
         self.add_room_object(self.OverlayBG)
+        self.add_room_object(scoreText_MLBL3(self, 500, 100, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False))
         for i in range(self.indexB):
             self.add_room_object(self.BObj[i])
         for i in range(self.indexT):
