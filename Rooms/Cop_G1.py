@@ -1,6 +1,6 @@
 import os
 import random
-from Objects import Copple1_Player, CopG1_Tree
+from Objects import Copple1_Player, CopG1_Tree, CopG1_kangaroo, CopG1_Emu
 from GameFrame import Level, Globals, TextObject, EnumLevels
 
 
@@ -20,7 +20,9 @@ class Cop_G1 (Level):
         self.set_background_scroll(4)
 
         self.add_room_object(Copple1_Player(self, Globals.SCREEN_WIDTH / 2 - 80, Globals.SCREEN_HEIGHT - 200))
-
+        self.add_room_object(CopG1_kangaroo(self, Globals.SCREEN_WIDTH / 3 - 40, Globals.SCREEN_HEIGHT - 90))
+        self.add_room_object(CopG1_Emu(self, Globals.SCREEN_WIDTH / 3 + 480, Globals.SCREEN_HEIGHT - 90))
+        
         self.set_timer(60, self.add_tree)
 
     def add_tree(self):

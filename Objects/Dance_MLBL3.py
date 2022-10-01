@@ -1,4 +1,5 @@
 import os
+from random import randrange
 
 from GameFrame import RoomObject, Globals, TextObject
 import pygame
@@ -43,11 +44,8 @@ class DanceArrows_MLBL3(RoomObject):
         self.rect.y = self.y
         if self.y < -128:
             self.room.delete_object(self)
-        self.increaseSpeed
     
-    def increaseSpeed(self):
-        self.room.y_speed -= 0.01
-        print(self.room.y_speed)
+
     def handle_collision(self,other, other_type):
         if other_type == 'Dance_MLBL3':
             if self.y == 0:
@@ -78,14 +76,17 @@ class DanceArrows_MLBL3(RoomObject):
         if button == self.arrowType:
             if self.onTargetPerfect:
                 print("PERFECT")
+                self.room.y_speed -= 0.25
                 self.room.points = round((self.room.points + (2*(self.room.y_speed*-1))), 1)
                 self.room.delete_object(self)
             elif self.onTargetGood:
                 print("GOOD")
+                self.room.y_speed -= 0.25
                 self.room.points = round((self.room.points + (0.75*(self.room.y_speed*-1))), 1)
                 self.room.delete_object(self)
             elif self.onTargetAmazing:
                 print("AMAZING")
+                self.room.y_speed -= 0.25
                 self.room.points = round((self.room.points + (1*(self.room.y_speed*-1))), 1)
                 self.room.delete_object(self)
         
@@ -98,8 +99,9 @@ class DanceArrows_MLBL3(RoomObject):
         self.can_press = True
 
 class scoreText_MLBL3(TextObject):
-    def __init__(self, room, x, y, text, size, font, colour, bold):
+    def __init__(self, room, x, y, text, size, font, colour, bold, score):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
+        self.score = score
     
     def update(self):
         self.y_speed = self.y_speed + self.gravity
@@ -107,7 +109,12 @@ class scoreText_MLBL3(TextObject):
         self.y += self.y_speed
         self.rect.x = self.x
         self.rect.y = self.y
-        self.text = f'Score: {self.room.points}'
+        self.rand = randrange(0, 4, 1)
+        print(self.rand)
+        if self.score:
+            self.text = f'Score: {self.room.points}'
+        else:
+            self.text = f'Speed: {round(self.room.y_speed, 2)*-1}'
         self.update_text()
 
 class DanceBG_MLBL3(RoomObject):

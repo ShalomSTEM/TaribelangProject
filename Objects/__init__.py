@@ -43,3 +43,5 @@ from Objects.Copple1_Player import Copple1_Player
 from Objects.CopG1_Tree import CopG1_Tree
 from Objects.StoryOverlay import OverlayTextBG
 from Objects.StoryOverlay import TextObject
+from Objects.CopG1_kangaroo import CopG1_kangaroo
+from Objects.CopG1_Emu import CopG1_Emu

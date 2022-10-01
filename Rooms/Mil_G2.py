@@ -103,7 +103,8 @@ class Mil_G2(Level):
         if create:
             self.OverlayBG = OverlayTextBG(self, 0, 540)
             self.add_room_object(self.OverlayBG)
-            self.add_room_object(scoreText_MLBL3(self, 500, 100, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False))
+            self.add_room_object(scoreText_MLBL3(self, 700, 50, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True))
+            self.add_room_object(scoreText_MLBL3(self, 700, 150, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False))
             self.deleteObjects2(True)
             
     def deleteObjects2(self, create):
@@ -121,7 +122,7 @@ class Mil_G2(Level):
     def addObjects(self):
         self.OverlayBG.updateBody()
         self.OverlayBG.updateTitle()
-        self.set_timer(10, self.OverlayBG.complete)
+        self.set_timer(5, self.OverlayBG.complete)
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False

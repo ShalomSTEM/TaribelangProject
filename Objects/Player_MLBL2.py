@@ -1,3 +1,4 @@
+from random import randrange
 import pygame
 from GameFrame import RoomObject, Globals
 import os
@@ -32,7 +33,6 @@ class Player_MLBL2(RoomObject):
         self.handle_key_events = True
 
         # self.register_collision_object('Block')
-
         self.block_right = False
         self.block_left = False
         self.block_up = False

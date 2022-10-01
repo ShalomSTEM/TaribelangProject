@@ -23,7 +23,11 @@ class Copple1_Player (RoomObject):
         self.register_collision_object('CopG1_Tree')
 
     def handle_collision(self, other, other_type):
-        if other_type == 'CopG1_Tree':
+        if other_type == 'CopG1_kangaroo':
+            self.blocked()
+        elif other_type == 'CopG1_Emu':
+            self.blocked()
+        elif other_type == 'CopG1_Tree':
             self.blocked()
 
     def update_image(self):
