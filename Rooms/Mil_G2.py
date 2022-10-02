@@ -22,7 +22,7 @@ class Mil_G2(Level):
         self.roomNum = EnumLevels.Mil_G2
 
         self.direct = direct
-        self.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
+        self.set_background_image(os.path.join("MilbiL2", "ML2_background_cpy.jpg"))
 
         room_objects = [
             "                                                  ",
@@ -91,15 +91,41 @@ class Mil_G2(Level):
                     self.indexG += 1
 
         # self.set_timer(60, self.complete)
-    def deleteObjects1(self, create):
-        for i in range(self.indexB):
-            self.delete_object(self.BObj[i])
-        for i in range(self.indexT):
-            self.delete_object(self.TObj[i])
-        for i in range(self.indexG):
-            self.delete_object(self.GObj[i])
-        for i in range(self.indexE):
-            self.delete_object(self.EObj[i])
+    def deleteObjects1(self, create, danceArrows):
+        if danceArrows:
+            for i in range(self.indexB):
+                obj = self.BObj[i]
+                if obj.x >= 532:
+                    pass
+                else:
+                    self.delete_object(obj)
+            for i in range(self.indexT):
+                obj = self.TObj[i]
+                if obj.x >= 532:
+                    pass
+                else:
+                    self.delete_object(obj)
+            for i in range(self.indexG):
+                obj = self.GObj[i]
+                if obj.x >= 532:
+                    pass
+                else:
+                    self.delete_object(obj)
+            for i in range(self.indexE):
+                obj = self.EObj[i]
+                if obj.x >= 532:
+                    pass
+                else:
+                    self.delete_object(obj)
+        else:
+            for i in range(self.indexB):
+                self.delete_object(self.BObj[i])
+            for i in range(self.indexT):
+                self.delete_object(self.TObj[i])
+            for i in range(self.indexG):
+                self.delete_object(self.GObj[i])
+            for i in range(self.indexE):
+                self.delete_object(self.EObj[i])
         if create:
             self.OverlayBG = OverlayTextBG(self, 0, 540)
             self.add_room_object(self.OverlayBG)
@@ -122,7 +148,7 @@ class Mil_G2(Level):
     def addObjects(self):
         self.OverlayBG.updateBody()
         self.OverlayBG.updateTitle()
-        self.set_timer(5, self.OverlayBG.complete)
+        self.set_timer(5, self.OverlayBG.complete1)
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False

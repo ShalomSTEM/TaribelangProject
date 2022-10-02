@@ -12,7 +12,7 @@ class OverlayTextBG(RoomObject):
         self.currentIndexBody = 0
         self.currentTextTitle = self.titleText[0]
         self.currentIndexTitle = 0
-        self.set_image(self.load_image(os.path.join("Overlays", 'OverlayText.png')), 1, 1)
+        self.set_image(self.load_image(os.path.join("Overlays", 'OverlayText.png')), 1280, 180)
         self.Title = TextOverlay(self.room, self.x, self.y, self.currentTextTitle, 60, 'Comic Sans MS', (255, 255, 255), False)
         self.Body = TextOverlay(self.room, self.x, self.y+70, self.currentTextBody, 40, 'Comic Sans MS', (255, 255, 255), False)
         self.room.add_room_object(self.Title)
@@ -29,8 +29,9 @@ class OverlayTextBG(RoomObject):
         self.currentTextBody = self.bodyText[self.currentIndexBody]
         self.Body.text = self.currentTextBody
         self.set_timer(10, self.Body.update_text)
-    def complete(self):
-        self.room.deleteObjects1(False)
+    def complete1(self):
+        self.room.deleteObjects1(False, True)
+        self.room.set_background_image(os.path.join("MilbiL2", "ML2_background.jpg"))
         for i in range(4):
             tmp = Dance_MLBL3(self.room, 20+(128*i), 0, i)
             self.room.arrows.append(tmp)
@@ -42,8 +43,7 @@ class OverlayTextBG(RoomObject):
         self.room.add_room_object(DanceBG_MLBL3(self.room, 0, 0))
         self.room.delete_object(self.Title)
         self.room.delete_object(self.Body)
-        self.room.deleteObjects2(False)
-        # self.room.delete_object(self)
+        self.set_image(self.load_image("listener.png"), 1, 1)
     
 
 class TextOverlay(TextObject):
