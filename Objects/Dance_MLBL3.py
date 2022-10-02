@@ -7,9 +7,18 @@ import pygame
 class Dance_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
         RoomObject.__init__(self, room, x, y)
+        self.distance = [20, 148, 276, 404]
         self.arrows = ["leftArrow.png", "downArrow.png", "upArrow.png", "rightArrow.png"]
         self.handle_key_events = True
         self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
+        if arrow == 0:
+            self.set_timer(80, self.createNewArrows)
+        
+    def createNewArrows(self):
+        rand = randrange(0, 3, 1)
+        newArrow = DanceArrows_MLBL3(self.room, self.distance[rand], 600, rand)
+        self.room.add_room_object(newArrow)
+        self.set_timer(80, self.createNewArrows)
         
 class DanceArrows_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
@@ -102,6 +111,7 @@ class scoreText_MLBL3(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold, score):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
         self.score = score
+
     
     def update(self):
         self.y_speed = self.y_speed + self.gravity
@@ -109,15 +119,13 @@ class scoreText_MLBL3(TextObject):
         self.y += self.y_speed
         self.rect.x = self.x
         self.rect.y = self.y
-        self.rand = randrange(0, 4, 1)
-        print(self.rand)
         if self.score:
             self.text = f'Score: {self.room.points}'
+            self.update_text()
         else:
             self.text = f'Speed: {round(self.room.y_speed, 2)*-1}'
-        self.update_text()
-
+            self.update_text()
 class DanceBG_MLBL3(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        self.set_image(self.load_image(os.path.join("Overlays", "DanceBG.png")), 640, 720)
+        self.set_image(self.load_image("listener.png"), 1, 1)
