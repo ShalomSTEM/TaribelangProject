@@ -7,10 +7,18 @@ import pygame
 class Dance_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
         RoomObject.__init__(self, room, x, y)
-        self.distance = [20, 148, 276, 404]
-        self.arrows = ["leftArrow.png", "downArrow.png", "upArrow.png", "rightArrow.png"]
         self.handle_key_events = True
+        
+        # X values for all of the different types of arrows
+        self.distance = [20, 148, 276, 404]
+        
+        # Arrow images
+        self.arrows = ["leftArrow.png", "downArrow.png", "upArrow.png", "rightArrow.png"]
+        
+        # Setting image
         self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
+        
+        # Make sure new arrows are created, but preventing overlap at the same time
         if arrow == 0:
             self.set_timer(80, self.createNewArrows)
         
@@ -25,23 +33,22 @@ class DanceArrows_MLBL3(RoomObject):
         RoomObject.__init__(self, room, x, y)
         self.handle_key_events = True
         self.can_press = False
+        self.arrowType = arrow
+        
         # All of the different points
-        self.arrowType = ''
-
         self.onTargetGood = False
         self.onTargetPerfect = False
         self.onTargetAmazing = False
+        
+        # Arrow names and PNGs in arrays
+        self.arrowNames = ["left", "down", "up", "right"]
         self.arrows = ["leftArrowFilled.png", "downArrowFilled.png", "upArrowFilled.png", "rightArrowFilled.png"]
+        
+        # Setting image and collision
         self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
-        if arrow == 0:
-            self.arrowType = 'left'
-        elif arrow == 1: 
-            self.arrowType = 'down'
-        elif arrow == 2: 
-            self.arrowType = 'up'
-        elif arrow == 3: 
-            self.arrowType = 'right'
         self.register_collision_object('Dance_MLBL3')
+        
+        # Enabling pressing keys
         self.set_timer(10, self.reset_press)
         
     def update(self):
@@ -82,7 +89,7 @@ class DanceArrows_MLBL3(RoomObject):
                     self.pause_press()
     
     def key_signal(self, button):
-        if button == self.arrowType:
+        if button == self.arrowNames[self.arrowType]:
             if self.onTargetPerfect:
                 print("PERFECT")
                 self.room.y_speed -= 0.25
@@ -111,7 +118,6 @@ class scoreText_MLBL3(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold, score):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
         self.score = score
-
     
     def update(self):
         self.y_speed = self.y_speed + self.gravity

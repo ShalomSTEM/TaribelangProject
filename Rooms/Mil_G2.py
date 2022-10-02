@@ -148,7 +148,6 @@ class Mil_G2(Level):
     def addObjects(self):
         self.OverlayBG.updateBody()
         self.OverlayBG.updateTitle()
-        self.set_timer(5, self.OverlayBG.complete1)
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False
