@@ -1,7 +1,7 @@
 from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3, MLBL2_Snake
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -13,10 +13,12 @@ class Mil_G2(Level):
         self.GObj = []
         self.EObj = []
         self.CObj = []
+        self.SObj = []
         self.indexT = 0
         self.indexG = 0
         self.indexB = 0
         self.indexE = 0
+        self.indexS = 0
         self.arrows = []
         self.Dance = False
         # - Information for Controller Overlay
@@ -42,7 +44,7 @@ class Mil_G2(Level):
             "      T                   ZZ     ZZ         B",
             "      B                  ZZ       ZZ        G",
             "      G                  ZZ       ZZ        G",
-            "      T                  ZZ       ZZ        G",
+            "      T     S            ZZ       ZZ        G",
             "      T                   ZZ     ZZ         T",
             "      B                    ZZ   ZZ          T",
             "      G                                     B",
@@ -91,6 +93,12 @@ class Mil_G2(Level):
                     self.add_room_object(G)
                     self.GObj.append(G)
                     self.indexG += 1
+                elif obj == "S":
+                    S = MLBL2_Snake(self, j * 32 - 200, i * 32 - 200, "ML2_Snake.png")
+                    self.add_room_object(S)
+                    self.SObj.append(S)
+                    self.indexG += 1
+                    self.add_room_object(S)
 
         # self.set_timer(60, self.complete)
     def deleteObjects1(self, create, danceArrows):
@@ -115,6 +123,12 @@ class Mil_G2(Level):
                     self.delete_object(obj)
             for i in range(self.indexE):
                 obj = self.EObj[i]
+                if obj.x >= 532 and not obj.x >= 1040:
+                    pass
+                else:
+                    self.delete_object(obj)
+            for i in range(self.indexS):
+                obj = self.SObj[i]
                 if obj.x >= 532 and not obj.x >= 1040:
                     pass
                 else:
