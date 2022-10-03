@@ -1,7 +1,6 @@
-from GameFrame import RoomObject, TextObject
 import os
-
-from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3
+from GameFrame import RoomObject, TextObject
+from Objects import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3
 
 class OverlayTextBG(RoomObject):
     def __init__(self, room, x, y):

@@ -41,7 +41,6 @@ from Objects.Controller import Controller1, Controller2
 from Objects.MilbiL1InstructionImg import MilbiL1InstructionImg
 from Objects.Copple1_Player import Copple1_Player
 from Objects.CopG1_Tree import CopG1_Tree
-from Objects.StoryOverlay import OverlayTextBG
-from Objects.StoryOverlay import TextObject
 from Objects.CopG1_kangaroo import CopG1_kangaroo
 from Objects.CopG1_Emu import CopG1_Emu
+from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3, scoreText_MLBL3

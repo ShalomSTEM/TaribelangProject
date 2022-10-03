@@ -3,8 +3,6 @@ import pygame
 from GameFrame import RoomObject, Globals
 import os
 
-from Objects.StoryOverlay import OverlayTextBG
-
 
 class Player_MLBL2(RoomObject):
     def __init__(self, room, x, y):

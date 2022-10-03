@@ -1,8 +1,7 @@
 import os
-from random import randrange
-
-from GameFrame import RoomObject, Globals, TextObject
 import pygame
+from random import randrange
+from GameFrame import RoomObject, Globals, TextObject
 
 class Dance_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
@@ -38,16 +37,20 @@ class DanceArrows_MLBL3(RoomObject):
         self.can_press = False
         self.arrowType = arrow
         
+        # An array for point cards
+        self.pointCards = []
+        
         # All of the different points
         self.onTargetGood = False
         self.onTargetPerfect = False
         self.onTargetAmazing = False
-        
-        # Arrow names and PNGs in arrays
+
+        # Arrow names, points and PNGs in arrays
         self.arrowNames = ["left", "down", "up", "right"]
+        self.pointValues = [2, 1, 0.75]
         self.arrows = ["leftArrowFilled.png", "downArrowFilled.png", "upArrowFilled.png", "rightArrowFilled.png"]
         self.danceSprites = ["Player_dance1.png", 'Player_dance2.png', 'Player_dance3.png', 'Player_dance4.png']
-        
+
         # Setting image and collision
         self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
         self.register_collision_object('Dance_MLBL3')
@@ -65,13 +68,12 @@ class DanceArrows_MLBL3(RoomObject):
         if self.y < -128:
             self.room.delete_object(self)
     
-
     def handle_collision(self,other, other_type):
         if other_type == 'Dance_MLBL3':
             if self.y == 0:
                 self.onTargetPerfect = True
             elif self.y >=  -15 and self.y <= 15 and not self.y == 0:
-                self.onTargetAmazing = True
+               self.onTargetAmazing = True
             elif self.y >= -20 and not self.y >= -15 and not self.y == 0 and self.y <= 30:
                 self.onTargetGood = True
             else:
@@ -82,47 +84,59 @@ class DanceArrows_MLBL3(RoomObject):
     def key_pressed(self, key): 
         if self.can_press:
             if key[pygame.K_UP]:
-                    self.key_signal("up")
-                    self.pause_press()
+                self.key_signal("up")
+                self.pause_press()
             elif key[pygame.K_RIGHT]:
-                    self.key_signal("right")
-                    self.pause_press()
+                self.key_signal("right")
+                self.pause_press()
             elif key[pygame.K_LEFT]:
-                    self.key_signal("left")
-                    self.pause_press()
+                self.key_signal("left")
+                self.pause_press()
             elif key[pygame.K_DOWN]:
-                    self.key_signal("down")
-                    self.pause_press()
+                self.key_signal("down")
+                self.pause_press()
+            elif key[pygame.K_1]:
+                self.key_signal("perfect")
+                self.pause_press()
+            elif key[pygame.K_2]:
+                self.key_signal("amazing")
+                self.pause_press()
+            elif key[pygame.K_3]:
+                self.key_signal("good")
+                self.pause_press()
     
     def key_signal(self, button):
         if button == self.arrowNames[self.arrowType]:
             if self.onTargetPerfect:
-                self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
-                print("PERFECT")
-                self.room.y_speed -= 0.25
-                self.room.points = round((self.room.points + (2*(self.room.y_speed*-1))), 1)
-                self.room.delete_object(self)
+                self.newPoints(0, 'PERFECT')
             elif self.onTargetGood:
-                self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
-                print("GOOD")
-                self.room.y_speed -= 0.25
-                self.room.points = round((self.room.points + (0.75*(self.room.y_speed*-1))), 1)
-                self.room.delete_object(self)
+                self.newPoints(2, 'GOOD')
             elif self.onTargetAmazing:
-                self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
-                print("AMAZING")
-                self.room.y_speed -= 0.25
-                self.room.points = round((self.room.points + (1*(self.room.y_speed*-1))), 1)
-                self.room.delete_object(self)
-        
+                self.newPoints(1, 'AMAZING')
+        if button == "amazing":
+            self.newPoints(1, 'AMAZING')
+        if button == "perfect":
+            self.newPoints(0, 'PERFECT')
+        if button == "good":
+            self.newPoints(2, 'GOOD')
 
+    def newPoints(self, typeInt, typeString):
+        for i in self.room.CObj:
+            i.updatePos(i.pos-1)
+        newCard = scoreCards_MLBL3(self.room, 1100, 630, typeInt, 7, self)
+        self.room.CObj.append(newCard)
+        self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
+        self.room.y_speed -= 0.25
+        self.room.points = round((self.room.points + (self.pointValues[typeInt]*(self.room.y_speed*-1))), 1)
+        self.room.add_room_object(newCard)
+        self.room.delete_object(self)
+        
     def pause_press(self):
         self.can_press = False
         self.set_timer(5, self.reset_press)
 
     def reset_press(self):
         self.can_press = True
-
 class scoreText_MLBL3(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold, score):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
@@ -144,3 +158,23 @@ class DanceBG_MLBL3(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
         self.set_image(self.load_image("listener.png"), 1, 1)
+
+class scoreCards_MLBL3(RoomObject):
+    def __init__(self, room, x, y, type, pos, parent):
+        RoomObject.__init__(self, room, x, y)
+        self.pos = pos
+        self.type = type
+        self.parent = parent
+        if self.type == 0:
+            self.set_image(self.load_image(os.path.join("MilbiL2", "perfect_card.png")), 180, 90)
+        elif self.type == 1:
+            self.set_image(self.load_image(os.path.join("MilbiL2", "amazing_card.png")), 180, 90)
+        elif self.type == 2:
+            self.set_image(self.load_image(os.path.join("MilbiL2", "good_card.png")), 180, 90)
+    def updatePos(self, pos):
+        if pos == -1:
+            self.room.CObj.remove(self)
+            self.room.delete_object(self)
+        else:
+            self.y = 0+(90*pos)
+            self.pos = pos

@@ -1,8 +1,7 @@
 from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders
-from Objects.Dance_MLBL3 import scoreText_MLBL3
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -13,6 +12,7 @@ class Mil_G2(Level):
         self.TObj = []
         self.GObj = []
         self.EObj = []
+        self.CObj = []
         self.indexT = 0
         self.indexG = 0
         self.indexB = 0
@@ -97,25 +97,25 @@ class Mil_G2(Level):
         if danceArrows:
             for i in range(self.indexB):
                 obj = self.BObj[i]
-                if obj.x >= 532:
+                if obj.x >= 532 and not obj.x >= 1040:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexT):
                 obj = self.TObj[i]
-                if obj.x >= 532:
+                if obj.x >= 532 and not obj.x >= 1040:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexG):
                 obj = self.GObj[i]
-                if obj.x >= 532:
+                if obj.x >= 532 and not obj.x >= 1040:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexE):
                 obj = self.EObj[i]
-                if obj.x >= 532:
+                if obj.x >= 532 and not obj.x >= 1040:
                     pass
                 else:
                     self.delete_object(obj)
