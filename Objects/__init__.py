@@ -44,3 +44,4 @@ from Objects.CopG1_Tree import CopG1_Tree
 from Objects.CopG1_kangaroo import CopG1_kangaroo
 from Objects.CopG1_Emu import CopG1_Emu
 from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3, scoreText_MLBL3
+from Objects.MWindow import MWindow
