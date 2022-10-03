@@ -5,9 +5,11 @@ class CopG1_Emu(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
-        self.image = self.load_image(os.path.join('CoppleL1', 'kanga1.png'))
-        self.image2 = self.load_image(os.path.join('CoppleL1', 'kanga1.png'))
-        self.set_image(self.image, 64, 64)
+        self.image1 = self.load_image(os.path.join('CoppleL1', 'Emu1.png'))
+        self.image2 = self.load_image(os.path.join('CoppleL1', 'Emu2.png'))
+        self.set_image(self.image1, 105, 105)
+        self.curr_img = 1
+        self.set_timer(5, self.update_image)
 
         self.depth = 100
 
@@ -21,3 +23,14 @@ class CopG1_Emu(RoomObject):
             self.y = Globals.SCREEN_HEIGHT - 90
         elif other_type == 'Copple1_Player':
             self.blocked()
+
+    def update_image(self):
+        self.curr_img += 1
+        if self.curr_img > 1:
+            self.curr_img = 0
+        if self.curr_img == 0:
+            self.set_image(self.image1, 105, 105)
+        elif self.curr_img == 1:
+            self.set_image(self.image2, 105, 105)
+
+        self.set_timer(5, self.update_image)
