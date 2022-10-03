@@ -64,7 +64,6 @@ class Splayer(RoomObject):
     def prestep(self):
         self.facing = 4
 
-
     def handle_collision(self, other, other_type):
         if other_type == 'MBlock':
             self.blocked()
@@ -123,32 +122,3 @@ class Splayer(RoomObject):
             self.set_image(self.down[0], 64, 64)
 
         self.set_timer(3, self.animate)
-
-    def key_pressed(self, key):
-        if key[pygame.K_LEFT]:
-            self.set_image(self.playerLeft, 32, 32)
-            self.x -= 4
-        elif key[pygame.K_RIGHT]:
-            self.set_image(self.playerRight, 32, 32)
-            self.x += 4
-        elif key[pygame.K_UP]:
-            self.set_image(self.playerUp, 32, 32)
-            self.y -= 4
-        elif key[pygame.K_DOWN]:
-            self.set_image(self.playerDown, 32, 32)
-            self.y += 4
-
-    def joy_pad_signal(self, p1_buttons, p2_buttons):
-        if p1_buttons[11] < -0.5:
-            self.set_image(self.playerLeft, 32, 32)
-            self.x -= 4
-        if p1_buttons[11] > 0.5:
-            self.set_image(self.playerRight, 32, 32)
-            self.x += 4
-        if p1_buttons[10] < -0.5:
-            self.set_image(self.playerUp, 32, 32)
-            self.y -= 4
-        if p1_buttons[10] > 0.5:
-            self.set_image(self.playerDown, 32, 32)
-            self.y += 4
-
