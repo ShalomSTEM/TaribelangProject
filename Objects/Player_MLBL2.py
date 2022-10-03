@@ -16,10 +16,10 @@ class Player_MLBL2(RoomObject):
         self.set_image(player, 50, 50)
 
         # Load player animation images
-        self.down = [self.load_image(os.path.join("MilbiL1", "sprite_0.png"))]
-        self.up = [self.load_image(os.path.join("MilbiL1", "sprite_2.png"))]
-        self.left = [self.load_image(os.path.join("MilbiL1", "sprite_1.png"))]
-        self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png"))]
+        self.down = [self.load_image(os.path.join("MilbiL1", "sprite_0.png")), self.load_image(os.path.join("MilbiL2", "Player_dance2.png"))]
+        self.up = [self.load_image(os.path.join("MilbiL1", "sprite_2.png")), self.load_image(os.path.join("MilbiL2", "Player_dance3.png"))]
+        self.left = [self.load_image(os.path.join("MilbiL1", "sprite_1.png")), self.load_image(os.path.join("MilbiL2", "Player_dance1.png"))]
+        self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
 
         self.img_index = 0
 
@@ -79,7 +79,6 @@ class Player_MLBL2(RoomObject):
                     self.y = self.prev_y
                 else:
                     self.move_down()
-
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
@@ -123,15 +122,18 @@ class Player_MLBL2(RoomObject):
     def animate(self):
         #self.img_index += 1
         #self.img_index %= 4
-        if self.facing == self.LEFT:
-            self.set_image(self.left[self.img_index], 50, 50)
-        elif self.facing == self.RIGHT:
-            self.set_image(self.right[self.img_index], 50, 50)
-        elif self.facing == self.UP:
-            self.set_image(self.up[self.img_index], 50, 50)
-        elif self.facing == self.DOWN:
-            self.set_image(self.down[self.img_index], 50, 50)
+        if self.room.Dance:
+            pass
         else:
-            self.set_image(self.down[0], 50, 50)
+            if self.facing == self.LEFT:
+                self.set_image(self.left[self.img_index], 50, 50)
+            elif self.facing == self.RIGHT:
+                self.set_image(self.right[self.img_index], 50, 50)
+            elif self.facing == self.UP:
+                self.set_image(self.up[self.img_index], 50, 50)
+            elif self.facing == self.DOWN:
+                self.set_image(self.down[self.img_index], 50, 50)
+            else:
+                self.set_image(self.down[0], 50, 50)
 
         self.set_timer(5, self.animate)

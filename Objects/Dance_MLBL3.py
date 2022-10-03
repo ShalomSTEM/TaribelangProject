@@ -8,7 +8,7 @@ class Dance_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
         RoomObject.__init__(self, room, x, y)
         self.handle_key_events = True
-        
+        self.room.Dance = True
         # X values for all of the different types of arrows
         self.distance = [20, 148, 276, 404]
         
@@ -46,6 +46,7 @@ class DanceArrows_MLBL3(RoomObject):
         # Arrow names and PNGs in arrays
         self.arrowNames = ["left", "down", "up", "right"]
         self.arrows = ["leftArrowFilled.png", "downArrowFilled.png", "upArrowFilled.png", "rightArrowFilled.png"]
+        self.danceSprites = ["Player_dance1.png", 'Player_dance2.png', 'Player_dance3.png', 'Player_dance4.png']
         
         # Setting image and collision
         self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)
@@ -96,16 +97,19 @@ class DanceArrows_MLBL3(RoomObject):
     def key_signal(self, button):
         if button == self.arrowNames[self.arrowType]:
             if self.onTargetPerfect:
+                self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
                 print("PERFECT")
                 self.room.y_speed -= 0.25
                 self.room.points = round((self.room.points + (2*(self.room.y_speed*-1))), 1)
                 self.room.delete_object(self)
             elif self.onTargetGood:
+                self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
                 print("GOOD")
                 self.room.y_speed -= 0.25
                 self.room.points = round((self.room.points + (0.75*(self.room.y_speed*-1))), 1)
                 self.room.delete_object(self)
             elif self.onTargetAmazing:
+                self.room.player.set_image(os.path.join("Images", "MilbiL2", self.danceSprites[self.arrowType]), 50, 50)
                 print("AMAZING")
                 self.room.y_speed -= 0.25
                 self.room.points = round((self.room.points + (1*(self.room.y_speed*-1))), 1)

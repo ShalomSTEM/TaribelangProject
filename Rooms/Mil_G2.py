@@ -18,6 +18,7 @@ class Mil_G2(Level):
         self.indexB = 0
         self.indexE = 0
         self.arrows = []
+        self.Dance = False
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
 
@@ -68,7 +69,8 @@ class Mil_G2(Level):
                     self.TObj.append(T)
                     self.indexT += 1
                 elif obj == "P":
-                    self.add_room_object(Player_MLBL2(self, j * 32 - 200, i * 32 - 200))
+                    self.player = Player_MLBL2(self, j * 32 - 200, i * 32 - 200)
+                    self.add_room_object(self.player)
                 elif obj == "Z":
                     self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people1.png"))
                 elif obj == "Y":
