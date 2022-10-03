@@ -22,11 +22,14 @@ class Dance_MLBL3(RoomObject):
         if arrow == 0:
             self.set_timer(80, self.createNewArrows)
         
+        
     def createNewArrows(self):
-        rand = randrange(0, 3, 1)
+        rand = randrange(0, 4, 1)
+        print(rand)
         newArrow = DanceArrows_MLBL3(self.room, self.distance[rand], 600, rand)
         self.room.add_room_object(newArrow)
-        self.set_timer(80, self.createNewArrows)
+        self.math = 3*(self.room.y_speed*-1)
+        self.set_timer(80-(self.math), self.createNewArrows)
         
 class DanceArrows_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
@@ -66,14 +69,16 @@ class DanceArrows_MLBL3(RoomObject):
         if other_type == 'Dance_MLBL3':
             if self.y == 0:
                 self.onTargetPerfect = True
-            elif self.y >=  -4 and self.y <= 5 and not self.y == 0:
+            elif self.y >=  -15 and self.y <= 15 and not self.y == 0:
                 self.onTargetAmazing = True
+            elif self.y >= -20 and not self.y >= -15 and not self.y == 0 and self.y <= 30:
+                self.onTargetGood = True
             else:
                 self.onTargetGood = False
                 self.onTargetPerfect = False
                 self.onTargetAmazing = False
                 
-    def key_pressed(self, key):
+    def key_pressed(self, key): 
         if self.can_press:
             if key[pygame.K_UP]:
                     self.key_signal("up")
