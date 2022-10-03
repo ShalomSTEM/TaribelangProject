@@ -26,10 +26,16 @@ class MWindow(RoomObject):
 
     def key_pressed(self, key):
         if key[pygame.K_q]:
-            if self.q_listen:
-                self.set_image(self.icon_image, 32, 32)
-                self.q_listen = False
-                self.player.can_window = True
-                self.x = self.original_x
-                self.y = self.original_y
+            self.end_window()
 
+    def joy_pad_signal(self, p1_buttons, p2_buttons):
+        if p1_buttons[3]:
+            self.end_window()
+
+    def end_window(self):
+        if self.q_listen:
+            self.set_image(self.icon_image, 32, 32)
+            self.q_listen = False
+            self.player.can_window = True
+            self.x = self.original_x
+            self.y = self.original_y
