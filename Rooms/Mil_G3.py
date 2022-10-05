@@ -15,7 +15,7 @@ class Mil_G3(Level):
         self.room_items = []
         size = 20
         self.player = Player_MLBL3(self, 0, 0, size)
-        self.set_timer(200, self.complete)
+        self.set_timer(400, self.complete)
 
         room_objects = [
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
@@ -70,14 +70,15 @@ class Mil_G3(Level):
                     self.add_room_object(new_boss)
                     self.room_items.append(new_boss)
                 elif obj == "O":
-                    new_orb = Orb_MLBL3(self, j * 32 - 200, i * 32 - 200, self.player)
-                    self.set_timer(200, self.add_room_object(new_orb))
-                    self.set_timer(200, self.room_items.append(new_orb))
+                    self.new_orb = Orb_MLBL3(self, j * 32 - 200, i * 32 - 200, self.player)
+                    self.set_timer(200, self.createOrb)
                 elif obj == 'N':
                     new_npc = CopG2_NPC(self, j * 32 - 200, i * 32 - 200, self.player)
                     self.add_room_object(new_npc)
                     self.room_items.append(new_npc)
-
+    def createOrb(self):
+        self.add_room_object(self.new_orb)
+        self.room_items.append(self.new_orb)
     def shift_room_left(self):
         for item in self.room_items:
             item.x -= Globals.move_speed
