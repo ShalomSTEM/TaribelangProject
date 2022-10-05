@@ -1,6 +1,7 @@
 import pygame
 from GameFrame import RoomObject, Globals
 import os
+from Objects.SpearProjectile import SpearProjectile
 
 
 class Player_MLBL3(RoomObject):
@@ -258,3 +259,15 @@ class Player_MLBL3(RoomObject):
                 self.y += Globals.move_speed
             else:
                 self.room.shift_room_up()
+
+    def fire_bullet(self):
+        if self.can_shoot:
+            self.room.fire_bullet_sound.play()
+            new_bullet = SpearProjectile(self.room, self.rect.centerx, self.y)
+            new_bullet.x -= 4
+            self.room.add_room_object(new_bullet)
+            self.room.set_timer(15, self.reset_shooting)
+            self.can_shoot = False
+
+    def reset_shooting(self):
+        self.can_shoot = True
