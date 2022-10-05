@@ -9,3 +9,4 @@ class CopLog(RoomObject):
         self.set_image(image, 64, 64)
 
         self.x_speed = - 4
+

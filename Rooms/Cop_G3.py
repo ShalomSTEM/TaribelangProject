@@ -16,9 +16,9 @@ class Cop_G3(Level):
         self.roomNum = EnumLevels.Cop_G3
 
         self.curr_index = 0
-        self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "stick", "lily", "log1", "rock", "lily"]
-        self.location = [360, 50, 680, 360, 50, 360, 670, 70, 110, 200, 360, 50, 140]
-        self.wait_time = [10, 30, 30, 60, 30, 30, 60, 40, 50, 50, 20, 10, 10]
+        self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "stick", "lily", "log1", "rock", "lily", "seaweed", "stick"]
+        self.location = [360, 60, 680, 360, 70, 360, 670, 70, 110, 200, 360, 60, 140, 70, 360]
+        self.wait_time = [20, 30, 30, 60, 30, 30, 60, 40, 50, 50, 20, 30, 30, 50, 40]
 
         self.set_timer(self.wait_time[self.curr_index], self.add_obstacle)
 
@@ -49,3 +49,4 @@ class Cop_G3(Level):
         self.curr_index += 1
         if self.curr_index < len(self.type):
             self.set_timer(self.wait_time[self.curr_index], self.add_obstacle)
+
