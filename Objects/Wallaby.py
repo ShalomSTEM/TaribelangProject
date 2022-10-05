@@ -20,6 +20,7 @@ class Wallaby_MLBL2(RoomObject):
         self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
 
         self.img_index = 0
+        self.next = False
 
         self.LEFT = 0
         self.RIGHT = 1
@@ -77,7 +78,6 @@ class Wallaby_MLBL2(RoomObject):
                     self.y = self.prev_y
                 else:
                     self.move_down()
-
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
@@ -87,10 +87,17 @@ class Wallaby_MLBL2(RoomObject):
         if self.y > 330 and self.allowInput == False:
             self.y_speed = -1.2
             self.facing = self.UP
-        elif self.y <= 330 and self.allowInput == False:
+        elif self.y <= 330 and self.x <= 880 and self.allowInput == False:
             self.y_speed = 0
+            self.x_speed = 1.2
+            self.next = True
             self.allowInput = True
-            self.room.deleteObjects1(True, False)
+        elif self.y <= 330 and self.x >= 910 and self.next == True:
+            self.x_speed = 0
+            self.next = True
+            self.allowInput = True
+        else:
+            pass
         
     def key_pressed(self, key):
         if key[pygame.K_LEFT]:

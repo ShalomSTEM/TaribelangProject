@@ -1,7 +1,7 @@
 from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby, scoreText_MLBL3, MLBL2_Snake, Wallaby_MLBL2
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby_MLBL2, scoreText_MLBL3, MLBL2_Snake
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -54,10 +54,10 @@ class Mil_G2(Level):
             "      T                                     G",
             "      T                                     T",
             "      G                                     B",
-            "      G                       P             T",
+            "      G                       K             T",
             "      T                                     B",
             "BBBBBBBGGTTBGGGBTTBBBBTTTTBBB   BBGGTBTBBBTTTBB",
-            "                              K                ",
+            "                              P                ",
         ]
 
         for i, row in enumerate(room_objects):
