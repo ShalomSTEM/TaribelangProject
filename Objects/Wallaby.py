@@ -4,7 +4,7 @@ from GameFrame import RoomObject, Globals
 import os
 
 
-class Player_MLBL2(RoomObject):
+class Wallaby_MLBL2(RoomObject):
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
@@ -20,6 +20,7 @@ class Player_MLBL2(RoomObject):
         self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
 
         self.img_index = 0
+        self.next = False
 
         self.LEFT = 0
         self.RIGHT = 1
@@ -47,36 +48,36 @@ class Player_MLBL2(RoomObject):
         self.block_down = False
         self.facing = 6
 
-    # def handle_collision(self, other, other_type):
-    #     if other_type == 'Block':
+    def handle_collision(self, other, other_type):
+        if other_type == 'Block':
 
-    #         if self.collides_at(self, 4, 0, 'Block') and not self.block_right:
-    #             self.block_right = True
-    #             if self.x < 596:
-    #                 self.x = self.prev_x
-    #             else:
-    #                 self.move_left()
+            if self.collides_at(self, 4, 0, 'Block') and not self.block_right:
+                self.block_right = True
+                if self.x < 596:
+                    self.x = self.prev_x
+                else:
+                    self.move_left()
 
-    #         if self.collides_at(self, -4, 0, 'Block') and not self.block_left:
-    #             self.block_left = True
-    #             if self.x >= 206:
-    #                 self.x = self.prev_x
-    #             else:
-    #                 self.move_right()
+            if self.collides_at(self, -4, 0, 'Block') and not self.block_left:
+                self.block_left = True
+                if self.x >= 206:
+                    self.x = self.prev_x
+                else:
+                    self.move_right()
 
-    #         if self.collides_at(self, 0, 4, 'Block'):
-    #             self.block_down = True
-    #             if self.y <= 446:
-    #                 self.y = self.prev_y
-    #             else:
-    #                 self.move_up()
+            if self.collides_at(self, 0, 4, 'Block'):
+                self.block_down = True
+                if self.y <= 446:
+                    self.y = self.prev_y
+                else:
+                    self.move_up()
 
-    #         if self.collides_at(self, 0, -4, 'Block') and not self.block_up:
-    #             self.block_up = True
-    #             if self.y >= 154:
-    #                 self.y = self.prev_y
-    #             else:
-    #                 self.move_down()
+            if self.collides_at(self, 0, -4, 'Block') and not self.block_up:
+                self.block_up = True
+                if self.y >= 154:
+                    self.y = self.prev_y
+                else:
+                    self.move_down()
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
@@ -86,10 +87,15 @@ class Player_MLBL2(RoomObject):
         if self.y > 330 and self.allowInput == False:
             self.y_speed = -1.2
             self.facing = self.UP
-        elif self.y <= 330 and self.allowInput == False:
+        elif self.y <= 330 and self.x <= 880 and self.allowInput == False:
             self.y_speed = 0
+            self.x_speed = 1.2
+            self.next = True
             self.allowInput = True
-            self.room.deleteObjects1(True, False)
+        elif self.y <= 330 and self.x >= 910 and self.next == True:
+            self.x_speed = 0
+            self.next = True
+            self.allowInput = True
         else:
             pass
         
