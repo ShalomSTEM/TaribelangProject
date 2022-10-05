@@ -31,7 +31,7 @@ class CopFish(RoomObject):
                 self.y += 4
                 #self.set_image(self.img_down, 65, 36)
         elif key[pygame.K_RIGHT]:
-            if self.x > 50:
+            if self.x < 50:
                 self.x += 2
         if key[pygame.K_n]:
             self.room.complete()
@@ -42,5 +42,6 @@ class CopFish(RoomObject):
         if p1_buttons[10] > 0.5:
             self.y += 4
         if p1_buttons[11] < 0.5:
-            self.x += 2
+            self.x += 0.5
+
 

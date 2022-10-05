@@ -1,7 +1,7 @@
 from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3, MLBL2_Snake
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3, Snake
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -140,7 +140,6 @@ class Mil_G2(Level):
                     self.delete_object(obj)
             for i in range(self.indexZ):
                 obj = self.ZObj[i]
-
         else:
             for i in range(self.indexB):
                 self.delete_object(self.BObj[i])

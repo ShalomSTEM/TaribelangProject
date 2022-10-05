@@ -40,6 +40,8 @@ class Splayer(RoomObject):
 
         self.move_speed = 6
 
+        self.can_window = True
+
         self.handle_key_events = True
 
 
@@ -58,6 +60,7 @@ class Splayer(RoomObject):
         # -- this object handles collisions  -- #
         self.register_collision_object('MBlock')
         self.register_collision_object('MBlockDoor')
+        self.register_collision_object('MWindow')
 
         self.animate()
 
@@ -69,27 +72,35 @@ class Splayer(RoomObject):
             self.blocked()
         elif other_type == "MBlockDoor":
             self.room.complete()
+        elif other_type == "MWindow":
+            if self.can_window:
+                self.can_window = False
+                self.x = self.prev_x
+                self.y = self.prev_y
+
+                other.load_window()
 
     def key_pressed(self, key):
-
-        if key[pygame.K_LEFT]:
-            self.move_left()
-        if key[pygame.K_RIGHT]:
-            self.move_right()
-        if key[pygame.K_UP]:
-            self.move_up()
-        if key[pygame.K_DOWN]:
-            self.move_down()
+        if self.can_window:
+            if key[pygame.K_LEFT]:
+                self.move_left()
+            if key[pygame.K_RIGHT]:
+                self.move_right()
+            if key[pygame.K_UP]:
+                self.move_up()
+            if key[pygame.K_DOWN]:
+                self.move_down()
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
-        if p1_buttons[11] < -0.5:
-            self.move_left()
-        elif p1_buttons[11] > 0.5:
-            self.move_right()
-        if p1_buttons[10] < - 0.5:
-            self.move_up()
-        elif p1_buttons[10] > 0.5:
-            self.move_down()
+        if self.can_window:
+            if p1_buttons[11] < -0.5:
+                self.move_left()
+            elif p1_buttons[11] > 0.5:
+                self.move_right()
+            if p1_buttons[10] < - 0.5:
+                self.move_up()
+            elif p1_buttons[10] > 0.5:
+                self.move_down()
 
     def move_right(self):
         self.x += self.move_speed

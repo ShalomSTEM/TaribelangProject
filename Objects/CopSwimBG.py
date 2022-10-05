@@ -11,7 +11,7 @@ class CopSwimBG(RoomObject):
 
         self.depth = -150
 
-        self.x_speed = -2
+        self.x_speed = -4
 
     def step(self):
         if self.x <= -Globals.SCREEN_WIDTH:
