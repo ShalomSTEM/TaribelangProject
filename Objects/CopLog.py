@@ -10,3 +10,7 @@ class CopLog(RoomObject):
 
         self.x_speed = - 4
 
+    def step(self):
+        if self.x < -self.width:
+            self.room.add_points()
+            self.delete_object(self)

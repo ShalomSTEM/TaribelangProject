@@ -1,7 +1,7 @@
 from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3, MLBL2_Snake
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby_MLBL2, scoreText_MLBL3, MLBL2_Snake
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -54,10 +54,10 @@ class Mil_G2(Level):
             "      T                                     G",
             "      T                                     T",
             "      G                                     B",
-            "      G                       P             T",
+            "      G                       K             T",
             "      T                                     B",
-            "BBBBBBBGGTTBGGGBTTBBBBTTTTBBBBTBBBGGTBTBBBTTTBB",
-            "                                              ",
+            "BBBBBBBGGTTBGGGBTTBBBBTTTTBBB   BBGGTBTBBBTTTBB",
+            "                              P                ",
         ]
 
         for i, row in enumerate(room_objects):
@@ -81,13 +81,15 @@ class Mil_G2(Level):
                     self.ZObj.append(Z)
                     self.indexZ += 1
                 elif obj == "Y":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.png"))
                 elif obj == "X":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.png"))
                 elif obj == "W":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.png"))
                 elif obj == "V":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.png"))
+                elif obj == "K":
+                    self.add_room_object(Wallaby_MLBL2(self, j * 32 - 200, i * 32 - 200))
                 elif obj == "E":
                     E = ML2_Elders(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(E)

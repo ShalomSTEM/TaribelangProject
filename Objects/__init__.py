@@ -46,3 +46,4 @@ from Objects.CopG1_Emu import CopG1_Emu
 from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3, scoreText_MLBL3
 from Objects.MWindow import MWindow
 from Objects.MLBL2_Snake import MLBL2_Snake
+from Objects.Wallaby import Wallaby_MLBL2

@@ -1,6 +1,7 @@
 import pygame
 from GameFrame import RoomObject, Globals
 import os
+from Objects.SpearProjectile import SpearProjectile
 
 
 class Player_MLBL3(RoomObject):
@@ -99,28 +100,28 @@ class Player_MLBL3(RoomObject):
             if self.collides_at(self, 4, 0, "Spear_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
             if self.collides_at(self, -4, 0, "Spear_MLBL3") and not self.block_left:
                 self.block_left = True
                 if self.x >= 206:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
             if self.collides_at(self, 0, 4, "Spear_MLBL3"):
                 self.block_down = True
                 if self.y <= 446:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
             if self.collides_at(self, 0, -4, "Spear_MLBL3") and not self.block_up:
                 self.block_up = True
                 if self.y >= 154:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
@@ -258,3 +259,15 @@ class Player_MLBL3(RoomObject):
                 self.y += Globals.move_speed
             else:
                 self.room.shift_room_up()
+
+    def fire_bullet(self):
+        if self.can_shoot:
+            self.room.fire_bullet_sound.play()
+            new_bullet = SpearProjectile(self.room, self.rect.centerx, self.y)
+            new_bullet.x -= 4
+            self.room.add_room_object(new_bullet)
+            self.room.set_timer(15, self.reset_shooting)
+            self.can_shoot = False
+
+    def reset_shooting(self):
+        self.can_shoot = True
