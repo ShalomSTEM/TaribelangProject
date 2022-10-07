@@ -14,7 +14,7 @@ class CopG1_Tree (RoomObject):
 
         self.depth = 50
 
-        self.y_speed = 5
+        self.y_speed = 4
 
         self.hitbox = (self.x, self.y, 64, 64)
 

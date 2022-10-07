@@ -12,3 +12,5 @@ class Cop_S1(Story):
     def complete(self):
         self.running = False
         Globals.next_level = EnumLevels.Cop_S2
+
+

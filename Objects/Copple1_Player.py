@@ -20,7 +20,16 @@ class Copple1_Player (RoomObject):
 
         self.set_timer(5, self.update_image)
 
+        self.scroll_stopped = False
+
         self.register_collision_object('CopG1_Tree')
+
+    def step(self):
+        if self.scroll_stopped:
+            if self.collides_at(self, 0, -5, "CopG1_Tree") or \
+              self.collides_at(self, 5, 0, "CopG1_Tree") or \
+              self.collides_at(self, -5, 0, "CopG1_Tree"):
+                self.room.start_scroll_again()
 
     def handle_collision(self, other, other_type):
         if other_type == 'CopG1_kangaroo':
@@ -28,7 +37,8 @@ class Copple1_Player (RoomObject):
         elif other_type == 'CopG1_Emu':
             self.blocked()
         elif other_type == 'CopG1_Tree':
-            self.blocked()
+            self.room.tree_hit()
+            self.scroll_stopped = True
 
     def update_image(self):
         self.curr_img += 1

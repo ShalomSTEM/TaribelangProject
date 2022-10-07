@@ -1,13 +1,16 @@
 import pygame
 from GameFrame import RoomObject, Globals
 import os
+from Objects.SpearProjectile import SpearProjectile
 
 
 class Player_MLBL3(RoomObject):
-    def __init__(self, room, x, y, size):
+    def __init__(self, room, x, y, size, boss_milbi):
         RoomObject.__init__(self, room, x, y)
 
         self.size = size
+
+        self.boss_milbi = boss_milbi
 
         self.down = []
         self.down.append(self.load_image(os.path.join("MilbiL3", "front_1.png")))
@@ -47,6 +50,8 @@ class Player_MLBL3(RoomObject):
         self.register_collision_object("Stne_MLBL3")
         self.register_collision_object("Dirt_MLBL3")
         self.register_collision_object("Spear_MLBL3")
+
+        self.can_shoot = True
 
         self.block_right = False
         self.block_left = False
@@ -99,28 +104,28 @@ class Player_MLBL3(RoomObject):
             if self.collides_at(self, 4, 0, "Spear_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
             if self.collides_at(self, -4, 0, "Spear_MLBL3") and not self.block_left:
                 self.block_left = True
                 if self.x >= 206:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
             if self.collides_at(self, 0, 4, "Spear_MLBL3"):
                 self.block_down = True
                 if self.y <= 446:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
             if self.collides_at(self, 0, -4, "Spear_MLBL3") and not self.block_up:
                 self.block_up = True
                 if self.y >= 154:
-                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear"))
+                    player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
 
@@ -168,6 +173,8 @@ class Player_MLBL3(RoomObject):
         elif key[pygame.K_DOWN]:
             self.move_down()
             self.facing = self.DOWN
+        elif key[pygame.K_SPACE]:
+            self.fire_bullet()
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] < -0.5:
@@ -226,6 +233,9 @@ class Player_MLBL3(RoomObject):
         self.set_timer(3, self.animate)
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
+
+        if p1_buttons[0] !=0:
+            self.fire_bullet()
         if p1_buttons[11] > 0.5:
             self.set_image(os.path.join("Images", "MilbiL3", "right_2.png"), self.size, self.size)
             Globals.player_x += 1
@@ -258,3 +268,14 @@ class Player_MLBL3(RoomObject):
                 self.y += Globals.move_speed
             else:
                 self.room.shift_room_up()
+
+    def fire_bullet(self):
+        if self.can_shoot:
+            new_bullet = SpearProjectile(self.room, self.rect.centerx, self.y, self.boss_milbi)
+            new_bullet.x -= 4
+            self.room.add_room_object(new_bullet)
+            self.room.set_timer(10, self.reset_shooting)
+            self.can_shoot = False
+
+    def reset_shooting(self):
+        self.can_shoot = True

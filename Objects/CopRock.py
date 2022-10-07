@@ -9,3 +9,8 @@ class CopRock(RoomObject):
         self.set_image(image, 64, 64)
 
         self.x_speed = - 4
+
+    def step(self):
+        if self.x < -self.width:
+            self.room.add_points()
+            self.delete_object(self)
