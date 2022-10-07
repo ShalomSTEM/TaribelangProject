@@ -51,6 +51,10 @@ class RoomObject:
         self.rect.x = self.x
         self.rect.y = self.y
 
+    def update_depth(self, depth):
+        self.depth = depth
+        self.room.order_object_depth()
+
     def delete_object(self, obj: 'RoomObject'):
         self.room.delete_object(obj)
 

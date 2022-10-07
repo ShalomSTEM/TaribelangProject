@@ -27,7 +27,7 @@ class MWindow(RoomObject):
         self.y_listen = True
         self. x = 50
         self. y = 50
-        self.depth = 1000
+        self.update_depth(1000)
 
     def key_pressed(self, key):
         if key[pygame.K_y]:
@@ -39,10 +39,9 @@ class MWindow(RoomObject):
             self.end_window()
 
     def end_window(self):
-        print(f"Ending Window {self.filename}")
         self.set_image(self.icon_image, 150, 150)
         self.y_listen = False
         self.x = self.original_x
         self.y = self.original_y
-        self.depth = 100
+        self.update_depth(100)
         self.player.can_window = True
