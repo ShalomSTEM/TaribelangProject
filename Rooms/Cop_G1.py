@@ -8,9 +8,10 @@ class Cop_G1 (Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.direct = direct
+        self.LIVES = 0
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Cop_G1
-        self.score_text = TextObject(self, 0, -1, 'Lives: %i' % Globals.LIVES)
+        self.score_text = TextObject(self, 0, -1, 'Lives: %i' % self.LIVES)
         self.score_text.depth = 200
         self.score_text.colour = (255, 255, 255)
         self.score_text.update_text()
@@ -24,8 +25,12 @@ class Cop_G1 (Level):
         self.add_room_object(Copple1_Player(self, Globals.SCREEN_WIDTH / 2 - 80, Globals.SCREEN_HEIGHT - 200))
         self.add_room_object(CopG1_kangaroo(self, Globals.SCREEN_WIDTH / 3 - 40, Globals.SCREEN_HEIGHT - 90))
         self.add_room_object(CopG1_Emu(self, Globals.SCREEN_WIDTH / 3 + 480, Globals.SCREEN_HEIGHT - 90))
-        
+
+        self.set_timer(30, self.update_lives)
+
         self.set_timer(60, self.add_tree)
+
+        self.set_timer(2700, self.complete)
 
     def add_tree(self):
         tree = CopG1_Tree(self, random.randint(0, Globals.SCREEN_WIDTH), -200)
@@ -35,18 +40,12 @@ class Cop_G1 (Level):
         if Globals.total_count < 5:
             self.set_timer(30, self.add_tree)
 
-    def update_lives(self, value):
-        Globals.LIVES += value
-        if Globals.LIVES == 0:
-            self.running = False
-            self.quitting = True
-        self.score_text.text = 'Lives: %i' % Globals.LIVES
-        self.score_text.update_text()
-
-        room_name = TextObject(self, 200, 300, "Copple Game Part 1", colour=(255, 255, 255))
-        self.add_room_object(room_name)
-
-        self.set_timer(60, self.complete)
+    def update_lives(self):
+        if self.background_scroll_speed != 0:
+            self.LIVES += 1
+            self.score_text.text = 'Lives: %i' % self.LIVES
+            self.score_text.update_text()
+        self.set_timer(30, self.update_lives)
 
     def complete(self):
         if Globals.direct_select:
