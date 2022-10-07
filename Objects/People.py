@@ -15,8 +15,19 @@ class ML2_People(RoomObject):
         self.y += self.y_speed
         self.rect.x = self.x
         self.rect.y = self.y
-        # if self.y > 330 and self.allowInput == False:
-        #     self.y_speed = -1.2
+        if self.y == 280 and self.x == 880:
+            self.x = 100
+            self.y = 100
+        # if self.y == 312 and self.x == 632:
+        #     self.x = 350
+        #     self.y = 650
+        # if self.y == 280 and self.x == 632:
+        #     self.x = 350
+        #     self.y = 650
+        # if self.y == 248 and self.x == 632:
+        #     self.x = 350
+        #     self.y = 650
+
         # elif self.y <= 330 and self.allowInput == False:
         #     self.y_speed = 0
         #     self.room.deleteObjects1(True, False)
