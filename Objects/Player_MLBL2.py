@@ -77,6 +77,7 @@ class Player_MLBL2(RoomObject):
                     self.y = self.prev_y
                 else:
                     self.move_down()
+
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
@@ -90,8 +91,6 @@ class Player_MLBL2(RoomObject):
             self.y_speed = 0
             self.allowInput = True
             self.room.deleteObjects1(True, False)
-        else:
-            pass
         
     def key_pressed(self, key):
         if key[pygame.K_LEFT]:

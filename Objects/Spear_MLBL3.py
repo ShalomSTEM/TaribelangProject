@@ -1,6 +1,9 @@
 import os
 
+import pygame
+
 from GameFrame import RoomObject, Globals
+from Objects import SpearProjectile
 
 
 class Spear_MLBL3(RoomObject):
@@ -16,7 +19,13 @@ class Spear_MLBL3(RoomObject):
 
         self.register_collision_object("Player_MLBL3")
 
+    def fire_spear(self,key):
+        bullets = []
+        if key[pygame.k_b]:
+            bullets.append(self.x, self.y, self.load_image(os.path.join("MilbiL3", "Spear.png")))
+
     def handle_collision(self, other, other_type):
+
 
         if other_type == "Player_MLBL3":
 
