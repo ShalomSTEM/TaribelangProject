@@ -45,7 +45,7 @@ class Mil_G2(Level):
             "      T    EEE              ZZZZZ           B",
             "      T                    Z     Z          B",
             "      B                   Z       Z         G",
-            "      G                   Z       Z         G",
+            "      G                   Z                 G",
             "      T     S             Z       Z         G",
             "      T                    Z     Z          T",
             "      B                     Z   Z           T",
