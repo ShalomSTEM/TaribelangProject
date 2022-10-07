@@ -10,7 +10,6 @@ class Museum(Level):
         # - Set Background image - #
 
         self.set_background_image(os.path.join("Museum", "floor.jpg"))
-        #self.background_color = (255, 255, 255)
 
         self.player = None
 
@@ -53,13 +52,60 @@ class Museum(Level):
         self.add_room_object(
             MWindow(
                 self,
-                100,
-                150,
-                os.path.join('Museum', 'MusBrick2.png'),
+                310,
+                160,
+                os.path.join('Museum', 'coople2.png'),
+                os.path.join("Museum", "cooplewords3.png"),
+                self.player
+            )
+        )
+
+        self.add_room_object(
+            MWindow(
+                self,
+                825,
+                164,
+                os.path.join('Museum', 'turtle.png'),
                 os.path.join("Museum", "Water.jpg"),
                 self.player
             )
         )
+
+        self.add_room_object(
+             MWindow(
+                self,
+                362,
+                420,
+                os.path.join('Museum', 'spear.png'),
+                os.path.join("Museum", "Water.jpg"),
+                self.player
+             )
+        )
+
+        self.add_room_object(
+             MWindow(
+                self,
+                885,
+                420,
+                os.path.join('Museum', 'MusBrick2.png'),
+                os.path.join("Museum", "Water.jpg"),
+                self.player
+             )
+        )
+
+        self.add_room_object(
+             MWindow(
+                self,
+                624,
+                320,
+                os.path.join('Museum', 'MusBrick2.png'),
+                os.path.join("Museum", "Water.jpg"),
+                self.player
+             )
+        )
+
+
+
 
     def complete(self):
         Globals.next_level = EnumLevels.Home
