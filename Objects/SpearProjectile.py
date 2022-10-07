@@ -13,14 +13,11 @@ class SpearProjectile(RoomObject):
 
         # Register for collision with Enemy plane
         self.register_collision_object("BossMLBL3")
+        self.register_collision_object("Stne_MLBL3")
 
         angle = self.get_rotation_to_coordinate(milbi_boss.rect.centerx, milbi_boss.rect.centery)
         self.rotate(angle)
         self.x_speed, self.y_speed = self.get_direction_coordinates(angle, 5)
-
-    def step(self):
-        if self.y < 0 - self.height:
-            self.room.delete_object(self)
 
     def handle_collision(self, other, other_type):
         if other_type == "BossMLBL3":
@@ -32,3 +29,6 @@ class SpearProjectile(RoomObject):
 
             self.room.delete_object(other)
             self.room.delete_object(self)
+
+        elif other_type == "Stne_MLBL3":
+            self.delete_object(self)
