@@ -7,6 +7,8 @@ class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.y_speed = -1.2
+
+        self.peoplePos = [(632, 312), (632, 280), (632, 248), (696, 184), (664, 184), (728, 184), (760, 184), (792, 184), (824, 184), (856, 216), (888, 248), (888, 280), (888, 312), (856, 344), (824, 376), (664, 344), (696, 376), (664, 216)]
         self.points = 0
         self.BObj = []
         self.TObj = []
@@ -173,7 +175,9 @@ class Mil_G2(Level):
             self.add_room_object(self.EObj[i])
         if create:
             self.set_timer(10, self.addObjects)
-    
+    def calcPos(self, x, y, obj):
+        pos = self.peoplePos.index((x, y))
+        obj.pos = pos
     def addObjects(self):
         self.OverlayBG.updateBody()
         self.OverlayBG.updateTitle()
