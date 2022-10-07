@@ -3,13 +3,13 @@ import random, os
 
 
 class BossMLBL3(RoomObject):
-    def __init__(self, room, x, y, player):
+    def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
 
-        self.player = player
 
-        npc = self.load_image(os.path.join("MilbiL3", "front_1.png"))
-        self.set_image(npc, 16, 24)
+
+        boss = self.load_image(os.path.join("MilbiL3", "front_1.png"))
+        self.set_image(boss, 256, 256)
 
         # Load player animation images
         self.down = []
@@ -35,45 +35,11 @@ class BossMLBL3(RoomObject):
 
         self.img_index = 0
 
-        self.LEFT = 0
-        self.RIGHT = 1
-        self.UP = 2
-        self.DOWN = 3
 
-        self.facing = 4
 
-        self.handle_key_events = True
+#        self.animate()
 
-        self.move_to_player_count = 0
-
-        self.block_right = False
-        self.block_left = False
-        self.block_up = False
-        self.block_down = False
-
-        self.moving = False
-        self.animate()
-        self.set_timer(random.randint(5, 10), self.move)
-
-    def move(self):
-        self.move_to_player_count += 1
-        if self.move_to_player_count == 1 or \
-                abs(self.player.x - self.x) > 100 or \
-                abs(self.player.y - self.y) > 100:
-            self.move_towards_player()
-            self.move_to_player_count = 0
-        else:
-            randomwalk = random.randint(0, 3)
-            if randomwalk == self.LEFT:
-                self.move_left()
-            elif randomwalk == self.RIGHT:
-                self.move_right()
-            elif randomwalk == self.UP:
-                self.move_up()
-            elif randomwalk == self.DOWN:
-                self.move_down()
-        self.set_timer(random.randint(65, 120), self.move)
-
+'''
     def animate(self):
         self.img_index += 1
         self.img_index %= 4
@@ -90,41 +56,4 @@ class BossMLBL3(RoomObject):
 
         self.set_timer(3, self.animate)
 
-    def move_right(self):
-        self.facing = self.RIGHT
-        self.x_speed += Globals.NPCmove_speed
-        self.set_timer(60, self.stop)
-
-    def move_left(self):
-        self.facing = self.LEFT
-        self.x_speed -= Globals.NPCmove_speed
-        self.set_timer(60, self.stop)
-
-    def move_up(self):
-        self.facing = self.UP
-        self.y_speed -= Globals.NPCmove_speed
-        self.set_timer(60, self.stop)
-
-    def move_down(self):
-        self.facing = self.DOWN
-        self.y_speed += Globals.NPCmove_speed
-        self.set_timer(60, self.stop)
-
-    def stop(self):
-        self.facing = 4
-        self.x_speed = 0
-        self.y_speed = 0
-
-    def move_towards_player(self):
-        x = self.player.x - self.x
-        y = self.player.y - self.y
-        if abs(x) < abs(y):
-            if y > 0:
-                self.move_down()
-            else:
-                self.move_up()
-        else:
-            if x > 0:
-                self.move_right()
-            else:
-                self.move_left()
+'''

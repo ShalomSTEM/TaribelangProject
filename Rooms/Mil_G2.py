@@ -1,7 +1,7 @@
 from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, scoreText_MLBL3
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby_MLBL2, scoreText_MLBL3, MLBL2_Snake
 from Objects.StoryOverlay import OverlayTextBG
 class Mil_G2(Level):
     def __init__(self, screen, joysticks, direct=False):
@@ -13,10 +13,14 @@ class Mil_G2(Level):
         self.GObj = []
         self.EObj = []
         self.CObj = []
+        self.SObj = []
+        self.ZObj = []
         self.indexT = 0
         self.indexG = 0
         self.indexB = 0
         self.indexE = 0
+        self.indexS = 0
+        self.indexZ = 0
         self.arrows = []
         self.Dance = False
         # - Information for Controller Overlay
@@ -38,22 +42,22 @@ class Mil_G2(Level):
             "      T                                     T",
             "      B    EEE                              G",
             "      T   E   E                             T",
-            "      T    EEE             ZZZZZZZ          B",
-            "      T                   ZZ     ZZ         B",
-            "      B                  ZZ       ZZ        G",
-            "      G                  ZZ       ZZ        G",
-            "      T                  ZZ       ZZ        G",
-            "      T                   ZZ     ZZ         T",
-            "      B                    ZZ   ZZ          T",
+            "      T    EEE              ZZZZZ           B",
+            "      T                    Z     Z          B",
+            "      B                   Z       Z         G",
+            "      G                   Z                 G",
+            "      T     S             Z       Z         G",
+            "      T                    Z     Z          T",
+            "      B                     Z   Z           T",
             "      G                                     B",
             "      G                                     B",
             "      T                                     G",
             "      T                                     T",
             "      G                                     B",
-            "      G                       P             T",
+            "      G                       K             T",
             "      T                                     B",
-            "BBBBBBBGGTTBGGGBTTBBBBTTTTBBBBTBBBGGTBTBBBTTTBB",
-            "                                              ",
+            "BBBBBBBGGTTBGGGBTTBBBBTTTTBBB   BBGGTBTBBBTTTBB",
+            "                              P                ",
         ]
 
         for i, row in enumerate(room_objects):
@@ -72,15 +76,20 @@ class Mil_G2(Level):
                     self.player = Player_MLBL2(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(self.player)
                 elif obj == "Z":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people1.png"))
+                    Z = ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people1.png")
+                    self.add_room_object(Z)
+                    self.ZObj.append(Z)
+                    self.indexZ += 1
                 elif obj == "Y":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people2.png"))
                 elif obj == "X":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people3.png"))
                 elif obj == "W":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people4.png"))
                 elif obj == "V":
-                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.jpg"))
+                    self.add_room_object(ML2_People(self, j * 32 - 200, i * 32 - 200, "ML2_people5.png"))
+                elif obj == "K":
+                    self.add_room_object(Wallaby_MLBL2(self, j * 32 - 200, i * 32 - 200))
                 elif obj == "E":
                     E = ML2_Elders(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(E)
@@ -91,6 +100,12 @@ class Mil_G2(Level):
                     self.add_room_object(G)
                     self.GObj.append(G)
                     self.indexG += 1
+                elif obj == "S":
+                    S = MLBL2_Snake(self, j * 32 - 200, i * 32 - 200, "ML2_Snake.png")
+                    self.add_room_object(S)
+                    self.SObj.append(S)
+                    self.indexS += 1
+                    self.add_room_object(S)
 
         # self.set_timer(60, self.complete)
     def deleteObjects1(self, create, danceArrows):
@@ -119,6 +134,14 @@ class Mil_G2(Level):
                     pass
                 else:
                     self.delete_object(obj)
+            for i in range(self.indexS):
+                obj = self.SObj[i]
+                if obj.x >= 532 and not obj.x >= 1040:
+                    pass
+                else:
+                    self.delete_object(obj)
+            for i in range(self.indexZ):
+                obj = self.ZObj[i]
         else:
             for i in range(self.indexB):
                 self.delete_object(self.BObj[i])
@@ -134,7 +157,11 @@ class Mil_G2(Level):
             self.add_room_object(scoreText_MLBL3(self, 700, 50, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True))
             self.add_room_object(scoreText_MLBL3(self, 700, 150, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False))
             self.deleteObjects2(True)
-            
+
+
+
+
+
     def deleteObjects2(self, create):
         for i in range(self.indexB):
             self.add_room_object(self.BObj[i])
@@ -155,3 +182,4 @@ class Mil_G2(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
+

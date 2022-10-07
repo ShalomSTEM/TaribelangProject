@@ -14,8 +14,10 @@ class Mil_G3(Level):
         self.set_background_image(os.path.join("MilbiL3", "PlaceHolderBackground_MLBL3.png"))
         self.room_items = []
         size = 20
-        self.player = Player_MLBL3(self, 0, 0, size)
-        self.set_timer(200, self.complete)
+
+        self.new_boss = BossMLBL3(self, Globals.SCREEN_WIDTH / 2 - 128, 6 * 32)
+        self.add_room_object(self.new_boss)
+        self.room_items.append(self.new_boss)
 
         room_objects = [
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
@@ -27,13 +29,13 @@ class Mil_G3(Level):
             "DDB       B                         BBBBB        BDD",
             "DDB       B               O             B        BDD",
             "DDB                                     B        BDD",
-            "DDB           S                                  BDD",
-            "DDB                                      S       BDD",
+            "DDB                                              BDD",
+            "DDB                                              BDD",
             "DDB             B                                BDD",
             "DDB             B                     B          BDD",
             "DDB         BBBBB                     B          BDD",
             "DDB                                   B          BDD",
-            "DDB                    S        BBBBBBB          BDD",
+            "DDB                             BBBBBBB          BDD",
             "DDB           B                                  BDD",
             "DDB           B                                  BDD",
             "DDB           B              N                   BDD",
@@ -53,7 +55,7 @@ class Mil_G3(Level):
                     self.add_room_object(new_block)
                     self.room_items.append(new_block)
                 elif obj == "P":
-                    self.player = Player_MLBL3(self, j * 32 - 200, i * 32 - 200, size)
+                    self.player = Player_MLBL3(self, j * 32 - 200, i * 32 - 200, size, self.new_boss)
                     self.player.x = j * 32 - 200
                     self.player.y = i * 32 - 200
                     self.add_room_object(self.player)
@@ -61,23 +63,13 @@ class Mil_G3(Level):
                     new_dirt = Dirt_MLBL3(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
-                elif obj == "S":
-                    new_spear = Spear_MLBL3(self, j * 32 - 200, i * 32 - 200)
-                    self.add_room_object(new_spear)
-                    self.room_items.append(new_spear)
-                elif obj == 'M':
-                    new_boss = BossMLBL3(self, j * 32 - 200, i * 32 - 200, self.player)
-                    self.add_room_object(new_boss)
-                    self.room_items.append(new_boss)
                 elif obj == "O":
-                    new_orb = Orb_MLBL3(self, j * 32 - 200, i * 32 - 200, self.player)
-                    self.set_timer(200, self.add_room_object(new_orb))
-                    self.set_timer(200, self.room_items.append(new_orb))
-                elif obj == 'N':
-                    new_npc = CopG2_NPC(self, j * 32 - 200, i * 32 - 200, self.player)
-                    self.add_room_object(new_npc)
-                    self.room_items.append(new_npc)
+                    self.new_orb = Orb_MLBL3(self, j * 32 - 200, i * 32 - 200)
+                    self.set_timer(200, self.createOrb)
 
+    def createOrb(self):
+        self.add_room_object(self.new_orb)
+        self.room_items.append(self.new_orb)
     def shift_room_left(self):
         for item in self.room_items:
             item.x -= Globals.move_speed
