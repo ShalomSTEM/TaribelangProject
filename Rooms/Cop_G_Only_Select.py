@@ -7,9 +7,7 @@ class Cop_G_Only_Select(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 50, "Copple Game Select", colour=(255, 255, 255))
-        self.add_room_object(room_name)
-
+        self.set_background_image(os.path.join("Title", "home_bg.png"))
         self.add_room_object(Listener(self, 0, 0))
 
         self.buttons = []
@@ -20,10 +18,10 @@ class Cop_G_Only_Select(Level):
         running_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,
-            160,
+            60,
             EnumLevels.Cop_G1,
-            os.path.join("Transition", "1_selected.png"),
-            os.path.join("Transition", "1.png"),
+            os.path.join("Transition", "RunningSelected.png"),
+            os.path.join("Transition", "Running.png"),
             direct=True
         )
         self.buttons.append(running_game_button)
@@ -32,10 +30,10 @@ class Cop_G_Only_Select(Level):
         maze_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
-            160,
+            60,
             EnumLevels.Cop_G2,
-            os.path.join("Transition", "2_selected.png"),
-            os.path.join("Transition", "2.png"),
+            os.path.join("Transition", "ExploringSelected.png"),
+            os.path.join("Transition", "Exploring.png"),
             direct=True
         )
         self.buttons.append(maze_game_button)
@@ -44,10 +42,10 @@ class Cop_G_Only_Select(Level):
         swimming_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
-            160,
+            60,
             EnumLevels.Cop_G3,
-            os.path.join("Transition", "3_selected.png"),
-            os.path.join("Transition", "3.png"),
+            os.path.join("Transition", "SwimHome.png"),
+            os.path.join("Transition", "SwimHomeSelected.png"),
             direct=True
         )
         self.buttons.append(swimming_game_button)
