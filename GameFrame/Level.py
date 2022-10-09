@@ -183,6 +183,10 @@ class Level:
         self.background_scrolling = True
         self.background_scroll_speed = speed
 
+    def order_object_depth(self):
+        self.objects.sort(key=lambda x: x.depth)
+        pass
+
     def add_room_object(self, room_object: RoomObject):
         # - Add to room objects list - #
         if len(self.objects) == 0:

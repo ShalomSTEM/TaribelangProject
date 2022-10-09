@@ -51,6 +51,10 @@ class RoomObject:
         self.rect.x = self.x
         self.rect.y = self.y
 
+    def update_depth(self, depth):
+        self.depth = depth
+        self.room.order_object_depth()
+
     def delete_object(self, obj: 'RoomObject'):
         self.room.delete_object(obj)
 
@@ -207,6 +211,11 @@ class RoomObject:
         self.rect.x = self.x
         self.rect.y = self.y
 
+    def get_rotation_to_coordinate(self, target_x, target_y):
+        distance_x = self.x + (self.width / 2) - target_x
+        distance_y = self.y + (self.height / 2) - target_y
+        return math.degrees(math.atan2(distance_x, distance_y))
+
     def rotate_to_coordinate(self, mouse_x: int, mouse_y: int):
         distance_x = self.x + (self.width / 2) - mouse_x
         distance_y = self.y + (self.height / 2) - mouse_y
@@ -215,3 +224,8 @@ class RoomObject:
 
         self.curr_rotation = 0
         self.rotate(int(angle))
+
+    def point_to_point_distance(self, x1, y1, x2, y2):
+        x_dist = abs(x1 - x2)
+        y_dist = abs(y1 - y2)
+        return math.sqrt(x_dist * x_dist + y_dist * y_dist)

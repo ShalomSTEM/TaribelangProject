@@ -9,24 +9,15 @@ class SpearProjectile(RoomObject):
         RoomObject.__init__(self, room, x, y)
 
         image = self.load_image(os.path.join("MilbiL3", "Spear.png"))
-        self.set_image(image, 64, 64)
+        self.set_image(image, 12, 34)
 
         # Register for collision with Enemy plane
         self.register_collision_object("BossMLBL3")
+        self.register_collision_object("Stne_MLBL3")
 
-        print(self.curr_rotation)
-        print(self.angle)
-        print()
-        self.rotate_to_coordinate(milbi_boss.x, milbi_boss.y)
-        print(self.curr_rotation)
-        self.set_direction(self.curr_rotation + 180, 6)
-        print(self.angle)
-        print()
-        print()
-
-    def step(self):
-        if self.y < 0 - self.height:
-            self.room.delete_object(self)
+        angle = self.get_rotation_to_coordinate(milbi_boss.rect.centerx, milbi_boss.rect.centery)
+        self.rotate(angle)
+        self.x_speed, self.y_speed = self.get_direction_coordinates(angle, 5)
 
     def handle_collision(self, other, other_type):
         if other_type == "BossMLBL3":
@@ -38,3 +29,6 @@ class SpearProjectile(RoomObject):
 
             self.room.delete_object(other)
             self.room.delete_object(self)
+
+        elif other_type == "Stne_MLBL3":
+            self.delete_object(self)

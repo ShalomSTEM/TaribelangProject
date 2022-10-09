@@ -75,8 +75,11 @@ class Splayer(RoomObject):
         elif other_type == "MWindow":
             if self.can_window:
                 self.can_window = False
-                self.x = self.prev_x
-                self.y = self.prev_y
+
+                if self.x < other.x:
+                    self.x = other.x - self.width - 10
+                else:
+                    self.x = other.rect.right + 10
 
                 other.load_window()
 
