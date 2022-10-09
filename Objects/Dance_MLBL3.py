@@ -2,7 +2,7 @@ import os
 import pygame
 from random import randrange
 from GameFrame import RoomObject, Globals, TextObject
-
+import time
 class Dance_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
         RoomObject.__init__(self, room, x, y)
@@ -27,7 +27,7 @@ class Dance_MLBL3(RoomObject):
         print(rand)
         newArrow = DanceArrows_MLBL3(self.room, self.distance[rand], 600, rand)
         self.room.add_room_object(newArrow)
-        self.math = 3*(self.room.y_speed*-1)
+        self.math = 4*(self.room.y_speed*-1)
         self.set_timer(80-(self.math), self.createNewArrows)
         
 class DanceArrows_MLBL3(RoomObject):
@@ -44,10 +44,11 @@ class DanceArrows_MLBL3(RoomObject):
         self.onTargetGood = False
         self.onTargetPerfect = False
         self.onTargetAmazing = False
+        self.notOnTarget = False
 
         # Arrow names, points and PNGs in arrays
         self.arrowNames = ["left", "down", "up", "right"]
-        self.pointValues = [2, 1, 0.75]
+        self.pointValues = [2, 1, 0.75, -1]
         self.arrows = ["leftArrowFilled.png", "downArrowFilled.png", "upArrowFilled.png", "rightArrowFilled.png"]
         self.danceSprites = ["Player_dance1.png", 'Player_dance2.png', 'Player_dance3.png', 'Player_dance4.png']
 
@@ -77,9 +78,7 @@ class DanceArrows_MLBL3(RoomObject):
             elif self.y >= -20 and not self.y >= -15 and not self.y == 0 and self.y <= 30:
                 self.onTargetGood = True
             else:
-                self.onTargetGood = False
-                self.onTargetPerfect = False
-                self.onTargetAmazing = False
+                self.notOnTarget = True
                 
     def key_pressed(self, key): 
         if self.can_press:
@@ -104,6 +103,20 @@ class DanceArrows_MLBL3(RoomObject):
             elif key[pygame.K_3]:
                 self.key_signal("good")
                 self.pause_press()
+    def joy_pad_signal(self, p1_buttons, p2_buttons):
+        if self.can_press:
+            if p1_buttons[11] < -0.5:
+                self.key_signal("left")
+                self.pause_press()
+            elif p1_buttons[11] > 0.5:
+                self.key_signal("right")
+                self.pause_press()
+            elif p1_buttons[10] < -0.5:
+                self.key_signal("up")
+                self.pause_press()
+            elif p1_buttons[10] > 0.5:
+                self.key_signal("down")
+                self.pause_press()
     
     def key_signal(self, button):
         if button == self.arrowNames[self.arrowType]:
@@ -113,6 +126,8 @@ class DanceArrows_MLBL3(RoomObject):
                 self.newPoints(2, 'GOOD')
             elif self.onTargetAmazing:
                 self.newPoints(1, 'AMAZING')
+            # elif not self.notOnTarget:
+            #     self.newPoints(3, 'BAD')
         if button == "amazing":
             self.newPoints(1, 'AMAZING')
         if button == "perfect":

@@ -102,7 +102,7 @@ class Player_MLBL2(RoomObject):
                 self.x += 4
                 self.facing = self.RIGHT
         elif key[pygame.K_UP]:
-            if self.allowInputs:
+            if self.allowInputs: 
                 self.y -= 4
                 self.facing = self.UP
         elif key[pygame.K_DOWN]:
