@@ -1,4 +1,3 @@
-from msilib.schema import CreateFolder
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
 from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby_MLBL2, scoreText_MLBL3, MLBL2_Snake
@@ -8,7 +7,7 @@ class Mil_G2(Level):
         Level.__init__(self, screen, joysticks)
         self.y_speed = -1.2
 
-        self.peoplePos = [(632, 312), (632, 280), (632, 248), (696, 184), (664, 184), (728, 184), (760, 184), (792, 184), (824, 184), (856, 216), (888, 248), (888, 280), (888, 312), (856, 344), (824, 376), (664, 344), (696, 376), (664, 216)]
+        self.peoplePos = [(632, 312), (632, 280), (632, 248), (664, 216), (664, 184), (696, 184), (728, 184), (760, 184), (792, 184), (824, 184), (856, 216), (888, 248), (888, 280), (888, 312), (856, 344), (824, 376), (696, 376), (664, 344)]
         self.points = 0
         self.BObj = []
         self.TObj = []
@@ -25,6 +24,7 @@ class Mil_G2(Level):
         self.indexZ = 0
         self.arrows = []
         self.Dance = False
+        
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
 
@@ -44,7 +44,7 @@ class Mil_G2(Level):
             "      T                                     T",
             "      B    EEE                              G",
             "      T   E   E                             T",
-            "      T    EEE              ZZZZZ           B",
+            "      T    EEE             ZZZZZZ           B",
             "      T                    Z     Z          B",
             "      B                   Z       Z         G",
             "      G                   Z                 G",
