@@ -26,6 +26,7 @@ class Mil_G2(Level):
         self.indexZ = 0
         self.arrows = []
         self.Dance = False
+        self.danceEnd = False
         
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
@@ -49,7 +50,7 @@ class Mil_G2(Level):
             "      T    EEE             XXWYVY           B",
             "      T                    Y     X          B",
             "      B                   Y       Y         G",
-            "      G                   X       X         G",
+            "      G                   X       Z         G",
             "      T     S             V       V         G",
             "      T                    W     V          T",
             "      B                     Y   X           T",
@@ -114,31 +115,31 @@ class Mil_G2(Level):
             self.startMoving = True
             for i in range(self.indexB):
                 obj = self.BObj[i]
-                if obj.x >= 532 and not obj.x >= 1040:
+                if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexT):
                 obj = self.TObj[i]
-                if obj.x >= 532 and not obj.x >= 1040:
+                if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexG):
                 obj = self.GObj[i]
-                if obj.x >= 532 and not obj.x >= 1040:
+                if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexE):
                 obj = self.EObj[i]
-                if obj.x >= 532 and not obj.x >= 1040:
+                if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
                     pass
                 else:
                     self.delete_object(obj)
             for i in range(self.indexS):
                 obj = self.SObj[i]
-                if obj.x >= 532 and not obj.x >= 1040:
+                if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
                     pass
                 else:
                     self.delete_object(obj)
@@ -154,8 +155,9 @@ class Mil_G2(Level):
         if create:
             self.OverlayBG = OverlayTextBG(self, 0, 540)
             self.add_room_object(self.OverlayBG)
-            self.add_room_object(scoreText_MLBL3(self, 700, 50, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True))
-            self.add_room_object(scoreText_MLBL3(self, 700, 150, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False))
+            self.add_room_object(scoreText_MLBL3(self, 700, 500, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True, False, False))
+            self.add_room_object(scoreText_MLBL3(self, 700, 600, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False, False, True))
+            self.add_room_object(scoreText_MLBL3(self, 700, 100, f'Time: 60s', 60, 'Comic Sans MS', (255, 255, 255), False, False, True, False))
             self.deleteObjects2(True)
 
 

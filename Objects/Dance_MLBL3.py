@@ -2,7 +2,7 @@ import os
 import pygame
 from random import randrange
 from GameFrame import RoomObject, Globals, TextObject
-import time
+import datetime
 class Dance_MLBL3(RoomObject):
     def __init__(self, room, x, y, arrow):
         RoomObject.__init__(self, room, x, y)
@@ -24,7 +24,6 @@ class Dance_MLBL3(RoomObject):
         
     def createNewArrows(self):
         rand = randrange(0, 4, 1)
-        print(rand)
         newArrow = DanceArrows_MLBL3(self.room, self.distance[rand], 600, rand)
         self.room.add_room_object(newArrow)
         self.math = 4*(self.room.y_speed*-1)
@@ -153,20 +152,33 @@ class DanceArrows_MLBL3(RoomObject):
     def reset_press(self):
         self.can_press = True
 class scoreText_MLBL3(TextObject):
-    def __init__(self, room, x, y, text, size, font, colour, bold, score):
+    def __init__(self, room, x, y, text, size, font, colour, bold, score, timer, speed):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
         self.score = score
-    
+        self.timer = timer
+        self.speed = speed
+        self.index = 120
+        if self.timer:
+            self.time = datetime.datetime.now() + datetime.timedelta(seconds=self.index)
+            self.updTimer()
+    def updTimer(self):
+        self.index -= 1
+        now = datetime.datetime.now()
+        self.text = f'Time: {int(self.time.timestamp() - now.timestamp())}s'
+        self.set_timer(30, self.updTimer)
+        self.update_text()
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
         self.y += self.y_speed
         self.rect.x = self.x
         self.rect.y = self.y
+        if self.room.danceEnd:
+            print("END")
         if self.score:
             self.text = f'Score: {self.room.points}'
             self.update_text()
-        else:
+        if self.speed:
             self.text = f'Speed: {round(self.room.y_speed, 2)*-1}'
             self.update_text()
 class DanceBG_MLBL3(RoomObject):
