@@ -5,10 +5,12 @@ from Objects.SpearProjectile import SpearProjectile
 
 
 class Player_MLBL3(RoomObject):
-    def __init__(self, room, x, y, size):
+    def __init__(self, room, x, y, size, boss_milbi):
         RoomObject.__init__(self, room, x, y)
 
         self.size = size
+
+        self.boss_milbi = boss_milbi
 
         self.down = []
         self.down.append(self.load_image(os.path.join("MilbiL3", "front_1.png")))
@@ -48,6 +50,8 @@ class Player_MLBL3(RoomObject):
         self.register_collision_object("Stne_MLBL3")
         self.register_collision_object("Dirt_MLBL3")
         self.register_collision_object("Spear_MLBL3")
+
+        self.can_shoot = True
 
         self.block_right = False
         self.block_left = False
@@ -169,6 +173,8 @@ class Player_MLBL3(RoomObject):
         elif key[pygame.K_DOWN]:
             self.move_down()
             self.facing = self.DOWN
+        elif key[pygame.K_SPACE]:
+            self.fire_bullet()
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] < -0.5:
@@ -227,6 +233,9 @@ class Player_MLBL3(RoomObject):
         self.set_timer(3, self.animate)
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
+
+        if p1_buttons[0] !=0:
+            self.fire_bullet()
         if p1_buttons[11] > 0.5:
             self.set_image(os.path.join("Images", "MilbiL3", "right_2.png"), self.size, self.size)
             Globals.player_x += 1
@@ -262,11 +271,10 @@ class Player_MLBL3(RoomObject):
 
     def fire_bullet(self):
         if self.can_shoot:
-            self.room.fire_bullet_sound.play()
-            new_bullet = SpearProjectile(self.room, self.rect.centerx, self.y)
+            new_bullet = SpearProjectile(self.room, self.rect.centerx, self.y, self.boss_milbi)
             new_bullet.x -= 4
             self.room.add_room_object(new_bullet)
-            self.room.set_timer(15, self.reset_shooting)
+            self.room.set_timer(10, self.reset_shooting)
             self.can_shoot = False
 
     def reset_shooting(self):
