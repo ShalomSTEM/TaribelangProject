@@ -11,7 +11,7 @@ class Cop_G1 (Level):
         self.LIVES = 0
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Cop_G1
-        self.score_text = TextObject(self, 0, -1, 'Lives: %i' % self.LIVES)
+        self.score_text = TextObject(self, 0, -1, 'Timer: %i' % self.LIVES)
         self.score_text.depth = 200
         self.score_text.colour = (255, 255, 255)
         self.score_text.update_text()
@@ -30,20 +30,22 @@ class Cop_G1 (Level):
 
         self.set_timer(60, self.add_tree)
 
-        self.set_timer(2700, self.complete)
+        self.set_timer(1800, self.complete)
+
+        self.level_up()
 
     def add_tree(self):
         tree = CopG1_Tree(self, random.randint(0, Globals.SCREEN_WIDTH), -200)
         self.scrolling_objects.append(tree)
         self.add_room_object(tree)
         Globals.total_count += 1
-        if Globals.total_count < 5:
+        if Globals.total_count < 6:
             self.set_timer(30, self.add_tree)
 
     def update_lives(self):
         if self.background_scroll_speed != 0:
             self.LIVES += 1
-            self.score_text.text = 'Lives: %i' % self.LIVES
+            self.score_text.text = 'Timer: %i' % self.LIVES
             self.score_text.update_text()
         self.set_timer(30, self.update_lives)
 
@@ -59,7 +61,17 @@ class Cop_G1 (Level):
             obj.y_speed = 0
 
     def start_scroll_again(self):
-        self.background_scroll_speed = 4
+        self.background_scroll_speed = 6
         for obj in self.scrolling_objects:
-            obj.y_speed = 4
+            obj.y_speed = 6
+
+    def level_up(self):
+        if self.update_lives == 30:
+            self.start_scroll_again += 1
+            self.add_tree += 7
+        self.set_timer(900, self.level_up)
+
+
+
+
 
