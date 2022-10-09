@@ -113,6 +113,9 @@ class Mil_G2(Level):
     def deleteObjects1(self, create, danceArrows):
         if danceArrows:
             self.startMoving = True
+            self.add_room_object(scoreText_MLBL3(self, 700, 500, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True, False, False))
+            self.add_room_object(scoreText_MLBL3(self, 700, 600, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False, False, True))
+            self.add_room_object(scoreText_MLBL3(self, 700, 100, f'Time: 60s', 60, 'Comic Sans MS', (255, 255, 255), False, False, True, False))
             for i in range(self.indexB):
                 obj = self.BObj[i]
                 if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
@@ -155,9 +158,6 @@ class Mil_G2(Level):
         if create:
             self.OverlayBG = OverlayTextBG(self, 0, 540)
             self.add_room_object(self.OverlayBG)
-            self.add_room_object(scoreText_MLBL3(self, 700, 500, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True, False, False))
-            self.add_room_object(scoreText_MLBL3(self, 700, 600, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False, False, True))
-            self.add_room_object(scoreText_MLBL3(self, 700, 100, f'Time: 60s', 60, 'Comic Sans MS', (255, 255, 255), False, False, True, False))
             self.deleteObjects2(True)
 
 
