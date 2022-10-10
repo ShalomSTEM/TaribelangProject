@@ -60,8 +60,8 @@ class CopFish(RoomObject):
         if p1_buttons[10] < - 0.5:
             if self.y > 50:
                 self.y -= 4
-                self.set_image(self.img_up[0], 65, 36)
-                self.set_image(self.img_up[1], 65, 36)
+                self.set_image(self.img_up, 65, 36)
+                self.set_image(self.img_up, 65, 36)
         elif p1_buttons[10] > 0.5:
             if self.y < Globals.SCREEN_HEIGHT - 150:
                 self.y += 4
