@@ -1,3 +1,5 @@
+import pygame.mixer
+
 from GameFrame import Level, Globals, EnumLevels, TextObject
 from Objects import CopSwimBG, CopFish, CopRock, CopStick, Cop_Seaweed, CopLog, CopLog_Short, Waterlily
 
@@ -31,10 +33,24 @@ class Cop_G3(Level):
 
         self.set_timer(self.wait_time[self.curr_index], self.add_obstacle)
 
+        self.bg_music = self.load_sound("water_running.wav")
+        self.sad_music = self.load_sound("LungeFishJourney.ogg")
+
+        self.bg_music.set_volume(0.1)
+        self.bg_music.play()
+
+        self.set_timer(60, self.start_sad_music)
+
+    def start_sad_music(self):
+        self.sad_music.set_volume(1.0)
+        self.sad_music.play()
+
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
+        self.sad_music.stop()
+        self.bg_music.stop()
         self.running = False
 
     def add_obstacle(self):
@@ -68,7 +84,7 @@ class Cop_G3(Level):
         if self.curr_index >= len(self.location) and self.active_objects <= 1:
             if Globals.direct_select:
                 Globals.next_level = EnumLevels.Home
-            self.running = False
+            self.complete()
 
     def remove_points(self):
         self.score -= 15
@@ -78,4 +94,4 @@ class Cop_G3(Level):
         if self.curr_index >= len(self.location) and self.active_objects <= 1:
             if Globals.direct_select:
                 Globals.next_level = EnumLevels.Home
-            self.running = False
+            self.complete()
