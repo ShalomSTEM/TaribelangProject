@@ -20,7 +20,7 @@ class Mil_G1(Level):
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
-        self.mapsize = 100
+        self.mapsize = 10000
         self.Width_TileNum = int(Globals.SCREEN_WIDTH / self.TileSize)
         self.Height_TileNum = int(Globals.SCREEN_HEIGHT / self.TileSize)
         self.VisTileMap = []
