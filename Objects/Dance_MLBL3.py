@@ -21,7 +21,14 @@ class Dance_MLBL3(RoomObject):
         if arrow == 0:
             self.set_timer(80, self.createNewArrows)
         
-        
+    def update(self):
+        self.y_speed = self.y_speed + self.gravity
+        self.x += self.x_speed
+        self.y += self.y_speed
+        self.rect.x = self.x
+        self.rect.y = self.y
+        if self.room.danceEnd:
+            self.room.delete_object(self)
     def createNewArrows(self):
         rand = randrange(0, 4, 1)
         newArrow = DanceArrows_MLBL3(self.room, self.distance[rand], 600, rand)
@@ -67,6 +74,8 @@ class DanceArrows_MLBL3(RoomObject):
         self.rect.y = self.y
         if self.y < -128:
             self.room.delete_object(self)
+        if self.room.danceEnd:
+            self.delete_object(self)
     
     def handle_collision(self,other, other_type):
         if other_type == 'Dance_MLBL3':
@@ -154,10 +163,11 @@ class DanceArrows_MLBL3(RoomObject):
 class scoreText_MLBL3(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold, score, timer, speed):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
+        self.ran = False
         self.score = score
         self.timer = timer
         self.speed = speed
-        self.index = 120
+        self.index = 10
         if self.timer:
             self.time = datetime.datetime.now() + datetime.timedelta(seconds=self.index)
             self.updTimer()
@@ -167,6 +177,9 @@ class scoreText_MLBL3(TextObject):
         self.text = f'Time: {int(self.time.timestamp() - now.timestamp())}s'
         self.set_timer(30, self.updTimer)
         self.update_text()
+        if self.text == 'Time: 0s':
+            self.room.danceEnd = True
+            self.ran = False
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
@@ -174,7 +187,7 @@ class scoreText_MLBL3(TextObject):
         self.rect.x = self.x
         self.rect.y = self.y
         if self.room.danceEnd:
-            print("END")
+            self.room.delete_object(self)
         if self.score:
             self.text = f'Score: {self.room.points}'
             self.update_text()
