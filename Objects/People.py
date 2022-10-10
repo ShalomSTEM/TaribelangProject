@@ -28,12 +28,13 @@ class ML2_People(RoomObject):
         self.set_timer(10, self.animate)
 
     def updatePos(self):
-        if self.room.startMoving:
-            self.pos += 1
-            if self.pos == 18:
-                self.pos = 0
-            self.x = self.room.peoplePos[self.pos][0]
-            self.y = self.room.peoplePos[self.pos][1]
+        if not self.room.danceEnd:
+            if self.room.startMoving:
+                self.pos += 1
+                if self.pos == 18:
+                    self.pos = 0
+                self.x = self.room.peoplePos[self.pos][0]
+                self.y = self.room.peoplePos[self.pos][1]
         self.set_timer(40, self.updatePos)
     def update(self):
         self.y_speed = self.y_speed + self.gravity
@@ -45,7 +46,7 @@ class ML2_People(RoomObject):
             self.x = 100
             self.y = 100
     def animate(self):
-        if self.room.startMoving:
+        if self.room.startMoving and not self.room.danceEnd:
             self.set_image(os.path.join("Images", "MilbiL2", f"MLB2_{self.num}_{self.aniIndex}.png"), 100, 100)
             self.aniIndex += 1
             if self.aniIndex == 5:

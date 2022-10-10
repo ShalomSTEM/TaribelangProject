@@ -14,8 +14,10 @@ class Mil_G1(Level):
         self.LengthOfStage = 15
         self.finishStage = 10
         self.Time = self.LengthOfStage
+        self.points = 0
         self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255), size=50, font="Roboto")
         self.stageCaption = TextObject(self, 1200, 580, "Stage: 1", colour=(255, 255, 255), size=30, font="Roboto")
+        self.pointsCaption = TextObject(self, 1200, 450, "pts: 0", colour=(255, 255, 255), size=30, font="Roboto")
         self.stage = 1
         self.TileSize = 100
         self.map = []
@@ -77,13 +79,14 @@ class Mil_G1(Level):
 
         # Defined watericon outside of init due to not wanting the thirst mechanic whilst Instructions are being shown as this could lead to early death
 
-        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 50, 20)
+        self.watericon = WaterIcon(self, Globals.SCREEN_WIDTH - 65, 20)
 
         # Added simple sidebar Objects
 
         self.add_room_object(self.watericon)
         self.add_room_object(self.stageCaption)
         self.add_room_object(self.timer)
+        self.add_room_object(self.pointsCaption)
 
         # Start timer and stage mechanics
 
@@ -163,6 +166,11 @@ class Mil_G1(Level):
             if self.watericon.zeroWater:
                 self.die()
 
+            # Add Points
+
+            self.pointsCaption.text = f"pts: {self.points}"
+            self.pointsCaption.update_text()
+
             # Check if Player moved to reduce redundant compute
 
             if (
@@ -209,6 +217,7 @@ class Mil_G1(Level):
 
         if self.VisTileMap[int(self.Width_TileNum / 2)][int(self.Height_TileNum / 2)]:
             self.Eaten = True
+            self.points += 15
 
             # prevent water level from being arbitrarily large by using min function
 
