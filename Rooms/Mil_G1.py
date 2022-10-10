@@ -142,7 +142,15 @@ class Mil_G1(Level):
 
     def UpdateWorld(self):
         if self.stage == self.finishStage:
-            self.complete()
+            for row in self.map:
+                for obj in row:
+                    self.delete_object(obj)
+            self.delete_object(self.watericon)
+            self.delete_object(self.stageCaption)
+            self.delete_object(self.timer)
+            self.delete_object(self.player)
+            self.add_room_object(TextObject(self, 200, 100, "Congrats! You won", colour=(255, 255, 255), size=75))
+            self.set_timer(50,self.complete)
         if not self.dead:
             self.set_timer(1, self.UpdateWorld)
 
