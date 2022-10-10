@@ -17,9 +17,9 @@ class Cop_G3(Level):
         self.active_objects = 0
 
         self.curr_index = 0
-        self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "stick", "lily", "log1", "rock", "lily", "seaweed", "stick"]
-        self.location = [360, 60, 680, 360, 70, 360, 670, 70, 110, 200, 360, 60, 140, 70, 360]
-        self.wait_time = [20, 30, 30, 60, 30, 30, 60, 40, 50, 50, 20, 30, 30, 50, 40]
+        self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "lily", "stick", "lily", "log1", "rock", "lily", "seaweed", "stick", "rock", "seaweed", "rock", "log1", "stick", "seaweed", "seaweed", "log", "rock", "stick", "rock"]
+        self.location = [570, 150, 570, 360, 110, 360, 560, 570, 360, 110, 570, 360, 110, 200, 360, 160, 140, 180, 110, 570, 360, 110, 360, 160, 140, 180, 570]
+        self.wait_time = [20, 30, 30, 60, 30, 30, 60, 40, 20, 50, 50, 20, 30, 30, 50, 40, 40, 50, 50, 40, 30, 50, 30, 50, 40, 40, 30]
 
         self.score = 0
         self.score_text = TextObject(self, 20, 0, f'Score: {self.score}')

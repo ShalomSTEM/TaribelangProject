@@ -46,12 +46,14 @@ class CopFish(RoomObject):
             self.room.complete()
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
-        if p1_buttons[10] < -0.5:
-            self.y -= 4
-        if p1_buttons[10] > 0.5:
-            self.y += 4
-        if p1_buttons[11] < 0.5:
-            self.x += 0.5
+        if p1_buttons[11] < -0.5:
+            self.move_left()
+        elif p1_buttons[11] > 0.5:
+            self.move_right()
+        if p1_buttons[10] < - 0.5:
+            self.move_up()
+        elif p1_buttons[10] > 0.5:
+            self.move_down()
 
     def handle_collision(self, other, other_type):
         self.room.remove_points()
