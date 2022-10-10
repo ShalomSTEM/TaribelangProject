@@ -55,4 +55,4 @@ class Player(RoomObject):
             self.set_image(
                 os.path.join("Images/MilbiL1", "sprite_0.png"), self.size, self.size
             )
-            # THIS WAS ADDED IN MERGE #136, I WASNT SURE IF IT WAS IMPORTANT :] - Globals.player_y += 1
+            Globals.player_y += 1

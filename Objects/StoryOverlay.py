@@ -19,6 +19,7 @@ class OverlayTextBG(RoomObject):
         self.currentIndexBody = 0
         self.currentTextTitle = self.titleText[0]
         self.currentIndexTitle = 0
+        self.arrow = []
         
         # Set background image and create text overlays
         self.set_image(self.load_image(os.path.join("Overlays", 'OverlayText.png')), 1280, 180)
@@ -61,7 +62,16 @@ class OverlayTextBG(RoomObject):
         self.room.delete_object(self.Body)
         self.set_image(self.load_image("listener.png"), 1, 1)
     
-
+    def update(self):
+        self.y_speed = self.y_speed + self.gravity
+        self.x += self.x_speed
+        self.y += self.y_speed
+        self.rect.x = self.x
+        self.rect.y = self.y
+        if self.room.danceEnd:
+            self.room.deleteObjects2(False)
+            self.room.set_background_image(os.path.join("MilbiL2", "ML2_background_cpy.jpg"))
+            self.room.delete_object(self)
 class TextOverlay(TextObject):
     def __init__(self, room, x, y, text, size, font, colour, bold):
         TextObject.__init__(self, room, x, y, text, size, font, colour, bold)
