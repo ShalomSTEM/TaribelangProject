@@ -20,7 +20,7 @@ class Mil_G1(Level):
         self.TileSize = 100
         self.map = []
         self.Tilemap = []
-        self.mapsize = 10000
+        self.mapsize = 1000
         self.Width_TileNum = int(Globals.SCREEN_WIDTH / self.TileSize)
         self.Height_TileNum = int(Globals.SCREEN_HEIGHT / self.TileSize)
         self.VisTileMap = []
@@ -126,6 +126,10 @@ class Mil_G1(Level):
                 self.Tilemap = []
                 self.VisTileMap = []
                 if (self.stage < self.finishStage):
+                    self.prev_player_x=0
+                    self.prev_player_y=0
+                    Globals.player_x=0
+                    Globals.player_y=0
                     self.InitializeTileMap()
                     self.ChangeVisTileMap()
                     self.Time = self.LengthOfStage
