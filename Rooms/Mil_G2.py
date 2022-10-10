@@ -103,7 +103,7 @@ class Mil_G2(Level):
                     self.GObj.append(G)
                     self.indexG += 1
                 elif obj == "S":
-                    S = MLBL2_Snake(self, j * 32 - 200, i * 32 - 200, "ML2_Snake.png")
+                    S = MLBL2_Snake(self, j * 32 - 200, i * 32 - 200, "ML2_Snake.png", False, False, False)
                     self.add_room_object(S)
                     self.SObj.append(S)
                     self.indexS += 1
@@ -116,6 +116,7 @@ class Mil_G2(Level):
             self.add_room_object(scoreText_MLBL3(self, 700, 500, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True, False, False))
             self.add_room_object(scoreText_MLBL3(self, 700, 600, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False, False, True))
             self.add_room_object(scoreText_MLBL3(self, 700, 100, f'Time: 60s', 60, 'Comic Sans MS', (255, 255, 255), False, False, True, False))
+            self.add_room_object(MLBL2_Snake(self, 1200, 500, "ML2_Snake.png", True, False, True))
             for i in range(self.indexB):
                 obj = self.BObj[i]
                 if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
@@ -159,10 +160,13 @@ class Mil_G2(Level):
             self.OverlayBG = OverlayTextBG(self, 0, 540)
             self.add_room_object(self.OverlayBG)
             self.deleteObjects2(True)
-
-
-
-
+    def recreateSnake(self, up, down, snake):
+        if down:
+            self.delete_object(snake)
+            self.add_room_object(MLBL2_Snake(self, 1000, 800, "ML2_Snake.png", True, False, True))
+        if up:
+            self.delete_object(snake)
+            self.add_room_object(MLBL2_Snake(self, 1000, 500, "ML2_Snake.png", False, True, True))
 
     def deleteObjects2(self, create):
         for i in range(self.indexB):
