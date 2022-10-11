@@ -48,4 +48,4 @@ from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3, s
 from Objects.MWindow import MWindow
 from Objects.MLBL2_Snake import MLBL2_SnakeTurtle
 from Objects.Wallaby import Wallaby_MLBL2
-from Objects.StoryFish import StoryFish
+from Objects.Cockatoo import Cockatoo
