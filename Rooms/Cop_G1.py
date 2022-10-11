@@ -20,6 +20,9 @@ class Cop_G1 (Level):
         self.set_background_image(os.path.join("CoppleL1", "grass.png"))
         self.set_background_scroll(4)
 
+        self.bg_music = self.load_sound("jazzyfrenchy.mp3")
+        self.bg_music.play()
+
         self.scrolling_objects = []
 
         self.add_room_object(Copple1_Player(self, Globals.SCREEN_WIDTH / 2 - 80, Globals.SCREEN_HEIGHT - 200))
@@ -70,6 +73,7 @@ class Cop_G1 (Level):
             self.start_scroll_again += 1
             self.add_tree += 7
         self.set_timer(900, self.level_up)
+
 
 
 
