@@ -1,5 +1,5 @@
-from GameFrame import Level, Globals, EnumLevels, Globals
-from Objects import CopG2_Player, CopG2_Block, CopG2_Goal, CopG2_Dirt, CopG2_Water, CopG2_NPC, CopG2_GF_Water
+from GameFrame import Level, EnumLevels, Globals
+from Objects import CopG2_Player, CopG2_Block, CopG2_Dirt, CopG2_Water, CopG2_NPC, CopG2_GF_Water
 
 
 class Cop_G2(Level):

@@ -19,8 +19,8 @@ class Cop_G3(Level):
         self.active_objects = 0
 
         self.curr_index = 0
-        self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "lily", "stick", "lily", "log1", "rock", "lily", "seaweed", "stick", "rock", "seaweed", "rock", "log1", "stick", "seaweed", "seaweed", "log", "rock", "stick", "rock"]
-        self.location = [570, 150, 570, 360, 110, 360, 560, 570, 360, 110, 570, 360, 110, 200, 360, 160, 140, 180, 110, 570, 360, 110, 360, 160, 140, 180, 570]
+        self.type = ["rock", "seaweed", "rock", "log1", "stick", "seaweed", "log", "rock", "lily", "stick", "lily", "log1", "rock", "lily", "seaweed", "stick", "rock", "seaweed", "rock", "log1", "stick", "seaweed", "seaweed", "log", "rock", "stick"]
+        self.location = [575, 150, 570, 360, 10, 360, 560, 570, 360, 50, 570, 360, 575, 200, 360, 160, 568, 180, 574, 80, 360, 110, 360, 160, 570, 180]
         self.wait_time = [20, 30, 30, 60, 30, 30, 60, 40, 20, 50, 50, 20, 30, 30, 50, 40, 40, 50, 50, 40, 30, 50, 30, 50, 40, 40, 30]
 
         self.score = 0
@@ -35,11 +35,15 @@ class Cop_G3(Level):
 
         self.bg_music = self.load_sound("water_running.wav")
         self.sad_music = self.load_sound("LungeFishJourney.ogg")
+        self.points = self.load_sound("points.ogg")
+        self.points.set_volume(0.1)
+        self.hit = self.load_sound("girl_hurt.ogg")
+        self.hit.set_volume(0.8)
 
         self.bg_music.set_volume(0.1)
         self.bg_music.play()
 
-        self.set_timer(60, self.start_sad_music)
+        self.set_timer(100, self.start_sad_music)
 
     def start_sad_music(self):
         self.sad_music.set_volume(1.0)
@@ -77,6 +81,7 @@ class Cop_G3(Level):
             self.set_timer(self.wait_time[self.curr_index], self.add_obstacle)
 
     def add_points(self):
+        self.points.play()
         self.score += 5
         self.score_text.text = f"Score {self.score}"
         self.score_text.update_text()
@@ -87,6 +92,7 @@ class Cop_G3(Level):
             self.complete()
 
     def remove_points(self):
+        self.hit.play()
         self.score -= 15
         self.score_text.text = f"Score {self.score}"
         self.score_text.update_text()
