@@ -1,4 +1,6 @@
-import pygame, os
+import pygame
+import os
+import random
 from GameFrame import RoomObject, Globals
 
 
@@ -56,6 +58,13 @@ class CopG2_Player(RoomObject):
 
         self.depth = 10
 
+        self.hit_1 = self.room.load_sound("NPC_hit_1.ogg")
+        self.hit_2 = self.room.load_sound("NPC_hit_2.ogg")
+        self.hit_1.set_volume(0.4)
+        self.hit_2.set_volume(0.4)
+
+        self.can_complain = True
+
     def prestep(self):
         self.block_right = False
         self.block_left = False
@@ -63,11 +72,22 @@ class CopG2_Player(RoomObject):
         self.block_down = False
         self.facing = 6
 
+    def reset_complaining(self):
+        self.can_complain = True
+
     def handle_collision(self, other, other_type):
         if other_type == 'CopG2_Dirt':
             self.room.complete()
 
         if other_type == 'CopG2_NPC':
+            if self.can_complain:
+                self.can_complain = False
+                self.set_timer(30, self.reset_complaining)
+                ranNum = random.randint(0, 1)
+                if ranNum == 0:
+                    self.hit_1.play()
+                else:
+                    self.hit_2.play()
             self.x = self.prev_x
             self.y = self.prev_y
             other.blocked()
