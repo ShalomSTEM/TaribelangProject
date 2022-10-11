@@ -11,7 +11,7 @@ class Copple1_Player (RoomObject):
         self.image1 = self.load_image(os.path.join('CoppleL1', 'Runner2.png'))
         self.image2 = self.load_image(os.path.join('CoppleL1', "Runner3.png"))
         self.image3 = self.load_image(os.path.join('CoppleL1', "Runner4.png"))
-        self.set_image(self.image1, 160, 105)
+        self.set_image(self.image1, 29, 86)
         self.curr_img = 1
 
         self.depth = 100
@@ -45,11 +45,11 @@ class Copple1_Player (RoomObject):
         if self.curr_img > 2:
             self.curr_img = 0
         if self.curr_img == 0:
-            self.set_image(self.image1, 160, 105)
+            self.set_image(self.image1, 29, 86)
         elif self.curr_img == 1:
-            self.set_image(self.image2, 160, 105)
+            self.set_image(self.image2, 29, 86)
         elif self.curr_img == 2:
-            self.set_image(self.image3, 160, 105)
+            self.set_image(self.image3, 29, 86)
 
         self.set_timer(5, self.update_image)
 
