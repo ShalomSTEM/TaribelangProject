@@ -7,7 +7,7 @@ class Cop_S_Only(Level):
         Level.__init__(self, screen, joysticks)
 
         # Replace image with one that has the whole storyt
-        self.set_background_image(os.path.join("CoppleS", 'Copple_Background_1.png'))
+        self.set_background_image(os.path.join("CoppleS", 'Copple_StoryOnly_Background.png'))
         self.load_sound("Copple_1.wav").play()
         self.set_timer(40, self.complete)
 
