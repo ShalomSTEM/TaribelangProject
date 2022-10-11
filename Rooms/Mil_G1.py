@@ -17,7 +17,8 @@ class Mil_G1(Level):
         self.points = 0
         self.timer = TextObject(self, 1210, 650, str(self.Time), colour=(255, 255, 255), size=50, font="Roboto")
         self.stageCaption = TextObject(self, 1200, 580, "Stage: 1", colour=(255, 255, 255), size=30, font="Roboto")
-        self.pointsCaption = TextObject(self, 1200, 450, "pts: 0", colour=(255, 255, 255), size=30, font="Roboto")
+        self.pointsCaptionTitle = TextObject(self, 1200, 450, "pts:", colour=(255, 255, 255), size=30, font="Roboto")
+        self.pointsCaption = TextObject(self, 1200, 490, "0", colour=(255, 255, 255), size=30, font="Roboto")
         self.stage = 1
         self.TileSize = 100
         self.map = []
@@ -87,6 +88,7 @@ class Mil_G1(Level):
         self.add_room_object(self.stageCaption)
         self.add_room_object(self.timer)
         self.add_room_object(self.pointsCaption)
+        self.add_room_object(self.pointsCaptionTitle)
 
         # Start timer and stage mechanics
 
@@ -168,7 +170,7 @@ class Mil_G1(Level):
 
             # Add Points
 
-            self.pointsCaption.text = f"pts: {self.points}"
+            self.pointsCaption.text = str(self.points)
             self.pointsCaption.update_text()
 
             # Check if Player moved to reduce redundant compute

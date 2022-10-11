@@ -9,7 +9,7 @@ class CopG1_Tree (RoomObject):
         RoomObject.__init__(self, room, x, y)
 
         self.image = self.load_image(os.path.join('CoppleL1', "Eucalytpus Tree.png"))
-        self.set_image(self.image, 224, 169)
+        self.set_image(self.image, 144, 168)
         self.image_set = True
 
         self.depth = 50
