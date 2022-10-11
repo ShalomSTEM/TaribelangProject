@@ -1,6 +1,6 @@
 from GameFrame import Level, TextObject, Globals, EnumLevels
 import os
-from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby_MLBL2, scoreText_MLBL3, MLBL2_Snake
+from Objects import MLBL2_Tree, Player_MLBL2, ML2_People, ML2_Elders, Wallaby_MLBL2, scoreText_MLBL3, MLBL2_SnakeTurtle
 from Objects.StoryOverlay import OverlayTextBG
 
 
@@ -105,7 +105,7 @@ class Mil_G2(Level):
                     self.GObj.append(G)
                     self.indexG += 1
                 elif obj == "S":
-                    S = MLBL2_Snake(self, j * 32 - 200, i * 32 - 200, "ML2_Snake.png", False, False, False)
+                    S = MLBL2_SnakeTurtle(self, j * 32 - 200, i * 32 - 200, "ML2_Snake.png", False, False, False, False)
                     self.add_room_object(S)
                     self.SObj.append(S)
                     self.indexS += 1
@@ -118,7 +118,8 @@ class Mil_G2(Level):
             self.add_room_object(scoreText_MLBL3(self, 700, 500, f'Score: {self.points}', 60, 'Comic Sans MS', (255, 255, 255), False, True, False, False))
             self.add_room_object(scoreText_MLBL3(self, 700, 600, f'Speed: {self.y_speed}', 60, 'Comic Sans MS', (255, 255, 255), False, False, False, True))
             self.add_room_object(scoreText_MLBL3(self, 700, 100, f'Time: 60s', 60, 'Comic Sans MS', (255, 255, 255), False, False, True, False))
-            self.add_room_object(MLBL2_Snake(self, 1200, 500, "ML2_Snake.png", True, False, True))
+            self.add_room_object(MLBL2_SnakeTurtle(self, 1200, 500, "ML2_Snake.png", True, False, True, False))
+            self.add_room_object(MLBL2_SnakeTurtle(self, 1200, 500, "ML2_Snake.png", False, True, True, True))
             for i in range(self.indexB):
                 obj = self.BObj[i]
                 if obj.x >= 532 and not obj.x >= 1040 and obj.y <= 500:
@@ -162,13 +163,6 @@ class Mil_G2(Level):
             self.OverlayBG = OverlayTextBG(self, 0, 540, False)
             self.add_room_object(self.OverlayBG)
             self.deleteObjects2(True, False)
-    def recreateSnake(self, up, down, snake):
-        if down:
-            self.delete_object(snake)
-            self.add_room_object(MLBL2_Snake(self, 1000, 800, "ML2_Snake.png", True, False, True))
-        if up:
-            self.delete_object(snake)
-            self.add_room_object(MLBL2_Snake(self, 1000, 500, "ML2_Snake.png", False, True, True))
 
     def deleteObjects2(self, create, create2):
         if create2:
