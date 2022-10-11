@@ -1,21 +1,26 @@
 from GameFrame import Level, Globals, EnumLevels
 import os
-from Objects import Dirt_MLBL3, Stne_MLBL3, Player_MLBL3, Spear_MLBL3, BossMLBL3, Orb_MLBL3, CopG2_NPC
-from Objects.Orb_MLBL3 import Orb_MLBL3
+from Objects import Dirt_MLBL3, Stne_MLBL3, Player_MLBL3, Spear_MLBL3, BossMLBL3, ORB_MLBL3, CopG2_NPC
 
 class Mil_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
         self.direct = direct
+        self.set_background_image(os.path.join("MilbiL3", "Instructions.png"))
+        self.set_timer(100, self.startElse)
+        self.load_sound("Milbi_6.wav").play()
 
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G3
+
+
+    def startElse(self):
 
         self.set_background_image(os.path.join("MilbiL3", "PlaceHolderBackground_MLBL3.png"))
         self.room_items = []
         size = 20
 
-        self.new_boss = BossMLBL3(self, Globals.SCREEN_WIDTH / 2 - 128, 6 * 32)
+        self.new_boss = BossMLBL3(self, Globals.SCREEN_WIDTH / 2 - 128, 3 * 8)
         self.add_room_object(self.new_boss)
         self.room_items.append(self.new_boss)
 
@@ -23,23 +28,25 @@ class Mil_G3(Level):
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
             "DDBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBDD",
-            "DDB                       O                      BDD",
             "DDB                                              BDD",
-            "DDB       BBBBBBB       O M O                    BDD",
-            "DDB       B                         BBBBB        BDD",
-            "DDB       B               O             B        BDD",
+            "DDB                                              BDD",
+            "DDB                        M                     BDD",
+            "DDB                                              BDD",
+            "DDB          BBBB                 BB             BDD",
+            "DDB       B                            BB        BDD",
+            "DDB       B                                      BDD",
             "DDB                                     B        BDD",
-            "DDB                                              BDD",
+            "DDB            B                  B              BDD",
             "DDB                                              BDD",
             "DDB             B                                BDD",
             "DDB             B                     B          BDD",
-            "DDB         BBBBB                     B          BDD",
-            "DDB                                   B          BDD",
-            "DDB                             BBBBBBB          BDD",
-            "DDB           B                                  BDD",
-            "DDB           B                                  BDD",
-            "DDB           B              N                   BDD",
-            "DDB           BBBB                               BDD",
+            "DDB         BB                                   BDD",
+            "DDB               B                   B          BDD",
+            "DDB                                BB            BDD",
+            "DDB           B                    B             BDD",
+            "DDB                                              BDD",
+            "DDB           B                      B           BDD",
+            "DDB         B    B                               BDD",
             "DDB                                              BDD",
             "DDBBBBBBBBBBBBBBBBB                  BBBBBBBBBBBBBDD",
             "DDDDDDDDDDDDDDDDDBB         P        BBDDDDDDDDDDDDD",
@@ -47,6 +54,7 @@ class Mil_G3(Level):
             "DDDDDDDDDDDDDDDDDBBBBBBBBBBBBBBBBBBBBBBDDDDDDDDDDDDD",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
         ]
+
 
         for i, row in enumerate(room_objects):
             for j, obj in enumerate(row):
@@ -64,7 +72,7 @@ class Mil_G3(Level):
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
                 elif obj == "O":
-                    self.new_orb = Orb_MLBL3(self, j * 32 - 200, i * 32 - 200)
+                    self.new_orb = ORB_MLBL3(self, j * 32 - 200, i * 32 - 200)
                     self.set_timer(200, self.createOrb)
 
     def createOrb(self):
@@ -87,6 +95,13 @@ class Mil_G3(Level):
             item.y += Globals.move_speed
 
     def complete(self):
+        if Globals.direct_select:
+            Globals.direct_select = False
+            Globals.next_level = EnumLevels.Home
+        self.running = False
+
+
+    def complete_loss(self):
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
