@@ -13,8 +13,8 @@ class OverlayTextBG(RoomObject):
         # Text for the StoryOverlay
         self.bodyText = [" ", "It's time for our corroboree!", 'We have brought our fastest dancer of all, the Wallaby!', "Let's go!"]
         self.titleText = [' ', 'Elder 1', 'Elder', 'Members']
-        self.bodyText1 = [' ', '*Distant Talking*', 'useless text']
-        self.titleText1 = [' ', 'Elders', 'useless text']
+        self.bodyText1 = [' ', '*Distant Talking*', '*Chatter about Elders talking', "Milbi was seen with Water!", "*Multiple gasps*", "Hold on, where is Milbi?", "Milbi ran off into the forest! I'll chase!"]
+        self.titleText1 = [' ', 'Elders', 'Members', 'Elders', 'Members', 'Member', 'You']
         self.setup = False
         # Get the amount of values in the arrays and turn it into an int
         method = self.bodyText.__len__()
@@ -61,7 +61,7 @@ class OverlayTextBG(RoomObject):
                 self.currentTextTitle = self.titleText1[self.currentIndexTitle]
                 self.Title.text = self.currentTextTitle
                 self.set_timer(5, self.Title.update_text)
-                self.set_timer(40, self.title)
+                self.set_timer(100, self.title)
         
         else:
             if self.currentIndexTitle < self.count:
@@ -81,7 +81,7 @@ class OverlayTextBG(RoomObject):
     def updateBody(self, end):
         self.end = end
         if self.end and self.setup:
-            if self.currentIndexBody == 2:
+            if self.currentIndexBody == 6:
                 self.room.runNPC = True
                 self.room.endOverlay = True
             if self.currentIndexBody < self.count1:
@@ -89,7 +89,7 @@ class OverlayTextBG(RoomObject):
                 self.currentTextBody = self.bodyText1[self.currentIndexBody]
                 self.Body.text = self.currentTextBody
                 self.set_timer(5, self.Body.update_text)
-                self.set_timer(40, self.body)
+                self.set_timer(100, self.body)
         elif not self.room.danceEnd:
             if self.currentIndexBody == 3:
                 self.startedArrows = True
