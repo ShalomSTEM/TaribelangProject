@@ -24,6 +24,7 @@ from Objects.CopG2_Block import CopG2_Block
 from Objects.CopG2_Goal import CopG2_Goal
 from Objects.CopG2_Dirt import CopG2_Dirt
 from Objects.CopG2_Water import CopG2_Water
+from Objects.CopG2_GF_Water import CopG2_GF_Water
 from Objects.CopG2_NPC import CopG2_NPC
 from Objects.Dirt_MLBL3 import Dirt_MLBL3
 from Objects.Stne_MLBL3 import Stne_MLBL3
