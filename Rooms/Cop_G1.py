@@ -17,7 +17,7 @@ class Cop_G1 (Level):
         self.score_text.update_text()
         self.add_room_object(self.score_text)
 
-        self.set_background_image(os.path.join("MilbiL2", "ML2_background_cpy.jpg"))
+        self.set_background_image(os.path.join("CoppleL1", "grass.png"))
         self.set_background_scroll(4)
 
         self.scrolling_objects = []
