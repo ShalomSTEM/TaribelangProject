@@ -43,7 +43,7 @@ class CopG2_Player(RoomObject):
         self.handle_key_events = True
 
         self.register_collision_object('CopG2_Block')
-        self.register_collision_object('CopG2_Water')
+        self.register_collision_object('CopG2_Dirt')
         self.register_collision_object('CopG2_NPC')
 
         self.block_right = False
@@ -54,6 +54,8 @@ class CopG2_Player(RoomObject):
         self.moving = False
         self.animate()
 
+        self.depth = 10
+
     def prestep(self):
         self.block_right = False
         self.block_left = False
@@ -62,7 +64,7 @@ class CopG2_Player(RoomObject):
         self.facing = 6
 
     def handle_collision(self, other, other_type):
-        if other_type == 'CopG2_Water':
+        if other_type == 'CopG2_Dirt':
             self.room.complete()
 
         if other_type == 'CopG2_NPC':
