@@ -1,7 +1,7 @@
 import os
 import random
-from Objects import Copple1_Player, CopG1_Tree, CopG1_kangaroo, CopG1_Emu
 from GameFrame import Level, Globals, TextObject, EnumLevels
+from Objects import Copple1_Player, CopG1_kangaroo, CopG1_Emu, CopG1_Tree
 
 
 class Cop_G1 (Level):
@@ -32,7 +32,7 @@ class Cop_G1 (Level):
 
         self.set_timer(1800, self.complete)
 
-        self.level_up()
+        self.set_timer(750, self.level_up)
 
     def add_tree(self):
         tree = CopG1_Tree(self, random.randint(0, Globals.SCREEN_WIDTH), -200)
