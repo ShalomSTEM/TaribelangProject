@@ -1,4 +1,3 @@
-from asyncio.proactor_events import _ProactorBaseWritePipeTransport
 import os
 from GameFrame import RoomObject, TextObject
 from Objects import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3

@@ -16,6 +16,7 @@ class RoomSelectButton(RoomObject):
 
     def set_selected(self, selected):
         if selected:
+            Globals.change_select.play()
             self.set_image(self.selected_image, 256, 256)
         else:
             self.set_image(self.unselected_image, 256, 256)
@@ -24,6 +25,7 @@ class RoomSelectButton(RoomObject):
         self.activate()
 
     def activate(self):
+        Globals.confirm_select.play()
         if self.direct:
             Globals.direct_select = True
         Globals.next_level = self.next_level

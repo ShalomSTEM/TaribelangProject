@@ -8,6 +8,7 @@ class ML2_People(RoomObject):
         RoomObject.__init__(self, room, x, y)
         self.num = num
         self.pos = 0
+        self.img_index = 0
         self.aniIndex = 1
         self.room.calcPos(x, y, self)
         self.setnum()
@@ -35,13 +36,20 @@ class ML2_People(RoomObject):
                     self.pos = 0
                 self.x = self.room.peoplePos[self.pos][0]
                 self.y = self.room.peoplePos[self.pos][1]
-        if self.room.runNPC:
+            self.set_timer(40, self.updatePos)
+        elif self.room.runNPC:
             if self.room.peoplePos[self.pos] == (888, 280):
                 self.run = True
                 self.x_speed = 1.5
+                self.img_index += 1
+                if self.img_index == 5:
+                    self.img_index = 1
+                self.set_image(os.path.join("Images", "MilbiL2", f'MLB2_{self.num}_{self.img_index}.png'), 100, 100)
                 if self.x >= 1280:
                     self.room.complete()
-        self.set_timer(40, self.updatePos)
+            self.set_timer(5, self.updatePos)
+        else:
+            self.set_timer(40, self.updatePos)
     def update(self):
         self.y_speed = self.y_speed + self.gravity
         self.x += self.x_speed
