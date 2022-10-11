@@ -10,14 +10,14 @@ class Player_MLBL2(RoomObject):
 
         self.allowInput = False
         self.allowInputs = False
-        player = self.load_image(os.path.join("MilbiL1", "sprite_0.png"))
+        player = self.load_image(os.path.join("MilbiL2", "ML2_wallaby_left.png"))
         self.set_image(player, 50, 50)
 
         # Load player animation images
-        self.down = [self.load_image(os.path.join("MilbiL1", "sprite_0.png")), self.load_image(os.path.join("MilbiL2", "Player_dance2.png"))]
-        self.up = [self.load_image(os.path.join("MilbiL1", "sprite_2.png")), self.load_image(os.path.join("MilbiL2", "Player_dance3.png"))]
-        self.left = [self.load_image(os.path.join("MilbiL1", "sprite_1.png")), self.load_image(os.path.join("MilbiL2", "Player_dance1.png"))]
-        self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
+        self.down = [self.load_image(os.path.join("MilbiL2", "ML2_wallaby_right.png")), self.load_image(os.path.join("MilbiL2", "ML2_wallaby_right.png"))]
+        self.up = [self.load_image(os.path.join("MilbiL2", "ML2_wallaby_left.png")), self.load_image(os.path.join("MilbiL2", "ML2_wallaby_left.png"))]
+        self.left = [self.load_image(os.path.join("MilbiL2", "ML2_wallaby_left.png")), self.load_image(os.path.join("MilbiL2", "ML2_wallaby_left.png"))]
+        self.right = [self.load_image(os.path.join("MilbiL2", "ML2_wallaby_right.png")), self.load_image(os.path.join("MilbiL2", "ML2_wallaby_right.png"))]
 
         self.img_index = 0
 

@@ -10,14 +10,13 @@ class Wallaby_MLBL2(RoomObject):
 
         self.allowInput = False
         self.allowInputs = False
-        player = self.load_image(os.path.join("MilbiL1", "sprite_0.png"))
-        self.set_image(player, 50, 50)
+        self.set_image(os.path.join("Images", "MilbiL2", "MLB2_2_1.png"), 100, 100)
 
         # Load player animation images
-        self.down = [self.load_image(os.path.join("MilbiL2", "sprite_0.png")), self.load_image(os.path.join("MilbiL2", "Player_dance2.png"))]
-        self.up = [self.load_image(os.path.join("MilbiL2", "sprite_2.png")), self.load_image(os.path.join("MilbiL2", "Player_dance3.png"))]
-        self.left = [self.load_image(os.path.join("MilbiL2", "sprite_1.png")), self.load_image(os.path.join("MilbiL2", "Player_dance1.png"))]
-        self.right = [self.load_image(os.path.join("MilbiL2", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
+        self.down = [self.load_image(os.path.join("MilbiL2", "MLB2_2_2.png")), self.load_image(os.path.join("MilbiL2", "Player_dance2.png"))]
+        self.up = [self.load_image(os.path.join("MilbiL2", "MLB2_2_1.png")), self.load_image(os.path.join("MilbiL2", "Player_dance3.png"))]
+        self.left = [self.load_image(os.path.join("MilbiL2", "MLB2_2_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance1.png"))]
+        self.right = [self.load_image(os.path.join("MilbiL2", "MLB2_2_4.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
 
         self.img_index = 0
         self.next = False
@@ -87,12 +86,12 @@ class Wallaby_MLBL2(RoomObject):
         if self.y > 330 and self.allowInput == False:
             self.y_speed = -1.2
             self.facing = self.UP
-        elif self.y <= 330 and self.x <= 880 and self.allowInput == False:
+        elif self.y <= 275 and self.x <= 880 and self.allowInput == False:
             self.y_speed = 0
             self.x_speed = 1.2
             self.next = True
             self.allowInput = True
-        elif self.y <= 330 and self.x >= 910 and self.next == True:
+        elif self.y <= 330 and self.x >= 890 and self.next == True:
             self.x_speed = 0
             self.next = True
             self.allowInput = True
@@ -131,14 +130,14 @@ class Wallaby_MLBL2(RoomObject):
             pass
         else:
             if self.facing == self.LEFT:
-                self.set_image(self.left[self.img_index], 50, 50)
+                self.set_image(self.left[self.img_index], 100, 100)
             elif self.facing == self.RIGHT:
-                self.set_image(self.right[self.img_index], 50, 50)
+                self.set_image(self.right[self.img_index], 100, 100)
             elif self.facing == self.UP:
-                self.set_image(self.up[self.img_index], 50, 50)
+                self.set_image(self.up[self.img_index], 100, 100)
             elif self.facing == self.DOWN:
-                self.set_image(self.down[self.img_index], 50, 50)
+                self.set_image(self.down[self.img_index], 100, 100)
             else:
-                self.set_image(self.down[0], 50, 50)
+                self.set_image(self.down[0], 100, 100)
 
         self.set_timer(5, self.animate)
