@@ -43,16 +43,18 @@ class OverlayTextBG(RoomObject):
         self.room.add_room_object(self.Title)
         self.room.add_room_object(self.Body)
         self.set_timer(5, self.title)
-        self.set_timer(5, self.body)
     def updateTitle(self, end):
         self.end1 = end
         if end and not self.setup:
             self.currentTextBody = self.bodyText1[0]
-            self.currentIndexBody = 0
             self.currentTextTitle = self.titleText1[0]
+            self.Body.update_text()
+            self.Body.update_text()
+            self.currentIndexBody = 0
             self.currentIndexTitle = 0
             self.setup = True
-            self.set_timer(40, self.title)
+            self.set_timer(5, self.title)
+            self.set_timer(5, self.body)
         elif end and self.setup:
             if self.currentIndexTitle < self.count1:
                 self.currentIndexTitle += 1
@@ -69,8 +71,12 @@ class OverlayTextBG(RoomObject):
                 self.set_timer(5, self.Title.update_text)
                 self.set_timer(40, self.title)
     def body(self):
+        if self.room.danceEnd:
+            self.end = True
         self.updateBody(self.end)
     def title(self):
+        if self.room.danceEnd:
+            self.end1 = True
         self.updateTitle(self.end1)
     def updateBody(self, end):
         self.end = end

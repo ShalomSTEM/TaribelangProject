@@ -191,8 +191,8 @@ class Mil_G2(Level):
         obj.pos = pos
     def addObjects(self):
         if self.danceEnd:
-            self.OverlayBG.updateBody(True)
-            self.OverlayBG.updateTitle(True)
+            # self.OverlayBG.updateBody(True)
+            # self.OverlayBG.updateTitle(True)
             for i in range(self.indexB):
                 self.add_room_object(self.BObj[i])
             for i in range(self.indexT):
