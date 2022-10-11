@@ -39,7 +39,6 @@ class Player_MLBL2(RoomObject):
         self.moving = False
         self.animate()
 
-        self.set_timer(60, self.update)
     def prestep(self):
         self.block_right = False
         self.block_left = False

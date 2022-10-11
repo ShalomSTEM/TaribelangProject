@@ -96,6 +96,7 @@ class Wallaby_MLBL2(RoomObject):
             self.x_speed = 0
             self.next = True
             self.allowInput = True
+            self.room.delete_object(self)
         else:
             pass
         

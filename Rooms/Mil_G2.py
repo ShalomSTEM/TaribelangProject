@@ -27,7 +27,9 @@ class Mil_G2(Level):
         self.arrows = []
         self.Dance = False
         self.danceEnd = False
-        
+        self.gameEnd = False
+        self.runNPC = False
+        self.endOverlay = False
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G2
 
@@ -49,9 +51,9 @@ class Mil_G2(Level):
             "      T   E   E                             T",
             "      T    EEE             XXWYVY           B",
             "      T                    Y     X          B",
-            "      B                   Y       Y         G",
-            "      G                   X       Z         G",
-            "      T     S             V       V         G",
+            "      B                   Y       Y          ",
+            "      G                   X       Z          ",
+            "      T     S             V       V          ",
             "      T                    W     V          T",
             "      B                     Y   X           T",
             "      G                                     B",
@@ -157,9 +159,9 @@ class Mil_G2(Level):
             for i in range(self.indexE):
                 self.delete_object(self.EObj[i])
         if create:
-            self.OverlayBG = OverlayTextBG(self, 0, 540)
+            self.OverlayBG = OverlayTextBG(self, 0, 540, False)
             self.add_room_object(self.OverlayBG)
-            self.deleteObjects2(True)
+            self.deleteObjects2(True, False)
     def recreateSnake(self, up, down, snake):
         if down:
             self.delete_object(snake)
@@ -168,23 +170,40 @@ class Mil_G2(Level):
             self.delete_object(snake)
             self.add_room_object(MLBL2_Snake(self, 1000, 500, "ML2_Snake.png", False, True, True))
 
-    def deleteObjects2(self, create):
-        for i in range(self.indexB):
-            self.add_room_object(self.BObj[i])
-        for i in range(self.indexT):
-            self.add_room_object(self.TObj[i])
-        for i in range(self.indexG):
-            self.add_room_object(self.GObj[i])
-        for i in range(self.indexE):
-            self.add_room_object(self.EObj[i])
-        if create:
+    def deleteObjects2(self, create, create2):
+        if create2:
+            self.OverlayBG.reAddText()
             self.set_timer(10, self.addObjects)
+        else:
+            for i in range(self.indexB):
+                self.add_room_object(self.BObj[i])
+            for i in range(self.indexT):
+                self.add_room_object(self.TObj[i])
+            for i in range(self.indexG):
+                self.add_room_object(self.GObj[i])
+            for i in range(self.indexE):
+                self.add_room_object(self.EObj[i])
+            if create:
+                self.set_timer(10, self.addObjects)
+
     def calcPos(self, x, y, obj):
         pos = self.peoplePos.index((x, y))
         obj.pos = pos
     def addObjects(self):
-        self.OverlayBG.updateBody()
-        self.OverlayBG.updateTitle()
+        if self.danceEnd:
+            self.OverlayBG.updateBody(True)
+            self.OverlayBG.updateTitle(True)
+            for i in range(self.indexB):
+                self.add_room_object(self.BObj[i])
+            for i in range(self.indexT):
+                self.add_room_object(self.TObj[i])
+            for i in range(self.indexG):
+                self.add_room_object(self.GObj[i])
+            for i in range(self.indexE):
+                self.add_room_object(self.EObj[i])
+        else:
+            self.OverlayBG.updateBody(False)
+            self.OverlayBG.updateTitle(False)
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False

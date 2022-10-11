@@ -167,7 +167,7 @@ class scoreText_MLBL3(TextObject):
         self.score = score
         self.timer = timer
         self.speed = speed
-        self.index = 10
+        self.index = 120
         if self.timer:
             self.time = datetime.datetime.now() + datetime.timedelta(seconds=self.index)
             self.updTimer()
@@ -218,3 +218,7 @@ class scoreCards_MLBL3(RoomObject):
         else:
             self.y = 0+(90*pos)
             self.pos = pos
+    def update(self):
+        if self.room.danceEnd:
+            self.room.delete_object(self)
+        return super().update()
