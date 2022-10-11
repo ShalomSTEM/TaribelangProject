@@ -10,8 +10,8 @@ class OverlayTextBG(RoomObject):
             self.set_image(self.load_image(os.path.join("Overlays", 'OverlayText.png')), 1280, 180)
         self.ran = False
         # Text for the StoryOverlay
-        self.bodyText = [" ", "It's time for our corroboree!", 'We have brought our fastest dancer of all, the Wallaby!', "Let's go!"]
-        self.titleText = [' ', 'Elder 1', 'Elder', 'Members']
+        self.bodyText = [" ", "It's time for our corroboree!", 'We have brought our fastest dancer of all, the Wallaby!', "Let's go!", "Use the D-Pad when the arrows overlap to score points!"]
+        self.titleText = [' ', 'Elder 1', 'Elder 2', 'Members', 'TIP']
         self.bodyText1 = [' ', '*Distant Talking*', '*Chatter about Elders talking', "Milbi was seen with Water!", "*Multiple gasps*", "Hold on, where is Milbi?", "Milbi ran off into the forest! I'll chase!"]
         self.titleText1 = [' ', 'Elders', 'Members', 'Elders', 'Members', 'Member', 'You']
         self.setup = False
@@ -90,7 +90,7 @@ class OverlayTextBG(RoomObject):
                 self.set_timer(5, self.Body.update_text)
                 self.set_timer(100, self.body)
         elif not self.room.danceEnd:
-            if self.currentIndexBody == 3:
+            if self.currentIndexBody == 4:
                 self.startedArrows = True
                 self.complete1()
             if self.currentIndexBody < self.count:
