@@ -9,7 +9,7 @@ class Museum(Level):
         Level.__init__(self, screen, joysticks)
         # - Set Background image - #
 
-        self.set_background_image(os.path.join("Museum", "floor.jpg"))
+        self.set_background_image(os.path.join("Museum", "6.jpg"))
 
         self.player = None
 
@@ -18,20 +18,20 @@ class Museum(Level):
             'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
             'bp____________________________________D_',
             'b_______________________________________',
-            'b______________________________________b ',
-            'b_______bbbbbbbb________bbbbbbbb_______b',
+            'b______________________________________b',
+            'b___bbbbbbbbb______________bbbbbbbbb___b',
             'b______________________________________b',
             'b______________________________________b',
-            'b__________w_______________w___________b',
+            'b__________w____bbbbbbb____w___________b',
             'b______________________________________b',
             'b______________________________________b',
-            'b_______bbbbbbbb________bbbbbbbb_______b',
+            'b___bbbbbbb__________________bbbbbbb___b',
             'b______________________________________b',
             'b______________________________________b',
-            'b__________w_______________w___________b',
+            'b__________w____bbbbbbb____w___________b',
             'b______________________________________b',
             'b______________________________________b',
-            'b_______bbbbbbbb________bbbbbbbb_______b',
+            'b___bbbbbbbbb______________bbbbbbbbb___b',
             'b______________________________________b',
             'b__________w_______________w___________b',
             'b______________________________________b',
@@ -52,8 +52,8 @@ class Museum(Level):
         self.add_room_object(
             MWindow(
                 self,
-                310,
-                160,
+                177,
+                164,
                 os.path.join('Museum', 'coople2.png'),
                 os.path.join("Museum", "cooplewords3.png"),
                 self.player
@@ -63,10 +63,10 @@ class Museum(Level):
         self.add_room_object(
             MWindow(
                 self,
-                825,
+                950,
                 164,
                 os.path.join('Museum', 'turtle.png'),
-                os.path.join("Museum", "Water.jpg"),
+                os.path.join("Museum", "milbistry.png"),
                 self.player
             )
         )
@@ -74,8 +74,8 @@ class Museum(Level):
         self.add_room_object(
              MWindow(
                 self,
-                362,
-                420,
+                177,
+                360,
                 os.path.join('Museum', 'spear.png'),
                 os.path.join("Museum", "Water.jpg"),
                 self.player

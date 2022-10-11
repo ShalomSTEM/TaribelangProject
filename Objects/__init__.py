@@ -24,6 +24,7 @@ from Objects.CopG2_Block import CopG2_Block
 from Objects.CopG2_Goal import CopG2_Goal
 from Objects.CopG2_Dirt import CopG2_Dirt
 from Objects.CopG2_Water import CopG2_Water
+from Objects.CopG2_GF_Water import CopG2_GF_Water
 from Objects.CopG2_NPC import CopG2_NPC
 from Objects.Dirt_MLBL3 import Dirt_MLBL3
 from Objects.Stne_MLBL3 import Stne_MLBL3
@@ -45,5 +46,6 @@ from Objects.CopG1_kangaroo import CopG1_kangaroo
 from Objects.CopG1_Emu import CopG1_Emu
 from Objects.Dance_MLBL3 import Dance_MLBL3, DanceBG_MLBL3, DanceArrows_MLBL3, scoreText_MLBL3
 from Objects.MWindow import MWindow
-from Objects.MLBL2_Snake import MLBL2_Snake
+from Objects.MLBL2_Snake import MLBL2_SnakeTurtle
 from Objects.Wallaby import Wallaby_MLBL2
+from Objects.Cockatoo import Cockatoo

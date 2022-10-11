@@ -108,3 +108,6 @@ class Globals:
     #ControllerOverlay
     oldRoom = 0
     OverlayButtons = ""
+
+    change_select = None
+    confirm_select = None

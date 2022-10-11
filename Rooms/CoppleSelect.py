@@ -62,6 +62,10 @@ class CoppleSelect(Level):
 
     def apply_selection(self):
         self.buttons[self.selected_button].activate()
+        if self.selected_button == 0:
+            Globals.story_only = False
+        else:
+            Globals.story_only = True
 
     def key_signal(self, signal):
         if signal == "right":

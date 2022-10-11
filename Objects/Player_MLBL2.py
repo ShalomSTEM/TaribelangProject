@@ -39,7 +39,6 @@ class Player_MLBL2(RoomObject):
         self.moving = False
         self.animate()
 
-        self.set_timer(60, self.update)
     def prestep(self):
         self.block_right = False
         self.block_left = False
@@ -102,7 +101,7 @@ class Player_MLBL2(RoomObject):
                 self.x += 4
                 self.facing = self.RIGHT
         elif key[pygame.K_UP]:
-            if self.allowInputs:
+            if self.allowInputs: 
                 self.y -= 4
                 self.facing = self.UP
         elif key[pygame.K_DOWN]:

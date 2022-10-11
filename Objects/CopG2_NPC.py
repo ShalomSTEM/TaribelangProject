@@ -13,25 +13,25 @@ class CopG2_NPC(RoomObject):
 
         # Load player animation images
         self.down = []
-        self.down.append(self.load_image(os.path.join('CopG2', 'front_1.png')))
-        self.down.append(self.load_image(os.path.join('CopG2', 'front_2.png')))
-        self.down.append(self.load_image(os.path.join('CopG2', 'front_3.png')))
-        self.down.append(self.load_image(os.path.join('CopG2', 'front_4.png')))
+        self.down.append(self.load_image(os.path.join('CopG2', 't_down_1.png')))
+        self.down.append(self.load_image(os.path.join('CopG2', 't_down_2.png')))
+        self.down.append(self.load_image(os.path.join('CopG2', 't_down_3.png')))
+        self.down.append(self.load_image(os.path.join('CopG2', 't_down_4.png')))
         self.up = []
-        self.up.append(self.load_image(os.path.join('CopG2', 'back_1.png')))
-        self.up.append(self.load_image(os.path.join('CopG2', 'back_2.png')))
-        self.up.append(self.load_image(os.path.join('CopG2', 'back_3.png')))
-        self.up.append(self.load_image(os.path.join('CopG2', 'back_4.png')))
+        self.up.append(self.load_image(os.path.join('CopG2', 't_up_1.png')))
+        self.up.append(self.load_image(os.path.join('CopG2', 't_up_2.png')))
+        self.up.append(self.load_image(os.path.join('CopG2', 't_up_3.png')))
+        self.up.append(self.load_image(os.path.join('CopG2', 't_up_4.png')))
         self.left = []
-        self.left.append(self.load_image(os.path.join('CopG2', 'left_1.png')))
-        self.left.append(self.load_image(os.path.join('CopG2', 'left_2.png')))
-        self.left.append(self.load_image(os.path.join('CopG2', 'left_3.png')))
-        self.left.append(self.load_image(os.path.join('CopG2', 'left_4.png')))
+        self.left.append(self.load_image(os.path.join('CopG2', 't_left_1.png')))
+        self.left.append(self.load_image(os.path.join('CopG2', 't_left_2.png')))
+        self.left.append(self.load_image(os.path.join('CopG2', 't_left_3.png')))
+        self.left.append(self.load_image(os.path.join('CopG2', 't_left_4.png')))
         self.right = []
-        self.right.append(self.load_image(os.path.join('CopG2', 'right_1.png')))
-        self.right.append(self.load_image(os.path.join('CopG2', 'right_2.png')))
-        self.right.append(self.load_image(os.path.join('CopG2', 'right_3.png')))
-        self.right.append(self.load_image(os.path.join('CopG2', 'right_4.png')))
+        self.right.append(self.load_image(os.path.join('CopG2', 't_right_1.png')))
+        self.right.append(self.load_image(os.path.join('CopG2', 't_right_2.png')))
+        self.right.append(self.load_image(os.path.join('CopG2', 't_right_3.png')))
+        self.right.append(self.load_image(os.path.join('CopG2', 't_right_4.png')))
 
         self.img_index = 0
 

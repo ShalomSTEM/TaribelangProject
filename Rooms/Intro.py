@@ -1,4 +1,4 @@
-from GameFrame import Level, TextObject, EnumLevels
+from GameFrame import Level, TextObject, EnumLevels, Globals
 import os
 
 from Objects import ListenerIntro
@@ -14,6 +14,9 @@ class Intro(Level):
         self.set_background_image(os.path.join("Title", "title_to_wtc.png"))
         self.add_room_object(ListenerIntro(self, 0, 0))
         self.set_timer(60, self.start_wtc_taribelang)
+
+        Globals.change_select = self.load_sound("change_selection.ogg")
+        Globals.confirm_select = self.load_sound("confirm_selection.ogg")
 
     def start_wtc_taribelang(self):
         self.set_background_image(os.path.join("Title", "WTC_T.png"))

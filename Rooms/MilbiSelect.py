@@ -10,8 +10,7 @@ class MilbiSelect(Level):
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.MilbiSelect
 
-        room_name = TextObject(self, 200, 50, "Milbi Select - selector", colour=(255, 255, 255))
-        self.add_room_object(room_name)
+        self.set_background_image(os.path.join("Title", "home_bg.png"))
 
         self.add_room_object(Listener(self, 0, 0))
         
@@ -20,30 +19,30 @@ class MilbiSelect(Level):
         play_through_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,
-            160,
+            60,
             EnumLevels.Mil_S1,
-            os.path.join("Transition", "both_selected.png"),
-            os.path.join("Transition", "both.png"))
+            os.path.join("Transition", "both_selected.pmg.png"),
+            os.path.join("Transition", "both.pmg.png"))
         self.buttons.append(play_through_button)
         self.add_room_object(play_through_button)
 
         story_only_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
-            160,
+            60,
             EnumLevels.Mil_S_Only,
-            os.path.join("Transition", "story_only_selected.png"),
-            os.path.join("Transition", "story_only.png"))
+            os.path.join("Transition", "Milbi_Story_Only_Selected.png"),
+            os.path.join("Transition", "Milbi_Story_Only.png"))
         self.buttons.append(story_only_button)
         self.add_room_object(story_only_button)
 
         games_only_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
-            160,
+            60,
             EnumLevels.Mil_G_Only_Select,
-            os.path.join("Transition", "games_only_selected.png"),
-            os.path.join("Transition", "games_only.png"))
+            os.path.join("Transition", "Milbi_Game_Only_Selected.png"),
+            os.path.join("Transition", "Milbi_Game_Only.png"))
         self.buttons.append(games_only_button)
         self.add_room_object(games_only_button)
 

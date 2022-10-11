@@ -14,10 +14,10 @@ class Wallaby_MLBL2(RoomObject):
         self.set_image(player, 50, 50)
 
         # Load player animation images
-        self.down = [self.load_image(os.path.join("MilbiL1", "sprite_0.png")), self.load_image(os.path.join("MilbiL2", "Player_dance2.png"))]
-        self.up = [self.load_image(os.path.join("MilbiL1", "sprite_2.png")), self.load_image(os.path.join("MilbiL2", "Player_dance3.png"))]
-        self.left = [self.load_image(os.path.join("MilbiL1", "sprite_1.png")), self.load_image(os.path.join("MilbiL2", "Player_dance1.png"))]
-        self.right = [self.load_image(os.path.join("MilbiL1", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
+        self.down = [self.load_image(os.path.join("MilbiL2", "sprite_0.png")), self.load_image(os.path.join("MilbiL2", "Player_dance2.png"))]
+        self.up = [self.load_image(os.path.join("MilbiL2", "sprite_2.png")), self.load_image(os.path.join("MilbiL2", "Player_dance3.png"))]
+        self.left = [self.load_image(os.path.join("MilbiL2", "sprite_1.png")), self.load_image(os.path.join("MilbiL2", "Player_dance1.png"))]
+        self.right = [self.load_image(os.path.join("MilbiL2", "sprite_3.png")), self.load_image(os.path.join("MilbiL2", "Player_dance4.png"))]
 
         self.img_index = 0
         self.next = False
@@ -96,6 +96,7 @@ class Wallaby_MLBL2(RoomObject):
             self.x_speed = 0
             self.next = True
             self.allowInput = True
+            self.room.delete_object(self)
         else:
             pass
         
