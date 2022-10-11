@@ -53,8 +53,6 @@ class MLBL2_SnakeTurtle(RoomObject):
             self.x = 275
             self.y = 200
             self.x_speed = 0
-        elif self.room.danceEnd and self.setup and not self.turtle and self.room.runNPC:
-            self.x_speed = 1.75
         self.set_timer(10, self.updatePos)
     def animate(self):
         if self.turtle:
@@ -62,13 +60,11 @@ class MLBL2_SnakeTurtle(RoomObject):
                 self.img_index += 1
                 if self.img_index == 3:
                     self.img_index = 1
-                print(f'set image turtle_{self.img_index}_bottom.png')
                 self.set_image(os.path.join("Images", "MilbiL2", f'turtle_{self.img_index}_top.png'), 32, 32)
             if self.bottom:
                 self.img_index += 1
                 if self.img_index == 3:
                     self.img_index = 1
-                print(f'set image turtle_{self.img_index}_bottom.png')
                 self.set_image(os.path.join("Images", "MilbiL2", f'turtle_{self.img_index}_bottom.png'), 32, 32)
         else:
             if self.top:
