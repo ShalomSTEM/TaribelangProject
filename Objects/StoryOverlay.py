@@ -42,7 +42,7 @@ class OverlayTextBG(RoomObject):
     def reAddText(self):
         self.room.add_room_object(self.Title)
         self.room.add_room_object(self.Body)
-        self.set_timer(5, self.title)
+        self.title()
     def updateTitle(self, end):
         self.end1 = end
         if end and not self.setup:
@@ -53,8 +53,8 @@ class OverlayTextBG(RoomObject):
             self.currentIndexBody = 0
             self.currentIndexTitle = 0
             self.setup = True
-            self.set_timer(5, self.title)
-            self.set_timer(5, self.body)
+            self.title()
+            self.body()
         elif end and self.setup:
             if self.currentIndexTitle < self.count1:
                 self.currentIndexTitle += 1
