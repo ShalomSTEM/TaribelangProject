@@ -11,8 +11,8 @@ class OverlayTextBG(RoomObject):
             self.set_image(self.load_image(os.path.join("Overlays", 'OverlayText.png')), 1280, 180)
         self.ran = False
         # Text for the StoryOverlay
-        self.bodyText = ['elder 1 talk', 'elder 2 talk', 'elder 3 talk']
-        self.titleText = ['elder 1', 'elder 2', 'elder 3']
+        self.bodyText = ["It's time for our corroboree!", 'We have brought our fastest dancer of all, the Wallaby!', "Let's go!"]
+        self.titleText = ['Elder 1', 'Elder', 'Members']
         self.bodyText1 = ['______', '____', 'useless text']
         self.titleText1 = ['____', '____', 'useless text']
         self.setup = False
@@ -69,7 +69,7 @@ class OverlayTextBG(RoomObject):
                 self.currentTextTitle = self.titleText[self.currentIndexTitle]
                 self.Title.text = self.currentTextTitle
                 self.set_timer(5, self.Title.update_text)
-                self.set_timer(40, self.title)
+                self.set_timer(120, self.title)
     def body(self):
         if self.room.danceEnd:
             self.end = True
@@ -82,8 +82,8 @@ class OverlayTextBG(RoomObject):
         self.end = end
         if self.end and self.setup:
             if self.currentIndexBody == 2:
-                    self.room.runNPC = True
-                    self.room.endOverlay = True
+                self.room.runNPC = True
+                self.room.endOverlay = True
             if self.currentIndexBody < self.count1:
                 self.currentIndexBody += 1
                 self.currentTextBody = self.bodyText1[self.currentIndexBody]
@@ -99,7 +99,7 @@ class OverlayTextBG(RoomObject):
                 self.currentTextBody = self.bodyText[self.currentIndexBody]
                 self.Body.text = self.currentTextBody
                 self.set_timer(5, self.Body.update_text)
-                self.set_timer(40, self.body)
+                self.set_timer(120, self.body)
         else:
             self.set_timer(40, self.body)
     def complete1(self):
