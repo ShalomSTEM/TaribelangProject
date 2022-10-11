@@ -38,6 +38,9 @@ class ML2_People(RoomObject):
         if self.room.runNPC:
             if self.room.peoplePos[self.pos] == (888, 280):
                 self.run = True
+                self.x_speed = 1.5
+                if self.x >= 1280:
+                    self.room.complete()
         self.set_timer(40, self.updatePos)
     def update(self):
         self.y_speed = self.y_speed + self.gravity
@@ -48,8 +51,7 @@ class ML2_People(RoomObject):
         if self.y == 280 and self.x == 880:
             self.x = 100
             self.y = 100
-        if self.run:
-            self.room.complete()
+
             
     def animate(self):
         if self.room.startMoving and not self.room.danceEnd:

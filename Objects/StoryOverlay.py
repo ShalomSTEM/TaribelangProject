@@ -13,8 +13,8 @@ class OverlayTextBG(RoomObject):
         # Text for the StoryOverlay
         self.bodyText = [" ", "It's time for our corroboree!", 'We have brought our fastest dancer of all, the Wallaby!', "Let's go!"]
         self.titleText = [' ', 'Elder 1', 'Elder', 'Members']
-        self.bodyText1 = [' ', '____', 'useless text']
-        self.titleText1 = [' ', '____', 'useless text']
+        self.bodyText1 = [' ', '*Distant Talking*', 'useless text']
+        self.titleText1 = [' ', 'Elders', 'useless text']
         self.setup = False
         # Get the amount of values in the arrays and turn it into an int
         method = self.bodyText.__len__()
