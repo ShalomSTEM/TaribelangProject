@@ -20,7 +20,7 @@ class Cop_G1 (Level):
         self.set_background_image(os.path.join("CoppleL1", "grass.png"))
         self.set_background_scroll(4)
 
-        self.bg_music = self.load_sound("jazzyfrenchy.mp3")
+        self.bg_music = self.load_sound("jazzyfrenchy.ogg")
         self.bg_music.play()
 
         self.hit_sound = self.load_sound("NPC_hit_1.ogg")
