@@ -14,16 +14,20 @@ class CopG1_kangaroo(RoomObject):
 
         self.depth = 100
 
-        self.y_speed = -0.5
+        self.y_speed = -1
+
+        self.can_collide = True
 
         self.register_collision_object('CopG1_Tree')
 
     def handle_collision(self, other, other_type):
-        if other_type == "CopG1_Tree":
-            self.y_speed *= -2
-            self.y = Globals.SCREEN_HEIGHT - 90
-        elif other_type =='Copple1_Player':
-            self.blocked()
+        if self.can_collide:
+            self.can_collide = False
+            self.set_timer(60, self.reset_collide)
+            self.y_speed += 1
+
+    def reset_collide(self):
+        self.can_collide = True
 
     def update_image(self):
         self.curr_img += 1
@@ -34,4 +38,7 @@ class CopG1_kangaroo(RoomObject):
         elif self.curr_img == 1:
             self.set_image(self.image2, 64, 64)
 
-        self.set_timer(5, self.update_image)
+        if self.y > Globals.SCREEN_HEIGHT:
+            self.delete_object(self)
+        else:
+            self.set_timer(5, self.update_image)

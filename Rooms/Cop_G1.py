@@ -29,9 +29,11 @@ class Cop_G1 (Level):
 
         self.scrolling_objects = []
 
-        self.add_room_object(Copple1_Player(self, Globals.SCREEN_WIDTH / 2 - 80, Globals.SCREEN_HEIGHT - 200))
+        self.add_room_object(Copple1_Player(self, Globals.SCREEN_WIDTH / 2 + 15, Globals.SCREEN_HEIGHT - 200))
         self.add_room_object(CopG1_kangaroo(self, Globals.SCREEN_WIDTH / 3 - 40, Globals.SCREEN_HEIGHT - 90))
-        self.add_room_object(CopG1_Emu(self, Globals.SCREEN_WIDTH / 3 + 480, Globals.SCREEN_HEIGHT - 90))
+        self.add_room_object(CopG1_Emu(self, Globals.SCREEN_WIDTH / 3 * 2, Globals.SCREEN_HEIGHT - 90))
+        self.add_room_object(CopG1_kangaroo(self, Globals.SCREEN_WIDTH / 6 * 5, Globals.SCREEN_HEIGHT - 90))
+        self.add_room_object(CopG1_Emu(self, Globals.SCREEN_WIDTH / 6, Globals.SCREEN_HEIGHT - 90))
 
         self.set_timer(30, self.update_lives)
 
