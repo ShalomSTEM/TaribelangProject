@@ -16,7 +16,6 @@ class BossMLBL3(RoomObject):
         self.imgIndex = 0
         self.animate()
 
-
     def animate(self):
         self.imgIndex += 1
         if self.imgIndex == 3:
@@ -31,6 +30,7 @@ class BossMLBL3(RoomObject):
         else:
             self.new_orb = ORB_MLBL3(self.room, self.rect.centerx, self.rect.centery)
             self.room.add_room_object(self.new_orb)
+            self.room.room_items.append(self.new_orb)
             angle = randrange(1, 359, 1)
             self.new_orb.rotate(angle)
             self.new_orb.x_speed, self.new_orb.y_speed = self.get_direction_coordinates(angle, 5)

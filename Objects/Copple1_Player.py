@@ -69,5 +69,3 @@ class Copple1_Player (RoomObject):
         if key[pygame.K_SPACE]:
             pass
             # self.jump()
-
-

@@ -2,6 +2,7 @@ from GameFrame import Level, Globals, EnumLevels
 import os
 from Objects import Dirt_MLBL3, Stne_MLBL3, Player_MLBL3, Spear_MLBL3, BossMLBL3, ORB_MLBL3, CopG2_NPC
 
+
 class Mil_G3(Level):
     def __init__(self, screen, joysticks, direct=False):
         Level.__init__(self, screen, joysticks)
@@ -71,13 +72,7 @@ class Mil_G3(Level):
                     new_dirt = Dirt_MLBL3(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
-                elif obj == "O":
-                    self.new_orb = ORB_MLBL3(self, j * 32 - 200, i * 32 - 200)
-                    self.set_timer(200, self.createOrb)
 
-    def createOrb(self):
-        self.add_room_object(self.new_orb)
-        self.room_items.append(self.new_orb)
     def shift_room_left(self):
         for item in self.room_items:
             item.x -= Globals.move_speed
@@ -99,7 +94,6 @@ class Mil_G3(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
-
 
     def complete_loss(self):
         if Globals.direct_select:

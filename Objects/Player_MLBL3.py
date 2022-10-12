@@ -274,6 +274,7 @@ class Player_MLBL3(RoomObject):
             new_bullet = SpearProjectile(self.room, self.rect.centerx, self.y, self.boss_milbi)
             new_bullet.x -= 4
             self.room.add_room_object(new_bullet)
+            self.room.room_items.append(new_bullet)
             self.room.set_timer(10, self.reset_shooting)
             self.can_shoot = False
 
