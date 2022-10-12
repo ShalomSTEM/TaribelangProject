@@ -18,7 +18,7 @@ class Cop_G1 (Level):
         self.add_room_object(self.score_text)
 
         self.set_background_image(os.path.join("CoppleL1", "grass.png"))
-        self.set_background_scroll(4)
+        self.set_background_scroll(6)
 
         self.bg_music = self.load_sound("jazzyfrenchy.ogg")
         self.bg_music.play()
