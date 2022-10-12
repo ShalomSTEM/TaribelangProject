@@ -7,8 +7,8 @@ class Cop_S3(Level):
         Level.__init__(self, screen, joysticks)
 
         self.set_background_image(os.path.join("CoppleS", 'Copple_Background_3.png'))
-        self.load_sound("Copple_3.wav").play()
-        self.set_timer(1050, self.complete)
+        self.load_sound("Copple_3.ogg").play()
+        self.set_timer(2400, self.complete)
 
         Globals.next_level = EnumLevels.Cop_G3
 

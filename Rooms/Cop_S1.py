@@ -8,8 +8,8 @@ class Cop_S1(Level):
         Level.__init__(self, screen, joysticks)
 
         self.set_background_image(os.path.join("CoppleS", 'Copple_Background_1.png'))
-        self.load_sound("Copple_1.wav").play()
-        self.set_timer(900, self.complete)
+        self.load_sound("Copple_1.ogg").play()
+        self.set_timer(300, self.complete)
 
         self.cockatoo_object = Cockatoo(self, -50, 200)
         self.add_room_object(self.cockatoo_object)
