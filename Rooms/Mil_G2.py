@@ -196,9 +196,12 @@ class Mil_G2(Level):
         else:
             self.OverlayBG.updateBody(False)
             self.OverlayBG.updateTitle(False)
+
     def complete(self):
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
+        else:
+            Globals.next_level = EnumLevels.Mil_G3
         self.running = False
 

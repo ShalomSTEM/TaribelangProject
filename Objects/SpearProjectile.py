@@ -27,8 +27,8 @@ class SpearProjectile(RoomObject):
                 Globals.total_count = 0
                 Globals.destroyed_count = 0
                 self.room.delete_object(other)
-                self.room.running = False
-            print((self.countToDestory - Globals.destroyed_count)/10, '%')
+                self.room.complete()
+            # print((self.countToDestory - Globals.destroyed_count)/10, '%')
             self.room.delete_object(self)
 
         elif other_type == "Stne_MLBL3":

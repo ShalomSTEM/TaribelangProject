@@ -9,7 +9,8 @@ class Mil_G3(Level):
         self.direct = direct
         self.set_background_image(os.path.join("MilbiL3", "Instructions.png"))
         self.set_timer(100, self.startElse)
-        self.load_sound("Milbi_6.wav").play()
+        self.bg_music = self.load_sound("Milbi_6.ogg")
+        self.bg_music.play()
 
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G3
@@ -93,10 +94,16 @@ class Mil_G3(Level):
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
+        else:
+            Globals.next_level = EnumLevels.Mil_S4
+        self.bg_music.stop()
         self.running = False
 
     def complete_loss(self):
+        self.bg_music.stop()
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
+        else:
+            Globals.next_level = EnumLevels.Mil_S4
         self.running = False

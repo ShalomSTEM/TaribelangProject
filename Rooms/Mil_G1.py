@@ -111,6 +111,8 @@ class Mil_G1(Level):
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
+        else:
+            Globals.next_level = EnumLevels.Mil_S2
         self.running = False
 
     def timerIncrease(self):
@@ -309,5 +311,6 @@ class Mil_G1(Level):
         self.set_timer(50, self.restartMilbiL1)
 
     def restartMilbiL1(self):
-        Globals.next_level = 4
-        self.running = False
+        self.complete()
+        #Globals.next_level = 4
+        #self.running = False
