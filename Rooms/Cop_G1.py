@@ -23,6 +23,10 @@ class Cop_G1 (Level):
         self.bg_music = self.load_sound("jazzyfrenchy.mp3")
         self.bg_music.play()
 
+        self.hit_sound = self.load_sound("NPC_hit_1.ogg")
+
+        self.can_hit_tree = True
+
         self.scrolling_objects = []
 
         self.add_room_object(Copple1_Player(self, Globals.SCREEN_WIDTH / 2 - 80, Globals.SCREEN_HEIGHT - 200))
@@ -53,24 +57,28 @@ class Cop_G1 (Level):
         self.set_timer(30, self.update_lives)
 
     def complete(self):
+        self.bg_music.stop()
         if Globals.direct_select:
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         self.running = False
 
     def tree_hit(self):
+        if self.background_scroll_speed > 0 and self.can_hit_tree:
+            self.can_hit_tree = False
+            self.hit_sound.play()
         self.background_scroll_speed = 0
         for obj in self.scrolling_objects:
             obj.y_speed = 0
 
     def start_scroll_again(self):
+        self.can_hit_tree = True
         self.background_scroll_speed = 6
         for obj in self.scrolling_objects:
             obj.y_speed = 6
 
     def level_up(self):
         if self.update_lives == 30:
-            self.start_scroll_again += 1
             self.add_tree += 7
         self.set_timer(900, self.level_up)
 

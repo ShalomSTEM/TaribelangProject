@@ -26,9 +26,9 @@ class Copple1_Player (RoomObject):
 
     def step(self):
         if self.scroll_stopped:
-            if self.collides_at(self, 0, -5, "CopG1_Tree") or \
-              self.collides_at(self, 5, 0, "CopG1_Tree") or \
-              self.collides_at(self, -5, 0, "CopG1_Tree"):
+            if not self.collides_at(self, 0, -5, "CopG1_Tree") and \
+              not self.collides_at(self, 5, 0, "CopG1_Tree") and \
+              not self.collides_at(self, -5, 0, "CopG1_Tree"):
                 self.room.start_scroll_again()
 
     def handle_collision(self, other, other_type):
