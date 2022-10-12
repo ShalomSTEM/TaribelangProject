@@ -49,3 +49,4 @@ from Objects.MWindow import MWindow
 from Objects.MLBL2_Snake import MLBL2_SnakeTurtle
 from Objects.Wallaby import Wallaby_MLBL2
 from Objects.Cockatoo import Cockatoo
+from Objects.ORB_MLBL3 import ORB_MLBL3

@@ -56,7 +56,7 @@ class DanceArrows_MLBL3(RoomObject):
         self.arrowNames = ["left", "down", "up", "right"]
         self.pointValues = [2, 1, 0.75, -1]
         self.arrows = ["leftArrowFilled.png", "downArrowFilled.png", "upArrowFilled.png", "rightArrowFilled.png"]
-        self.danceSprites = ["Player_dance1.png", 'Player_dance2.png', 'Player_dance3.png', 'Player_dance4.png']
+        self.danceSprites = ["ML2_wallaby_left.png", 'ML2_wallaby_right.png', 'ML2_wallaby_left.png', 'ML2_wallaby_right.png']
 
         # Setting image and collision
         self.set_image(self.load_image(os.path.join("Overlays", self.arrows[arrow])), 128, 128)

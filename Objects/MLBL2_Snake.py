@@ -6,7 +6,7 @@ class MLBL2_SnakeTurtle(RoomObject):
     def __init__(self, room, x, y, img, top, bottom, start, turtle):
         RoomObject.__init__(self, room, x, y)
         image = self.load_image(os.path.join("MilbiL2", img))
-        self.set_image(image, 25, 25)
+        self.set_image(image, 35, 35)
         self.turtle = turtle
         self.top = top
         self.bottom = bottom
@@ -60,16 +60,15 @@ class MLBL2_SnakeTurtle(RoomObject):
                 self.img_index += 1
                 if self.img_index == 3:
                     self.img_index = 1
-                self.set_image(os.path.join("Images", "MilbiL2", f'turtle_{self.img_index}_top.png'), 32, 32)
+                self.set_image(os.path.join("Images", "MilbiL2", f'turtle_{self.img_index}_top.png'), 35, 35)
             if self.bottom:
                 self.img_index += 1
                 if self.img_index == 3:
                     self.img_index = 1
-                self.set_image(os.path.join("Images", "MilbiL2", f'turtle_{self.img_index}_bottom.png'), 32, 32)
+                self.set_image(os.path.join("Images", "MilbiL2", f'turtle_{self.img_index}_bottom.png'), 35, 35)
         else:
             if self.top:
-                self.set_image(os.path.join("Images", "MilbiL2", "ML2_Snake_top.png"), 32, 32)
+                self.set_image(os.path.join("Images", "MilbiL2", "ML2_Snake_top.png"), 35, 35)
             elif self.bottom:
-                self.set_image(os.path.join("Images", "MilbiL2", "ML2_Snake_bottom.png"), 32, 32)
+                self.set_image(os.path.join("Images", "MilbiL2", "ML2_Snake_bottom.png"), 35, 35)
         self.set_timer(5, self.animate)
-                

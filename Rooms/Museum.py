@@ -9,7 +9,7 @@ class Museum(Level):
         Level.__init__(self, screen, joysticks)
         # - Set Background image - #
 
-        self.set_background_image(os.path.join("Museum", "6.jpg"))
+        self.set_background_image(os.path.join("Museum", "floor4.png"))
 
         self.player = None
 
@@ -54,8 +54,8 @@ class Museum(Level):
                 self,
                 177,
                 164,
-                os.path.join('Museum', 'coople2.png'),
-                os.path.join("Museum", "cooplewords3.png"),
+                os.path.join('Museum', 'coople5.png'),
+                os.path.join("Museum", "copplewords3.png"),
                 self.player
             )
         )
@@ -65,7 +65,7 @@ class Museum(Level):
                 self,
                 950,
                 164,
-                os.path.join('Museum', 'turtle.png'),
+                os.path.join('Museum', 'milbibook.png'),
                 os.path.join("Museum", "milbistry.png"),
                 self.player
             )
@@ -77,7 +77,7 @@ class Museum(Level):
                 177,
                 360,
                 os.path.join('Museum', 'spear.png'),
-                os.path.join("Museum", "Water.jpg"),
+                os.path.join("Museum", "spearwords.png"),
                 self.player
              )
         )
@@ -85,10 +85,10 @@ class Museum(Level):
         self.add_room_object(
              MWindow(
                 self,
-                885,
-                420,
-                os.path.join('Museum', 'MusBrick2.png'),
-                os.path.join("Museum", "Water.jpg"),
+                950,
+                356,
+                os.path.join('Museum', 'animals.png'),
+                os.path.join("Museum", "animalwords.png"),
                 self.player
              )
         )
@@ -96,10 +96,10 @@ class Museum(Level):
         self.add_room_object(
              MWindow(
                 self,
-                624,
-                320,
-                os.path.join('Museum', 'MusBrick2.png'),
-                os.path.join("Museum", "Water.jpg"),
+                550,
+                260,
+                os.path.join('Museum', 'landscape.png'),
+                os.path.join("Museum", "landscapewords.png"),
                 self.player
              )
         )

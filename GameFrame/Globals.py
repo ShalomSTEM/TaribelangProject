@@ -2,6 +2,7 @@ from enum import IntEnum
 
 
 class EnumLevels(IntEnum):
+
     Intro = 0
     Home = 1
     MilbiSelect = 2
