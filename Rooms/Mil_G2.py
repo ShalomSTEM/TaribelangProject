@@ -202,6 +202,6 @@ class Mil_G2(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         else:
-            Globals.next_level = EnumLevels.Mil_G3
+            Globals.next_level = EnumLevels.Mil_S4
         self.running = False
 

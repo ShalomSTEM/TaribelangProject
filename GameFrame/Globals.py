@@ -13,20 +13,21 @@ class EnumLevels(IntEnum):
     Mil_S3 = 7
     Mil_G3 = 8
     Mil_S4 = 9
-    Mil_S_Only = 10
-    Mil_G_Only_Select = 11
-    CoppleSelect = 12
-    Cop_S1 = 13
-    Cop_G1 = 14
-    Cop_S2 = 15
-    Cop_G2 = 16
-    Cop_S3 = 17
-    Cop_G3 = 18
-    Cop_S4 = 19
-    Cop_S_Only = 20
-    Cop_G_Only_Select = 21
-    Museum = 22
-    ControllerOverlay = 23
+    Mil_S5 = 10
+    Mil_S_Only = 11
+    Mil_G_Only_Select = 12
+    CoppleSelect = 13
+    Cop_S1 = 14
+    Cop_G1 = 15
+    Cop_S2 = 16
+    Cop_G2 = 17
+    Cop_S3 = 18
+    Cop_G3 = 19
+    Cop_S4 = 20
+    Cop_S_Only = 21
+    Cop_G_Only_Select = 22
+    Museum = 23
+    ControllerOverlay = 24
 
 
 class Globals:
@@ -56,6 +57,7 @@ class Globals:
         "Mil_S3",
         "Mil_G3",
         "Mil_S4",
+        "Mil_S5",
         "Mil_S_Only",
         "Mil_G_Only_Select",
         "CoppleSelect",
@@ -73,7 +75,8 @@ class Globals:
     ]
 
     # - Set the starting level - #
-    start_level = EnumLevels.Intro
+    #start_level = EnumLevels.Intro
+    start_level = EnumLevels.Mil_G3
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 0

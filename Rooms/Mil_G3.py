@@ -110,7 +110,7 @@ class Mil_G3(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         else:
-            Globals.next_level = EnumLevels.Mil_S4
+            Globals.next_level = EnumLevels.Mil_S5
         self.bg_music.stop()
         self.running = False
 
@@ -120,7 +120,7 @@ class Mil_G3(Level):
             Globals.direct_select = False
             Globals.next_level = EnumLevels.Home
         else:
-            Globals.next_level = EnumLevels.Mil_S4
+            Globals.next_level = EnumLevels.Mil_S5
         self.running = False
 
     def update_hits(self, value):
