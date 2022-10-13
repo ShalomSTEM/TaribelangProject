@@ -7,9 +7,7 @@ class Mil_G_Only_Select(Level):
     def __init__(self, screen, joysticks):
         Level.__init__(self, screen, joysticks)
 
-        room_name = TextObject(self, 200, 50, "Milbi Game Select", colour=(255, 255, 255))
-        self.add_room_object(room_name)
-
+        self.set_background_image(os.path.join("Title", "home_bg.png"))
         self.add_room_object(Listener(self, 0, 0))
 
         # - Information for Controller Overlay
@@ -20,10 +18,10 @@ class Mil_G_Only_Select(Level):
         plains_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 - 128,
-            160,
+            60,
             EnumLevels.Mil_G1,
-            os.path.join("Transition", "1_selected.png"),
-            os.path.join("Transition", "1.png"),
+            os.path.join("Transition", "Mil_G1_selected.png"),
+            os.path.join("Transition", "Mil_G1.png"),
             direct=True
         )
         self.buttons.append(plains_game_button)
@@ -32,10 +30,10 @@ class Mil_G_Only_Select(Level):
         corroboree_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 2 - 128,
-            160,
+            60,
             EnumLevels.Mil_G2,
-            os.path.join("Transition", "2_selected.png"),
-            os.path.join("Transition", "2.png"),
+            os.path.join("Transition", "Mil_G2_selected.png"),
+            os.path.join("Transition", "Mil_G2.png"),
             direct=True
         )
         self.buttons.append(corroboree_game_button)
@@ -44,10 +42,10 @@ class Mil_G_Only_Select(Level):
         boss_battle_game_button = RoomSelectButton(
             self,
             Globals.SCREEN_WIDTH / 4 * 3 - 128,
-            160,
+            60,
             EnumLevels.Mil_G3,
-            os.path.join("Transition", "3_selected.png"),
-            os.path.join("Transition", "3.png"),
+            os.path.join("Transition", "Mil_G3_selected.png"),
+            os.path.join("Transition", "Mil_G3.png"),
             direct=True
         )
         self.buttons.append(boss_battle_game_button)
