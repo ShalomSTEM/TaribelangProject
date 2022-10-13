@@ -14,7 +14,13 @@ class Mil_G3(Level):
 
         # - Information for Controller Overlay
         self.roomNum = EnumLevels.Mil_G3
+        self.player_x = 0
+        self.player_y = 0
 
+    def update_player_pos(self):
+        self.player_x = self.player.x
+        self.player_y = self.player.y
+        self.set_timer(10, self.update_player_pos)
 
     def startElse(self):
 
@@ -73,6 +79,7 @@ class Mil_G3(Level):
                     new_dirt = Dirt_MLBL3(self, j * 32 - 200, i * 32 - 200)
                     self.add_room_object(new_dirt)
                     self.room_items.append(new_dirt)
+        self.update_player_pos()
 
     def shift_room_left(self):
         for item in self.room_items:

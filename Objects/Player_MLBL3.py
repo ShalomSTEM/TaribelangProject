@@ -13,28 +13,28 @@ class Player_MLBL3(RoomObject):
         self.boss_milbi = boss_milbi
 
         self.down = []
-        self.down.append(self.load_image(os.path.join("MilbiL3", "front_1.png")))
-        self.down.append(self.load_image(os.path.join("MilbiL3", "front_2.png")))
-        self.down.append(self.load_image(os.path.join("MilbiL3", "front_3.png")))
-        self.down.append(self.load_image(os.path.join("MilbiL3", "front_4.png")))
+        self.down.append(self.load_image(os.path.join("CopG2", "front_1.png")))
+        self.down.append(self.load_image(os.path.join("CopG2", "front_2.png")))
+        self.down.append(self.load_image(os.path.join("CopG2", "front_3.png")))
+        self.down.append(self.load_image(os.path.join("CopG2", "front_4.png")))
 
         self.up = []
-        self.up.append(self.load_image(os.path.join("MilbiL3", "back_1.png")))
-        self.up.append(self.load_image(os.path.join("MilbiL3", "back_2.png")))
-        self.up.append(self.load_image(os.path.join("MilbiL3", "back_3.png")))
-        self.up.append(self.load_image(os.path.join("MilbiL3", "back_4.png")))
+        self.up.append(self.load_image(os.path.join("CopG2", "back_1.png")))
+        self.up.append(self.load_image(os.path.join("CopG2", "back_2.png")))
+        self.up.append(self.load_image(os.path.join("CopG2", "back_3.png")))
+        self.up.append(self.load_image(os.path.join("CopG2", "back_4.png")))
 
         self.left = []
-        self.left.append(self.load_image(os.path.join("MilbiL3", "left_1.png")))
-        self.left.append(self.load_image(os.path.join("MilbiL3", "left_2.png")))
-        self.left.append(self.load_image(os.path.join("MilbiL3", "left_3.png")))
-        self.left.append(self.load_image(os.path.join("MilbiL3", "left_4.png")))
+        self.left.append(self.load_image(os.path.join("CopG2", "left_1.png")))
+        self.left.append(self.load_image(os.path.join("CopG2", "left_2.png")))
+        self.left.append(self.load_image(os.path.join("CopG2", "left_3.png")))
+        self.left.append(self.load_image(os.path.join("CopG2", "left_4.png")))
 
         self.right = []
-        self.right.append(self.load_image(os.path.join("MilbiL3", "right_1.png")))
-        self.right.append(self.load_image(os.path.join("MilbiL3", "right_2.png")))
-        self.right.append(self.load_image(os.path.join("MilbiL3", "right_3.png")))
-        self.right.append(self.load_image(os.path.join("MilbiL3", "right_4.png")))
+        self.right.append(self.load_image(os.path.join("CopG2", "right_1.png")))
+        self.right.append(self.load_image(os.path.join("CopG2", "right_2.png")))
+        self.right.append(self.load_image(os.path.join("CopG2", "right_3.png")))
+        self.right.append(self.load_image(os.path.join("CopG2", "right_4.png")))
 
         self.img_index = 0
 
@@ -61,7 +61,7 @@ class Player_MLBL3(RoomObject):
         self.moving = False
         self.animate()
 
-    def step(self):
+    def prestep(self):
         self.block_right = False
         self.block_left = False
         self.block_up = False
@@ -184,8 +184,6 @@ class Player_MLBL3(RoomObject):
 
     def move_right(self):
         if self.x < 600:
-            self.set_image(os.path.join("Images", "MilbiL3", "right_2.png"), self.size, self.size)
-        if self.x < 600:
             self.x += Globals.move_speed
         else:
             self.room.shift_room_left()
@@ -193,15 +191,12 @@ class Player_MLBL3(RoomObject):
 
     def move_left(self):
         if self.x > 200:
-            self.set_image(os.path.join("Images", "MilbiL3", "left_2.png"), self.size, self.size)
-        if self.x > 200:
             self.x -= Globals.move_speed
         else:
             self.room.shift_room_right()
         Globals.player_x -= 1
 
     def move_up(self):
-        self.set_image(os.path.join("Images", "MilbiL3", "back_2.png"), self.size, self.size)
         if self.y > 150:
             self.y -= Globals.move_speed
         else:
@@ -209,7 +204,6 @@ class Player_MLBL3(RoomObject):
             Globals.player_y -= 1
 
     def move_down(self):
-        self.set_image(os.path.join("Images", "MilbiL3", "front_2.png"), self.size, self.size)
         if self.y < 450:
             self.y += Globals.move_speed
         else:
@@ -275,7 +269,7 @@ class Player_MLBL3(RoomObject):
             new_bullet.x -= 4
             self.room.add_room_object(new_bullet)
             self.room.room_items.append(new_bullet)
-            self.room.set_timer(10, self.reset_shooting)
+            self.room.set_timer(60, self.reset_shooting)
             self.can_shoot = False
 
     def reset_shooting(self):

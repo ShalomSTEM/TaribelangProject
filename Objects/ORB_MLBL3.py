@@ -12,6 +12,7 @@ class ORB_MLBL3(RoomObject):
         self.imgIndex = 0
         self.register_collision_object("Player_MLBL3")
         self.register_collision_object("Stne_MLBL3")
+        self.register_collision_object("BossMLML3")
         self.animate()
 
     def animate(self):
@@ -35,3 +36,6 @@ class ORB_MLBL3(RoomObject):
         elif other_type == "Stne_MLBL3":
             self.x_speed = self.x_speed * -1
             self.y_speed = self.y_speed * -1
+
+        elif other_type == "BossMLML3":
+            self.delete_object(self)
