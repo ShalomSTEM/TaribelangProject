@@ -12,8 +12,12 @@ class ORB_MLBL3(RoomObject):
         self.imgIndex = 0
         self.register_collision_object("Player_MLBL3")
         self.register_collision_object("Stne_MLBL3")
-        self.register_collision_object("BossMLML3")
+
+        self.set_timer(240, self.end_it_all)
         self.animate()
+
+    def end_it_all(self):
+        self.delete_object(self)
 
     def animate(self):
         self.imgIndex += 1
@@ -24,18 +28,9 @@ class ORB_MLBL3(RoomObject):
 
     def handle_collision(self, other, other_type):
         if other_type == "Player_MLBL3":
-            Globals.destroyed_count += 1
-            if Globals.destroyed_count >= self.countToDestory:
-                Globals.total_count = 0
-                Globals.destroyed_count = 0
-                self.room.delete_object(other)
-                self.room.complete_loss()
-            print((self.countToDestory - Globals.destroyed_count)/3, '%')
+            self.room.update_hits(1)
             self.room.delete_object(self)
 
         elif other_type == "Stne_MLBL3":
             self.x_speed = self.x_speed * -1
             self.y_speed = self.y_speed * -1
-
-        elif other_type == "BossMLML3":
-            self.delete_object(self)

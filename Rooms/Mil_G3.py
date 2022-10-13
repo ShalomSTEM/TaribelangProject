@@ -1,4 +1,4 @@
-from GameFrame import Level, Globals, EnumLevels
+from GameFrame import Level, Globals, EnumLevels, TextObject
 import os
 from Objects import Dirt_MLBL3, Stne_MLBL3, Player_MLBL3, Spear_MLBL3, BossMLBL3, ORB_MLBL3, CopG2_NPC
 
@@ -17,12 +17,20 @@ class Mil_G3(Level):
         self.player_x = 0
         self.player_y = 0
 
+        self.hits_left = 10
+
+        self.hits_text = TextObject(self, Globals.SCREEN_WIDTH, 0, f"Hits left : {self.hits_left}")
+        self.hits_text.depth = 100
+        self.hits_text.update_text()
+        self.add_room_object(self.hits_text)
+
     def update_player_pos(self):
         self.player_x = self.player.x
         self.player_y = self.player.y
         self.set_timer(10, self.update_player_pos)
 
     def startElse(self):
+        self.hits_text.x = Globals.SCREEN_WIDTH - self.hits_text.width - 10
 
         self.set_background_image(os.path.join("MilbiL3", "PlaceHolderBackground_MLBL3.png"))
         self.room_items = []
@@ -114,3 +122,11 @@ class Mil_G3(Level):
         else:
             Globals.next_level = EnumLevels.Mil_S4
         self.running = False
+
+    def update_hits(self, value):
+        self.hits_left += value
+        if self.hits_left == 0:
+            self.complete()
+        else:
+            self.hits_text.text = f"Hits left : {self.hits_left}"
+            self.hits_text.update_text()

@@ -22,13 +22,7 @@ class SpearProjectile(RoomObject):
 
     def handle_collision(self, other, other_type):
         if other_type == "BossMLBL3":
-            Globals.destroyed_count += 1
-            if Globals.destroyed_count >= self.countToDestory:
-                Globals.total_count = 0
-                Globals.destroyed_count = 0
-                self.room.delete_object(other)
-                self.room.complete()
-            # print((self.countToDestory - Globals.destroyed_count)/10, '%')
+            self.room.update_hits(-1)
             self.room.delete_object(self)
 
         elif other_type == "Stne_MLBL3":
