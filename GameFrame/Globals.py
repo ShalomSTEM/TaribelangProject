@@ -75,8 +75,7 @@ class Globals:
     ]
 
     # - Set the starting level - #
-    #start_level = EnumLevels.Intro
-    start_level = EnumLevels.Mil_G3
+    start_level = EnumLevels.Intro
 
     # - Set this number to the level you want to jump to when the game ends - #
     end_game_level = 0
