@@ -126,7 +126,10 @@ class Mil_G3(Level):
     def update_hits(self, value):
         self.hits_left += value
         if self.hits_left == 0:
-            self.complete()
+            for obj in reversed(self.room_items):
+                if type(obj).__name__ == "ORB_MLBL3":
+                    self.delete_object(obj)
+            self.new_boss.flip()
         else:
             self.hits_text.text = f"Hits left : {self.hits_left}"
             self.hits_text.update_text()
