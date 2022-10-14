@@ -8,7 +8,7 @@ class Mil_S1(Story):
         self.roomNum = EnumLevels.Mil_S1
 
         Story.__init__(self, screen, joysticks, "milbi_1.ogg", 'MilbiS', "Milbi_Background_1.png")
-        self.set_timer(450, self.complete)
+        self.set_timer(480, self.complete)
 
     def complete(self):
         Globals.next_level = EnumLevels.Mil_G1

@@ -8,8 +8,8 @@ class Cop_S_Only(Level):
 
         # Replace image with one that has the whole storyt
         self.set_background_image(os.path.join("CoppleS", 'Copple_StoryOnly_Background.png'))
-        self.load_sound("Copple_full_story.ogg").play()
-        self.set_timer(3900, self.complete)
+        self.load_sound("Copple_full.ogg").play()
+        self.set_timer(4890, self.complete)
 
         Globals.next_level = EnumLevels.Home
 
