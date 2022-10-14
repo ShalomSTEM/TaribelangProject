@@ -8,7 +8,7 @@ class Cop_S4(Level):
 
         self.set_background_image(os.path.join("CoppleS", 'Copple_Background_4.png'))
         self.load_sound("Copple_4.ogg").play()
-        self.set_timer(1050, self.complete)
+        self.set_timer(1080, self.complete)
 
         Globals.next_level = EnumLevels.Home
 

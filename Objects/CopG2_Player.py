@@ -150,10 +150,29 @@ class CopG2_Player(RoomObject):
         Globals.move_speed = 4
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
+
+        if p1_buttons[11] < -0.5 and p1_buttons[10] < -0.5 or \
+              p1_buttons[11] < -0.5 and p1_buttons[10] > 0.5 or \
+              p1_buttons[11] > 0.5 and p1_buttons[10] > 0.5 or \
+              p1_buttons[11] > 0.5 and p1_buttons[10] < -0.5 or \
+              p1_buttons[10] < -0.5 and p1_buttons[11] < -0.5 or \
+              p1_buttons[10] < -0.5 and p1_buttons[11] > 0.5 or \
+              p1_buttons[10] > 0.5 and p1_buttons[11] < -0.5 or \
+              p1_buttons[10] > 0.5 and p1_buttons[11] > 0.5:
+            Globals.move_speed = 3
         if p1_buttons[11] < -0.5:
-            self.move_right()
-        elif p1_buttons[11] > 0.5:
             self.move_left()
+            self.facing = self.LEFT
+        if p1_buttons[11] > 0.5:
+            self.move_right()
+            self.facing = self.RIGHT
+        if p1_buttons[10] < -0.5:
+            self.move_up()
+            self.facing = self.UP
+        if p1_buttons[10] > 0.5:
+            self.move_down()
+            self.facing = self.DOWN
+        Globals.move_speed = 4
 
     def move_right(self):
         if self.x < 600:

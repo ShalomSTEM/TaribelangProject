@@ -6,7 +6,7 @@ class Mil_S_Only(Level):
         Level.__init__(self, screen, joysticks)
 
         self.set_background_image(os.path.join("MilbiS", 'Milbi_Full_Story.png'))
-        self.load_sound("Milbi_full_story.ogg").play()
+        self.load_sound("milbi_full.ogg").play()
         self.set_timer(3900, self.complete)
 
         Globals.next_level = EnumLevels.Home

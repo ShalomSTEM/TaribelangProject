@@ -66,6 +66,17 @@ class Copple1_Player (RoomObject):
         if key[pygame.K_DOWN]:
             if self.y < Globals.SCREEN_HEIGHT - self.height:
                 self.y += 4
-        if key[pygame.K_SPACE]:
-            pass
-            # self.jump()
+
+    def joy_pad_signal(self, p1_buttons, p2_buttons):
+        if p1_buttons[11] < - 0.5:
+            if self.x > 50:
+                self.x -= 4
+        if p1_buttons[11] > 0.5:
+            if self.x < Globals.SCREEN_WIDTH - 50 - self.width:
+                self.x += 4
+        if p1_buttons[10] < - 0.5:
+            if self.y > Globals.SCREEN_HEIGHT / 2:
+                self.y -= 4
+        if p1_buttons[10] > 0.5:
+            if self.y < Globals.SCREEN_HEIGHT - self.height:
+                self.y += 4

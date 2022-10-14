@@ -128,10 +128,6 @@ class Player_MLBL3(RoomObject):
                     player = self.load_image(os.path.join("MilbiL3", "Player_MLBL3wSpear.png"))
                     self.set_image(player, 16, 24)
 
-
-
-
-
             if self.collides_at(self, 4, 0, "Spear_MLBL3") and not self.block_right:
                 self.block_right = True
                 if self.x < 596:
@@ -178,9 +174,19 @@ class Player_MLBL3(RoomObject):
 
     def joy_pad_signal(self, p1_buttons, p2_buttons):
         if p1_buttons[11] < -0.5:
-            self.move_right()
-        elif p1_buttons[11] > 0.5:
             self.move_left()
+            self.facing = self.LEFT
+        elif p1_buttons[11] > 0.5:
+            self.move_right()
+            self.facing = self.RIGHT
+        if p1_buttons[10] < - 0.5:
+            self.move_up()
+            self.facing = self.UP
+        elif p1_buttons[10] > 0.5:
+            self.move_down()
+            self.facing = self.DOWN
+        elif p1_buttons[0]:
+            self.fire_bullet()
 
     def move_right(self):
         if self.x < 600:
@@ -225,43 +231,6 @@ class Player_MLBL3(RoomObject):
             self.set_image(self.down[0], 16, 24)
 
         self.set_timer(3, self.animate)
-
-    def joy_pad_signal(self, p1_buttons, p2_buttons):
-
-        if p1_buttons[0] !=0:
-            self.fire_bullet()
-        if p1_buttons[11] > 0.5:
-            self.set_image(os.path.join("Images", "MilbiL3", "right_2.png"), self.size, self.size)
-            Globals.player_x += 1
-
-            if self.x < 600:
-                self.x += Globals.move_speed
-            else:
-                self.room.shift_room_left()
-
-        if p1_buttons[11] < -0.5:
-            self.set_image(os.path.join("Images", "MilbiL3", "left_2.png"), self.size, self.size)
-            if self.x > 200:
-                self.x -= Globals.move_speed
-            else:
-                self.room.shift_room_right()
-            Globals.player_x -= 1
-
-        if p1_buttons[10] < -0.5:
-            self.set_image(os.path.join("Images", "MilbiL3", "back_2.png"), self.size, self.size)
-            if self.y > 150:
-                self.y -= Globals.move_speed
-            else:
-                self.room.shift_room_down()
-            Globals.player_y -= 1
-
-        if p1_buttons[10] > 0.5:
-            self.set_image(os.path.join("Images", "MilbiL3", "front_2.png"), self.size, self.size)
-            Globals.player_y += 1
-            if self.y < 450:
-                self.y += Globals.move_speed
-            else:
-                self.room.shift_room_up()
 
     def fire_bullet(self):
         if self.can_shoot:
